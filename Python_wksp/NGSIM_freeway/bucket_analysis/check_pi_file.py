@@ -34,7 +34,7 @@ q_buckets = np.rot90(q_buckets[n_cut:-n_cut,n_cut:-n_cut])
 v_buckets = np.rot90(v_buckets[n_cut:-n_cut,n_cut:-n_cut])
 rho_buckets = np.rot90(rho_buckets[n_cut:-n_cut,n_cut:-n_cut])
 
-rho_buckets = ndimage.filters.gaussian_filter(rho_buckets, 1.5)
+rho_buckets = ndimage.filters.gaussian_filter(rho_buckets, 1)
 
 plt.matshow(rho_buckets)
 plt.show()
@@ -42,7 +42,7 @@ plt.show()
 q_flat = np.ravel(q_buckets)
 v_flat = np.ravel(v_buckets)
 rho_flat = np.ravel(rho_buckets)
- 
+
 plt.scatter(rho_flat, q_flat, alpha = 0.2, lw = 0)
 plt.show()
 
