@@ -1,0 +1,418 @@
+\documentclass[review]{elsarticle}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\setlength\parindent{0pt}
+\makeatletter
+\def\ps@pprintTitle{%
+ \let\@oddhead\@empty
+ \let\@evenhead\@empty
+ \def\@oddfoot{\centerline{\thepage}}%
+ \let\@evenfoot\@oddfoot}
+\makeatother
+
+%\usepackage{lineno,hyperref}
+%\modulolinenumbers[5]
+
+%\journal{Journal of \LaTeX\ Templates}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+%% To change the style, put a % in front of the second line of the current style and
+%% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Title here}
+
+%% Group authors per affiliation:
+\author[add]{Authors}
+\address[add]{address}
+%\author{Elsevier\fnref{myfootnote}}
+%\address{Radarweg 29, Amsterdam}
+%\fntext[myfootnote]{Since 1880.}
+%
+%%% or include affiliations in footnotes:
+%\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+%\ead[url]{www.elsevier.com}
+%
+%\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+%\cortext[mycorrespondingauthor]{Corresponding author}
+%\ead{support@elsevier.com}
+%
+%\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+%\address[mysecondaryaddress]{360 Park Avenue South, New York}
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{keyword}
+
+\end{keyword}
+
+\end{frontmatter}
+
+%\linenumbers
+
+\section{Introduction}
+\begin{itemize}
+\item motivation (prediction, inference, control)
+\item background (short lit review: LWR $\rightarrow$ ARZ progression, why second order models)
+\item goals of paper
+\item organization of paper
+\end{itemize}
+\section{The ARZ model}
+%\begin{itemize}
+%\item physical description of ARZ model + usual form
+%\item $(v, q)$ form, well-posedness 
+%\end{itemize}
+
+The Aw-Rascle (AR) model \cite{AR} with relaxation term is
+\begin{align} 
+\rho_t + (\rho v)_x &= 0, \label{ARZ1} \\
+(v + p(\rho))_t + v(v + p(\rho))_x &=\dfrac{V(\rho) - v}{\tau} \label{ARZ2},
+\end{align}
+where the ``pressure" function, $p(\rho)$, is a smooth, increasing function. This becomes the Aw-Rascle-Zhang (ARZ) model \cite{Z} with $p(\rho) = -V(\rho)$, where $V(\rho) = Q(\rho)/\rho$ is the equilibrium velocity profile, and $Q(\rho)$ is given by the fundamental diagram. \\
+
+In vector form the ARZ model is
+
+\begin{equation} \label{ARZrhov}
+\begin{pmatrix}
+\rho \\ v
+\end{pmatrix}_t
++ \begin{pmatrix}
+v & \rho \\
+0 & v + \rho V' (\rho)
+\end{pmatrix}
+\begin{pmatrix}
+\rho \\ v
+\end{pmatrix}_x = 
+\begin{pmatrix}
+0 \\ \dfrac{V(\rho) - v}{\tau}
+\end{pmatrix}.
+\end{equation}
+
+This system can be rewritten in the denisty-flow and velocity-flow forms, the latter of which is most useful to us for practical control purposes. Using $q = \rho v$ and \eqref{ARZrhov}, the density-flow form is
+
+\begin{equation} \label{ARZrhoq}
+\begin{pmatrix}
+\rho \\ q
+\end{pmatrix}_t
++ \begin{pmatrix}
+0 & 1 \\
+\frac{q}{\rho}  -\frac{q}{\rho} - \rho V'(\rho) & 2\frac{q}{\rho} + \rho V'(\rho)
+\end{pmatrix}
+\begin{pmatrix}
+\rho \\ q
+\end{pmatrix}_x = 
+\begin{pmatrix}
+0 & 0 \\ 
+\frac{V(\rho)}{\tau} & -\frac{1}{\tau}
+\end{pmatrix} 
+\begin{pmatrix}
+\rho \\ q
+\end{pmatrix}.
+\end{equation}
+
+In the same manner we arrive at the velocity-flow form,
+
+\begin{equation} \label{ARZvq}
+\begin{pmatrix}
+v \\ q
+\end{pmatrix}_t
++ \begin{pmatrix}
+v + \frac{q}{v} V'\left(\frac{q}{v}\right) & 0 \\
+\frac{q}{v} \left( v + \frac{q}{v} V'\left(\frac{q}{v}\right)\right) & v
+\end{pmatrix}
+\begin{pmatrix}
+v \\ q
+\end{pmatrix}_x = 
+\begin{pmatrix}
+\dfrac{V\left( \frac{q}{v}\right) - v}{\tau} \\ 
+\dfrac{\frac{q}{v}V\left( \frac{q}{v}\right) - q}{\tau}
+\end{pmatrix}.
+\end{equation}
+
+
+\subsection{Linearization}
+Consider the steady flow case $(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$. Then we have
+\begin{align}
+v^* \frac{d\rho^*}{dx} + \frac{dv^*}{dx}\rho^* = 0, \\
+\left( v^* + \rho^* V'( \rho^*) \right)\frac{dv^*}{dx} = \dfrac{V(\rho^*) - v^*}{\tau} = 0.
+\end{align}
+We must have $\frac{dv^*}{dx}=0$ else $v^* + \rho^* V'( \rho^*) = 0$. Then we have also $\frac{d\rho^*}{dx} = 0$. Hence the steady-state solution is uniform along the road. 
+
+We are interested only in small deviations, $(\tilde{\rho}(x,t), \tilde{v}(x,t))$, from the equilibrium. We linearize the ARZ model \eqref{ARZrhov} about the steady-state described above. The linearized system is as follows 
+
+\begin{equation} \label{rhovlin}
+\begin{pmatrix}
+\tilde{\rho} \\ \tilde{v}
+\end{pmatrix}_t
++ \underbrace{\begin{pmatrix}
+v^* & \rho^* \\
+0 & v^* + \rho^* V' ( \rho^*) 
+\end{pmatrix}}_\text{A}
+\begin{pmatrix}
+\tilde{\rho} \\ \tilde{v}
+\end{pmatrix}_x = 
+\begin{pmatrix}
+0 & 0 \\
+\dfrac{V' (\rho^*)}{\tau} & -\frac{1}{\tau}
+\end{pmatrix}
+\begin{pmatrix}
+\tilde{\rho} \\ \tilde{v}
+\end{pmatrix}
+\end{equation}
+
+We linearize \eqref{ARZrhoq} about the equilibrium $(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$ with deviations $(\tilde{\rho}(x,t), \tilde{q}(x,t))$. The linearized system is as follows 
+
+\begin{equation} \label{rhoqlin}
+\begin{pmatrix}
+\tilde{\rho} \\ \tilde{q}
+\end{pmatrix}_t
++ \begin{pmatrix}
+0 & 1 \\
+\alpha^* \beta^* & \alpha^* - \beta^* 
+\end{pmatrix}
+\begin{pmatrix}
+\tilde{\rho} \\ \tilde{q}
+\end{pmatrix}_x = 
+\begin{pmatrix}
+0 & 0 \\
+\delta & \sigma
+\end{pmatrix}
+\begin{pmatrix}
+\tilde{\rho} \\ \tilde{q}
+\end{pmatrix},
+\end{equation}
+
+where $\alpha^* = \frac{q^*}{\rho^*}$, $\beta^* = -\frac{q^*}{\rho^*} - \rho^* V'(\rho^*)$, $\delta = \dfrac{V(\rho^*)+\rho^*V'( \rho^*)}{\tau}$, and $\sigma = -\dfrac{1}{\tau}$.
+
+\begin{equation} \label{vqlin}
+\begin{pmatrix}
+\tilde{v} \\ \tilde{q}
+\end{pmatrix}_t
++ \underbrace{\begin{pmatrix}
+v^* + \frac{q^*}{v^*} V'\left(\frac{q^*}{v^*}\right) & 0 \\
+\frac{q^*}{v^*} \left( v^* + \frac{q^*}{v^*} V'\left(\frac{q^*}{v^*}\right)\right) & v^*
+\end{pmatrix}}_\text{A}
+\begin{pmatrix}
+\tilde{v} \\ \tilde{q}
+\end{pmatrix}_x = 
+\underbrace{\begin{pmatrix}
+-\dfrac{(v^*)^2+q^*V'\left(\frac{q^*}{v^*}\right)}{(v^*)^2 \tau} & \dfrac{V'\left(\frac{q^*}{v^*}\right)}{v^* \tau} \\
+-\dfrac{q^*\left((v^*)^2 + q^*V'\left(\frac{q^*}{v^*}\right)\right)}{(v^*)^3 \tau}  & \dfrac{q^*V'\left(\frac{q^*}{v^*}\right)}{(v^*)^2 \tau}
+\end{pmatrix}}_\text{B}
+\begin{pmatrix}
+\tilde{v} \\ \tilde{q}
+\end{pmatrix}.
+\end{equation}
+
+\subsection{Characteristic form}
+We can rewrite \eqref{rhovlin} in diagonal form. The eigenvalues of $A$ are 
+\begin{align}
+\lambda_1 &= v^*, \\
+\lambda_2 &= v^* + \rho^* V'( \rho^*).
+\end{align}
+Using the second equation in \eqref{rhovlin} and combining the equations of \eqref{rhovlin}, we have
+
+\begin{equation}
+\begin{pmatrix}
+\zeta_1 \\ \zeta_2
+\end{pmatrix}_t
++ \begin{pmatrix}
+\lambda_1 & 0 \\
+0 & \lambda_2 
+\end{pmatrix}
+\begin{pmatrix}
+\zeta_1 \\ \zeta_2
+\end{pmatrix}_x
+= \begin{pmatrix}
+-\frac{1}{\tau} & 0 \\
+-\frac{1}{\tau} & 0
+\end{pmatrix}
+\begin{pmatrix}
+\zeta_1 \\ \zeta_2
+\end{pmatrix},
+\end{equation}
+
+where $\zeta_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\zeta_2 = \tilde{v}$. 
+
+We proceed in the same manner as in the $(\rho, v)$ system to diagonalize \eqref{rhoqlin}. The diagonal form is
+
+\begin{equation} \label{rhoqlindiag}
+\begin{pmatrix}
+\chi_1 \\ \chi_2
+\end{pmatrix}_t 
++ \begin{pmatrix}
+\lambda_1 & 0 \\
+0 & \lambda_2
+\end{pmatrix}
+\begin{pmatrix}
+\chi_1 \\ \chi_2
+\end{pmatrix}_x
+= \begin{pmatrix}
+-\frac{1}{\tau} & 0 \\
+-\frac{1}{\tau} & 0
+\end{pmatrix}
+\begin{pmatrix}
+\chi_1 \\ \chi_2
+\end{pmatrix},
+\end{equation}
+
+where 
+\begin{align}
+\chi_1 &= -\lambda_2 \tilde{\rho} + \tilde{q} \\
+\chi_2 &= -\lambda_1 \tilde{\rho} + \tilde{q}
+\end{align}
+
+and the eigenvalues $\lambda_1$ and $\lambda_2$ are the same as in the density-velocity system.
+
+Letting $\xi(x,t) = (\tilde{v}, \tilde{q})^T$, we can rewrite \eqref{vqlin} as
+\begin{equation} \label{vqlinxi}
+\xi_t + A\xi_x = B\xi.
+\end{equation}
+
+The eigenvalues of $A$ are the same as in the previous systems: 
+\begin{align}
+\lambda_1 &= v^*, \\
+\lambda_2 &= v^* + \frac{q^*}{v^*} V'\left(\frac{q^*}{v^*}\right).
+\end{align}
+Then $A$ can be diagonalized as follows
+\begin{align}
+A &= XDX^{-1}, \\
+X &= \begin{pmatrix}
+0 & \lambda_2-\lambda_1 \\
+1 & \rho^*\lambda_2
+\end{pmatrix}, \\
+D &= \begin{pmatrix}
+\lambda_1 & 0 \\
+0 & \lambda_2
+\end{pmatrix},\\
+X^{-1} &= \begin{pmatrix}
+\dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2} & 1 \\
+-\dfrac{1}{\lambda_1 - \lambda_2} & 0
+\end{pmatrix}.
+\end{align}
+
+Define $\chi(x,t) := X\xi(x,t)$. Hence \eqref{vqlinxi} can be rewritten as
+\begin{equation} 
+\chi_t + \begin{pmatrix}
+\lambda_1 & 0 \\
+0 & \lambda_2
+\end{pmatrix} \chi_x = \begin{pmatrix}
+-\frac{1}{\tau} & 0 \\
+-\frac{1}{q^* \tau} & 0
+\end{pmatrix} \chi
+\end{equation}
+
+where 
+\begin{equation}
+\chi = \begin{pmatrix}
+\frac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q} \\ 
+-\frac{1}{\lambda_1 - \lambda_2}\tilde{v} 
+\end{pmatrix}. 
+\end{equation}
+
+Let $\zeta = (\chi_1, -q^*\chi_2)^T$. Then we have
+\begin{equation} \label{vqlindiag}
+\zeta_t + \begin{pmatrix}
+\lambda_1 & 0 \\
+0 & \lambda_2
+\end{pmatrix} \zeta_x = \begin{pmatrix}
+-\frac{1}{\tau} & 0 \\
+-\frac{1}{\tau} & 0
+\end{pmatrix} \zeta,
+\end{equation}
+and
+\begin{equation} \label{eq:Riemannzeta}
+\zeta = \begin{pmatrix}
+\dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q} \\ 
+\dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v} 
+\end{pmatrix} = 
+\begin{pmatrix}
+\dfrac{\rho^*\lambda_2}{\lambda_1-\lambda_2} & 1\\
+\dfrac{\rho^*\lambda_1}{\lambda_1-\lambda_2} & 0
+\end{pmatrix} \begin{pmatrix}
+\tilde{v} \\ \tilde{q} 
+\end{pmatrix}
+\end{equation}
+
+\subsection{Froude number}
+In fluid mechanics the Froude number is a dimensionless number which delineates the boundary between flow regimes. Using the eigenvalues of the system in the characteristic form, we are able to define a useful analog to this number.
+Since $V(\rho)$ is a decreasing function we have $V'(\rho^*) \leq 0$. Thus there are two flow regimes, where $\lambda_1 \lambda_2 < 0$ and one characteristic curve travels downstream, and where $\lambda_1 \lambda_2 > 0$ and both characteristic curves travel upstream. \\
+Define $F := \dfrac{\rho^*V'( \rho^*)}{v^*}$. Then we have
+\begin{equation*}
+\begin{cases}
+F > 1 &\Rightarrow |\rho^*V'(\rho^*)| > v^* \quad \Rightarrow \lambda_2  <0 \\
+F < 1 &\Rightarrow |\rho^*V'(\rho^*)| < v^* \quad \Rightarrow \lambda_2 > 0
+\end{cases}
+\end{equation*}
+
+Note also that $\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$. Hence the system is in free flow when $F<1$ and congestion when $F>1$. 
+
+
+\section{Frequency domain analysis}
+\subsection{State-transition matrix}
+
+\subsection{Free flow case}
+[BC's, bode, step/sinusoid responses]
+
+\subsection{Congested flow}
+[BC's, bode, step/sinusoid responses]
+
+\section{Numerical validation}
+\begin{itemize}
+\item Values for parameters $(\tau?)$
+\item Convergence towards equilibrium of trajectories in $(v, q)$ domain
+\item Spectral transform of data and response
+\end{itemize}
+\section{Results/discussion}
+
+
+\section{Conclusion}
+[further steps]
+
+\section*{Acknowledgments}
+
+\section*{Appendices}
+\begin{itemize}
+\item Time domain solutions $(v, q)$
+\item Frequency domain for $(\rho, q)$, $(\rho, v)$
+\item Pre-processing of data
+\end{itemize}
+
+\section*{References}
+
+\bibliography{mybibfile}
+\nocite*
+\end{document}
