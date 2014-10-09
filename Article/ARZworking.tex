@@ -121,7 +121,7 @@ v & \rho \\
 \end{pmatrix}.
 \end{equation}
 
-This system can be rewritten in the denisty-flow and velocity-flow forms, the latter of which is most useful to us for practical control purposes. Using $q = \rho v$ and \eqref{ARZrhov}, the density-flow form is
+This system can be rewritten in the density-flow and velocity-flow forms, the latter of which is most useful to us for practical control purposes. Flow can indeed be controlled thanks to on-ramp traffic lights and velocity through varying speed limits. Using $q = \rho v$ and \eqref{ARZrhov}, the density-flow form is
 
 \begin{equation} \label{ARZrhoq}
 \begin{pmatrix}
@@ -169,7 +169,7 @@ Consider the steady flow case $(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$. Then we hav
 v^* \frac{d\rho^*}{dx} + \frac{dv^*}{dx}\rho^* = 0, \\
 \left( v^* + \rho^* V'( \rho^*) \right)\frac{dv^*}{dx} = \dfrac{V(\rho^*) - v^*}{\tau} = 0.
 \end{align}
-We must have $\frac{dv^*}{dx}=0$ else $v^* + \rho^* V'( \rho^*) = 0$. Then we have also $\frac{d\rho^*}{dx} = 0$. Hence the steady-state solution is uniform along the road. 
+We must have $\frac{dv^*}{dx}=0$ else $v^* + \rho^* V'( \rho^*) = 0$. Then we have also $\frac{d\rho^*}{dx} = 0$. Hence the steady-state solution is uniform along the road.
 
 We are interested only in small deviations, $(\tilde{\rho}(x,t), \tilde{v}(x,t))$, from the equilibrium. We linearize the ARZ model \eqref{ARZrhov} about the steady-state described above. The linearized system is as follows 
 
@@ -243,6 +243,9 @@ We can rewrite \eqref{rhovlin} in diagonal form. The eigenvalues of $A$ are
 \lambda_1 &= v^*, \\
 \lambda_2 &= v^* + \rho^* V'( \rho^*).
 \end{align}
+Here the eigen values clearly have a form that conforms with the physical properties of traffic dynamics. In particular, as \begin{equation}
+\V'(\rho^*
+\end{equation}
 Using the second equation in \eqref{rhovlin} and combining the equations of \eqref{rhovlin}, we have
 
 \begin{equation}
