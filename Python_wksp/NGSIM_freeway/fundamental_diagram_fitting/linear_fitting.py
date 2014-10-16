@@ -20,11 +20,9 @@ for n_grid in [40, 80, 100, 120, 200, 500]:
                            np.max(rho_values),
                            num = 100)
     y_values = coeffs[0][0] * x_values + coeffs[0][1]
-    #===========================================================================
-    # plt.plot(x_values, y_values)
-    # plt.scatter(rho_values, v_values)
-    # plt.show()
-    #===========================================================================
+    plt.plot(x_values, y_values)
+    plt.scatter(rho_values, v_values)
+    plt.show()
     v_star = np.mean(v_values)
     rho_star = np.mean(rho_values)
     q_star = v_star * rho_star

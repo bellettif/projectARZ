@@ -19,29 +19,29 @@ params = pickle.load(open('system_params/%d_%d_params.pi' % (n_grid, n_grid), 'r
 lambda_1 = params['lambda_1']
 lambda_2 = params['lambda_2']
 rho_star = params['rho_star']
+v_star = params['v_star']
+q_star = params['q_star']
 
+print 'Lambda_1 = %.2f' % lambda_1
+print 'Lambda_2 = %.2f' % lambda_2
+print 'rho_star = %.2f' % rho_star
+print 'v_star = %.2f' % v_star
+print 'q_star = %.2f' % q_star
 
 mat_dict = pickle.load(open('matrices/mat_dict_%d_%d.pi' % (n_grid, n_grid), 'rb'))
 
-rho_matrix = mat_dict['rho']
-q_matrix = mat_dict['q']
-v_matrix = mat_dict['v']
+rho_matrix = mat_dict['rho'] - rho_star
+q_matrix = mat_dict['q'] - q_star
+v_matrix = mat_dict['v'] - v_star
 dx = mat_dict['dx']
 dt = mat_dict['dt']
 n_grid_x = q_matrix.shape[0]
 n_grid_t = q_matrix.shape[1]
 
-tau = 200.0
+plt.scatter(np.ravel(v_matrix), np.ravel(q_matrix))
+plt.show()
 
-lambda_1 = np.median(v_matrix)
-
-print lambda_1
-print lambda_2
-
-print n_grid_x
-print n_grid_t
-
-print dt
+tau = 10.0
 
 x_values = np.arange(n_grid_x) * dx
 t_values = np.arange(n_grid_t) * dt
