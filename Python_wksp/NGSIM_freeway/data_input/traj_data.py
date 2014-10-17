@@ -26,15 +26,19 @@ all_data = []
 for period in periods:
     file_path = '%s%s/trajectories-%s.csv' % (target_dir, period, period)
     data = pandas.read_csv(file_path)
+    data = data[data['veh_class'] == 2]
     all_data.append(data)
     #
     min_t = float(data['time_since_epoch_ms'].min())
     min_v = float(data['veh_v'].min())
     max_v = float(data['veh_v'].max())
+    min_x = float(data['local_y'].min()) * foot_to_meter
+    max_x = float(data['local_y'].max()) * foot_to_meter
     print 'v belongs to (%f, %f)' % (min_v, max_v)
+    print 'x belonds to (%f, %f)' % (min_x, max_x)
     #
     t_values = (data['time_since_epoch_ms'].values - min_t) / float(1000)
-    x_values = data['global_x'].values * foot_to_meter
+    x_values = data['local_y'].values * foot_to_meter
     v_values = data['veh_v'].values * foot_to_meter
     sc = plt.scatter(t_values, x_values, s = 0.1, alpha = 0.2, 
                      c = v_values , lw = 0, cmap = plt.get_cmap('hot'))
@@ -54,7 +58,7 @@ max_v = float(all_data['veh_v'].max())
 print 'v belongs to (%f, %f)' % (min_v, max_v)
 #
 t_values = (all_data['time_since_epoch_ms'].values - min_t) / float(1000)
-x_values = all_data['global_x'].values * foot_to_meter
+x_values = all_data['local_y'].values * foot_to_meter
 v_values = all_data['veh_v'].values * foot_to_meter
 sc = plt.scatter(t_values, x_values, s = 0.1, alpha = 0.2, 
                  c = v_values , lw = 0, cmap = plt.get_cmap('hot'))
@@ -65,4 +69,5 @@ plt.xlabel('t (seconds)')
 fig = plt.gcf()
 fig.set_size_inches((16,8))
 plt.savefig('US-101_all_traj.png', dpi = 600)
+plt.savefig('US-101_all_traj_low_res.png')
 plt.close()
