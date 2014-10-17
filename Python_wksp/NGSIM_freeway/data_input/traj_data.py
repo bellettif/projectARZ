@@ -16,7 +16,6 @@ periods = ['0750am-0805am',
            '0805am-0820am',
            '0820am-0835am']
 
-
 target_dir = '/Users/cusgadmin/projectARZ/US-101/vehicle-trajectory-data/'
 
 foot_to_meter = 0.3048
