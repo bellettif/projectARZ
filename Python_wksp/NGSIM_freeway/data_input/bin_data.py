@@ -20,10 +20,12 @@ INPUT_DIR = '/Users/cusgadmin/projectARZ/US-101/vehicle-trajectory-data/'
 FOOT_TO_METER = 0.3048
 SAMPLING_RATE = 10.0 #s^-1
 N_LANES = 5
+PRODUCE_PLOTS = False
 
 periods = ['0750am-0805am',
            '0805am-0820am',
            '0820am-0835am']
+
 
 #
 #    Information about the table
@@ -126,7 +128,6 @@ for n_grid in [80, 100, 120, 140]:
     buckets = buckets.sort(['t_start', 'x_start'])
     buckets['q'] = buckets['v'] * buckets['rho']
     buckets['shifted_ids'] = buckets['ids'].shift()
-    print buckets
     buckets['q_count'] = buckets.apply(q_counter, axis = 1)
     #
     #    Deleting empty buckets
@@ -142,65 +143,66 @@ for n_grid in [80, 100, 120, 140]:
                       (buckets['t_start'] >= lower_cut_t)
                       &
                       (buckets['t_end'] <= upper_cut_t)]
-    buckets = buckets[['t_start', 'x_start', 'rho', 'v', 'ids', 'q', 'q_count', 'median_ID']]
+    buckets = buckets[['t_start', 'x_start', 'x_end', 't_end', 'rho', 'v', 'ids', 'q', 'q_count', 'median_ID']]
     buckets = buckets.sort(['t_start', 'x_start'])
-    #
-    #    Plotting (t,x) map of v, q and rho
-    #
-    for opt in ['v', 'q', 'q_count', 'rho', 'median_ID']:
-        sc = plt.scatter(buckets['t_start'].values,
-                    buckets['x_start'].values,
-                    c = buckets[opt],
-                    lw = 0)
-        plt.colorbar(sc)
-        plt.title('Average %s' % opt)
-        plt.xlabel('t (seconds)')
-        plt.ylabel('x (meters)')
-        plt.savefig('plots/%d_%d_%s_map.png' % (n_grid_t, n_grid_x, opt))
-        plt.close()
-    #
-    #    Sanity check q against q_count
-    #   
-    plt.scatter(buckets['q'].values, buckets['q_count'].values,
-                lw = 0, alpha = 0.2)
-    plt.title('q against q_count')
-    plt.xlabel('q')
-    plt.ylabel('q_count')
-    plt.savefig('plots/%d_%d_q_q_count.png' % (n_grid_t, n_grid_x))
-    plt.close()
-    #
-    #    Sanity check rho against rho_count
-    #
-    for q_opt in ['q_count', 'q']:
+    if PRODUCE_PLOTS:
         #
-        #    Plotting fundamental diagram
+        #    Plotting (t,x) map of v, q and rho
         #
-        plt.scatter(buckets['v'].values,
-                    buckets[q_opt].values,
+        for opt in ['v', 'q', 'q_count', 'rho', 'median_ID']:
+            sc = plt.scatter(buckets['t_start'].values,
+                        buckets['x_start'].values,
+                        c = buckets[opt],
+                        lw = 0)
+            plt.colorbar(sc)
+            plt.title('Average %s' % opt)
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            plt.savefig('plots/%d_%d_%s_map.png' % (n_grid_t, n_grid_x, opt))
+            plt.close()
+        #
+        #    Sanity check q against q_count
+        #   
+        plt.scatter(buckets['q'].values, buckets['q_count'].values,
                     lw = 0, alpha = 0.2)
-        plt.title('Fundamental diagram v %s' % q_opt)
-        plt.xlabel('v')
-        plt.ylabel(q_opt)
-        plt.savefig('plots/%d_%d_fundamental_diagram_v_%s.png' % (n_grid_t, n_grid_x, q_opt))
+        plt.title('q against q_count')
+        plt.xlabel('q')
+        plt.ylabel('q_count')
+        plt.savefig('plots/%d_%d_q_q_count.png' % (n_grid_t, n_grid_x))
         plt.close()
+        #
+        #    Sanity check rho against rho_count
+        #
+        for q_opt in ['q_count', 'q']:
+            #
+            #    Plotting fundamental diagram
+            #
+            plt.scatter(buckets['v'].values,
+                        buckets[q_opt].values,
+                        lw = 0, alpha = 0.2)
+            plt.title('Fundamental diagram v %s' % q_opt)
+            plt.xlabel('v')
+            plt.ylabel(q_opt)
+            plt.savefig('plots/%d_%d_fundamental_diagram_v_%s.png' % (n_grid_t, n_grid_x, q_opt))
+            plt.close()
+            #
+            plt.scatter(buckets['rho'].values,
+                        buckets[q_opt].values,
+                        lw = 0, alpha = 0.2)
+            plt.title('Fundamental diagram rho %s' % q_opt)
+            plt.xlabel('rho')
+            plt.ylabel(q_opt)
+            plt.savefig('plots/%d_%d_fundamental_diagram_rho_%s.png' % (n_grid_t, n_grid_x, q_opt))
+            plt.close()
         #
         plt.scatter(buckets['rho'].values,
-                    buckets[q_opt].values,
+                    buckets['v'].values,
                     lw = 0, alpha = 0.2)
-        plt.title('Fundamental diagram rho %s' % q_opt)
+        plt.title('Fundamental diagram v rho')
         plt.xlabel('rho')
-        plt.ylabel(q_opt)
-        plt.savefig('plots/%d_%d_fundamental_diagram_rho_%s.png' % (n_grid_t, n_grid_x, q_opt))
+        plt.ylabel('v')
+        plt.savefig('plots/%d_%d_fundamental_diagram_v_rho.png' % (n_grid_t, n_grid_x))
         plt.close()
-    #
-    plt.scatter(buckets['rho'].values,
-                buckets['v'].values,
-                lw = 0, alpha = 0.2)
-    plt.title('Fundamental diagram v rho')
-    plt.xlabel('rho')
-    plt.ylabel('v')
-    plt.savefig('plots/%d_%d_fundamental_diagram_v_rho.png' % (n_grid_t, n_grid_x))
-    plt.close()
     #
     #    Pickling data
     #

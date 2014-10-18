@@ -15,7 +15,7 @@ import matplotlib.cm as cmx
 
 
 for n_grid in [80, 100, 120, 140]:
-    buckets = pd.read_pickle('data/buckets_%d_%d.pi' % (n_grid, n_grid))
+    buckets = pd.read_pickle('../binned_data/buckets_%d_%d.pi' % (n_grid, n_grid))
     buckets = buckets[['x_start', 'x_end', 't_start', 't_end', 'rho', 'v', 'q']]
     buckets = buckets.sort(['x_start', 't_start'])
     x_values = list(set(buckets['x_start'].values))
@@ -36,5 +36,5 @@ for n_grid in [80, 100, 120, 140]:
         mat_dict[opt] = np.asanyarray(values)
     mat_dict['dx'] = buckets['x_end'].values[0] - buckets['x_start'].values[0]
     mat_dict['dt'] = buckets['t_end'].values[0] - buckets['t_start'].values[0]    
-    pickle.dump(mat_dict, open('matrices/mat_dict_%d_%d.pi' % (n_grid, n_grid), 'wb'))
+    pickle.dump(mat_dict, open('../matrices/mat_dict_%d_%d.pi' % (n_grid, n_grid), 'wb'))
     
