@@ -92,7 +92,7 @@ all_data['x'] = all_data['local_y']
 all_data = all_data[['x', 't', 'veh_v', 'vehicule_ID']]
 all_data['count'] = 1
 
-for n_grid in [80, 100, 120, 140]:
+for n_grid in [60, 80, 100, 120]:
     n_grid_x = n_grid_t = n_grid
     print 'Doing grid with %d points' % n_grid
     #

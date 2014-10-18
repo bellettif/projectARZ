@@ -89,7 +89,7 @@ for n_grid in [80, 100, 120, 140]:
     plt.savefig('plots/Boundary_conditions_FFT_n_%d.png' % n_grid)
     plt.close()
     #    
-    for TAU in [10.0, 20.0, 40.0, 100.0]:
+    for TAU in [5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0]:
         print '\ttau = %.2f' % TAU
         #
         xsi_1_sim = np.zeros((n_grid_x, n_grid_t))
@@ -154,7 +154,7 @@ for n_grid in [80, 100, 120, 140]:
         plt.xlabel('t')
         plt.ylabel('Xsi_2')
         plt.legend(('Xsi_2', 'Xsi_2_sim'), 'upper right')
-        plt.savefig('plots/Boundary_conditions_check_n_%d_%.2f.png' % (n_grid, TAU))
+        plt.savefig('plots/Boundary_conditions_check_n=%d_tau=%.2f.png' % (n_grid, TAU))
         plt.close()
         #
         plt.subplot(221)
@@ -181,7 +181,7 @@ for n_grid in [80, 100, 120, 140]:
         plt.xlabel('t')
         plt.ylabel('x')
         plt.colorbar()
-        plt.savefig('plots/Xsi_map_%d_%.2f.png' % (n_grid, TAU))
+        plt.savefig('plots/Xsi_map_n=%d_tau=%.2f.png' % (n_grid, TAU))
         plt.close()
         #
         plt.subplot(221)
@@ -208,5 +208,5 @@ for n_grid in [80, 100, 120, 140]:
         plt.xlabel('t')
         plt.ylabel('x')
         plt.colorbar()
-        plt.savefig('plots/vq_map_%d_%.2f.png' % (n_grid, TAU))
+        plt.savefig('plots/vq_map_n=%d_tau=%.2f.png' % (n_grid, TAU))
         plt.close()
