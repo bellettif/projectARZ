@@ -12,7 +12,7 @@ from time_domain_responses import *
 from fourier_transform import compute_input_fft
 from fourier_transform import compute_inv_fft
 
-for n_grid in [80, 100, 120, 140]:
+for n_grid in [80]:
     params = pickle.load(open('../system_params/%d_%d_params.pi' % (n_grid, n_grid), 'rb'))
     #
     lambda_1 = params['lambda_1']
