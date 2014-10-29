@@ -55,6 +55,8 @@ min_t = float(all_data['time_since_epoch_ms'].min())
 min_v = float(all_data['veh_v'].min())
 max_v = float(all_data['veh_v'].max())
 print 'v belongs to (%f, %f)' % (min_v, max_v)
+print len(all_data)
+
 #
 t_values = (all_data['time_since_epoch_ms'].values - min_t) / float(1000)
 x_values = all_data['local_y'].values * foot_to_meter

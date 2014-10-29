@@ -21,6 +21,7 @@ FOOT_TO_METER = 0.3048
 SAMPLING_RATE = 10.0 #s^-1
 N_LANES = 5
 PRODUCE_PLOTS = False
+CONTROL_GRID = True
 
 periods = ['0750am-0805am',
            '0805am-0820am',
@@ -49,7 +50,9 @@ periods = ['0750am-0805am',
 def compute_metrics(x):
     result = {'rho': sum(x['count']) / (float(SAMPLING_RATE) * float(N_LANES) * dx * dt),
               'ids' : set(x['vehicule_ID']),
-              'v': x['veh_v'].mean()}
+              'v': x['veh_v'].mean(),
+              'n_traces' : len(x),
+              'n_ids' : len(set(x['vehicule_ID']))}
     return pd.Series(result, name='metrics')
 #
 def q_counter(x):
@@ -113,7 +116,9 @@ for n_grid in [60, 80, 100, 120]:
                                                            't',
                                                            'rho', 
                                                            'v', 
-                                                           'ids']]
+                                                           'ids',
+                                                           'n_traces',
+                                                           'n_ids']]
     #
     #    Compute x and t
     #
@@ -143,8 +148,28 @@ for n_grid in [60, 80, 100, 120]:
                       (buckets['t_start'] >= lower_cut_t)
                       &
                       (buckets['t_end'] <= upper_cut_t)]
-    buckets = buckets[['t_start', 'x_start', 'x_end', 't_end', 'rho', 'v', 'ids', 'q', 'q_count', 'median_ID']]
+    buckets = buckets[['t_start', 'x_start', 'x_end', 't_end', 'rho', 'v', 'ids', 'q', 'q_count', 'median_ID',
+                       'n_traces', 'n_ids']]
     buckets = buckets.sort(['t_start', 'x_start'])
+    if CONTROL_GRID:
+        #
+        #    Plot histogram of number of traces in buckets
+        #
+        plt.hist(buckets['n_traces'].values, bins = 100)
+        plt.title('Histogram of number of traces in buckets')
+        plt.ylabel('Population')
+        plt.xlabel('Number of traces')
+        plt.savefig('control_grid/traces_%d_%d' % (n_grid_t, n_grid_x))
+        plt.close()
+        #
+        #    Plot histogram of number of ids in buckets
+        #
+        plt.hist(buckets['n_traces'].values, bins = 100)
+        plt.title('Histogram of number of traces in buckets')
+        plt.ylabel('Population')
+        plt.xlabel('Number of traces')
+        plt.savefig('control_grid/traces_%d_%d' % (n_grid_t, n_grid_x))
+        plt.close()
     if PRODUCE_PLOTS:
         #
         #    Plotting (t,x) map of v, q and rho
