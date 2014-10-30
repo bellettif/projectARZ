@@ -1,0 +1,55 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Texas}
+D.~Schrank, B.~Eisele, , T.~Lomax, Urban mobility report, Tech. rep., Texas A
+  and M Transportation Institute (2012).
+
+\bibitem{LW}
+M.~J. Lighthill, J.~B. Whitham, On kinematic waves. \uppercase{II}: A theory of
+  traffic flow on long crowded roads., Proc. Royal. Soc. (1955) 317--345.
+
+\bibitem{Richards}
+P.~I. Richards, Shock waves on the highway, Operations Research 4~(1) (1956)
+  pp. 42--51.
+
+\bibitem{payne1971models}
+H.~J. Payne, Models of Freeway Traffic and Control, Simulation Councils,
+  Incorporated, 1971.
+
+\bibitem{whitham1974linear}
+G.~B. Whitham, Linear and Nonlinear Waves, A Wiley-Interscience publication,
+  Wiley, 1974.
+
+\bibitem{Dag_requiem}
+C.~Daganzo, Requiem for second-order fluid approximations of traffic flow,
+  Transportation Res. Part B 29~(4) (1995) 277--286.
+
+\bibitem{AR}
+A.~Aw, M.~Rascle, Resurrection of second order models of traffic flow, SIAM
+  Journal of Applied Mathematics 60~(3) (2000) 916--938.
+
+\bibitem{Z}
+H.~M. Zhang, A non-equilibrium traffic model devoid of gas-like behavior,
+  Transportation Res. Part B 36 (2002) 275--290.
+
+\bibitem{R_improved}
+M.~Rascle, An improved macroscopic model of traffic flow: derivation and links
+  with the lighthill-whitham model, Mathematical and computer modelling 35
+  (2002) 581--590.
+
+\bibitem{Hofleitner}
+A.~Hofleitner, C.~Claudel, A.~Bayen, Reconstruction of boundary conditions from
+  internal conditions using viability theory, in: American Control Conference,
+  IEEE, 2012, pp. 640--645.
+
+\bibitem{Fan}
+S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted
+  generalized aw-rascle-zhang model, Networks and Heterogeneous Media 9~(2)
+  (2014) 239--268.
+
+\end{thebibliography}
