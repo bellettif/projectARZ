@@ -12,6 +12,11 @@ from time_domain_responses import *
 from fourier_transform import compute_input_fft
 from fourier_transform import compute_inv_fft
 
+N_TAUS = 80
+TAU_VALUES = np.linspace(5, 80, N_TAUS)
+
+PLOT_ALL = False
+
 for n_grid in [80, 100, 120]:
     params = pickle.load(open('../system_params/%d_%d_params.pi' % (n_grid, n_grid), 'rb'))
     #
@@ -72,24 +77,29 @@ for n_grid in [80, 100, 120]:
                                          freqs_L, 
                                          dt,
                                          len(xi_2_data_L))
-    plt.subplot(211)
-    plt.plot(xi_1_data_0)
-    plt.plot(reconstruct_xi_1_data)
-    plt.title('xi_1(0,t) condition n = %d' % n_grid)
-    plt.xlabel('t')
-    plt.ylabel('xi_1')
-    plt.legend(('xi_1', 'FFT inv'), 'upper right')
-    plt.subplot(212)
-    plt.plot(xi_2_data_L)
-    plt.plot(reconstruct_xi_2_data)
-    plt.title('xi_2(L,t) condition n = %d' % n_grid)
-    plt.xlabel('t')
-    plt.ylabel('xi_2')
-    plt.legend(('xi_2', 'FFT inv'), 'upper right')
-    plt.savefig('plots/Boundary_conditions_FFT_n_%d.png' % n_grid)
-    plt.close()
-    #    
-    for TAU in [15.0, 20.0, 25.0, 30.0]:
+    if PLOT_ALL:
+        plt.subplot(211)
+        plt.plot(xi_1_data_0)
+        plt.plot(reconstruct_xi_1_data)
+        plt.title('xi_1(0,t) condition n = %d' % n_grid)
+        plt.xlabel('t')
+        plt.ylabel('xi_1')
+        plt.legend(('xi_1', 'FFT inv'), 'upper right')
+        plt.subplot(212)
+        plt.plot(xi_2_data_L)
+        plt.plot(reconstruct_xi_2_data)
+        plt.title('xi_2(L,t) condition n = %d' % n_grid)
+        plt.xlabel('t')
+        plt.ylabel('xi_2')
+        plt.legend(('xi_2', 'FFT inv'), 'upper right')
+        plt.savefig('plots/Boundary_conditions_FFT_n_%d.png' % n_grid)
+        plt.close()
+    #
+    q_mean_abs_errors = np.zeros(N_TAUS)
+    v_mean_abs_errors = np.zeros(N_TAUS)
+    xi_1_mean_abs_errors = np.zeros(N_TAUS)
+    xi_2_mean_abs_errors = np.zeros(N_TAUS)
+    for tau_index, TAU in enumerate(TAU_VALUES):
         print '\ttau = %.2f' % TAU
         #
         xi_1_sim = np.zeros((n_grid_x, n_grid_t))
@@ -139,156 +149,233 @@ for n_grid in [80, 100, 120]:
         #
         q_sim = xi_1_sim - lambda_2 / lambda_1 * xi_2_sim
         v_sim = (lambda_1 - lambda_2) / (rho_star * lambda_1) * xi_2_sim
+        if PLOT_ALL:
+            #
+            #    Check that boundary conditions do match
+            #
+            plt.subplot(211)
+            plt.plot(xi_1_data_0)
+            plt.plot(xi_1_sim[0])
+            plt.title('xi_1(0,t) condition n = %d' % n_grid)
+            plt.xlabel('t')
+            plt.ylabel('xi_1')
+            plt.legend(('xi_1_data', 'xi_1_sim'), 'upper right')
+            plt.subplot(212)
+            plt.plot(xi_2_data_L)
+            plt.plot(xi_2_sim[-1])
+            plt.title('xi_2(L,t) condition n = %d' % n_grid)
+            plt.xlabel('t')
+            plt.ylabel('xi_2')
+            plt.legend(('xi_2', 'xi_2_sim'), 'upper right')
+            plt.savefig('plots/Boundary_conditions_check_n=%d_tau=%.2f.png' % (n_grid, TAU))
+            plt.close()
+            #
+            #    Check maps in xi_1, xi_2 domain
+            #
+            #    Xi_1
+            #        Values from data
+            min_value = min(np.min(xi_1_data),
+                            np.min(xi_1_sim),
+                            np.min(xi_1_data - xi_1_sim))
+            max_value = max(np.max(xi_1_data),
+                            np.max(xi_1_sim),
+                            np.max(xi_1_data - xi_1_sim))
+            #
+            #
+            height = 14; width = 10
+            #
+            #
+            plt.subplot(231)
+            plt.imshow(xi_1_data[::-1], 
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('xi_1 data (veh/m)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Simulated values
+            plt.subplot(232)
+            plt.imshow(xi_1_sim[::-1],
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('xi_1 sim (veh/m)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Error
+            plt.subplot(233)
+            plt.imshow(xi_1_data - xi_1_sim[::-1],
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('xi_1 data - xi_1 sim (veh/m)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            plt.colorbar()
+            #    Xi_2
+            #        Values from data
+            min_value = min(np.min(xi_2_data),
+                            np.min(xi_2_sim),
+                            np.min(xi_2_data - xi_2_sim))
+            max_value = max(np.max(xi_2_data),
+                            np.max(xi_2_sim),
+                            np.max(xi_2_data - xi_2_sim))
+            plt.subplot(234)
+            plt.imshow(xi_2_data[::-1], 
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('xi_2 data (veh/m)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Simulated values
+            plt.subplot(235)
+            plt.imshow(xi_2_sim[::-1], 
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('xi_2 sim (veh/m)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Error
+            plt.subplot(236)
+            plt.imshow(xi_2_data[::-1] - xi_2_sim[::-1],
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('xi_2 data - xi_2 sim (veh/m)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            # Done
+            plt.colorbar()
+            fig = plt.gcf()
+            fig.set_size_inches((height, width))
+            plt.savefig('plots/xi_map_n=%d_tau=%.2f.png' % (n_grid, TAU))
+            plt.close()
+            #
+            #    Plot histogram of error in xi_1, xi_2 domain
+            #
+            plt.hist(np.ravel(xi_1_data[::-1] - xi_1_sim[::-1]), bins = 100)
+            plt.xlabel('xi_1 error (veh/m)')
+            plt.title('Histogram of xi_1 error')
+            plt.ylabel('xi_1 data - xi_1 sim')
+            plt.savefig('plots/xi_1_error_%d_%.2f.png' % (n_grid, TAU))
+            plt.close()
+            #
+            plt.hist(np.ravel(xi_2_data[::-1] - xi_2_sim[::-1]), bins = 100)
+            plt.xlabel('xi_2 error (veh/m)')
+            plt.title('Histogram of xi_2 error')
+            plt.ylabel('xi_2 data - xi_2 sim')
+            plt.savefig('plots/xi_2_error_%d_%.2f.png' % (n_grid, TAU))
+            plt.close()
+            #
+            #    Check maps in v, q domain
+            #
+            #    v
+            #        Values from data
+            #        Determining color scale
+            min_value = min(np.min(v_data),
+                            np.min(v_sim),
+                            np.min(v_data - v_sim))
+            max_value = max(np.max(v_data),
+                            np.max(v_sim),
+                            np.max(v_data - v_sim))
+            #
+            plt.subplot(231)
+            plt.imshow(v_data[::-1], 
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('v data (m/s)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Simulated values
+            plt.subplot(232)
+            plt.imshow(v_sim[::-1],
+                       vmin = min_value,
+                       vmax = max_value, 
+                       interpolation = 'None')
+            plt.title('v sim (m/s)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Error
+            plt.subplot(233)
+            plt.imshow(v_data[::-1] - v_sim[::-1],
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
+            plt.title('v data - v sim (m/s)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            plt.colorbar()
+            #    q
+            #        Values from data
+            min_value = min(np.min(q_data),
+                            np.min(q_sim),
+                            np.min(q_data - q_sim))
+            max_value = max(np.max(q_data),
+                            np.max(q_sim),
+                            np.max(q_data - q_sim))
+            plt.subplot(234)
+            plt.imshow(q_data[::-1], interpolation = 'None')
+            plt.title('q data (veh/s)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Simulated values
+            plt.subplot(235)
+            plt.imshow(q_sim[::-1], interpolation = 'None')
+            plt.title('q sim (veh/s)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            #        Error
+            plt.subplot(236)
+            plt.imshow(q_data[::-1] - q_sim[::-1], interpolation = 'None')
+            plt.title('q data - q sim (veh/s)')
+            plt.xlabel('t (seconds)')
+            plt.ylabel('x (meters)')
+            plt.colorbar()
+            # Done
+            fig = plt.gcf()
+            fig.set_size_inches((height,width))
+            plt.savefig('plots/vq_map_n=%d_tau=%.2f.png' % (n_grid, TAU))
+            plt.close()
+            #
+            #    Plot histogram of error in v, q domain
+            #
+            plt.hist(np.ravel(v_data[::-1] - v_sim[::-1]), bins = 100)
+            plt.xlabel('v error (m/s)')
+            plt.title('Histogram of v error')
+            plt.ylabel('v data - v sim (m/s)')
+            plt.savefig('plots/v_error_%d_%.2f.png' % (n_grid, TAU))
+            plt.close()
+            #
+            plt.hist(np.ravel(q_data[::-1] - q_sim[::-1]), bins = 100)
+            plt.xlabel('q error (veh/m)')
+            plt.title('Histogram of q error')
+            plt.ylabel('q data - q sim (veh/m)')
+            plt.savefig('plots/q_error_%d_%.2f.png' % (n_grid, TAU))
+            plt.close()
         #
-        #    Check that boundary conditions do match
+        #    Recording errors
         #
-        plt.subplot(211)
-        plt.plot(xi_1_data_0)
-        plt.plot(xi_1_sim[0])
-        plt.title('xi_1(0,t) condition n = %d' % n_grid)
-        plt.xlabel('t')
-        plt.ylabel('xi_1')
-        plt.legend(('xi_1_data', 'xi_1_sim'), 'upper right')
-        plt.subplot(212)
-        plt.plot(xi_2_data_L)
-        plt.plot(xi_2_sim[-1])
-        plt.title('xi_2(L,t) condition n = %d' % n_grid)
-        plt.xlabel('t')
-        plt.ylabel('xi_2')
-        plt.legend(('xi_2', 'xi_2_sim'), 'upper right')
-        plt.savefig('plots/Boundary_conditions_check_n=%d_tau=%.2f.png' % (n_grid, TAU))
-        plt.close()
-        #
-        #    Check maps in xi_1, xi_2 domain
-        #
-        #    Xi_1
-        #        Values from data
-        plt.subplot(231)
-        plt.imshow(xi_1_data[::-1], interpolation = 'None')
-        plt.title('xi_1 data')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Simulated values
-        plt.subplot(232)
-        plt.imshow(xi_1_sim[::-1], interpolation = 'None')
-        plt.title('xi_1 sim')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Error
-        plt.subplot(233)
-        plt.imshow(xi_1_data - xi_1_sim[::-1], interpolation = 'None')
-        plt.title('xi_1 data - xi_1 sim')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #    Xi_2
-        #        Values from data
-        plt.subplot(234)
-        plt.imshow(xi_2_data[::-1], interpolation = 'None')
-        plt.title('xi_2 data')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Simulated values
-        plt.subplot(235)
-        plt.imshow(xi_2_sim[::-1], interpolation = 'None')
-        plt.title('xi_2 sim')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Error
-        plt.subplot(236)
-        plt.imshow(xi_2_data[::-1] - xi_2_sim[::-1], interpolation = 'None')
-        plt.title('xi_2 data - xi_2 sim')
-        plt.xlabel('t')
-        plt.ylabel('x')   
-        plt.colorbar()
-        # Done
-        fig = plt.gcf()
-        fig.set_size_inches((12, 6))
-        plt.savefig('plots/xi_map_n=%d_tau=%.2f.png' % (n_grid, TAU))
-        plt.close()
-        #
-        #    Plot histogram of error in xi_1, xi_2 domain
-        #
-        plt.hist(np.ravel(xi_1_data[::-1] - xi_1_sim[::-1]), bins = 100)
-        plt.xlabel('xi_1 error')
-        plt.title('Histogram of xi_1 error')
-        plt.ylabel('xi_1 data - xi_1 sim')
-        plt.savefig('plots/xi_1_error_%d_%.2f.png' % (n_grid, TAU))
-        plt.close()
-        #
-        plt.hist(np.ravel(xi_2_data[::-1] - xi_2_sim[::-1]), bins = 100)
-        plt.xlabel('xi_2 error')
-        plt.title('Histogram of xi_2 error')
-        plt.ylabel('xi_2 data - xi_2 sim')
-        plt.savefig('plots/xi_2_error_%d_%.2f.png' % (n_grid, TAU))
-        plt.close()
-        #
-        #    Check maps in v, q domain
-        #
-        #    v
-        #        Values from data
-        plt.subplot(231)
-        plt.imshow(v_data[::-1], interpolation = 'None')
-        plt.title('v data')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Simulated values
-        plt.subplot(232)
-        plt.imshow(v_sim[::-1], interpolation = 'None')
-        plt.title('v sim')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Error
-        plt.subplot(233)
-        plt.imshow(v_data[::-1] - v_sim[::-1], interpolation = 'None')
-        plt.title('v data - v sim')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #    q
-        #        Values from data
-        plt.subplot(234)
-        plt.imshow(q_data[::-1], interpolation = 'None')
-        plt.title('q data')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Simulated values
-        plt.subplot(235)
-        plt.imshow(q_sim[::-1], interpolation = 'None')
-        plt.title('q sim')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        #        Error
-        plt.subplot(236)
-        plt.imshow(q_data[::-1] - q_sim[::-1], interpolation = 'None')
-        plt.title('q data - q sim')
-        plt.xlabel('t')
-        plt.ylabel('x')
-        plt.colorbar()
-        # Done
-        plt.savefig('plots/vq_map_n=%d_tau=%.2f.png' % (n_grid, TAU))
-        plt.close()
-        #
-        #    Plot histogram of error in v, q domain
-        #
-        plt.hist(np.ravel(v_data[::-1] - v_sim[::-1]), bins = 100)
-        plt.xlabel('v error')
-        plt.title('Histogram of v error')
-        plt.ylabel('v data - v sim')
-        plt.savefig('plots/v_error_%d_%.2f.png' % (n_grid, TAU))
-        plt.close()
-        #
-        plt.hist(np.ravel(q_data[::-1] - q_sim[::-1]), bins = 100)
-        plt.xlabel('q error')
-        plt.title('Histogram of q error')
-        plt.ylabel('q data - q sim')
-        plt.savefig('plots/q_error_%d_%.2f.png' % (n_grid, TAU))
-        plt.close()
+        xi_1_mean_abs_errors[tau_index] = np.mean(np.abs(xi_1_data - xi_1_sim))
+        xi_2_mean_abs_errors[tau_index] = np.mean(np.abs(xi_2_data - xi_2_sim))
+        q_mean_abs_errors[tau_index] = np.mean(np.abs(q_data - q_sim))
+        v_mean_abs_errors[tau_index] = np.mean(np.abs(v_data - v_sim))
+    #
+    #    Error for v and q
+    #
+    plt.subplot(211)
+    plt.title('Mean Absolute Error for q and v')
+    plt.plot(TAU_VALUES, q_mean_abs_errors)
+    plt.ylabel('MAE on q (veh/s)')
+    plt.subplot(212)
+    plt.plot(TAU_VALUES, v_mean_abs_errors)
+    plt.ylabel('MAE on v (m/s)')
+    plt.xlabel('Tau')
+    #
+    plt.savefig('calibration/q_v_error_%d' % n_grid)
+    plt.close()
+    
+
+    

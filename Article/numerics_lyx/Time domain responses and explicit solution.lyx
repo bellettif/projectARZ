@@ -1,0 +1,2859 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\pagenumbering{arabic}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 3cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+ARZ model
+\end_layout
+
+\begin_layout Section
+Non linearized models
+\end_layout
+
+\begin_layout Subsection
+Saint-Venant vs ARZ
+\end_layout
+
+\begin_layout Standard
+Compare Saint-Venant and ARZ, different coupling behaviors.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Both models rely on the fundamental relation 
+\begin_inset Formula $q\left(x,t\right)=v\left(x,t\right)\rho\left(x,t\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\rho,v\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Saint-Venant
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ARZ
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+First order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial a}{\partial t}+\frac{\partial av}{\partial x}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial\rho}{\partial t}+\frac{\partial\rho v}{\partial x}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Second order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\frac{g}{T}\frac{\partial a}{\partial x}=g\left(S_{b}-S_{f}\left(x,t\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial v}{\partial t}+\left(v+\rho V^{'}\left(\rho\right)\right)\frac{\partial v}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Different expressions for the ARZ model
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ARZ 
+\begin_inset Formula $\left(\rho,v\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+First order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial\rho}{\partial t}+v\frac{\partial\rho}{\partial x}+\rho\frac{\partial v}{\partial x}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Second order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial v}{\partial t}+\left(v+\rho V^{'}\left(\rho\right)\right)\frac{\partial v}{\partial x}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ARZ 
+\begin_inset Formula $\left(\rho,q\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+First order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial\rho}{\partial t}+\frac{\partial q}{\partial x}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Second order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial q}{\partial t}-\frac{q}{\rho}\left(\frac{q}{\rho}+\rho V^{'}\left(\rho\right)\right)\frac{\partial\rho}{\partial x}+\left(2\frac{q}{\rho}+\rho V^{'}\left(\rho\right)\right)\frac{\partial q}{\partial x}=\frac{\rho V\left(\rho\right)-q}{\tau}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ARZ 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Second order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial v}{\partial t}+\left(v+\frac{q}{v}V^{'}\left(\frac{q}{v}\right)\right)\frac{\partial v}{\partial x}=\frac{V\left(\frac{q}{v}\right)-v}{\tau}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Second order
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial q}{\partial t}+\frac{q}{v}\left(v+\frac{q}{v}V^{'}\left(\frac{q}{v}\right)\right)\frac{\partial v}{\partial x}+v\frac{\partial q}{\partial x}=\frac{\frac{q}{v}V\left(\frac{q}{v}\right)-q}{\tau}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Structure of solutions and relaxation time
+\end_layout
+
+\begin_layout Standard
+One considers the 
+\begin_inset Formula $\left(\rho,v\right)$
+\end_inset
+
+ linearized system for example: 
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)_{t}+\left(\begin{array}{cc}
+\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{array}\right)\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)_{x}=\left(\begin{array}{cc}
+-\frac{1}{\tau} & 0\\
+-\frac{1}{\tau} & 0
+\end{array}\right)\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Solving for 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ along its characteristic lines
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{x}^{1}:t\rightarrow\xi_{1}\left(t,x+\lambda_{1}t\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\frac{dF_{x}^{1}}{dt}\left(t\right)=-\frac{1}{\tau}\xi_{1}\left(t,x+t\lambda_{1}\right)=-\frac{1}{\tau}F_{x}^{1}\left(t\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Therefore, 
+\begin_inset Formula $F_{x}^{1}\left(t\right)=K_{x}e^{-\frac{t}{\tau}}$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\xi_{1}\left(t,x+\lambda_{1}t\right)=\xi_{1}\left(0,x\right)e^{-\frac{t}{\tau}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solving for 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ along its characteristic lines
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{x}^{2}:t\rightarrow\xi_{2}\left(t,x+\lambda_{2}t\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\frac{dF_{x}^{2}}{dt}\left(t\right)=-\frac{1}{\tau}\xi_{1}\left(t,x+t\lambda_{2}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Therefore, 
+\begin_inset Formula $F_{x}^{2}\left(t\right)=-\frac{1}{\tau}\int_{u=0}^{t}\xi_{1}\left(u,x+u\lambda_{2}\right)du+F_{x}^{2}\left(0\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\xi_{1}\left(t,x+\lambda_{2}t\right)=\xi_{1}\left(t,x-\left(\lambda_{1}-\lambda_{2}\right)t+\lambda_{1}t\right)=\xi_{1}\left(0,x-\left(\lambda_{1}-\lambda_{2}\right)t\right)e^{-\frac{t}{\tau}}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\xi_{2}\left(t,x+\lambda_{2}t\right)=-\frac{1}{\tau}\intop_{u=0}^{t}\xi_{1}\left(0,x-\left(\lambda_{1}-\lambda_{2}\right)u\right)e^{-\frac{u}{\tau}}du+\xi_{2}\left(0,x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The general expression of the solution is 
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(t,x+\lambda_{1}t\right)\\
+\xi_{2}\left(t,x+\lambda_{2}t\right)
+\end{array}\right)=\left(\begin{array}{c}
+\xi_{1}\left(0,x\right)e^{-\frac{t}{\tau}}\\
+-\frac{1}{\tau}\intop_{u=0}^{t}\xi_{1}\left(0,x-\left(\lambda_{1}-\lambda_{2}\right)u\right)e^{-\frac{u}{\tau}}du+\xi_{2}\left(0,x\right)
+\end{array}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Linearized velocity flow system
+\end_layout
+
+\begin_layout Standard
+The linearized velocity flow system is 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\tilde{v}\\
+\tilde{q}
+\end{array}\right)_{t}+\underset{A}{\underbrace{\left(\begin{array}{cc}
+v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right) & 0\\
+\frac{q^{*}}{v^{*}}\left(v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)\right) & v^{*}
+\end{array}\right)}}\left(\begin{array}{c}
+\tilde{v}\\
+\tilde{q}
+\end{array}\right)_{x}=\underset{B}{\underbrace{\left(\begin{array}{cc}
+-\frac{\left(v^{*}\right)^{2}+q^{*}V^{'}\left(\frac{q^{*}}{v^{*}}\right)}{\left(v^{*}\right)^{2}\tau} & \frac{V^{'}\left(\frac{q^{*}}{v^{*}}\right)}{v^{*}\tau}\\
+-\frac{q^{*}\left(\left(v^{*}\right)^{2}+q^{*}V^{'}\left(\frac{q^{*}}{v^{*}}\right)\right)}{\left(v^{*}\right)^{3}\tau} & \frac{q^{*}V^{'}\left(\frac{q^{*}}{v^{*}}\right)}{\left(v^{*}\right)^{2}}
+\end{array}\right)}}\left(\begin{array}{c}
+\tilde{v}\\
+\tilde{q}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Preliminary simplifications
+\end_layout
+
+\begin_layout Standard
+So calculations are easier, matrices 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ will be expressed with 
+\begin_inset Formula $\rho^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $v^{*}$
+\end_inset
+
+ exclusively.
+ Indeed, one has 
+\begin_inset Formula $q^{*}=\rho^{*}v^{*}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $A=\left(\begin{array}{cc}
+v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right) & 0\\
+\rho^{*}\left(v^{*}+\rho^{*}V'\left(\rho^{*}\right)\right) & v^{*}
+\end{array}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $B=\left(\begin{array}{cc}
+-\frac{v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)}{v^{*}\tau} & \frac{V^{'}\left(\rho^{*}\right)}{v^{*}\tau}\\
+-\frac{\rho^{*}\left(v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)\right)}{v^{*}\tau} & \frac{\rho^{*}V^{'}\left(\rho^{*}\right)}{v^{*}\tau}
+\end{array}\right)=\frac{1}{v^{*}\tau}\left(\begin{array}{cc}
+-\left(v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)\right) & V^{'}\left(\rho^{*}\right)\\
+-\rho^{*}\left(v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)\right) & \rho^{*}V^{'}\left(\rho^{*}\right)
+\end{array}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $\lambda_{1}=v^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)=v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $V^{'}\left(\rho^{*}\right)=\nicefrac{\lambda_{2}-\lambda_{1}}{\rho^{*}}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The system simplifies as 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\tilde{v}\\
+\tilde{q}
+\end{array}\right)_{t}+\left(\begin{array}{cc}
+\lambda_{2} & 0\\
+\rho^{*}\lambda_{2} & \lambda_{1}
+\end{array}\right)\left(\begin{array}{c}
+\tilde{v}\\
+\tilde{q}
+\end{array}\right)_{x}=\frac{1}{v^{*}\tau}\left(\begin{array}{cc}
+-\lambda_{2} & \frac{\lambda_{2}-\lambda_{1}}{\rho^{*}}\\
+-\rho^{*}\lambda_{2} & \lambda_{2}-\lambda_{1}
+\end{array}\right)\left(\begin{array}{c}
+\tilde{v}\\
+\tilde{q}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $A=P\left(\begin{array}{cc}
+\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{array}\right)P^{-1}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+With 
+\begin_inset Formula $P=\left(\begin{array}{cc}
+0 & \lambda_{2}-\lambda_{1}\\
+1 & \rho^{*}\lambda_{2}
+\end{array}\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+As 
+\begin_inset Formula $P^{-1}BP=\frac{1}{v^{*}\tau}\left(\begin{array}{cc}
+\frac{\rho^{*}\lambda_{2}}{\lambda_{1}-\lambda_{2}} & 1\\
+-\frac{1}{\lambda_{1}-\lambda_{2}} & 0
+\end{array}\right)\left(\begin{array}{cc}
+-\lambda_{2} & \frac{\lambda_{2}-\lambda_{1}}{\rho^{*}}\\
+-\rho^{*}\lambda_{2} & \lambda_{2}-\lambda_{1}
+\end{array}\right)\left(\begin{array}{cc}
+0 & \lambda_{2}-\lambda_{1}\\
+1 & \rho^{*}\lambda_{2}
+\end{array}\right)=\frac{1}{v^{*}\tau}\left(\begin{array}{cc}
+-\lambda_{1} & 0\\
+\frac{1}{\rho^{*}} & 0
+\end{array}\right)=\left(\begin{array}{cc}
+-\frac{1}{\tau} & 0\\
+\frac{1}{\tau q^{*}} & 0
+\end{array}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+the system can be rewritten in the form
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widetilde{\xi_{1}}\\
+\widetilde{\xi_{2}}
+\end{array}\right)_{t}+\left(\begin{array}{cc}
+\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{array}\right)\left(\begin{array}{c}
+\widetilde{\xi_{1}}\\
+\widetilde{\xi_{2}}
+\end{array}\right)_{x}=\left(\begin{array}{cc}
+-\frac{1}{\tau} & 0\\
+\frac{1}{\tau q^{*}} & 0
+\end{array}\right)\left(\begin{array}{c}
+\widetilde{\xi_{1}}\\
+\widetilde{\xi_{2}}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+with 
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi_{1}}\\
+\widetilde{\xi_{2}}
+\end{array}\right)=P^{-1}\left(\begin{array}{c}
+\tilde{v}\\
+\tilde{q}
+\end{array}\right)=\mbox{\left(\begin{array}{c}
+ -\frac{\left(v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)\right)}{V^{'}\left(\rho^{*}\right)}\tilde{v}+\tilde{q}\\
+\frac{1}{\rho^{*}V^{'}\left(\rho^{*}\right)}\tilde{v} 
+\end{array}\right)}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Therefore, with 
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)=\left(\begin{array}{c}
+\widetilde{\xi_{1}}\\
+-q^{*}\widetilde{\xi_{2}}
+\end{array}\right)=\left(\begin{array}{c}
+-\frac{\left(v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)\right)}{V^{'}\left(\frac{q^{*}}{v^{*}}\right)}\tilde{v}+\tilde{q}\\
+-\frac{v^{*}}{V^{'}\left(\frac{q^{*}}{v^{*}}\right)}\tilde{v}
+\end{array}\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+The system becomes 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)_{t}+\left(\begin{array}{cc}
+\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{array}\right)\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)_{x}=\left(\begin{array}{cc}
+-\frac{1}{\tau} & 0\\
+-\frac{1}{\tau} & 0
+\end{array}\right)\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+We find the same relaxation time, as expected.
+\end_layout
+
+\begin_layout Subsection
+Preliminary study of the 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+ system:
+\end_layout
+
+\begin_layout Subsubsection
+Diagonalized system:
+\end_layout
+
+\begin_layout Standard
+One obtains 
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)_{t}+\left(\begin{array}{cc}
+\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{array}\right)\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)_{x}=\left(\begin{array}{cc}
+-\frac{1}{\tau} & 0\\
+-\frac{1}{\tau} & 0
+\end{array}\right)\left(\begin{array}{c}
+\xi_{1}\\
+\xi_{2}
+\end{array}\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+With 
+\begin_inset Formula $\begin{cases}
+\xi_{1}= & -\frac{\left(v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)\right)}{V^{'}\left(\frac{q^{*}}{v^{*}}\right)}\tilde{v}+\tilde{q}\\
+\xi_{2}= & -\frac{v^{*}}{V^{'}\left(\frac{q^{*}}{v^{*}}\right)}\tilde{v}
+\end{cases}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Once again the eigen values are 
+\begin_inset Formula $\begin{cases}
+\lambda_{1}= & v^{*}\\
+\lambda_{2}= & v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)
+\end{cases}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Froude number:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F=\frac{q^{*}V^{'}\left(\rho^{*}\right)}{\left(v^{*}\right)^{2}}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\lambda_{2}>0\Leftrightarrow F<1$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\lambda_{2}<0\Leftrightarrow F>1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Characteristics:
+\end_layout
+
+\begin_layout Standard
+See figure
+\end_layout
+
+\begin_layout Subsubsection
+Laplace transform:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{t}+A\xi_{x}=B\xi$
+\end_inset
+
+ with 
+\begin_inset Formula $A=\left(\begin{array}{cc}
+\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{array}\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Frequency domain:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $\mathcal{A}\left(s\right)=A^{-1}\left(B-sI\right)=\left(\begin{array}{cc}
+-\frac{\frac{1}{\tau}+s}{\lambda_{1}} & 0\\
+-\frac{1}{\lambda_{2}\tau} & -\frac{s}{\lambda_{2}}
+\end{array}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mathcal{B}=A^{-1}=\left(\begin{array}{cc}
+\frac{1}{\lambda_{1}} & 0\\
+0 & \frac{1}{\lambda_{2}}
+\end{array}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\widehat{\xi}}{\partial x}\left(x,s\right)=\mathcal{A}\left(s\right)\widehat{\xi}\left(x,s\right)+\mathcal{B}\xi\left(x,t=0\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\mathcal{A}\left(s\right)=P\left(s\right)\left(\begin{array}{cc}
+\nu_{1}\left(s\right) & 0\\
+0 & \nu_{2}\left(s\right)
+\end{array}\right)P^{-1}\left(s\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+with
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nu_{1}\left(s\right)=-\frac{1+s\tau}{\lambda_{1}\tau}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nu_{2}\left(s\right)=-\frac{s}{\lambda_{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+P\left(s\right)=\left[\begin{array}{cc}
+0 & -\frac{s\lambda_{1}\tau-\lambda_{2}\left(1+s\tau\right)}{\lambda_{1}}\\
+1 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Therefore 
+\begin_inset Formula 
+\[
+\widehat{\xi}\left(x,s\right)=\Phi\left(x,s\right)\left(\widehat{\xi}\left(0,s\right)+\intop_{0}^{x}\Phi^{-1}\left(v,s\right)\mathcal{B}\xi\left(v,0\right)dv\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\Phi\left(x,s\right)=P\left(s\right)\left(\begin{array}{cc}
+exp\left(\nu_{1}\left(s\right)x\right) & 0\\
+0 & exp\left(\nu_{2}\left(s\right)x\right)
+\end{array}\right)P^{-1}\left(s\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+therefore 
+\begin_inset Formula 
+\[
+\Phi\left(x,s\right)=\left[\begin{array}{cc}
+e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}} & 0\\
+\frac{\lambda_{1}\left(e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}}-e^{-\frac{sx}{\lambda_{2}}}\right)}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}} & e^{-\frac{sx}{\lambda_{2}}}
+\end{array}\right]=\left[\begin{array}{cc}
+\phi_{11}\left(x,s\right) & \phi_{12}(x,s)\\
+\phi_{21}\left(x,s\right) & \phi_{22}\left(x,s\right)
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Input-output and time domain response with 
+\begin_inset Formula $\lambda_{2}>0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Subsubsection
+Frequency domain:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+with zero initial conditions the transition equation writes
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(x,s\right)\\
+\widehat{\xi_{2}}\left(x,s\right)
+\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(0,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula 
+\[
+Q=\left[\begin{array}{cc}
+\frac{\rho^{*}\lambda_{2}}{\lambda_{1}-\lambda_{2}} & 1\\
+\frac{\rho^{*}\lambda_{1}}{\lambda_{1}-\lambda_{2}} & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+One has 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\widetilde{v}}\left(x,s\right)\\
+\widehat{\widetilde{q}}\left(x,s\right)
+\end{array}\right)=\underset{\Psi\left(x,s\right)}{\underbrace{Q^{-1}\Phi\left(x,s\right)Q}}\left(\begin{array}{c}
+\widehat{\widetilde{v}}\left(0,s\right)\\
+\widehat{\widetilde{q}}\left(0,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+with 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{11}\left(x,s\right)=-\frac{e^{-\frac{\left(1+s\tau\right)x}{\lambda_{1}\tau}}\lambda_{2}-e^{-\frac{sx}{\lambda_{2}}}s\tau\left(\lambda_{1}-\lambda_{2}\right)}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{12}\left(x,s\right)=-\frac{\left(\lambda_{1}-\lambda_{2}\right)\left(e^{-\frac{\left(1+s\tau\right)x}{\lambda_{1}\tau}}-e^{-\frac{sx}{\lambda_{2}}}\right)}{\rho^{*}\left(s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{21}\left(x,s\right)=\frac{\rho^{*}s\tau\lambda_{2}\left(e^{-\frac{\left(1+s\tau\right)x}{\lambda_{1}\tau}}-e^{-\frac{sx}{\lambda_{2}}}\right)}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{22}\left(x,s\right)=-\frac{e^{-\frac{sx}{\lambda_{2}}}\lambda_{2}-e^{-\frac{\left(1+s\tau\right)x}{\lambda_{1}\tau}}s\tau\left(\lambda_{1}-\lambda_{2}\right)}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}=\frac{v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)}{\tau\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{11}\left(x,s\right)=\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{\alpha}{s+\alpha}+e^{-\frac{sx}{\lambda_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{12}\left(x,s\right)=\frac{\left(\lambda_{1}-\lambda_{2}\right)}{\lambda_{2}\rho^{*}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{\alpha}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{21}\left(x,s\right)=\frac{\rho^{*}\lambda_{2}}{\left(\lambda_{1}-\lambda_{2}\right)}s\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\psi_{22}\left(x,s\right)=-\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{\alpha}{s+\alpha}+e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Constants
+\end_layout
+
+\begin_layout Itemize
+Constants:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\lambda_{2}=v^{*}+\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda_{1}=v^{*}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\lambda_{1}-\lambda_{2}=-\frac{q^{*}}{v^{*}}V^{'}\left(\frac{q^{*}}{v^{*}}\right)>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}<0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Fundamental responses in diagonal form:
+\end_layout
+
+\begin_layout Itemize
+Expression of 
+\begin_inset Formula $\Phi$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\phi_{11}\left(x,s\right)=e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi_{12}\left(x,s\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi_{11}\left(x,s\right)=-\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi_{12}\left(x,s\right)=e^{-\frac{sx}{\lambda_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+H\left(t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=-\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+H\left(t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+sin\left(\omega t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}sin\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+sin\left(\omega t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=sin\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+cos\left(\omega t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+cos\left(\omega t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Fundamental responses to step and sinusoidal stimulations in 
+\begin_inset Formula $\mbox{\left(v,q\right)}$
+\end_inset
+
+ domain
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{v}\left(0,t\right)\\
+\widetilde{q}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+H\left(t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{v}\left(x,t\right)=\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)+e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{q}\left(x,t\right)=\frac{\rho\lambda_{2}}{\left(\lambda_{1}-\lambda_{2}\right)}$
+\end_inset
+
+
+\begin_inset Formula $\left(e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{v}\left(0,t\right)\\
+\widetilde{q}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+H\left(t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{v}\left(x,t\right)=\frac{\left(\lambda_{1}-\lambda_{2}\right)}{\lambda_{2}\rho}\left(\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)-\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{q}\left(x,t\right)=\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)+e^{-\frac{x}{\lambda_{1}\tau}}e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{v}\left(0,t\right)\\
+\widetilde{q}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+sin\left(\omega t\right)\\
+0
+\end{array}\right):$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{v}\left(x,t\right)=\alpha\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,w}^{sin}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{2}}\right)\right)+sin\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{q}\left(x,t\right)=\frac{\rho^{*}\lambda_{2}}{\left(\lambda_{1}-\lambda_{2}\right)}\left(e^{-\frac{x}{\lambda_{1}\tau}}\iota_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{1}}\right)-\iota_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{v}\left(0,t\right)\\
+\widetilde{q}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+sin\left(\omega t\right)
+\end{array}\right):$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{v}\left(x,t\right)=\frac{\left(\lambda_{1}-\lambda_{2}\right)}{\lambda_{2}\rho^{*}}\alpha\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,w}^{sin}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{q}\left(x,t\right)=-\alpha\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,w}^{sin}\left(t-\frac{x}{\lambda_{2}}\right)\right)+e^{-\frac{x}{\lambda_{1}\tau}}sin\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{v}\left(0,t\right)\\
+\widetilde{q}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+cos\left(\omega t\right)\\
+0
+\end{array}\right):$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{v}\left(x,t\right)=\alpha\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,w}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)+cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{q}\left(x,t\right)=\frac{\rho^{*}\lambda_{2}}{\left(\lambda_{1}-\lambda_{2}\right)}\left(e^{-\frac{x}{\lambda_{1}\tau}}\iota_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\iota_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{v}\left(0,t\right)\\
+\widetilde{q}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+cos\left(\omega t\right)
+\end{array}\right):$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{v}\left(x,t\right)=\frac{\left(\lambda_{1}-\lambda_{2}\right)}{\lambda_{2}\rho^{*}}\alpha\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,w}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{q}\left(x,t\right)=-\alpha\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,w}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)+e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Time domain response with 
+\begin_inset Formula $\lambda_{2}<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(x,s\right)\\
+\widehat{\xi_{2}}\left(x,s\right)
+\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(0,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+therefore
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(x,s\right)\\
+\widehat{\xi_{2}}\left(x,s\right)
+\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{cc}
+1 & 0\\
+-\frac{\phi_{21}\left(L,s\right)}{\phi_{22}\left(L,s\right)} & \frac{1}{\phi_{22}\left(L,s\right)}
+\end{array}\right)\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(L,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+let 
+\begin_inset Formula 
+\[
+\varGamma\left(x,s\right)=\left(\begin{array}{cc}
+e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}} & 0\\
+\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha} & e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\gamma_{11}\left(x,s\right)=e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\gamma_{12}\left(x,s\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\gamma_{21}\left(x,s\right)=\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\gamma_{22}\left(x,s\right)=e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+and as 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(L,s\right)
+\end{array}\right)=\left(\begin{array}{c}
+\frac{\rho\lambda_{2}}{\lambda_{1}-\lambda_{2}}\widehat{\widetilde{v}}\left(0,s\right)+\widehat{\widetilde{q}}\left(0,s\right)\\
+\frac{\rho\lambda_{1}}{\lambda_{1}-\lambda_{2}}\widehat{\widetilde{v}}\left(L,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+one obtains
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\widetilde{v}}\left(x,s\right)\\
+\widehat{\widetilde{q}}\left(x,s\right)
+\end{array}\right)=Q^{-1}\Phi\left(x,s\right)\left(\begin{array}{cc}
+1 & 0\\
+-\frac{\phi_{21}\left(L,s\right)}{\phi_{22}\left(L,s\right)} & \frac{1}{\phi_{22}\left(L,s\right)}
+\end{array}\right)\left(\begin{array}{ccc}
+\frac{\rho\lambda_{2}}{\lambda_{1}-\lambda_{2}} & 1 & 0\\
+0 & 0 & \frac{\rho\lambda_{1}}{\lambda_{1}-\lambda_{2}}
+\end{array}\right)\left(\begin{array}{c}
+\widehat{\widetilde{v}}\left(0,s\right)\\
+\widehat{q}\left(0,s\right)\\
+\widehat{\widetilde{v}}\left(L,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+which finally gives
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\widetilde{v}}\left(x,s\right)\\
+\widehat{\widetilde{q}}\left(x,s\right)
+\end{array}\right)=\Upsilon\left(x,s\right)\left(\begin{array}{c}
+\widehat{\widetilde{v}}\left(0,s\right)\\
+\widehat{q}\left(0,s\right)\\
+\widehat{\widetilde{v}}\left(L,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{11}\left(x,s\right)=-\frac{\lambda_{2}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{12}\left(x,s\right)=-\frac{\left(\lambda_{1}-\lambda_{2}\right)}{\rho}\frac{\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{13}\left(x,s\right)=e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{21}\left(x,s\right)=\frac{\rho\lambda_{2}}{\left(\lambda_{1}-\lambda_{2}\right)}\frac{\left(s\tau\left(\lambda_{1}-\lambda_{2}\right)e^{-\frac{-x}{\lambda_{1}\tau}}e^{-\frac{-sx}{\lambda_{1}}}-\lambda_{2}e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{22}\left(x,s\right)=\frac{s\tau\left(\lambda_{1}-\lambda_{2}\right)e^{-\frac{-x}{\lambda_{1}\tau}}e^{-\frac{-sx}{\lambda_{1}}}-\lambda_{2}e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}}{s\tau\left(\lambda_{1}-\lambda_{2}\right)-\lambda_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{23}\left(x,s\right)=-\frac{\rho\lambda_{2}}{\left(\lambda_{1}-\lambda_{2}\right)}e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A simplified version of these expressions is
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{11}\left(x,s\right)=\alpha\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{12}\left(x,s\right)=-\frac{1}{\rho\tau}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{13}\left(x,s\right)=e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{21}\left(x,s\right)=\frac{\rho\lambda_{2}}{\lambda_{1}-\lambda_{2}}\left(s\cdot e^{-\frac{-x}{\lambda_{1}\tau}}e^{-\frac{-sx}{\lambda_{1}}}+\alpha\cdot e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{22}\left(x,s\right)=\left(s\cdot e^{-\frac{-x}{\lambda_{1}\tau}}e^{-\frac{-sx}{\lambda_{1}}}+\alpha\cdot e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Upsilon_{23}\left(x,s\right)=\tau\rho\alpha\cdot e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental responses in diagonal form:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+H\left(t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)}\right)H\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+H\left(t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+sin\left(\omega t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}sin\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{sin}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{sin}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+sin\left(\omega t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=sin\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+cos\left(\omega t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega}^{cos}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\widetilde{\xi}_{1}\left(0,t\right)\\
+\widetilde{\xi}_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+cos\left(\omega t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widetilde{\xi}_{2}\left(0,t\right)=cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Bode plots
+\end_layout
+
+\begin_layout Subsection
+Spatial transforms
+\end_layout
+
+\begin_layout Standard
+Initial domain: 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Diagonalization basis: 
+\begin_inset Formula $\begin{cases}
+\xi_{1} & =\frac{\rho^{*}\lambda_{2}}{\lambda_{1}-\lambda_{2}}v+q\\
+\xi_{2} & =\frac{\rho^{*}\lambda_{1}}{\lambda_{1}-\lambda_{2}}v
+\end{cases}$
+\end_inset
+
+, 
+\begin_inset Formula $\begin{cases}
+v & =\frac{\lambda_{1}-\lambda_{2}}{\rho^{*}\lambda_{1}}\xi_{2}\\
+q & =\lambda_{1}\xi_{1}-\lambda_{2}\xi_{2}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Eigen values from fundamental diagram
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\lambda_{1}=\frac{q\left(\rho*\right)}{\rho*}$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda_{2}=q'\left(\rho^{*}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Values for parameters
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $L=100$
+\end_inset
+
+ (meters)
+\end_layout
+
+\begin_layout Subsubsection
+Greenshields fondamental diagram
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $q\left(\rho\right)=4\frac{q_{m}}{\rho_{m}^{2}}\rho\left(\rho_{m}-\rho\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $q'\left(\rho\right)=4\frac{q_{m}}{\rho_{m}}\left(1-2\frac{\rho}{\rho_{m}}\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\rho_{m}=0.1$
+\end_inset
+
+ veh/m
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $q_{m}=0.36$
+\end_inset
+
+ veh/s
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\tau=15$
+\end_inset
+
+s
+\end_layout
+
+\begin_layout Section*
+Annex A:
+\end_layout
+
+\begin_layout Subsection*
+Useful frequency to time domain conversions
+\end_layout
+
+\begin_layout Standard
+In the transfer functions that have been computed, several components are
+ recurrent:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s\rightarrow\frac{s}{s+\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s\rightarrow e^{-\theta s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The last item is an usual 
+\begin_inset Formula $\theta$
+\end_inset
+
+ delay.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The inputs we will use are:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s\rightarrow\frac{1}{s}$
+\end_inset
+
+ (step function)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s\rightarrow\frac{\omega}{s^{2}+\omega^{2}}$
+\end_inset
+
+ (
+\begin_inset Formula $sin\left(\omega t\right)H\left(t\right)$
+\end_inset
+
+ in the time domain)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $s\rightarrow\frac{s}{s^{2}+\omega^{2}}$
+\end_inset
+
+ (
+\begin_inset Formula $cos\left(wt\right)H\left(t\right)$
+\end_inset
+
+ in the time domain)
+\end_layout
+
+\begin_layout Standard
+Therefore, we need to compute the inverse transforms of the following functional
+s in the frequency domain: 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
+\end_inset
+
+, 
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}\frac{\omega}{s^{2}+\omega^{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $s\rightarrow\frac{s}{s+\alpha}\frac{\omega}{s^{2}+\omega^{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}\frac{s}{s^{2}+\omega^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $s\rightarrow\frac{s}{s+\alpha}\frac{s}{s^{2}+\omega^{2}}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Classically one has the inverse transforms for the following funtionals:
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
+\end_inset
+
+ 
+\begin_inset Formula $\overset{\mbox{time domain}}{\Longrightarrow}$
+\end_inset
+
+ 
+\begin_inset Formula $t\rightarrow\frac{1}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}$
+\end_inset
+
+ 
+\begin_inset Formula $\overset{\mbox{time domain}}{\Longrightarrow}$
+\end_inset
+
+ 
+\begin_inset Formula $t\rightarrow e^{-\alpha t}H\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the other functionals, one can compute the convolution products (denoted
+ 
+\begin_inset Formula $\star$
+\end_inset
+
+) in the time domain.
+\end_layout
+
+\begin_layout Subsubsection*
+First sinusoidal:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}\frac{\omega}{s^{2}+\omega^{2}}$
+\end_inset
+
+ 
+\begin_inset Formula $\overset{\mbox{time domain}}{\Longrightarrow}$
+\end_inset
+
+ 
+\begin_inset Formula $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star sin\left(\omega\cdot\right)H\left(\cdot\right)\right)\left(t\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+One has 
+\begin_inset Formula $\left(e^{-\alpha\cdot}H\left(\cdot\right)\star sin\left(\omega\cdot\right)H\left(\cdot\right)\right)\left(t\right)=\int_{u=-\infty}^{+\infty}e^{-\alpha u}H\left(u\right)sin\left(w\left(t-u\right)\right)H\left(t-u\right)du=\intop_{u=0}^{t}e^{-\alpha u}sin\left(\omega\left(t-u\right)\right)du$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+and 
+\begin_inset Formula $\intop_{u=0}^{t}e^{-\alpha u}sin\left(\omega\left(t-u\right)\right)du=\frac{\omega e^{-\alpha t}-\omega cos\left(\omega t\right)+\alpha sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Therefore 
+\begin_inset Formula 
+\[
+s\rightarrow\frac{1}{s+\alpha}\frac{\omega}{s^{2}+\omega^{2}}\overset{\mbox{time domain}}{\Longrightarrow}t\rightarrow\frac{\omega e^{-\alpha t}-\omega cos\left(\omega t\right)+\alpha sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}=\kappa_{\alpha,\omega}^{sin}\left(t\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Second sinusoidal:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $s\rightarrow\frac{s}{s+\alpha}\frac{\omega}{s^{2}+\omega^{2}}$
+\end_inset
+
+ 
+\begin_inset Formula $\overset{\mbox{time domain}}{\Longrightarrow}$
+\end_inset
+
+ 
+\begin_inset Formula $t\rightarrow\frac{d}{dt}\left(\frac{\omega e^{-\alpha t}-\omega cos\left(\omega t\right)+\alpha sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}\right)\left(t\right)+\frac{\omega e^{-\alpha t}-\omega cos\left(\omega t\right)+\alpha sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}\mid_{t=0^{-}}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+As, 
+\begin_inset Formula $\frac{\omega e^{-\alpha t}-\omega cos\left(\omega t\right)+\alpha sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}\mid_{t=0^{-}}=0$
+\end_inset
+
+, we obtain
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s\rightarrow\frac{s}{s+\alpha}\frac{\omega}{s^{2}+\omega^{2}}\overset{\mbox{time domain}}{\Longrightarrow}t\rightarrow\frac{-\alpha\omega e^{-\alpha t}+\omega^{2}sin\left(\omega t\right)+\alpha\omega cos\left(\omega t\right)}{\alpha^{2}+\omega^{2}}=\iota_{\alpha,w}^{sin}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+First cosinusoidal:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}\frac{s}{s^{2}+\omega^{2}}$
+\end_inset
+
+ 
+\begin_inset Formula $\overset{\mbox{time domain}}{\Longrightarrow}$
+\end_inset
+
+ 
+\begin_inset Formula $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star cos\left(\omega\cdot\right)H\left(\cdot\right)\right)\left(t\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Therefore 
+\begin_inset Formula 
+\[
+s\rightarrow\frac{1}{s+\alpha}\frac{s}{s^{2}+\omega^{2}}\overset{\mbox{time domain}}{\Longrightarrow}t\rightarrow-\frac{\alpha e^{-\alpha t}-\alpha cos\left(\omega t\right)-\omega sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}=\kappa_{\alpha,\omega}^{cos}\left(t\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Second cosinusoidal:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $s\rightarrow\frac{s}{s+\alpha}\frac{s}{s^{2}+\omega^{2}}$
+\end_inset
+
+ 
+\begin_inset Formula $\overset{\mbox{time domain}}{\Longrightarrow}$
+\end_inset
+
+ 
+\begin_inset Formula $t\rightarrow\frac{d}{dt}\left(-\frac{\alpha e^{-\alpha t}-\alpha cos\left(\omega t\right)-\omega sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}\right)\left(t\right)-\frac{\alpha e^{-\alpha t}-\alpha cos\left(\omega t\right)-\omega sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}\mid_{t=0^{-}}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+As, 
+\begin_inset Formula $\frac{\alpha e^{-\alpha t}-\alpha cos\left(\omega t\right)-\omega sin\left(\omega t\right)}{\alpha^{2}+\omega^{2}}\mid_{t=0^{-}}=0$
+\end_inset
+
+, we obtain
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s\rightarrow\frac{s}{s+\alpha}\frac{s}{s^{2}+\omega^{2}}\overset{\mbox{time domain}}{\Longrightarrow}t\rightarrow-\frac{-\alpha^{2}e^{-\alpha t}+\alpha\omega sin\left(\omega t\right)-\omega^{2}cos\left(\omega t\right)}{\alpha^{2}+\omega^{2}}=\iota_{\alpha,\omega}^{cos}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Practical values for parameters
+\end_layout
+
+\begin_layout Subsection
+Relaxation time
+\end_layout
+
+\begin_layout Standard
+Values of 
+\begin_inset Formula $\tau\in\left[10,30\right]s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Typical length
+\end_layout
+
+\begin_layout Standard
+Values of 
+\begin_inset Formula $L\in\left[100,1000\right]m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Triangular diagram
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho_{max}=$
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document

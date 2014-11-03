@@ -20,8 +20,14 @@ INPUT_DIR = '/Users/cusgadmin/projectARZ/US-101/vehicle-trajectory-data/'
 FOOT_TO_METER = 0.3048
 SAMPLING_RATE = 10.0 #s^-1
 N_LANES = 5
-PRODUCE_PLOTS = False
+PRODUCE_PLOTS = True
 CONTROL_GRID = True
+
+UNIT_DICT = {'v' : 'm/s',
+             'q' : 'veh/s',
+             'q_count' : 'veh/s',
+             'median_ID' : 'NA',
+             'rho' : 'veh/m'}
 
 periods = ['0750am-0805am',
            '0805am-0820am',
@@ -180,7 +186,7 @@ for n_grid in [60, 80, 100, 120]:
                         c = buckets[opt],
                         lw = 0)
             plt.colorbar(sc)
-            plt.title('Average %s' % opt)
+            plt.title('Average %s (%s)' % (opt, UNIT_DICT[opt]))
             plt.xlabel('t (seconds)')
             plt.ylabel('x (meters)')
             plt.savefig('plots/%d_%d_%s_map.png' % (n_grid_t, n_grid_x, opt))
@@ -206,8 +212,8 @@ for n_grid in [60, 80, 100, 120]:
                         buckets[q_opt].values,
                         lw = 0, alpha = 0.2)
             plt.title('Fundamental diagram v %s' % q_opt)
-            plt.xlabel('v')
-            plt.ylabel(q_opt)
+            plt.xlabel('v (m/s)')
+            plt.ylabel('%s (%s)' % (q_opt, UNIT_DICT[q_opt]))
             plt.savefig('plots/%d_%d_fundamental_diagram_v_%s.png' % (n_grid_t, n_grid_x, q_opt))
             plt.close()
             #
@@ -215,8 +221,8 @@ for n_grid in [60, 80, 100, 120]:
                         buckets[q_opt].values,
                         lw = 0, alpha = 0.2)
             plt.title('Fundamental diagram rho %s' % q_opt)
-            plt.xlabel('rho')
-            plt.ylabel(q_opt)
+            plt.xlabel('rho (veh/m)')
+            plt.ylabel('%s (%s)' % (q_opt, UNIT_DICT[q_opt]))
             plt.savefig('plots/%d_%d_fundamental_diagram_rho_%s.png' % (n_grid_t, n_grid_x, q_opt))
             plt.close()
         #
@@ -224,8 +230,8 @@ for n_grid in [60, 80, 100, 120]:
                     buckets['v'].values,
                     lw = 0, alpha = 0.2)
         plt.title('Fundamental diagram v rho')
-        plt.xlabel('rho')
-        plt.ylabel('v')
+        plt.xlabel('rho (veh/m)')
+        plt.ylabel('v (m/s)')
         plt.savefig('plots/%d_%d_fundamental_diagram_v_rho.png' % (n_grid_t, n_grid_x))
         plt.close()
     #

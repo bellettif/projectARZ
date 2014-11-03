@@ -1,0 +1,4155 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\headheight 1cm
+\headsep 1cm
+\footskip 0.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+ARZ model, numerics
+\end_layout
+
+\begin_layout Section
+Turning NGSIM data set into density, flow and speed maps
+\end_layout
+
+\begin_layout Subsection
+Trajectory data set:
+\end_layout
+
+\begin_layout Standard
+Table of vehicle traces.
+ Each vehicle produces a trace every 
+\begin_inset Formula $0.10$
+\end_inset
+
+ second.
+ Each trace gives a line in the table with the following information:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+vehicle_ID
+\series default
+ (each vehicle has a unique ID)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+veh_class 
+\series default
+(1 for motorcycle, 2 for cars, 3 for trucks)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+time_since_epoch_ms
+\series default
+ (time in ms since epoch timestamp)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+local_y
+\series default
+ (longitudinal coordinate of the front center of the vehicle with respect
+ to the entry edge of the section in the direction of travel) (feet)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+veh_v
+\series default
+ (vehicle speed) (feet per second)
+\end_layout
+
+\begin_layout Standard
+The trajectories are collected in three periods: 7:50 to 8:05 am, 8:05 to
+ 8:20 am, 8:20 to 8:35 am.
+ The vehicle_ID offset is reset at each period which might create counting
+ issues later on.
+ Therefore, an offset is created between data sets for the identification
+ numbers to be unique.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+There are five lanes along the section of the freeway under scrutiny which
+ needs to be taken into account when computing the lineic density of vehicles
+ 
+\begin_inset Formula $\rho$
+\end_inset
+
+\SpecialChar \@.
+
+\end_layout
+
+\begin_layout Subsection
+Conversion and pre-filtering
+\end_layout
+
+\begin_layout Itemize
+Only cars are taken into account.
+ Motorcycles and trucks are filtered out.
+\end_layout
+
+\begin_layout Itemize
+The data frames for the three periods are concatenated
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+time_since_epoch_ms
+\series default
+ is converted to seconds and substracted of its minimum (multiplied by 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+local_y 
+\series default
+and 
+\series bold
+veh_v
+\series default
+ are converted to meters per second (multiplied by 
+\series bold
+
+\begin_inset Formula $0.3048$
+\end_inset
+
+
+\series default
+)
+\end_layout
+
+\begin_layout Standard
+The set of trajectories obtained is displayed on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:NGSIM-trajectories"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Pictures/Trajectories/US-101_all_traj_low_res.png
+	lyxscale 60
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+NGSIM trajectories
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:NGSIM-trajectories"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Binning data
+\end_layout
+
+\begin_layout Standard
+The quantities of interest are 
+\begin_inset Formula $q\left(x,t\right)$
+\end_inset
+
+ (flow in vehicles/second), 
+\begin_inset Formula $v\left(x,t\right)$
+\end_inset
+
+ (macroscopic speed in meters/second), 
+\begin_inset Formula $\rho\left(x,t\right)$
+\end_inset
+
+ (macroscopic density in vehicles/meter).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The data set we have is a set of points 
+\begin_inset Formula $\left(x,t\right)$
+\end_inset
+
+ corresponding to instantaneous vehicle positions and a speed for each of
+ these points.
+ The sampling rate is 
+\begin_inset Formula $10Hz$
+\end_inset
+
+.
+ In order to obtain macroscopic quantities out of these microscopic measurements
+, one divides the time and space grid 
+\begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
+\end_inset
+
+ into small buckets 
+\begin_inset Formula $\left(\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $card$
+\end_inset
+
+ denote the function that gives the number of elements in a given set.
+\end_layout
+
+\begin_layout Subsubsection
+Binning formulae
+\end_layout
+
+\begin_layout Standard
+The size of each bucket is therefore 
+\begin_inset Formula $\Delta t\times\Delta x$
+\end_inset
+
+.
+ In each bucket, a certain number of traces are available.
+ In each bucket, 
+\begin_inset Formula $\rho$
+\end_inset
+
+, 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ are assumed to be constant.
+\end_layout
+
+\begin_layout Paragraph
+Binning formula for 
+\begin_inset Formula $v$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\widehat{v}_{i,j}=mean_{trace\in bucket_{i,j}}\left(v\left(trace\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Binning formula for 
+\begin_inset Formula $\rho$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+One considers a bucket with index 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+.
+ by definition 
+\begin_inset Formula 
+\[
+\rho_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t}\int\int_{\left(t,x\right)\in\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]}\rho\left(x,t\right)dxdt
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Any given vehicle will repeat its trace every 
+\begin_inset Formula $0.1$
+\end_inset
+
+ seconds.
+ Therefore it is also possible to count the number of traces in a given
+ bucket and normalize it by the sampling rate.
+ The contribution of a given vehicle to the density of a bucket is proportional
+ to the number of traces it has left in the bucket.
+ If the speed is assumed to be locally constant, this is proportional to
+ the time this vehicle spends in the bucket and consistent with the conservation
+ of the total number of vehicles across all buckets.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\widehat{\rho}_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t\:\mbox{sampling rate}}card\left(\left\{ trace\mid trace\:\in\: bucket\right\} \right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Binning formula for 
+\begin_inset Formula $q$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+By definition, 
+\begin_inset Formula $q\left(x,t\right)=\rho\left(x,t\right)v\left(x,t\right)$
+\end_inset
+
+ so a first estimator for 
+\begin_inset Formula 
+\[
+\widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+One can also approximate the flux going through a given bucket 
+\begin_inset Formula $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+\end_inset
+
+ by the number of cars crossing the 
+\begin_inset Formula $x$
+\end_inset
+
+ coordinate 
+\begin_inset Formula $\left(j+1\right)\Delta x$
+\end_inset
+
+ between times 
+\begin_inset Formula $i\:\Delta t$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(i+1\right)\Delta t$
+\end_inset
+
+ normalized by the duration 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+If a given vehicle with identification number 
+\begin_inset Formula $id_{0}$
+\end_inset
+
+ crosses 
+\begin_inset Formula $\left(j+1\right)\Delta x$
+\end_inset
+
+ between time 
+\begin_inset Formula $i\:\Delta t$
+\end_inset
+
+ and time 
+\begin_inset Formula $\left(i+1\right)\:\Delta t$
+\end_inset
+
+, then 
+\begin_inset Formula $id_{0}$
+\end_inset
+
+ is present in the bucket 
+\begin_inset Formula $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+\end_inset
+
+ and the bucket 
+\begin_inset Formula $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[\left(j+1\right)\:\Delta x,\:\left(j+2\right)\:\Delta t\right]$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)$
+\end_inset
+
+ is the number of vehicles that have crossed the coordinate 
+\begin_inset Formula $\left(j+1\right)\Delta x$
+\end_inset
+
+ in that interval of time.
+ This gives another estimator of the flux based on counting cars in a straightfo
+rward way: 
+\begin_inset Formula 
+\[
+\widehat{q}_{i,j}^{count}=\frac{1}{n_{lanes}\Delta t}\: card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Binned data results
+\end_layout
+
+\begin_layout Standard
+One tries several discretization parameters:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $60\times60$
+\end_inset
+
+ buckets
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $80\times80$
+\end_inset
+
+ buckets
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $100\times100$
+\end_inset
+
+ buckets
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $120\times120$
+\end_inset
+
+ buckets
+\end_layout
+
+\begin_layout Subsubsection
+Results for 
+\begin_inset Formula $\widehat{v}_{i,j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:v_estimator_map"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_v_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_v_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $60\times60$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_v_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_v_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{v}_{i,j}$
+\end_inset
+
+ as a functional of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ (estimator for 
+\begin_inset Formula $v\left(x,t\right)$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:v_estimator_map"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Results for 
+\begin_inset Formula $\widehat{\rho}_{i,j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:rho_estimator_map"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_rho_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_rho_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_rho_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_rho_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{\rho}_{i,j}$
+\end_inset
+
+ as a functional of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ (estimator for 
+\begin_inset Formula $\rho\left(x,t\right)$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:rho_estimator_map"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Results for 
+\begin_inset Formula $\widehat{q}_{i,j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:q_estimator_map"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_q_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_q_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_q_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_q_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{q}_{i,j}$
+\end_inset
+
+ as a functional of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ (estimator for 
+\begin_inset Formula $q\left(x,t\right)$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:q_estimator_map"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Results for 
+\begin_inset Formula $\widehat{q}_{i,j}^{count}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:q_count_estimator_map"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_q_count_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_q_count_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_q_count_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_q_count_map.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{q}_{i,j}^{count}$
+\end_inset
+
+ as a functional of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+ (estimator for 
+\begin_inset Formula $q\left(x,t\right)$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:q_count_estimator_map"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental diagram 
+\begin_inset Formula $\left(\widehat{v}_{i,j},\widehat{q}_{i,j}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:v_q_fundamental_diagram"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_fundamental_diagram_v_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_fundamental_diagram_v_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_fundamental_diagram_v_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/140_140_fundamental_diagram_v_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\widehat{v}_{i,j},\widehat{q}_{i,j}\right)$
+\end_inset
+
+ fundamental diagram
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:v_q_fundamental_diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental diagram 
+\begin_inset Formula $\left(\widehat{v}_{i,j},\widehat{q}_{i,j}^{count}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:v_q_count_fundamental_diagram"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_fundamental_diagram_v_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_fundamental_diagram_v_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_fundamental_diagram_v_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/140_140_fundamental_diagram_v_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\widehat{v}_{i,j},\widehat{q}_{i,j}^{count}\right)$
+\end_inset
+
+ fundamental diagram
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:v_q_count_fundamental_diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental diagram 
+\begin_inset Formula $\left(\widehat{\rho}_{i,j},\widehat{q}_{i,j}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:rho_q_fundamental_diagram"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_fundamental_diagram_rho_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_fundamental_diagram_rho_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_fundamental_diagram_rho_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/140_140_fundamental_diagram_rho_q.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\widehat{\rho}_{i,j},\widehat{q}_{i,j}\right)$
+\end_inset
+
+ fundamental diagram
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:rho_q_fundamental_diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental diagram 
+\begin_inset Formula $\left(\widehat{\rho}_{i,j},\widehat{q}_{i,j}^{count}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:rho_q_count_fundamental_diagram"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_fundamental_diagram_rho_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_fundamental_diagram_rho_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_fundamental_diagram_rho_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/140_140_fundamental_diagram_rho_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\widehat{\rho}_{i,j},\widehat{q}_{i,j}^{count}\right)$
+\end_inset
+
+ fundamental diagram
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:rho_q_count_fundamental_diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental diagram 
+\begin_inset Formula $\left(\widehat{v}_{i,j},\widehat{\rho}_{i,j}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:v_rho_fundamental_diagram"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_fundamental_diagram_v_rho.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_fundamental_diagram_v_rho.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_fundamental_diagram_v_rho.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/140_140_fundamental_diagram_v_rho.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\widehat{v}_{i,j},\widehat{\rho}_{i,j}\right)$
+\end_inset
+
+ fundamental diagram
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:v_rho_fundamental_diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sanity check 
+\begin_inset Formula $\left(\widehat{q}_{i,j},\widehat{q}_{i,j}^{count}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:q_q_count_sanity_check"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/80_80_q_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/100_100_q_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/120_120_q_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/plots/140_140_q_q_count.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\widehat{q}_{i,j},\widehat{q}_{i,j}^{count}\right)$
+\end_inset
+
+ sanity check
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:q_q_count_sanity_check"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Computing 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By definition, 
+\begin_inset Formula $\lambda_{1}=v^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimating linearization point
+\end_layout
+
+\begin_layout Standard
+We choose the following estimates for the linearization point 
+\begin_inset Formula $\left(v^{*},\rho^{*}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widehat{v}^{*}=mean\left(\widehat{v}_{i,j}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\widehat{\rho}^{*}=mean\left(\widehat{\rho}_{i,j}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimating 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+We assume a triangular shape for the fundamental diagram.
+ The points we have for the NGSIM data are clearly in the congested region
+ of the diagram and have a linear shape.
+ 
+\begin_inset Formula $\lambda_{2}=v^{*}+\rho^{*}V'\left(\rho^{*}\right)=\frac{Q\left(\rho^{*}\right)}{\rho^{*}}+\frac{\rho^{*}Q'\left(\rho^{*}\right)-Q\left(\rho^{*}\right)}{\rho^{*}}=Q'\left(\rho^{*}\right)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Therefore, if we fit with an OLS procedure 
+\begin_inset Formula $Q\left(\rho\right)=a\rho+b+\varepsilon$
+\end_inset
+
+ we have 
+\begin_inset Formula $\lambda_{2}=a$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/fit_plots/Fundamental diagram fitting n = 80.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/fit_plots/Fundamental diagram fitting n = 100.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid, 
+\begin_inset Formula $\widehat{\lambda}_{1}=10.07$
+\end_inset
+
+, 
+\begin_inset Formula $\widetilde{\lambda}_{2}=-4.00$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid, 
+\begin_inset Formula $\widehat{\lambda}_{1}=10.09$
+\end_inset
+
+, 
+\begin_inset Formula $\widetilde{\lambda}_{2}=-3.88$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/fit_plots/Fundamental diagram fitting n = 120.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/fit_plots/Fundamental diagram fitting n = 140.png
+	lyxscale 20
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid, 
+\begin_inset Formula $\widehat{\lambda}_{1}=10.15$
+\end_inset
+
+, 
+\begin_inset Formula $\widetilde{\lambda}_{2}=-3.71$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid, 
+\begin_inset Formula $\widehat{\lambda}_{1}=10.15$
+\end_inset
+
+, 
+\begin_inset Formula $\widetilde{\lambda}_{2}=-3.59$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Fitting 
+\begin_inset Formula $\lambda_{1}=v^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=v^{*}+\rho^{*}V^{'}\left(\rho^{*}\right)=Q'\left(\rho^{*}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Time domain responses
+\end_layout
+
+\begin_layout Subsection
+Diagonalized 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+ system:
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Formula $\left(\widetilde{v},\widetilde{q}\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(\xi_{1},\xi_{2}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{1}=\frac{\rho^{*}\lambda_{2}}{\lambda_{1}-\lambda_{2}}\widetilde{v}+\widetilde{q}$
+\end_inset
+
+, 
+\begin_inset Formula $\xi_{2}=\frac{\rho^{*}\lambda_{1}}{\lambda_{1}-\lambda_{2}}\widetilde{v}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset Formula $\left(\xi_{1},\xi_{2}\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(\widetilde{v},\widetilde{q}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\widetilde{q}=\xi_{1}-\frac{\lambda_{2}}{\lambda_{1}}\xi_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\widetilde{v}=\frac{\lambda_{1}-\lambda_{2}}{\rho^{*}\lambda_{1}}\xi_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Fourier decomposition of the boundary conditions
+\end_layout
+
+\begin_layout Standard
+One can check that the inverse Fourier transform of the combination of spectral
+ domain inputs does match very accurately with the actual boundary conditions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/boundary conditions/Boundary_conditions_FFT_n_80.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/boundary conditions/Boundary_conditions_FFT_n_100.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/boundary conditions/Boundary_conditions_FFT_n_120.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/boundary conditions/Boundary_conditions_FFT_n_140.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Boundary condition reconstruction with inverse Fourier transform
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Confronting 
+\begin_inset Formula $\xi_{1},\xi_{2}$
+\end_inset
+
+ from data and simulated values
+\end_layout
+
+\begin_layout Standard
+Different values for the grid and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ are used.
+ For low values of the discretization parameter, the fit is rather good,
+ although for higher values, characteristic lines for 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ do not always flow in the right direction.
+ The fit is better for values of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ around 
+\begin_inset Formula $20$
+\end_inset
+
+ seconds.
+ See Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:.xsi_1-xsi_2-tau10"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:xsi_1-xsi_2-tau20"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:.xsi_1-xsi_2-tau30"
+
+\end_inset
+
+.
+ The values for 
+\begin_inset Formula $x$
+\end_inset
+
+are inverted with respect to the first series of plots.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=80_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=100_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=120_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=140_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=10s$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ map.
+ Data versus simulated.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:.xsi_1-xsi_2-tau10"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=80_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=100_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=120_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=140_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=20s$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ map.
+ Data versus simulated.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:xsi_1-xsi_2-tau20"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=80_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=100_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=120_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/xsi_plots/Xsi_map_n=140_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=30s$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ map.
+ Data versus simulated.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:.xsi_1-xsi_2-tau30"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Confronting 
+\begin_inset Formula $v,q$
+\end_inset
+
+ from data and simulated values
+\end_layout
+
+\begin_layout Standard
+The values of 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ are translated back into the original 
+\begin_inset Formula $v,q$
+\end_inset
+
+ basis.
+ Again the best fit is achieved for values of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ closer to 
+\begin_inset Formula $20$
+\end_inset
+
+ seconds.
+ The values for 
+\begin_inset Formula $x$
+\end_inset
+
+are inverted with respect to the first series of plots.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=80_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=100_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=120_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=140_tau=10.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=10s$
+\end_inset
+
+.
+ 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ map.
+ Data versus simulated.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:.v-q-tau10"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=80_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=100_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=120_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=140_tau=20.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=20s$
+\end_inset
+
+.
+ 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ map.
+ Data versus simulated.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:v-q-tau20"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=80_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=100_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=120_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Pictures/vq_plots/vq_map_n=140_tau=30.00.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $120\times120$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $140\times140$
+\end_inset
+
+ grid
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau=30s$
+\end_inset
+
+.
+ 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ map.
+ Data versus simulated.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:.v-q-tau30"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
