@@ -68,7 +68,57 @@
 
 \begin_body
 
+\begin_layout Section
+Numerical validation
+\end_layout
+
+\begin_layout Subsection
+Data source: NGSIM trajectories
+\end_layout
+
 \begin_layout Standard
+The NSGIM trajectory data set gathers trajectories of vehicules sampled
+ with a 
+\begin_inset Formula $10$
+\end_inset
+
+ Hz frequency thanks to high precision cameras.
+ After converting units to the universal system, each point in the table
+ contains several pieces of information such as 
+\series bold
+vehicle_ID
+\series default
+ (each vehicle has a unique ID), 
+\series bold
+veh_class 
+\series default
+(1 for motorcycle, 2 for cars, 3 for trucks), 
+\series bold
+time_since_epoch_ms
+\series default
+ (time in ms since epoch timestamp), 
+\series bold
+local_y
+\series default
+ (longitudinal coordinate of the front center of the vehicle with respect
+ to the entry edge of the section in the direction of travel) (meters),
+ 
+\series bold
+veh_v
+\series default
+ (vehicle speed) (meters per second).
+ 45 minutes are recorded on a 
+\begin_inset Formula $650$
+\end_inset
+
+ meter long section.
+ There are five lanes along the section of the freeway under scrutiny which
+ is indeed taken into account when computing the lineic density of vehicles
+ 
+\begin_inset Formula $\rho$
+\end_inset
+
+\SpecialChar \@.
 
 \end_layout
 
