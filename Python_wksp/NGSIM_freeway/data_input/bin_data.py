@@ -101,7 +101,9 @@ all_data['x'] = all_data['local_y']
 all_data = all_data[['x', 't', 'veh_v', 'vehicule_ID']]
 all_data['count'] = 1
 
-for n_grid in [60, 80, 100, 120]:
+print len(all_data)
+
+for n_grid in [80]:
     n_grid_x = n_grid_t = n_grid
     print 'Doing grid with %d points' % n_grid
     #
@@ -167,15 +169,23 @@ for n_grid in [60, 80, 100, 120]:
         plt.xlabel('Number of traces')
         plt.savefig('control_grid/traces_%d_%d' % (n_grid_t, n_grid_x))
         plt.close()
+        print '%d, %d, 10 percentile of number of traces: %.2f' % (
+                                               n_grid_t,
+                                               n_grid_x,
+                                               buckets['n_traces'].quantile(0.1))
         #
         #    Plot histogram of number of ids in buckets
         #
-        plt.hist(buckets['n_traces'].values, bins = 100)
-        plt.title('Histogram of number of traces in buckets')
+        plt.hist(buckets['n_ids'].values, bins = 100)
+        plt.title('Histogram of number of ids in buckets')
         plt.ylabel('Population')
-        plt.xlabel('Number of traces')
-        plt.savefig('control_grid/traces_%d_%d' % (n_grid_t, n_grid_x))
+        plt.xlabel('Number of distinct ids')
+        plt.savefig('control_grid/ids_%d_%d' % (n_grid_t, n_grid_x))
         plt.close()
+        print '%d, %d, 10 percentile of number of ids: %.2f' % (
+                                               n_grid_t,
+                                               n_grid_x,
+                                               buckets['n_ids'].quantile(0.1))
     if PRODUCE_PLOTS:
         #
         #    Plotting (t,x) map of v, q and rho
@@ -196,9 +206,15 @@ for n_grid in [60, 80, 100, 120]:
         #   
         plt.scatter(buckets['q'].values, buckets['q_count'].values,
                     lw = 0, alpha = 0.2)
-        plt.title('q against q_count')
-        plt.xlabel('q')
-        plt.ylabel('q_count')
+        plt.title('q_count against q')
+        plt.xlabel('q (veh/s)')
+        plt.ylabel('q_count (veh/s)')
+        plt.xlim((0.0, 0.8))
+        plt.ylim((0.0, 0.8))
+        plt.plot(np.linspace(0.0, 0.8, 100), 
+                 np.linspace(0.0, 0.8, 100),
+                 c = 'r')
+        plt.legend(('y=x', 'Scatter'), 'lower right')
         plt.savefig('plots/%d_%d_q_q_count.png' % (n_grid_t, n_grid_x))
         plt.close()
         #

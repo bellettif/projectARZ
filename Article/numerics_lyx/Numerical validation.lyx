@@ -25,9 +25,10 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -51,6 +52,13 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 2cm
+\headsep 2cm
+\footskip 0.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -119,11 +127,626 @@ veh_v
 \end_inset
 
 \SpecialChar \@.
+ The trajectories are represented in the 
+\begin_inset Formula $\left(t,x\right)$
+\end_inset
+
+ domain on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:NGSIM-trajectories"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_low_res.png
+	lyxscale 30
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+NGSIM trajectories (the color represents the speed in m/s
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:NGSIM-trajectories"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Subsection
-Explicit resolution of the system
+Reconstructing 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+ maps from NGSIM trajectories
+\end_layout
+
+\begin_layout Standard
+The NGSIM does not directely provide the values 
+\begin_inset Formula $v\left(t,x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $q\left(t,x\right)$
+\end_inset
+
+ in the resolution domain 
+\begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
+\end_inset
+
+.
+ In order to obtain macroscopic quantities out of these microscopic measurements
+, one divides the time and space grid 
+\begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
+\end_inset
+
+ into small buckets 
+\begin_inset Formula $\left(\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$
+\end_inset
+
+.
+ This operation consists in gathering the corresponding data points into
+ bins.
+ Let 
+\begin_inset Formula $card$
+\end_inset
+
+ denote the function that gives the number of elements in a given set.
+\end_layout
+
+\begin_layout Subsubsection
+Binning formulae
+\end_layout
+
+\begin_layout Standard
+The size of each bucket is therefore 
+\begin_inset Formula $\Delta t\times\Delta x$
+\end_inset
+
+.
+ In each bucket, a certain number of traces are available.
+ In each bucket, 
+\begin_inset Formula $\rho$
+\end_inset
+
+, 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ are assumed to be constant.
+\end_layout
+
+\begin_layout Paragraph
+Binning formula for 
+\begin_inset Formula $v$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\widehat{v}_{i,j}=mean_{trace\in bucket_{i,j}}\left(v\left(trace\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Binning formula for 
+\begin_inset Formula $\rho$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+One considers a bucket with index 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+.
+ by definition 
+\begin_inset Formula 
+\[
+\rho_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t}\int\int_{\left(t,x\right)\in\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]}\rho\left(x,t\right)dxdt
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Any given vehicle will repeat its trace every 
+\begin_inset Formula $0.1$
+\end_inset
+
+ seconds.
+ Therefore it is also possible to count the number of traces in a given
+ bucket and normalize it by the sampling rate.
+ The contribution of a given vehicle to the density of a bucket is proportional
+ to the number of traces it has left in the bucket.
+ If the speed is assumed to be locally constant, this is proportional to
+ the time this vehicle spends in the bucket and consistent with the conservation
+ of the total number of vehicles across all buckets.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\widehat{\rho}_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t\:\mbox{sampling rate}}card\left(\left\{ trace\mid trace\:\in\: bucket\right\} \right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Binning formula for 
+\begin_inset Formula $q$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+By definition, 
+\begin_inset Formula $q\left(x,t\right)=\rho\left(x,t\right)v\left(x,t\right)$
+\end_inset
+
+ so a first estimator for 
+\begin_inset Formula 
+\[
+\widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+One can also approximate the flux going through a given bucket 
+\begin_inset Formula $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+\end_inset
+
+ by the number of cars crossing the 
+\begin_inset Formula $x$
+\end_inset
+
+ coordinate 
+\begin_inset Formula $\left(j+1\right)\Delta x$
+\end_inset
+
+ between times 
+\begin_inset Formula $i\:\Delta t$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(i+1\right)\Delta t$
+\end_inset
+
+ normalized by the duration 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+If a given vehicle with identification number 
+\begin_inset Formula $id_{0}$
+\end_inset
+
+ crosses 
+\begin_inset Formula $\left(j+1\right)\Delta x$
+\end_inset
+
+ between time 
+\begin_inset Formula $i\:\Delta t$
+\end_inset
+
+ and time 
+\begin_inset Formula $\left(i+1\right)\:\Delta t$
+\end_inset
+
+, then 
+\begin_inset Formula $id_{0}$
+\end_inset
+
+ is present in the bucket 
+\begin_inset Formula $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+\end_inset
+
+ and the bucket 
+\begin_inset Formula $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[\left(j+1\right)\:\Delta x,\:\left(j+2\right)\:\Delta t\right]$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)$
+\end_inset
+
+ is the number of vehicles that have crossed the coordinate 
+\begin_inset Formula $\left(j+1\right)\Delta x$
+\end_inset
+
+ in that interval of time.
+ This gives another estimator of the flux based on counting cars in a straightfo
+rward way: 
+\begin_inset Formula 
+\[
+\widehat{q}_{i,j}^{count}=\frac{1}{n_{lanes}\Delta t}\: card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Choosing the number of bins
+\end_layout
+
+\begin_layout Standard
+The discretisation grid is 
+\begin_inset Formula $\left\{ \left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]\mid\left(i,j\right)\in\left\{ 1\ldots N\right\} \times\left\{ 1\ldots N\right\} \right\} $
+\end_inset
+
+.
+ As the estimation formulae above rely on averaving, having a confortable
+ number of points in each bin provides better convergence.
+ In that case it is worth mentionning that usual Central Limit theorem based
+ reasonning for convergence of such estimates is flawed as several samples
+ may correspond to the same vehicule or interacting vehicules, therefore
+ violating the independence assumption of the theorem.
+ The subject of proving the convergence of the estimates above lies clearly
+ beyond the scope of this article and therefore, as a rule of thumb we choose
+ a setup that guarantees that most buckets will host more than 
+\begin_inset Formula $500$
+\end_inset
+
+ traces.
+ This is achieved with a 
+\begin_inset Formula $80\times80$
+\end_inset
+
+ grid where the 
+\begin_inset Formula $10^{th}$
+\end_inset
+
+ percentile of the number of traces in a given bin is 
+\begin_inset Formula $485$
+\end_inset
+
+.
+ Such a grid also yields a 
+\begin_inset Formula $10^{th}$
+\end_inset
+
+ percentile of 
+\begin_inset Formula $58$
+\end_inset
+
+ distinct vehicles per bin.
+ The histrograms of number of traces and vehicle per bucket are represented
+ on Figure 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/traces_80_80.png
+	lyxscale 30
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/ids_80_80.png
+	lyxscale 30
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Histogram of number of traces per bucket
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Histogram of number of distinct vehicles per bucket
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Choice motivation for a 
+\begin_inset Formula $80\times80$
+\end_inset
+
+ bucket based discretisation grid for the NGSIM data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sanity check for the estimators
+\end_layout
+
+\begin_layout Standard
+This document does not provide any theoretical proof of the binned estimators
+ for 
+\begin_inset Formula $\left(v,\rho,q\right)$
+\end_inset
+
+ presented above.
+ It is nonetheless possible to check practically that the procedure is coherent.
+ Two estimators are provided for 
+\begin_inset Formula $q$
+\end_inset
+
+ that use radically different techniques.
+ The first one relies on the average measured speed and the number of traces
+ in a bin.
+ The other one on actually counting vehicles transiting from a cell to another.
+ Verifying that they both give similar results for a given bucket will therefore
+ confirm that these estimators for 
+\begin_inset Formula $q$
+\end_inset
+
+ are practically trustworthy.
+ It will also certify that the estimation technique for 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is valid.
+ As one can observe on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sanity-check"
+
+\end_inset
+
+, the scatter plot of 
+\begin_inset Formula $\widehat{q}_{i,j}^{count}$
+\end_inset
+
+ is plotted against 
+\begin_inset Formula $\widehat{q}_{i,j}$
+\end_inset
+
+ coincides almost perfectly with the line 
+\begin_inset Formula $y=x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Sanity check/80_80_q_q_count.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sanity check for the estimation procedure.
+ 
+\begin_inset Formula $\widehat{q}_{i,j}^{count}$
+\end_inset
+
+ is plotted against 
+\begin_inset Formula $\widehat{q}_{i,j}$
+\end_inset
+
+ across the grid of buckets.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sanity-check"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimated values for 
+\begin_inset Formula $\left(v,q,\rho\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Maps
+\end_layout
+
+\begin_layout Standard
+Once the values 
+\begin_inset Formula $\widehat{v}_{i,j}$
+\end_inset
+
+, 
+\begin_inset Formula $\widehat{\rho}_{i,j}$
+\end_inset
+
+, 
+\begin_inset Formula $\widehat{q}_{i,j}$
+\end_inset
+
+, 
+\begin_inset Formula $\widehat{q}_{i,j}^{count}$
+\end_inset
+
+ have been computed they can be plotted on the discretization grid.
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental diagrams
+\end_layout
+
+\begin_layout Subsection
+Simulated values for 
+\begin_inset Formula $\left(v,q,\rho\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Calibration of 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fourier decomposition of input for a linear PDE
+\end_layout
+
+\begin_layout Subsubsection
+Simulated maps
+\end_layout
+
+\begin_layout Subsection
+Time domain explicit resolution of the system
 \end_layout
 
 \begin_layout Standard
@@ -153,6 +776,130 @@ Going back to the diagonalized
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Generic computations for time domain to Laplace domain transforms and vice
+ versa
+\end_layout
+
+\begin_layout Standard
+The aim is to derive the time domain responses of generic input signals
+ such as 
+\begin_inset Formula $t\rightarrow H\left(t\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $t\rightarrow cos\left(wt+\phi\right)H\left(t\right)$
+\end_inset
+
+ when multiplied in the Laplace domain by 
+\begin_inset Formula $\frac{1}{s+\alpha}$
+\end_inset
+
+.
+ This then enables the computation of any response that decomposes in a
+ Fourier transform.
+\end_layout
+
+\begin_layout Subsubsection
+Step function input
+\end_layout
+
+\begin_layout Standard
+The time domain input function is 
+\begin_inset Formula $H\left(t\right)$
+\end_inset
+
+.
+ One computes the inverse Laplace transform of 
+\begin_inset Formula $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
+\end_inset
+
+ which is 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+t\rightarrow\frac{1}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Phased cosine input
+\end_layout
+
+\begin_layout Standard
+The time domain input function is 
+\begin_inset Formula $cos\left(wt+\phi\right)H\left(t\right)$
+\end_inset
+
+.
+ One computes the inverse Laplace transform of 
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}\left\{ \frac{s}{s^{2}+\omega^{2}}cos\left(\phi\right)-\frac{w}{s^{2}+w^{2}}sin\left(\phi\right)\right\} $
+\end_inset
+
+ which can be directly achieved in the time domain.
+ Indeed, the result is given by the convolution product 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star cos\left(\omega\cdot+\phi\right)H\left(\cdot\right)\right)\left(t\right)$
+\end_inset
+
+, that is to say 
+\begin_inset Formula 
+\[
+t\rightarrow\frac{-e^{-\alpha\cdot t}\left(\alpha\cdot cos\left(\phi\right)+w\cdot sin\left(\phi\right)\right)+\alpha\cdot cos\left(wt+\phi\right)+w\cdot sin\left(wt+\phi\right)}{\alpha^{2}+w^{2}}H\left(t\right)=\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fourier sum input
+\end_layout
+
+\begin_layout Standard
+Let the input be 
+\begin_inset Formula $t\rightarrow\mu H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\left(t\right)$
+\end_inset
+
+.
+ The time domain response is therefore 
+\begin_inset Formula 
+\[
+t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -543,129 +1290,5 @@ cos\left(\omega t+\phi\right)
 \end_layout
 
 \end_deeper
-\begin_layout Section
-Appendix: generic computations for time domain to Laplace domain transforms
- and vice versa
-\end_layout
-
-\begin_layout Standard
-The aim is to derive the time domain responses of generic input signals
- such as 
-\begin_inset Formula $t\rightarrow H\left(t\right)$
-\end_inset
-
- and 
-\begin_inset Formula $t\rightarrow cos\left(wt+\phi\right)H\left(t\right)$
-\end_inset
-
- when multiplied in the Laplace domain by 
-\begin_inset Formula $\frac{1}{s+\alpha}$
-\end_inset
-
-.
- This then enables the computation of any response that decomposes in a
- Fourier transform.
-\end_layout
-
-\begin_layout Subsection
-Step function input
-\end_layout
-
-\begin_layout Standard
-The time domain input function is 
-\begin_inset Formula $H\left(t\right)$
-\end_inset
-
-.
- One computes the inverse Laplace transform of 
-\begin_inset Formula $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
-\end_inset
-
- which is 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula 
-\[
-t\rightarrow\frac{1}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Phased cosine input
-\end_layout
-
-\begin_layout Standard
-The time domain input function is 
-\begin_inset Formula $cos\left(wt+\phi\right)H\left(t\right)$
-\end_inset
-
-.
- One computes the inverse Laplace transform of 
-\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}\left\{ \frac{s}{s^{2}+\omega^{2}}cos\left(\phi\right)-\frac{w}{s^{2}+w^{2}}sin\left(\phi\right)\right\} $
-\end_inset
-
- which can be directly achieved in the time domain.
- Indeed, the result is given by the convolution product 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star cos\left(\omega\cdot+\phi\right)H\left(\cdot\right)\right)\left(t\right)$
-\end_inset
-
-, that is to say 
-\begin_inset Formula 
-\[
-t\rightarrow\frac{-e^{-\alpha\cdot t}\left(\alpha\cdot cos\left(\phi\right)+w\cdot sin\left(\phi\right)\right)+\alpha\cdot cos\left(wt+\phi\right)+w\cdot sin\left(wt+\phi\right)}{\alpha^{2}+w^{2}}H\left(t\right)=\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Fourier sum input
-\end_layout
-
-\begin_layout Standard
-Let the input be 
-\begin_inset Formula $t\rightarrow\mu H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\left(t\right)$
-\end_inset
-
-.
- The time domain response is therefore 
-\begin_inset Formula 
-\[
-t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
 \end_body
 \end_document

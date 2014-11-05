@@ -587,6 +587,32 @@ with
 \end{subequations}
 
 \section{Numerical validation}
+
+\subsection{Data source: NGSIM trajectories}
+The NSGIM trajectory data set gathers trajectories of vehicules sampled
+with a $10$ Hz frequency thanks to high precision cameras. After
+converting units to the universal system, each point in the table
+contains several pieces of information such as \textbf{vehicle\_ID}
+(each vehicle has a unique ID), \textbf{veh\_class }(1 for motorcycle,
+2 for cars, 3 for trucks), \textbf{time\_since\_epoch\_ms} (time in
+ms since epoch timestamp), \textbf{local\_y} (longitudinal coordinate
+of the front center of the vehicle with respect to the entry edge
+of the section in the direction of travel) (meters), \textbf{veh\_v}
+(vehicle speed) (meters per second). 45 minutes are recorded on a
+$650$ meter long section. There are five lanes along the section
+of the freeway under scrutiny which is indeed taken into account when
+computing the lineic density of vehicles $\rho$\@. The trajectories
+are represented in the $\left(t,x\right)$ domain on Figure \ref{fig:NGSIM-trajectories}.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=12cm]{/Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_low_res}
+\par\end{centering}
+
+\protect\caption{NGSIM trajectories (the color represents the speed in m/s\label{fig:NGSIM-trajectories}}
+\end{figure}
+
+
 \begin{itemize}
 \item Values for parameters $(\tau?)$
 \item Convergence towards equilibrium of trajectories in $(v, q)$ domain

@@ -13,8 +13,8 @@ from time_domain_responses import *
 from fourier_transform import compute_input_fft
 from fourier_transform import compute_inv_fft
 
-PLOT_FOLDER = 'new_plots_2'
-CALIBRATION_FOLDER = 'new_calibration_2'
+PLOT_FOLDER = 'new_plots'
+CALIBRATION_FOLDER = 'new_calibration_4'
 
 if PLOT_FOLDER not in os.listdir('./'):
     os.mkdir(PLOT_FOLDER)
@@ -24,13 +24,13 @@ if CALIBRATION_FOLDER not in os.listdir('./'):
 
 N_TAUS = 80
 TAU_VALUES = np.linspace(5, 80, N_TAUS)
-TAU_VALUES = [10, 15, 20, 25, 30]
-N_TAUS = len(TAU_VALUES)
+#TAU_VALUES = [10, 15, 20, 25, 30]
+#N_TAUS = len(TAU_VALUES)
 
-PLOT_ALL = True
+PLOT_ALL = False
 CALIBRATE_TAU = True
 
-for n_grid in [80, 100, 120]:
+for n_grid in [80]:
     params = pickle.load(open('../system_params/%d_%d_params.pi' % (n_grid, n_grid), 'rb'))
     #
     lambda_1 = params['lambda_1']
