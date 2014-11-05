@@ -24,11 +24,11 @@ if CALIBRATION_FOLDER not in os.listdir('./'):
 
 N_TAUS = 80
 TAU_VALUES = np.linspace(5, 80, N_TAUS)
-#TAU_VALUES = [10, 15, 20, 25, 30]
-#N_TAUS = len(TAU_VALUES)
+TAU_VALUES = [10, 15, 20, 25, 30]
+N_TAUS = len(TAU_VALUES)
 
-PLOT_ALL = False
-CALIBRATE_TAU = True
+PLOT_ALL = True
+CALIBRATE_TAU = False
 
 for n_grid in [80]:
     params = pickle.load(open('../system_params/%d_%d_params.pi' % (n_grid, n_grid), 'rb'))
@@ -187,6 +187,15 @@ for n_grid in [80]:
             plt.savefig('%s/Boundary_conditions_check_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             #
+            #    Useful values for plotting
+            #
+            n_ticks = n_grid // 10
+            y_ticks = np.linspace(0, xi_1_data.shape[0], n_ticks)[::-1]
+            y_ticks_values = map((lambda x : round(x, 0)), np.linspace(0, L, n_ticks))
+            x_ticks = np.linspace(0, xi_1_data.shape[1], n_ticks)
+            x_ticks_values = map((lambda x : round(x, 0)), np.linspace(0, T, n_ticks))
+            fontsize = 8
+            #
             #    Check maps in xi_1, xi_2 domain
             #
             #    Xi_1
@@ -204,33 +213,57 @@ for n_grid in [80]:
             #
             plt.subplot(231)
             plt.imshow(xi_1_data[::-1], 
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_1 data (veh/m)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.title('xi_1 data (veh/s)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
             plt.subplot(232)
             plt.imshow(xi_1_sim[::-1],
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_1 sim (veh/m)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.title('xi_1 sim (veh/s)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Error
             plt.subplot(233)
             plt.imshow(xi_1_data - xi_1_sim[::-1],
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_1 data - xi_1 sim (veh/m)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.title('xi_1 data - xi_1 sim (veh/s)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #    Xi_2
             #        Values from data
             min_value = min(np.min(xi_2_data),
@@ -241,34 +274,58 @@ for n_grid in [80]:
                             np.max(xi_2_data - xi_2_sim))
             plt.subplot(234)
             plt.imshow(xi_2_data[::-1], 
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_2 data (veh/m)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.title('xi_2 data (veh/s)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
             plt.subplot(235)
             plt.imshow(xi_2_sim[::-1], 
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_2 sim (veh/m)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.title('xi_2 sim (veh/s)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Error
             plt.subplot(236)
             plt.imshow(xi_2_data[::-1] - xi_2_sim[::-1],
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_2 data - xi_2 sim (veh/m)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
+            plt.title('xi_2 data - xi_2 sim (veh/s)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
             # Done
-            plt.colorbar()
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             fig = plt.gcf()
             fig.set_size_inches((height, width))
             plt.savefig('%s/xi_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
@@ -277,14 +334,14 @@ for n_grid in [80]:
             #    Plot histogram of error in xi_1, xi_2 domain
             #
             plt.hist(np.ravel(xi_1_data[::-1] - xi_1_sim[::-1]), bins = 100)
-            plt.xlabel('xi_1 error (veh/m)')
+            plt.xlabel('xi_1 error (veh/s)')
             plt.title('Histogram of xi_1 error')
             plt.ylabel('xi_1 data - xi_1 sim')
             plt.savefig('%s/xi_1_error_%d_%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             #
             plt.hist(np.ravel(xi_2_data[::-1] - xi_2_sim[::-1]), bins = 100)
-            plt.xlabel('xi_2 error (veh/m)')
+            plt.xlabel('xi_2 error (veh/s)')
             plt.title('Histogram of xi_2 error')
             plt.ylabel('xi_2 data - xi_2 sim')
             plt.savefig('%s/xi_2_error_%d_%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
@@ -304,33 +361,57 @@ for n_grid in [80]:
             #
             plt.subplot(231)
             plt.imshow(v_data[::-1], 
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
             plt.title('v data (m/s)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
             plt.subplot(232)
             plt.imshow(v_sim[::-1],
-                       #vmin = min_value,
-                       #vmax = max_value, 
+                       vmin = min_value,
+                       vmax = max_value, 
                        interpolation = 'None')
             plt.title('v sim (m/s)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Error
             plt.subplot(233)
             plt.imshow(v_data[::-1] - v_sim[::-1],
-                       #vmin = min_value,
-                       #vmax = max_value,
+                       vmin = min_value,
+                       vmax = max_value,
                        interpolation = 'None')
             plt.title('v data - v sim (m/s)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #    q
             #        Values from data
             min_value = min(np.min(q_data),
@@ -340,23 +421,58 @@ for n_grid in [80]:
                             np.max(q_sim),
                             np.max(q_data - q_sim))
             plt.subplot(234)
-            plt.imshow(q_data[::-1], interpolation = 'None')
+            plt.imshow(q_data[::-1], 
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
             plt.title('q data (veh/s)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
             plt.subplot(235)
-            plt.imshow(q_sim[::-1], interpolation = 'None')
+            plt.imshow(q_sim[::-1], 
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
             plt.title('q sim (veh/s)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             #        Error
             plt.subplot(236)
-            plt.imshow(q_data[::-1] - q_sim[::-1], interpolation = 'None')
+            plt.imshow(q_data[::-1] - q_sim[::-1], 
+                       vmin = min_value,
+                       vmax = max_value,
+                       interpolation = 'None')
             plt.title('q data - q sim (veh/s)')
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
-            plt.colorbar()
+            plt.xlabel('t (seconds)',
+                       fontsize = fontsize)
+            plt.ylabel('x (meters)',
+                       fontsize = fontsize)
+            plt.yticks(y_ticks, y_ticks_values, 
+                       fontsize = fontsize)
+            plt.xticks(x_ticks, x_ticks_values, 
+                       rotation = 'vertical',
+                       fontsize = fontsize)
+            cbar = plt.colorbar()
+            cbar.ax.tick_params(labelsize = fontsize)
             # Done
             fig = plt.gcf()
             fig.set_size_inches((height,width))
@@ -373,9 +489,9 @@ for n_grid in [80]:
             plt.close()
             #
             plt.hist(np.ravel(q_data[::-1] - q_sim[::-1]), bins = 100)
-            plt.xlabel('q error (veh/m)')
+            plt.xlabel('q error (veh/s)')
             plt.title('Histogram of q error')
-            plt.ylabel('q data - q sim (veh/m)')
+            plt.ylabel('q data - q sim (veh/s)')
             plt.savefig('%s/q_error_%d_%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
         #
