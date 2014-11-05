@@ -7,16 +7,16 @@ Created on Oct 8, 2014
 import numpy as np
 
 def kappa_cos(alpha, w, t, phi):
-    coeff = alpha * np.cos(w * phi) + w * np.sin(w * phi)
+    coeff = alpha * np.cos(phi) + w * np.sin(phi)
     return - (coeff * np.exp(-alpha * t)
-              - alpha * np.cos(w * (t + phi))
-              - w * np.sin(w * (t + phi))) \
+              - alpha * np.cos(w * t + phi)
+              - w * np.sin(w * t + phi)) \
               / (alpha ** 2 + w ** 2)
 
 def fund_cos_1_1(w, t, phi, x, lambda_1, lambda_2, tau, L):
     red_t_1 = t - x / lambda_1
     xsi_1 = np.exp( - x / (lambda_1 * tau)) * \
-            np.cos(w * (red_t_1 + phi)) * \
+            np.cos(w * red_t_1 + phi) * \
             (red_t_1 >= 0)
     return xsi_1
 
@@ -37,7 +37,7 @@ def fund_cos_2_1(w, t, phi, x, lambda_1, lambda_2, tau, L):
 
 def fund_cos_2_2(w, t, phi, x, lambda_1, lambda_2, tau, L):
     red_t = t - (x - L) / lambda_2
-    xsi_2 = np.cos(w * (red_t + phi)) * (red_t >= 0)
+    xsi_2 = np.cos(w * red_t + phi) * (red_t >= 0)
     return xsi_2
 
 def fund_H_1_1(t, x, lambda_1, lambda_2, tau, L):

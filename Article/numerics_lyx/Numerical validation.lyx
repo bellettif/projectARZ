@@ -122,5 +122,550 @@ veh_v
 
 \end_layout
 
+\begin_layout Subsection
+Explicit resolution of the system
+\end_layout
+
+\begin_layout Standard
+Going back to the diagonalized 
+\begin_inset Formula $\left(v,\: q\right)$
+\end_inset
+
+ system, it is possible to exhibit an analytical solution.
+ Indeed solving first for 
+\begin_inset Formula $\xi_{1}\left(x,\: t\right)$
+\end_inset
+
+ in the PDE 
+\begin_inset Formula $\frac{\partial\xi_{1}}{\partial t}\left(x,\: t\right)+\lambda_{1}\xi_{1}\left(x,\: t\right)=-\frac{1}{\tau}\xi_{1}\left(x,\: t\right)$
+\end_inset
+
+ gives 
+\begin_inset Formula $\xi_{1}\left(t,\: x+\lambda_{1}t\right)=\xi_{1}\left(0,\: t\right)e^{-\frac{t}{\tau}}$
+\end_inset
+
+ and re-injecting in 
+\begin_inset Formula $\frac{\partial\xi_{2}}{\partial t}\left(t,\: x\right)+\lambda_{2}\frac{\partial\xi_{1}}{\partial x}\left(t,\: x\right)=-\frac{1}{\tau}\xi_{1}\left(t,\: x\right)e^{-\frac{t}{\tau}}$
+\end_inset
+
+ yields 
+\begin_inset Formula $\xi_{2}\left(t,\: x+\lambda_{2}t\right)=-\frac{1}{\tau}\intop_{u=0}^{t}\xi_{1}\left(0,x-\left(\lambda_{1}-\lambda_{2}\right)u\right)e^{-\frac{u}{\tau}}du+\xi_{2}\left(0,x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Fourier decomposition and time domain responses for 
+\begin_inset Formula $\lambda_{2}>0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}<0$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $H\left(t\right)$
+\end_inset
+
+ the Heaviside function.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(x,s\right)\\
+\widehat{\xi_{2}}\left(x,s\right)
+\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(0,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+\Phi\left(x,s\right)=\left[\begin{array}{cc}
+e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}} & 0\\
+-\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{1}{s+\alpha} & e^{-\frac{sx}{\lambda_{2}}}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+implies the following fundamental responses for the system.
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental responses in time domain:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+H\left(t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=-\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+H\left(t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+cos\left(\omega t+\phi\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+cos\left(\omega t+\phi\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Fourier decomposition and time domain responses for 
+\begin_inset Formula $\lambda_{2}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This time, 
+\begin_inset Formula $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(x,s\right)\\
+\widehat{\xi_{2}}\left(x,s\right)
+\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(L,s\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+with
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\varGamma\left(x,s\right)=\left(\begin{array}{cc}
+e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}} & 0\\
+\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha} & e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+implies the following fundamental responses for the system.
+\end_layout
+
+\begin_layout Subsubsection
+Fundamental responses in time domain
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+H\left(t\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)}\right)H\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+H\left(t\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+cos\left(\omega t+\phi\right)\\
+0
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+cos\left(\omega t+\phi\right)
+\end{array}\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\xi_{2}\left(0,t\right)=cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Appendix: generic computations for time domain to Laplace domain transforms
+ and vice versa
+\end_layout
+
+\begin_layout Standard
+The aim is to derive the time domain responses of generic input signals
+ such as 
+\begin_inset Formula $t\rightarrow H\left(t\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $t\rightarrow cos\left(wt+\phi\right)H\left(t\right)$
+\end_inset
+
+ when multiplied in the Laplace domain by 
+\begin_inset Formula $\frac{1}{s+\alpha}$
+\end_inset
+
+.
+ This then enables the computation of any response that decomposes in a
+ Fourier transform.
+\end_layout
+
+\begin_layout Subsection
+Step function input
+\end_layout
+
+\begin_layout Standard
+The time domain input function is 
+\begin_inset Formula $H\left(t\right)$
+\end_inset
+
+.
+ One computes the inverse Laplace transform of 
+\begin_inset Formula $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
+\end_inset
+
+ which is 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+t\rightarrow\frac{1}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Phased cosine input
+\end_layout
+
+\begin_layout Standard
+The time domain input function is 
+\begin_inset Formula $cos\left(wt+\phi\right)H\left(t\right)$
+\end_inset
+
+.
+ One computes the inverse Laplace transform of 
+\begin_inset Formula $s\rightarrow\frac{1}{s+\alpha}\left\{ \frac{s}{s^{2}+\omega^{2}}cos\left(\phi\right)-\frac{w}{s^{2}+w^{2}}sin\left(\phi\right)\right\} $
+\end_inset
+
+ which can be directly achieved in the time domain.
+ Indeed, the result is given by the convolution product 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star cos\left(\omega\cdot+\phi\right)H\left(\cdot\right)\right)\left(t\right)$
+\end_inset
+
+, that is to say 
+\begin_inset Formula 
+\[
+t\rightarrow\frac{-e^{-\alpha\cdot t}\left(\alpha\cdot cos\left(\phi\right)+w\cdot sin\left(\phi\right)\right)+\alpha\cdot cos\left(wt+\phi\right)+w\cdot sin\left(wt+\phi\right)}{\alpha^{2}+w^{2}}H\left(t\right)=\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fourier sum input
+\end_layout
+
+\begin_layout Standard
+Let the input be 
+\begin_inset Formula $t\rightarrow\mu H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\left(t\right)$
+\end_inset
+
+.
+ The time domain response is therefore 
+\begin_inset Formula 
+\[
+t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document

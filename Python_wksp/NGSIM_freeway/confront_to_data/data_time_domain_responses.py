@@ -13,8 +13,8 @@ from time_domain_responses import *
 from fourier_transform import compute_input_fft
 from fourier_transform import compute_inv_fft
 
-PLOT_FOLDER = 'new_plots'
-CALIBRATION_FOLDER = 'new_calibration'
+PLOT_FOLDER = 'new_plots_2'
+CALIBRATION_FOLDER = 'new_calibration_2'
 
 if PLOT_FOLDER not in os.listdir('./'):
     os.mkdir(PLOT_FOLDER)
@@ -25,9 +25,10 @@ if CALIBRATION_FOLDER not in os.listdir('./'):
 N_TAUS = 80
 TAU_VALUES = np.linspace(5, 80, N_TAUS)
 TAU_VALUES = [10, 15, 20, 25, 30]
+N_TAUS = len(TAU_VALUES)
 
 PLOT_ALL = True
-CALIBRATE_TAU = False
+CALIBRATE_TAU = True
 
 for n_grid in [80, 100, 120]:
     params = pickle.load(open('../system_params/%d_%d_params.pi' % (n_grid, n_grid), 'rb'))
@@ -120,13 +121,13 @@ for n_grid in [80, 100, 120]:
         for i in range(len(modules_0))[1:]:
             xi_1_sim += modules_0[i] * \
                         np.asanyarray([[fund_cos_1_1(2 * np.pi * freqs_0[i], t, 
-                                                     args_0[i] / (2 * np.pi * freqs_0[i]),
+                                                     args_0[i],# / (2 * np.pi * freqs_0[i]),
                                                      x, lambda_1, lambda_2, TAU, L)
                                           for t in t_values]
                                          for x in x_values])
             xi_2_sim += modules_0[i] * \
                         np.asanyarray([[fund_cos_1_2(2 * np.pi * freqs_0[i], t, 
-                                                     args_0[i] / (2 * np.pi * freqs_0[i]),
+                                                     args_0[i],# / (2 * np.pi * freqs_0[i]),
                                                      x, lambda_1, lambda_2, TAU, L)
                                           for t in t_values]
                                          for x in x_values])
@@ -134,13 +135,13 @@ for n_grid in [80, 100, 120]:
         for i in range(len(modules_L))[1:]:
             xi_1_sim += modules_L[i] * \
                         np.asanyarray([[fund_cos_2_1(2 * np.pi * freqs_L[i], t,
-                                                     args_L[i] / (2 * np.pi * freqs_L[i]),
+                                                     args_L[i],# / (2 * np.pi * freqs_L[i]),
                                                      x, lambda_1, lambda_2, TAU, L)
                                           for t in t_values]
                                          for x in x_values])
             xi_2_sim += modules_L[i] * \
                         np.asanyarray([[fund_cos_2_2(2 * np.pi * freqs_L[i], t,
-                                                     args_L[i] / (2 * np.pi * freqs_L[i]),
+                                                     args_L[i],# / (2 * np.pi * freqs_L[i]),
                                                      x, lambda_1, lambda_2, TAU, L)
                                           for t in t_values]
                                          for x in x_values])
@@ -411,7 +412,7 @@ for n_grid in [80, 100, 120]:
         plt.ylabel('MAE on v (m/s)')
         plt.xlabel('Tau')
         #
-        plt.savefig('%s/q_v_error_%d' % (CALIBRATION_FOLDER. n_grid))
+        plt.savefig('%s/q_v_error_%d' % (CALIBRATION_FOLDER, n_grid))
         plt.close()
     
 
