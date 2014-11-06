@@ -23,8 +23,9 @@ if CALIBRATION_FOLDER not in os.listdir('./'):
     os.mkdir(CALIBRATION_FOLDER)
 
 N_TAUS = 80
-TAU_VALUES = np.linspace(5, 80, N_TAUS)
-TAU_VALUES = [10, 15, 20, 25, 30]
+#TAU_VALUES = np.linspace(5, 80, N_TAUS)
+TAU_VALUES = [30, 35, 40, 45]
+TAU_VALUES = [29.683544]
 N_TAUS = len(TAU_VALUES)
 
 PLOT_ALL = True
@@ -503,15 +504,26 @@ for n_grid in [80]:
         v_mean_abs_errors[tau_index] = np.mean(np.abs(v_data - v_sim))
     if CALIBRATE_TAU:
         #
+        #    Find best value
+        #
+        min_index = np.argmin(xi_1_mean_abs_errors + xi_2_mean_abs_errors)
+        best_tau = TAU_VALUES[min_index]
+        print 'Best tau = %f' % best_tau
+        pickle.dump(best_tau, open('best_tau.pi', 'wb'))
+        #
         #    Error for xi_1 and xi_2
         #
-        plt.subplot(211)
+        plt.subplot(311)
         plt.title('Mean Absolute Error for xi_1 and xi_2')
         plt.plot(TAU_VALUES, xi_1_mean_abs_errors)
         plt.ylabel('MAE on xi_1 (veh/s)')
-        plt.subplot(212)
+        plt.subplot(312)
         plt.plot(TAU_VALUES, xi_2_mean_abs_errors)
         plt.ylabel('MAE on xi_2 (veh/s)')
+        plt.xlabel('Tau')
+        plt.subplot(313)
+        plt.plot(TAU_VALUES, xi_1_mean_abs_errors + xi_2_mean_abs_errors)
+        plt.ylabel('Sum of MAEs')
         plt.xlabel('Tau')
         #
         plt.savefig('%s/xi_1_xi_2_error_%d' % (CALIBRATION_FOLDER, n_grid))

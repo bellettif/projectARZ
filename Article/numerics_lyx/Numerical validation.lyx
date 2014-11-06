@@ -687,10 +687,68 @@ name "fig:Sanity-check"
 
 \begin_layout Subsection
 Estimated values for 
-\begin_inset Formula $\left(v,q,\rho\right)$
+\begin_inset Formula $\left(v,q\right)$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In order to check how well the linearized ARZ model fits actual data, one
+ choses a bounded domain and compares the theoretical solution given by
+ the second order model and the data observed.
+ Here we focus one the values of 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ as they correspond to the setup that is the most worth studying.
+ It is also the most directly practical for control.
+ Now that estimates of the actual values of 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ have been designed, they will be used to compute fundamental diagrams and
+ mapped on the 
+\begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
+\end_inset
+
+ domain.
+ Fundamental diagrams will then yield estimates of the eigen values 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ that are crucial in this study.
+ Finally, predicted values of 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ will be compared to their measured counterparts which will allow the computatio
+n of a fit error.
+ Based on the estimation of this error for different values of the parameter
+ 
+\begin_inset Formula $\tau$
+\end_inset
+
+, the value offering the smallest error will be used as an estimate.
+ Plotting maps of both the predicted values and the observed one will also
+ highlight the phenomena the linearized model accounts for and those it
+ cannot characterize.
 \end_layout
 
 \begin_layout Subsubsection
@@ -714,16 +772,970 @@ Once the values
 \begin_inset Formula $\widehat{q}_{i,j}^{count}$
 \end_inset
 
- have been computed they can be plotted on the discretization grid.
+ have been computed they can be plotted on the discretization grid (see
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estimated-values"
+
+\end_inset
+
+).
+ As 
+\begin_inset Formula $\widehat{q}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{q}^{count}$
+\end_inset
+
+ give extremely similar results, 
+\begin_inset Formula $\widehat{q}^{count}$
+\end_inset
+
+ will be used as the estimator of 
+\begin_inset Formula $q$
+\end_inset
+
+ from now on.
+ The estimated values vary in a very smooth manner which corroborates their
+ being well estimated and corresponding to the time domain solution of the
+ linearized ARZ model (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Time-domain-explicit"
+
+\end_inset
+
+).
+ However, high flux clusters appearing at the center of the 
+\begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
+\end_inset
+
+ clearly contradict the exponential decay along the characteristic lines
+ that is prescribed by the linearized model.
+ Persistant oscillation and smoothly decaying values along characteristic
+ lines are mostly observed on the other hand which clearly coincides with
+ the theoretical predictions of the framework that has been developped above.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_v_map.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_rho_map.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_map.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_count_map.png
+	lyxscale 40
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estimated values for 
+\begin_inset Formula $\left(v,q,\rho\right)$
+\end_inset
+
+.
+ Top left: 
+\begin_inset Formula $\widehat{v}_{i,j}$
+\end_inset
+
+.
+ Top right: 
+\begin_inset Formula $\widehat{\rho}_{i,j}$
+\end_inset
+
+.
+ Bottom left: 
+\begin_inset Formula $\widehat{q}_{i,j}$
+\end_inset
+
+.
+ Bottom right: 
+\begin_inset Formula $\widehat{q}_{i,j}^{count}$
+\end_inset
+
+ .
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Estimated-values"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
 Fundamental diagrams
 \end_layout
 
+\begin_layout Standard
+From the values that have been estimated it is very straightforward to compute
+ fundamental diagrams as on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Empirical-fundamental-diagrams"
+
+\end_inset
+
+.
+ One of the potential flaws of studying this fundamental diagram and using
+ it to calibrate the model's parameters as we do below could come from the
+ dact that the data set is small.
+ Even though many points are collected, they only give information about
+ cars travelling in a small region of time and space.
+ Therefore it is certain that our measurements and estimations are correlated.
+ This seems to be confirmed by the fact that the fundamental diagrams below
+ only correspond to the congested regime.
+ Most of the points are concentrated about the same region.
+ This is not enough to guarantee that the estimated quantities are reliable.
+ However, NGSIM is to this day one of the most comprehensive data sets of
+ vehicle behavior on a freeway.
+ It is therefore one of the best ways one has to validate that a traffic
+ model is realistic.
+ The fact that most points lie in the same region is however a sign that
+ the linearization hypothesis is reasonable in that context.
+ Observed deviations from the equilibrium are smalled.
+ (The equilibrium, i.e.
+ the linearization point, is estimated below).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count.png
+	lyxscale 30
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_v_q_count.png
+	lyxscale 30
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_v_q_count.png
+	lyxscale 30
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Empirical fundamental diagrams.
+ Left: 
+\begin_inset Formula $\left(\widehat{\rho},\widehat{q}^{count}\right)$
+\end_inset
+
+.
+ Middle: 
+\begin_inset Formula $\left(\widehat{v},\widehat{q}^{count}\right)$
+\end_inset
+
+.
+ Right: 
+\begin_inset Formula $\left(\widehat{\rho},\widehat{v}\right)$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Empirical-fundamental-diagrams"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Calibration of 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+, linearization point
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\lambda_{1}=v^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=Q'\left(v^{*}\right)$
+\end_inset
+
+ therefore the calibration of 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ consists in finding a value of 
+\begin_inset Formula $v$
+\end_inset
+
+ around which the fundamental diagram 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+ will be linearized.
+ 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ will consist in the estimated slope of the fundamental diagram.
+ 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ is estimated with a standard 
+\begin_inset Formula $OLS$
+\end_inset
+
+ method.
+ As the data set above only corresponds to the congested regime and the
+ fundamental diagram is almost affine as noted above, this estimate 
+\begin_inset Formula $\widehat{\lambda}_{2}$
+\end_inset
+
+ should be convergent.
+ However, the method is only heuristic for now as the samples used in the
+ linear regression are obviously correlated.
+ They indeed belong to cars travelling in the very same region of the highway
+ at the same time.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The method used here is therefore quite straightforward.
+ The estimator for 
+\begin_inset Formula $v^{*}$
+\end_inset
+
+ is chosen as the empirical mean of 
+\begin_inset Formula $\widehat{v}_{i,j}$
+\end_inset
+
+: 
+\begin_inset Formula $\widehat{\lambda}_{1}=\widehat{v}^{*}$
+\end_inset
+
+.
+ A linear model is fitted: 
+\begin_inset Formula $\widehat{q}^{count}=b_{1}\widehat{v}+b_{0}+\varepsilon$
+\end_inset
+
+ (where 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ represents the noise in the model that would ideally be centered, homoschedasti
+c and uncorelated but is not practically) and the estimator for 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ is then 
+\begin_inset Formula $\widehat{\lambda}_{2}=\widehat{b}_{1}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $q^{*}$
+\end_inset
+
+ is estimated by the empirical average of 
+\begin_inset Formula $\widehat{q}^{count}$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho^{*}$
+\end_inset
+
+ by the ratio of the estimates for 
+\begin_inset Formula $q^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $v^{*}$
+\end_inset
+
+.
+ Provided each estimator is convergent, the continuity of the functional
+ 
+\begin_inset Formula $\left(x,y\right)\rightarrow\frac{x}{y}$
+\end_inset
+
+ on its domain guarantees the convergence of the estimator for 
+\begin_inset Formula $\rho^{*}$
+\end_inset
+
+.
+ The empirical results for are presented on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Calibration-of-eigen-values"
+
+\end_inset
+
+.
+ The determination coefficient is rather mediocre, it could be improved
+ by filtering out outliers and points corresponding to low values of 
+\begin_inset Formula $\rho$
+\end_inset
+
+ which could belong to the free-flowing part of the fundamental diagram.
+ Improving the quality of the estimation will be the subject of further
+ work on that matter.
+ Significance tests for the coefficients of the linear model are not presented.
+ The assumptions they rely on about the noise in the model are clearly not
+ respected here as the noise is auto-correlated.
+ Again, further work needs to turn this rather heuristic method for esimating
+ the parameters of the model into a fully justified statistical procedure.
+ This procedure goes beyond the scope of this article whose aim is mainly
+ assessing the phenomena that can be accounted for by the linearized second
+ order model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80.png
+	lyxscale 30
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{\lambda}_{1}=10.07$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{\lambda}_{2}=-4.00$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{\rho}^{*}=0.04$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{v}^{*}=10.07$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\widehat{q}^{*}=0.42$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r^{2}=0.51$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Calibration of 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+.
+ The figure shows the average point used to compute 
+\begin_inset Formula $\widehat{v}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{q}^{*}$
+\end_inset
+
+.
+ The affine model used to estimate 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ is also plotted.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Calibration-of-eigen-values"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Simulated values for 
 \begin_inset Formula $\left(v,q,\rho\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The data above shows that only the congested regime is to be modelled.
+ Therefore the theory developped for the 
+\begin_inset Formula $\lambda_{2}<0$
+\end_inset
+
+ will be put to use here.
+\end_layout
+
+\begin_layout Subsubsection
+Fourier decomposition of input for a linear PDE
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $PDE$
+\end_inset
+
+ under scrutiny here is linearized.
+ Therefore, decomposing boundary conditions into a sum and then adding the
+ simulated values inside the domain 
+\begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
+\end_inset
+
+ will give the exact predicted values.
+ The spectral domain analysis presented above is very useful to that end
+ and will be leveraged thanks to Fourier analysis.
+ Fourier transform is a linear operator that is practically implemented
+ thanks to the Fast Fourier Transform.
+ A real signal 
+\begin_inset Formula $\left\{ f\left(t\right)\mid t\in\left[0,T\right]\right\} $
+\end_inset
+
+ on one of the boundaries 
+\begin_inset Formula $\left\{ \left(x=0,t\right)\mid t\in\left[0,T\right]\right\} $
+\end_inset
+
+ or 
+\begin_inset Formula $\left\{ \left(x=L,t\right)\mid t\in\left[0,T\right]\right\} $
+\end_inset
+
+ is transformed into a periodic signal by infinite duplication and then
+ turned into a Fourier series 
+\begin_inset Formula $\left\{ t\rightarrow\mu+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\mid t\in\left[0,T\right]\right\} $
+\end_inset
+
+.
+ This process is known to be convergent with an infinite sum for any square
+ integrable function.
+ It is practically extremely accurate in our case.
+ Indeed, for any boundary condition, eye inspection cannot distinguish the
+ original signal from its Fourier series decomposition.
+ In Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Generic-computations"
+
+\end_inset
+
+ the generic way of computing a solution inside the inner domain from a
+ Fourier series boundary condition is presented.
+ The process is quite straightforward although the necessary computations
+ are quite cumbersome.
+\end_layout
+
+\begin_layout Subsubsection
+Simulated maps
+\end_layout
+
+\begin_layout Standard
+Prior to using Fourier decomposed signals and elementary solutions, it is
+ necessary to convert the data into the diagonalized basis.
+ First of all, the difference with respect to the equilibrium is computed
+ for each bucket: 
+\begin_inset Formula $\widehat{\widetilde{v}}_{i,j}=\widehat{v}_{i,j}-\widehat{v}^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $\widehat{\widetilde{q}}_{i,j}=\widehat{q}_{i,j}-\widehat{q}^{*}$
+\end_inset
+
+.
+ Once 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ have been estimated, estimates for 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ are computed thanks to the following equations: 
+\begin_inset Formula $\widehat{\xi}_{1_{i,j}}=\frac{\widehat{\rho}^{*}\widehat{\lambda}_{2}}{\widehat{\lambda}_{1}-\widehat{\lambda}_{2}}\widehat{\widetilde{v}}_{i,j}+\widehat{\widetilde{q}}_{i,j}$
+\end_inset
+
+, 
+\begin_inset Formula $\widehat{\xi}_{2_{i,j}}=\frac{\widehat{\rho}^{*}\widehat{\lambda}_{1}}{\widehat{\lambda}_{1}-\widehat{\lambda}_{2}}\widehat{\widetilde{v}}_{i,j}$
+\end_inset
+
+.
+ Then the predicted values for 
+\begin_inset Formula $q$
+\end_inset
+
+and 
+\begin_inset Formula $v$
+\end_inset
+
+ can be computed thanks to the inverse linear transform 
+\begin_inset Formula $\widetilde{q}=\xi_{1}-\frac{\lambda_{1}}{\lambda_{2}}\xi_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\widetilde{v}=\frac{\lambda_{1}-\lambda_{2}}{\rho^{*}\lambda_{1}}\xi_{2}$
+\end_inset
+
+.
+ This procedure gives comparison maps for the data and predicted values
+ for both the 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+ and the 
+\begin_inset Formula $\left(\xi_{1},\xi_{2}\right)$
+\end_inset
+
+ domains.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Data-versus-predicted."
+
+\end_inset
+
+ shows important qualitative properties of the model.
+ First of all, as expected, the model predicts with a very good accuracy
+ the decay of all quantities along their characteristic lines.
+ This is a realistic feature that cannot be paralleled by first order models.
+ However, irregularities such as surges of flux at the center of some characteri
+stic lines cannot correspond to the linearized ARZ model in any way.
+ This is a limitation of the model.
+ On this data set, such outlying regions create fitting errors whose order
+ of magnitude is that of the maximum observed values over the data, therefore
+ the realism of the linearized PDE is very poor for such phenomena.
+ What causes these surges of flux to appear is clearly a compelling question.
+ Exploring it will be the subject of further work that could give rise to
+ new models featuring such turbulent behaviors.
+ The value of 
+\begin_inset Formula $\tau$
+\end_inset
+
+used to compute the plots below is described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Calibration-of-tau"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_map_n=80_tau=29.68.png
+	lyxscale 30
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_map_n=80_tau=29.68.png
+	lyxscale 30
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Data versus predicted.
+ Top: 
+\begin_inset Formula $\left(v,q\right)$
+\end_inset
+
+ domain.
+ Bottom: 
+\begin_inset Formula $\left(\xi_{1},\xi_{2}\right)$
+\end_inset
+
+ domain.
+ The first column presents the data.
+ The middle one predictions.
+ The third one data substracted of the prediction.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Data-versus-predicted."
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
@@ -735,18 +1747,196 @@ Calibration of
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Calibration-of-tau"
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subsubsection
-Fourier decomposition of input for a linear PDE
+\begin_layout Standard
+For each value of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ is it therefore quite simple to compute the mean absolute error (MAE).
+ That is to say, the average difference in absolute value between what is
+ simulated and what is predicted for each discretization bucket.
+ 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ are not physically homogeneous, therefore it is difficult to aggregate
+ the errors over these quantities.
+ However, 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ are both expressed in veh/s.
+ Summing their MAE therefore gives a reliable uni-dimensional index of the
+ quality of the fit with respect to 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+ This quantity is computed for different values of 
+\begin_inset Formula $\tau$
+\end_inset
+
+ ranging from 
+\begin_inset Formula $5$
+\end_inset
+
+ to 
+\begin_inset Formula $80$
+\end_inset
+
+ seconds.
+ The value offering the best fit is 
+\begin_inset Formula $\tau^{*}=29.68$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Subsubsection
-Simulated maps
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/q_v_error_80.png
+	lyxscale 30
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/xi_1_xi_2_error_80.png
+	lyxscale 30
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MAE over 
+\begin_inset Formula $q$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MAE over 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+ and sum of both MAE.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Calibration of 
+\begin_inset Formula $\tau$
+\end_inset
+
+, one minimizes the sum of MAE over 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Time domain explicit resolution of the system
+Time domain explicit resolution of the system 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Time-domain-explicit"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -781,6 +1971,13 @@ Going back to the diagonalized
 \begin_layout Subsection
 Generic computations for time domain to Laplace domain transforms and vice
  versa
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Generic-computations"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
