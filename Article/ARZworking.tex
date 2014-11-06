@@ -480,7 +480,7 @@ where $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$.
 
 We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{max}$ = 1300 veh/h, $\rho_{max}$ = 0.1 veh/m, and $L$ = 100 m: The Greenshields Hamiltonian, $Q( \rho) = 4 \frac{q_{max}}{\rho_{max}^2}\rho (\rho_{max} - \rho)$, is used to approximate the fundamental diagram. For inhomogenous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$. \\
 
-For the physical variables: 
+The Bode plots for the physical variables are display on Figure ~\ref{fig:Magn_phase_physx} and Figure \ref{Magn_spatial_physx}. For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented on Figure \ref{fig:Magn_phase_diag} and Figure \ref{Magn_spatial_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
 
 \begin{figure}
 \begin{centering}
@@ -489,11 +489,11 @@ For the physical variables:
 & 
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{IOq_-3to-1}
 \tabularnewline
-Bode plots for $\psi_{11}(L,s)$ (left) and $\psi_{12}(L,s)$ (right).
-& 
-Bode plots for $\psi_{21}(L,s)$ (left) and $\psi_{22}(L,s)$ (right).
-\tabularnewline
 \end{tabular}
+\caption{
+Magnitude and phase bode plots for $\psi_{11}(L,s)$ and $\psi_{12}(L,s)$ (left) and for $\psi_{21}(L,s)$ and $\psi_{22}(L,s)$ (right). (Physical variables)
+\label{fig:Magn_phase_physx}
+}
 \par\end{centering}
 \end{figure}
 
@@ -505,42 +505,44 @@ Bode plots for $\psi_{21}(L,s)$ (left) and $\psi_{22}(L,s)$ (right).
 &
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr12_-3to-1}
 \tabularnewline
-Spatial Bode magnitude plot for $\psi_{11}(x,s)$.
+Spatial magnitude Bode plot for $\psi_{11}(x,s)$.
 &
-Spatial Bode magnitude plot for $\psi_{12}(x,s)$.
+Spatial magnitude Bode plot for $\psi_{12}(x,s)$.
 \tabularnewline
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr21_-3to-1}
 &
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr22_-3to-1}
 \tabularnewline
-Spatial Bode magnitude plot for $\psi_{21}(x,s)$.
+Spatial magnitude Bode plot for $\psi_{21}(x,s)$.
 &
-Spatial Bode magnitude plot for $\psi_{22}(x,s)$.
+Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 \tabularnewline
 \end{tabular}
+\caption{Spatial magnitude Bode plots for physical variables\label{Magn_spatial_physx}}
 \par\end{centering}
 \end{figure}
-\clearpage
 
-For the Riemann invariants: 
 \begin{figure}[H]
 \centering
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width = 110mm]{diagIOfreeflow}
-\caption{Bode magnitude and phase plots for $\phi_{11}(L,s)$ and $\phi_{21}(L,s)$.}
+\caption{Magnitude and phase Bode plots for $\phi_{11}(L,s)$ and $\phi_{21}(L,s)$.\label{fig:Magn_phase_diag}}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 120mm]{diagdistr11freeflow}
-\caption{Spatial Bode magnitude plot for $\phi_{11}(x,s)$.}
+\begin{figure}
+\begin{centering}
+\begin{tabular}{cc}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{diagdistr11freeflow}
+&
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{diagdistr21freeflow}
+\tabularnewline
+Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
+&
+Spatial magnitude Bode plot for $\phi_{22}(x,s)$.
+\tabularnewline
+\end{tabular}
+\caption{Spatial magnitude Bode plots for Riemann invariants\label{Magn_spatial_diag}}
+\par\end{centering}
 \end{figure}
-\clearpage
-\begin{figure}[H]
-\centering
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 120mm]{diagdistr21freeflow}
-\caption{Spatial Bode magnitude plot for $\phi_{21}(x,s)$.}
-\end{figure}
-
 
 \subsubsection{Step responses}
 We analyze the behavior of the system given step inputs $v(0,t)=v_{step}H(t)$ and $q(0,t)=q_{step}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses are
