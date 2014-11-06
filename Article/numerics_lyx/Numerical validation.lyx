@@ -80,13 +80,26 @@
 Numerical validation
 \end_layout
 
+\begin_layout Standard
+Many phenomena interact in vehicular flow on a freeway.
+ The ARZ equations provide a finer modelling of these dynamics.
+ Studying of the linearized model in the spectral domain brings up a simple
+ framework that paves the way to establishing control strategies for the
+ system.
+ Prior to using such techniques, it is necessary to assess how realistic
+ the model is in its linearized form.
+ This is the topic of this section that will confront the prediction of
+ the model and the actual flow and velocity data gathered in the well known
+ NGSIM data set.
+\end_layout
+
 \begin_layout Subsection
 Data source: NGSIM trajectories
 \end_layout
 
 \begin_layout Standard
-The NSGIM trajectory data set gathers trajectories of vehicules sampled
- with a 
+The NSGIM trajectory data set gathers trajectories of vehicles sampled with
+ a 
 \begin_inset Formula $10$
 \end_inset
 
@@ -100,7 +113,19 @@ vehicle_ID
 \series bold
 veh_class 
 \series default
-(1 for motorcycle, 2 for cars, 3 for trucks), 
+(
+\begin_inset Formula $1$
+\end_inset
+
+ for motorcycle, 
+\begin_inset Formula $2$
+\end_inset
+
+ for cars, 
+\begin_inset Formula $3$
+\end_inset
+
+ for trucks, only cars are taken into account here), 
 \series bold
 time_since_epoch_ms
 \series default
@@ -115,14 +140,17 @@ local_y
 veh_v
 \series default
  (vehicle speed) (meters per second).
- 45 minutes are recorded on a 
+ 
+\begin_inset Formula $45$
+\end_inset
+
+ minutes are recorded on a 
 \begin_inset Formula $650$
 \end_inset
 
  meter long section.
  There are five lanes along the section of the freeway under scrutiny which
- is indeed taken into account when computing the lineic density of vehicles
- 
+ is taken into account when computing the lineic density of vehicles 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -163,7 +191,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-NGSIM trajectories (the color represents the speed in m/s
+NGSIM trajectories (the color represents the measured speed of each car
+ in m/s)
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:NGSIM-trajectories"
@@ -192,7 +221,7 @@ Reconstructing
 \end_layout
 
 \begin_layout Standard
-The NGSIM does not directely provide the values 
+The NGSIM does not directly provide the values 
 \begin_inset Formula $v\left(t,x\right)$
 \end_inset
 
@@ -205,23 +234,33 @@ The NGSIM does not directely provide the values
 \end_inset
 
 .
- In order to obtain macroscopic quantities out of these microscopic measurements
-, one divides the time and space grid 
+ In order to obtain macroscopic quantities out of the microscopic measurements,
+ one divides the time and space grid 
 \begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
 \end_inset
 
  into small buckets 
-\begin_inset Formula $\left(\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$
+\begin_inset Formula $\left(\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$
 \end_inset
 
 .
- This operation consists in gathering the corresponding data points into
- bins.
+ Here 
+\begin_inset Formula $i$
+\end_inset
+
+ corresponds to time and 
+\begin_inset Formula $j$
+\end_inset
+
+ to space.
+ The operation consists in gathering the corresponding data points into
+ bins and then estimating the quantities of interest in each bin.
  Let 
 \begin_inset Formula $card$
 \end_inset
 
- denote the function that gives the number of elements in a given set.
+ denote the function that gives the number of elements in a given set i.e.
+ its cardinal.
 \end_layout
 
 \begin_layout Subsubsection
@@ -229,13 +268,12 @@ Binning formulae
 \end_layout
 
 \begin_layout Standard
-The size of each bucket is therefore 
+The size of each bucket is 
 \begin_inset Formula $\Delta t\times\Delta x$
 \end_inset
 
 .
- In each bucket, a certain number of traces are available.
- In each bucket, 
+ In each bucket, a certain number of traces are available and 
 \begin_inset Formula $\rho$
 \end_inset
 
@@ -248,6 +286,9 @@ The size of each bucket is therefore
 \end_inset
 
  are assumed to be constant.
+ Here several formulae are presented that enable the conversion of a set
+ of records of vehicles' positions into a map of speed, flow and density
+ as a function of time and position.
 \end_layout
 
 \begin_layout Paragraph
@@ -256,6 +297,20 @@ Binning formula for
 \end_inset
 
 :
+\end_layout
+
+\begin_layout Standard
+The speed is assumed to be constant in each bucket.
+ Thus a straightforward estimator for that quantity is the empirical average.
+ Let 
+\begin_inset Formula $\widehat{v}_{i,j}$
+\end_inset
+
+ the estimator for the speed in bucket 
+\begin_inset Formula $\left(i,j\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -295,11 +350,11 @@ One considers a bucket with index
 \begin_inset Newline newline
 \end_inset
 
-Any given vehicle will repeat its trace every 
+Any given vehicle will have its position recorded every 
 \begin_inset Formula $0.1$
 \end_inset
 
- seconds.
+ second.
  Therefore it is also possible to count the number of traces in a given
  bucket and normalize it by the sampling rate.
  The contribution of a given vehicle to the density of a bucket is proportional
@@ -339,6 +394,14 @@ By definition,
 \end_inset
 
  so a first estimator for 
+\begin_inset Formula $q$
+\end_inset
+
+ in the bucket 
+\begin_inset Formula $\left(i,j\right)$
+\end_inset
+
+ is logically 
 \begin_inset Formula 
 \[
 \widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}
@@ -437,20 +500,20 @@ Choosing the number of bins
 \end_layout
 
 \begin_layout Standard
-The discretisation grid is 
+The discretization grid is 
 \begin_inset Formula $\left\{ \left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]\mid\left(i,j\right)\in\left\{ 1\ldots N\right\} \times\left\{ 1\ldots N\right\} \right\} $
 \end_inset
 
 .
- As the estimation formulae above rely on averaving, having a confortable
- number of points in each bin provides better convergence.
- In that case it is worth mentionning that usual Central Limit theorem based
- reasonning for convergence of such estimates is flawed as several samples
- may correspond to the same vehicule or interacting vehicules, therefore
- violating the independence assumption of the theorem.
- The subject of proving the convergence of the estimates above lies clearly
- beyond the scope of this article and therefore, as a rule of thumb we choose
- a setup that guarantees that most buckets will host more than 
+ As the estimation formulae above rely on averaging, having a comfortable
+ number of points in each bin provides more stable estimates.
+ It is worth mentioning that usual Central Limit theorem based reasoning
+ for convergence of such estimates is flawed as several samples may correspond
+ to the same vehicle or interacting vehicles, therefore violating the independen
+ce assumption of the theorem.
+ Proving the convergence of the estimates above lies clearly beyond the
+ scope of this article and therefore, as a rule of thumb we choose a setup
+ that guarantees that most buckets will host more than 
 \begin_inset Formula $500$
 \end_inset
 
@@ -477,8 +540,15 @@ The discretisation grid is
 \end_inset
 
  distinct vehicles per bin.
- The histrograms of number of traces and vehicle per bucket are represented
+ The histograms of number of traces and vehicle per bucket are represented
  on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Grid control"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -563,7 +633,14 @@ Choice motivation for a
 \begin_inset Formula $80\times80$
 \end_inset
 
- bucket based discretisation grid for the NGSIM data
+ bucket based discretization grid for the NGSIM data
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Grid control"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -585,8 +662,8 @@ Sanity check for the estimators
 \end_layout
 
 \begin_layout Standard
-This document does not provide any theoretical proof of the binned estimators
- for 
+This article does not provide any theoretical proof of the convergence of
+ the binned estimators for 
 \begin_inset Formula $\left(v,\rho,q\right)$
 \end_inset
 
@@ -599,13 +676,13 @@ This document does not provide any theoretical proof of the binned estimators
  that use radically different techniques.
  The first one relies on the average measured speed and the number of traces
  in a bin.
- The other one on actually counting vehicles transiting from a cell to another.
+ The other one on counting vehicles transiting from a cell to another.
  Verifying that they both give similar results for a given bucket will therefore
  confirm that these estimators for 
 \begin_inset Formula $q$
 \end_inset
 
- are practically trustworthy.
+ are trustworthy.
  It will also certify that the estimation technique for 
 \begin_inset Formula $\rho$
 \end_inset
@@ -630,7 +707,7 @@ reference "fig:Sanity-check"
 \begin_inset Formula $y=x$
 \end_inset
 
-.
+ therefore validating the overall binning and estimation procedure.
 \end_layout
 
 \begin_layout Standard
@@ -812,11 +889,12 @@ reference "sub:Time-domain-explicit"
 \begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
 \end_inset
 
- clearly contradict the exponential decay along the characteristic lines
- that is prescribed by the linearized model.
- Persistant oscillation and smoothly decaying values along characteristic
- lines are mostly observed on the other hand which clearly coincides with
- the theoretical predictions of the framework that has been developped above.
+ domain clearly contradict the exponential decay along the characteristic
+ lines that is prescribed by the linearized model.
+ Persistent oscillation and smoothly decaying values along characteristic
+ lines are mostly observed outside of these anomalies which clearly coincides
+ with the theoretical predictions of the framework that has been developed
+ above.
 \end_layout
 
 \begin_layout Standard
@@ -973,12 +1051,13 @@ reference "fig:Empirical-fundamental-diagrams"
 \end_inset
 
 .
- One of the potential flaws of studying this fundamental diagram and using
- it to calibrate the model's parameters as we do below could come from the
- dact that the data set is small.
+ One of the potential flaws of studying these fundamental diagrams and using
+ them to calibrate the model's parameters as we do below could come from
+ the fact that the data set is small.
  Even though many points are collected, they only give information about
- cars travelling in a small region of time and space.
- Therefore it is certain that our measurements and estimations are correlated.
+ cars traveling in a small region of time and space.
+ Therefore it is certain that our measurements and estimations are highly
+ correlated.
  This seems to be confirmed by the fact that the fundamental diagrams below
  only correspond to the congested regime.
  Most of the points are concentrated about the same region.
@@ -989,7 +1068,7 @@ reference "fig:Empirical-fundamental-diagrams"
  model is realistic.
  The fact that most points lie in the same region is however a sign that
  the linearization hypothesis is reasonable in that context.
- Observed deviations from the equilibrium are smalled.
+ Observed deviations from the equilibrium are indeed small.
  (The equilibrium, i.e.
  the linearization point, is estimated below).
 \end_layout
@@ -1147,21 +1226,9 @@ Calibration of
 \begin_inset Formula $\lambda_{2}$
 \end_inset
 
- is estimated with a standard 
-\begin_inset Formula $OLS$
-\end_inset
-
- method.
- As the data set above only corresponds to the congested regime and the
- fundamental diagram is almost affine as noted above, this estimate 
-\begin_inset Formula $\widehat{\lambda}_{2}$
-\end_inset
-
- should be convergent.
- However, the method is only heuristic for now as the samples used in the
- linear regression are obviously correlated.
- They indeed belong to cars travelling in the very same region of the highway
- at the same time.
+ is estimated with a standard Ordinary Least Squares method.
+ The data set above only corresponds to the congested regime and the fundamental
+ diagram is almost affine.
 \begin_inset Newline newline
 \end_inset
 
@@ -1192,7 +1259,7 @@ The method used here is therefore quite straightforward.
 \end_inset
 
  represents the noise in the model that would ideally be centered, homoschedasti
-c and uncorelated but is not practically) and the estimator for 
+c and uncorrected but is not practically) and the estimator for 
 \begin_inset Formula $\lambda_{2}$
 \end_inset
 
@@ -1241,21 +1308,23 @@ reference "fig:Calibration-of-eigen-values"
 
 .
  The determination coefficient is rather mediocre, it could be improved
- by filtering out outliers and points corresponding to low values of 
-\begin_inset Formula $\rho$
-\end_inset
-
- which could belong to the free-flowing part of the fundamental diagram.
+ by filtering out outliers and more generally by gathering more data.
  Improving the quality of the estimation will be the subject of further
  work on that matter.
  Significance tests for the coefficients of the linear model are not presented.
- The assumptions they rely on about the noise in the model are clearly not
- respected here as the noise is auto-correlated.
- Again, further work needs to turn this rather heuristic method for esimating
- the parameters of the model into a fully justified statistical procedure.
- This procedure goes beyond the scope of this article whose aim is mainly
- assessing the phenomena that can be accounted for by the linearized second
- order model.
+ The assumptions they rely on about the linear depency between 
+\begin_inset Formula $\widehat{q}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{v}$
+\end_inset
+
+ are clearly not respected here as the noise is auto-correlated.
+ Again, further work needs to turn this rather heuristic method for estimating
+ parameters into a fully justified statistical procedure.
+ This article focuses is qualitatively assessing what phenomena can be accounted
+ for by the linearized second order model.
 \end_layout
 
 \begin_layout Standard
@@ -1478,8 +1547,9 @@ Simulated values for
 \end_layout
 
 \begin_layout Standard
-The data above shows that only the congested regime is to be modelled.
- Therefore the theory developped for the 
+The data above shows that only the congested regime is to be modeled for
+ the NGSIM data.
+ Therefore the theory developed for the 
 \begin_inset Formula $\lambda_{2}<0$
 \end_inset
 
@@ -1491,17 +1561,13 @@ Fourier decomposition of input for a linear PDE
 \end_layout
 
 \begin_layout Standard
-The 
-\begin_inset Formula $PDE$
-\end_inset
-
- under scrutiny here is linearized.
+The Partial Differential Equation under scrutiny here is linearized.
  Therefore, decomposing boundary conditions into a sum and then adding the
- simulated values inside the domain 
+ predicted values inside the domain 
 \begin_inset Formula $\left[0,T\right]\times\left[0,L\right]$
 \end_inset
 
- will give the exact predicted values.
+ will give the exact solution.
  The spectral domain analysis presented above is very useful to that end
  and will be leveraged thanks to Fourier analysis.
  Fourier transform is a linear operator that is practically implemented
@@ -1526,9 +1592,10 @@ The
 .
  This process is known to be convergent with an infinite sum for any square
  integrable function.
- It is practically extremely accurate in our case.
- Indeed, for any boundary condition, eye inspection cannot distinguish the
- original signal from its Fourier series decomposition.
+ It is practically extremely accurate in our case even though the FFT only
+ relies on a finite number of Fourier coefficients.
+ For both upstream and downstream boundary conditions, eye inspection cannot
+ distinguish the original signal from its Fourier series decomposition.
  In Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1536,10 +1603,10 @@ reference "sub:Generic-computations"
 
 \end_inset
 
- the generic way of computing a solution inside the inner domain from a
- Fourier series boundary condition is presented.
+ the generic way of computing the solution of the PDE inside the inner domain
+ is presented.
  The process is quite straightforward although the necessary computations
- are quite cumbersome.
+ are somewhat cumbersome.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1619,18 +1686,18 @@ reference "fig:Data-versus-predicted."
 \end_inset
 
  shows important qualitative properties of the model.
- First of all, as expected, the model predicts with a very good accuracy
- the decay of all quantities along their characteristic lines.
+ First of all, as expected, the model generally predicts with a very good
+ accuracy the decay of all quantities along their characteristic lines.
  This is a realistic feature that cannot be paralleled by first order models.
  However, irregularities such as surges of flux at the center of some characteri
 stic lines cannot correspond to the linearized ARZ model in any way.
  This is a limitation of the model.
- On this data set, such outlying regions create fitting errors whose order
+ On this data set, such abnormal regions create fitting errors whose order
  of magnitude is that of the maximum observed values over the data, therefore
  the realism of the linearized PDE is very poor for such phenomena.
  What causes these surges of flux to appear is clearly a compelling question.
- Exploring it will be the subject of further work that could give rise to
- new models featuring such turbulent behaviors.
+ Exploring it will be the subject of further research that could give rise
+ to new models featuring such turbulent behaviors.
  The value of 
 \begin_inset Formula $\tau$
 \end_inset
@@ -1654,7 +1721,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
+<lyxtabular version="3" rows="4" columns="1">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
@@ -1680,6 +1747,26 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
+Top row: 
+\begin_inset Formula $q$
+\end_inset
+
+.
+ Bottom row: 
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename /Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_map_n=80_tau=29.68.png
 	lyxscale 30
@@ -1688,6 +1775,26 @@ status open
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Top row: 
+\begin_inset Formula $\xi_{1}$
+\end_inset
+
+.
+ Bottom row: 
+\begin_inset Formula $\xi_{2}$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -1715,9 +1822,9 @@ Data versus predicted.
 \end_inset
 
  domain.
- The first column presents the data.
- The middle one predictions.
- The third one data substracted of the prediction.
+ First column: data.
+ Middle column: predictions.
+ Third column: prediction - data.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Data-versus-predicted."
@@ -1761,7 +1868,7 @@ For each value of
 \begin_inset Formula $\tau$
 \end_inset
 
- is it therefore quite simple to compute the mean absolute error (MAE).
+ one computes the mean absolute error (MAE).
  That is to say, the average difference in absolute value between what is
  simulated and what is predicted for each discretization bucket.
  
@@ -1772,7 +1879,7 @@ For each value of
 \begin_inset Formula $q$
 \end_inset
 
- are not physically homogeneous, therefore it is difficult to aggregate
+ are not physically homogeneous, therefore it is not sensible to aggregate
  the errors over these quantities.
  However, 
 \begin_inset Formula $\xi_{1}$
@@ -1783,8 +1890,8 @@ For each value of
 \end_inset
 
  are both expressed in veh/s.
- Summing their MAE therefore gives a reliable uni-dimensional index of the
- quality of the fit with respect to 
+ Summing their MAE gives a reliable uni-dimensional index of the quality
+ of the fit with respect to 
 \begin_inset Formula $\tau$
 \end_inset
 
@@ -2187,14 +2294,14 @@ H\left(t\right)\\
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=-\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
 \end_inset
 
 
@@ -2216,14 +2323,14 @@ H\left(t\right)
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=H\left(t-\frac{x}{\lambda_{2}}\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=H\left(t-\frac{x}{\lambda_{2}}\right)$
 \end_inset
 
 
@@ -2245,14 +2352,14 @@ cos\left(\omega t+\phi\right)\\
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
 \end_inset
 
 
@@ -2274,14 +2381,14 @@ cos\left(\omega t+\phi\right)
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
 \end_inset
 
 
@@ -2374,7 +2481,7 @@ Fundamental responses in time domain
 \begin_layout Itemize
 \begin_inset Formula $\left(\begin{array}{c}
 \xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
+\xi_{2}\left(L,t\right)
 \end{array}\right)=\left(\begin{array}{c}
 H\left(t\right)\\
 0
@@ -2386,14 +2493,14 @@ H\left(t\right)\\
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)}\right)H\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)}\right)H\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
 \end_inset
 
 
@@ -2403,7 +2510,7 @@ H\left(t\right)\\
 \begin_layout Itemize
 \begin_inset Formula $\left(\begin{array}{c}
 \xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
+\xi_{2}\left(L,t\right)
 \end{array}\right)=\left(\begin{array}{c}
 0\\
 H\left(t\right)
@@ -2415,14 +2522,14 @@ H\left(t\right)
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=H\left(t-\frac{x-L}{\lambda_{2}}\right)$
 \end_inset
 
 
@@ -2432,7 +2539,7 @@ H\left(t\right)
 \begin_layout Itemize
 \begin_inset Formula $\left(\begin{array}{c}
 \xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
+\xi_{2}\left(L,t\right)
 \end{array}\right)=\left(\begin{array}{c}
 cos\left(\omega t+\phi\right)\\
 0
@@ -2444,14 +2551,14 @@ cos\left(\omega t+\phi\right)\\
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
 \end_inset
 
 
@@ -2461,7 +2568,7 @@ cos\left(\omega t+\phi\right)\\
 \begin_layout Itemize
 \begin_inset Formula $\left(\begin{array}{c}
 \xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
+\xi_{2}\left(L,t\right)
 \end{array}\right)=\left(\begin{array}{c}
 0\\
 cos\left(\omega t+\phi\right)
@@ -2473,14 +2580,14 @@ cos\left(\omega t+\phi\right)
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\xi_{1}\left(0,t\right)=0$
+\begin_inset Formula $\xi_{1}\left(x,t\right)=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\xi_{2}\left(0,t\right)=cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\begin_inset Formula $\xi_{2}\left(x,t\right)=cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$
 \end_inset
 
 
