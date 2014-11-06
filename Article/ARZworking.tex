@@ -588,37 +588,653 @@ with
 
 \section{Numerical validation}
 
+Many phenomena interact in vehicular flow on a freeway. The ARZ equations
+provide a finer modelling of these dynamics. Studying of the linearized
+model in the spectral domain brings up a simple framework that paves
+the way to establishing control strategies for the system. Prior to
+using such techniques, it is necessary to assess how realistic the
+model is in its linearized form. This is the topic of this section
+that will confront the prediction of the model and the actual flow
+and velocity data gathered in the well known NGSIM data set.
+
+
 \subsection{Data source: NGSIM trajectories}
-The NSGIM trajectory data set gathers trajectories of vehicules sampled
+
+The NSGIM trajectory data set gathers trajectories of vehicles sampled
 with a $10$ Hz frequency thanks to high precision cameras. After
 converting units to the universal system, each point in the table
 contains several pieces of information such as \textbf{vehicle\_ID}
-(each vehicle has a unique ID), \textbf{veh\_class }(1 for motorcycle,
-2 for cars, 3 for trucks), \textbf{time\_since\_epoch\_ms} (time in
-ms since epoch timestamp), \textbf{local\_y} (longitudinal coordinate
-of the front center of the vehicle with respect to the entry edge
-of the section in the direction of travel) (meters), \textbf{veh\_v}
-(vehicle speed) (meters per second). 45 minutes are recorded on a
-$650$ meter long section. There are five lanes along the section
-of the freeway under scrutiny which is indeed taken into account when
-computing the lineic density of vehicles $\rho$\@. The trajectories
-are represented in the $\left(t,x\right)$ domain on Figure \ref{fig:NGSIM-trajectories}.
+(each vehicle has a unique ID), \textbf{veh\_class }($1$ for motorcycle,
+$2$ for cars, $3$ for trucks, only cars are taken into account here),
+\textbf{time\_since\_epoch\_ms} (time in ms since epoch timestamp),
+\textbf{local\_y} (longitudinal coordinate of the front center of
+the vehicle with respect to the entry edge of the section in the direction
+of travel) (meters), \textbf{veh\_v} (vehicle speed) (meters per second).
+$45$ minutes are recorded on a $650$ meter long section. There are
+five lanes along the section of the freeway under scrutiny which is
+taken into account when computing the lineic density of vehicles $\rho$\@.
+The trajectories are represented in the $\left(t,x\right)$ domain
+on Figure \ref{fig:NGSIM-trajectories}.
 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=12cm]{/Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_low_res}
 \par\end{centering}
 
-\protect\caption{NGSIM trajectories (the color represents the speed in m/s\label{fig:NGSIM-trajectories}}
+\protect\caption{NGSIM trajectories (the color represents the measured speed of each
+car in m/s)\label{fig:NGSIM-trajectories}}
 \end{figure}
 
 
+
+\subsection{Reconstructing $\left(v,q\right)$ maps from NGSIM trajectories}
+
+The NGSIM does not directly provide the values $v\left(t,x\right)$
+and $q\left(t,x\right)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$.
+In order to obtain macroscopic quantities out of the microscopic measurements,
+one divides the time and space grid $\left[0,T\right]\times\left[0,L\right]$
+into small buckets $\left(\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$.
+Here $i$ corresponds to time and $j$ to space. The operation consists
+in gathering the corresponding data points into bins and then estimating
+the quantities of interest in each bin. Let $card$ denote the function
+that gives the number of elements in a given set i.e. its cardinal.
+
+
+\subsubsection{Binning formulae}
+
+The size of each bucket is $\Delta t\times\Delta x$. In each bucket,
+a certain number of traces are available and $\rho$, $v$ and $q$
+are assumed to be constant. Here several formulae are presented that
+enable the conversion of a set of records of vehicles' positions into
+a map of speed, flow and density as a function of time and position.
+
+
+\paragraph{Binning formula for $v$:}
+
+The speed is assumed to be constant in each bucket. Thus a straightforward
+estimator for that quantity is the empirical average. Let $\widehat{v}_{i,j}$
+the estimator for the speed in bucket $\left(i,j\right)$.
+
+\[
+\widehat{v}_{i,j}=mean_{trace\in bucket_{i,j}}\left(v\left(trace\right)\right)
+\]
+
+
+
+\paragraph{Binning formula for $\rho$:}
+
+One considers a bucket with index $(i,j)$. by definition 
+\[
+\rho_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t}\int\int_{\left(t,x\right)\in\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]}\rho\left(x,t\right)dxdt
+\]
+\\
+Any given vehicle will have its position recorded every $0.1$ second.
+Therefore it is also possible to count the number of traces in a given
+bucket and normalize it by the sampling rate. The contribution of
+a given vehicle to the density of a bucket is proportional to the
+number of traces it has left in the bucket. If the speed is assumed
+to be locally constant, this is proportional to the time this vehicle
+spends in the bucket and consistent with the conservation of the total
+number of vehicles across all buckets.\\
+\\
+\[
+\widehat{\rho}_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t\:\mbox{sampling rate}}card\left(\left\{ trace\mid trace\:\in\: bucket\right\} \right)
+\]
+
+
+
+\paragraph{Binning formula for $q$:}
+
+By definition, $q\left(x,t\right)=\rho\left(x,t\right)v\left(x,t\right)$
+so a first estimator for $q$ in the bucket $\left(i,j\right)$ is
+logically 
+\[
+\widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}
+\]
+\\
+One can also approximate the flux going through a given bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+by the number of cars crossing the $x$ coordinate $\left(j+1\right)\Delta x$
+between times $i\:\Delta t$ and $\left(i+1\right)\Delta t$ normalized
+by the duration $\Delta t$.\\
+\\
+If a given vehicle with identification number $id_{0}$ crosses $\left(j+1\right)\Delta x$
+between time $i\:\Delta t$ and time $\left(i+1\right)\:\Delta t$,
+then $id_{0}$ is present in the bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+and the bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[\left(j+1\right)\:\Delta x,\:\left(j+2\right)\:\Delta t\right]$.
+Therefore, $card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)$
+is the number of vehicles that have crossed the coordinate $\left(j+1\right)\Delta x$
+in that interval of time. This gives another estimator of the flux
+based on counting cars in a straightforward way: 
+\[
+\widehat{q}_{i,j}^{count}=\frac{1}{n_{lanes}\Delta t}\: card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)
+\]
+
+
+
+\subsubsection{Choosing the number of bins}
+
+The discretization grid is $\left\{ \left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]\mid\left(i,j\right)\in\left\{ 1\ldots N\right\} \times\left\{ 1\ldots N\right\} \right\} $.
+As the estimation formulae above rely on averaging, having a comfortable
+number of points in each bin provides more stable estimates. It is
+worth mentioning that usual Central Limit theorem based reasoning
+for convergence of such estimates is flawed as several samples may
+correspond to the same vehicle or interacting vehicles, therefore
+violating the independence assumption of the theorem. Proving the
+convergence of the estimates above lies clearly beyond the scope of
+this article and therefore, as a rule of thumb we choose a setup that
+guarantees that most buckets will host more than $500$ traces. This
+is achieved with a $80\times80$ grid where the $10^{th}$ percentile
+of the number of traces in a given bin is $485$. Such a grid also
+yields a $10^{th}$ percentile of $58$ distinct vehicles per bin.
+The histograms of number of traces and vehicle per bucket are represented
+on Figure \ref{fig:Grid control}.
+
+\begin{figure}
+\begin{centering}
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
+Histogram of number of traces per bucket & Histogram of number of distinct vehicles per bucket\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+\protect\caption{Choice motivation for a $80\times80$ bucket based discretization
+grid for the NGSIM data\label{fig:Grid control}}
+
+
+\end{figure}
+
+
+
+\subsubsection{Sanity check for the estimators}
+
+This article does not provide any theoretical proof of the convergence
+of the binned estimators for $\left(v,\rho,q\right)$ presented above.
+It is nonetheless possible to check practically that the procedure
+is coherent. Two estimators are provided for $q$ that use radically
+different techniques. The first one relies on the average measured
+speed and the number of traces in a bin. The other one on counting
+vehicles transiting from a cell to another. Verifying that they both
+give similar results for a given bucket will therefore confirm that
+these estimators for $q$ are trustworthy. It will also certify that
+the estimation technique for $\rho$ is valid. As one can observe
+on Figure \ref{fig:Sanity-check}, the scatter plot of $\widehat{q}_{i,j}^{count}$
+is plotted against $\widehat{q}_{i,j}$ coincides almost perfectly
+with the line $y=x$ therefore validating the overall binning and
+estimation procedure.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Sanity check/80_80_q_q_count\string".png}
+\par\end{centering}
+
+\protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{count}$
+is plotted against $\widehat{q}_{i,j}$ across the grid of buckets.
+\label{fig:Sanity-check}}
+\end{figure}
+
+
+
+\subsection{Estimated values for $\left(v,q\right)$}
+
+In order to check how well the linearized ARZ model fits actual data,
+one choses a bounded domain and compares the theoretical solution
+given by the second order model and the data observed. Here we focus
+one the values of $v$ and $q$ as they correspond to the setup that
+is the most worth studying. It is also the most directly practical
+for control. Now that estimates of the actual values of $v$ and $q$
+have been designed, they will be used to compute fundamental diagrams
+and mapped on the $\left[0,T\right]\times\left[0,L\right]$ domain.
+Fundamental diagrams will then yield estimates of the eigen values
+$\lambda_{1}$ and $\lambda_{2}$ that are crucial in this study.
+Finally, predicted values of $v$ and $q$ will be compared to their
+measured counterparts which will allow the computation of a fit error.
+Based on the estimation of this error for different values of the
+parameter $\tau$, the value offering the smallest error will be used
+as an estimate. Plotting maps of both the predicted values and the
+observed one will also highlight the phenomena the linearized model
+accounts for and those it cannot characterize.
+
+
+\subsubsection{Maps}
+
+Once the values $\widehat{v}_{i,j}$, $\widehat{\rho}_{i,j}$, $\widehat{q}_{i,j}$,
+$\widehat{q}_{i,j}^{count}$ have been computed they can be plotted
+on the discretization grid (see Figure \ref{fig:Estimated-values}).
+As $\widehat{q}$ and $\widehat{q}^{count}$ give extremely similar
+results, $\widehat{q}^{count}$ will be used as the estimator of $q$
+from now on. The estimated values vary in a very smooth manner which
+corroborates their being well estimated and corresponding to the time
+domain solution of the linearized ARZ model (see \ref{sub:Time-domain-explicit}).
+However, high flux clusters appearing at the center of the $\left[0,T\right]\times\left[0,L\right]$
+domain clearly contradict the exponential decay along the characteristic
+lines that is prescribed by the linearized model. Persistent oscillation
+and smoothly decaying values along characteristic lines are mostly
+observed outside of these anomalies which clearly coincides with the
+theoretical predictions of the framework that has been developed above.
+
+\begin{figure}
+\begin{centering}
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_rho_map\string".png}\tabularnewline
+\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_count_map\string".png}\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+\protect\caption{Estimated values for $\left(v,q,\rho\right)$. Top left: $\widehat{v}_{i,j}$.
+Top right: $\widehat{\rho}_{i,j}$. Bottom left: $\widehat{q}_{i,j}$.
+Bottom right: $\widehat{q}_{i,j}^{count}$ .\label{fig:Estimated-values}}
+
+
+\end{figure}
+
+
+
+\subsubsection{Fundamental diagrams}
+
+From the values that have been estimated it is very straightforward
+to compute fundamental diagrams as on Figure \ref{fig:Empirical-fundamental-diagrams}.
+One of the potential flaws of studying these fundamental diagrams
+and using them to calibrate the model's parameters as we do below
+could come from the fact that the data set is small. Even though many
+points are collected, they only give information about cars traveling
+in a small region of time and space. Therefore it is certain that
+our measurements and estimations are highly correlated. This seems
+to be confirmed by the fact that the fundamental diagrams below only
+correspond to the congested regime. Most of the points are concentrated
+about the same region. This is not enough to guarantee that the estimated
+quantities are reliable. However, NGSIM is to this day one of the
+most comprehensive data sets of vehicle behavior on a freeway. It
+is therefore one of the best ways one has to validate that a traffic
+model is realistic. The fact that most points lie in the same region
+is however a sign that the linearization hypothesis is reasonable
+in that context. Observed deviations from the equilibrium are indeed
+small. (The equilibrium, i.e. the linearization point, is estimated
+below).
+
+\begin{figure}
+\begin{centering}
+\begin{tabular}{ccc}
+\includegraphics[width=5cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count\string".png} & \includegraphics[width=5cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png} & \includegraphics[width=5cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png}\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+\protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{count}\right)$.
+Middle: $\left(\widehat{v},\widehat{q}^{count}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
+\label{fig:Empirical-fundamental-diagrams}}
+\end{figure}
+
+
+
+\subsubsection{Calibration of $\lambda_{1}$ and $\lambda_{2}$, linearization point}
+
+$\lambda_{1}=v^{*}$ and $\lambda_{2}=Q'\left(v^{*}\right)$ therefore
+the calibration of $\lambda_{1}$ consists in finding a value of $v$
+around which the fundamental diagram $\left(v,q\right)$ will be linearized.
+$\lambda_{2}$ will consist in the estimated slope of the fundamental
+diagram. $\lambda_{2}$ is estimated with a standard Ordinary Least
+Squares method. The data set above only corresponds to the congested
+regime and the fundamental diagram is almost affine.\\
+\\
+The method used here is therefore quite straightforward. The estimator
+for $v^{*}$ is chosen as the empirical mean of $\widehat{v}_{i,j}$:
+$\widehat{\lambda}_{1}=\widehat{v}^{*}$. A linear model is fitted:
+$\widehat{q}^{count}=b_{1}\widehat{v}+b_{0}+\varepsilon$ (where $\varepsilon$
+represents the noise in the model that would ideally be centered,
+homoschedastic and uncorrected but is not practically) and the estimator
+for $\lambda_{2}$ is then $\widehat{\lambda}_{2}=\widehat{b}_{1}$.
+$q^{*}$ is estimated by the empirical average of $\widehat{q}^{count}$
+and $\rho^{*}$ by the ratio of the estimates for $q^{*}$ and $v^{*}$.
+Provided each estimator is convergent, the continuity of the functional
+$\left(x,y\right)\rightarrow\frac{x}{y}$ on its domain guarantees
+the convergence of the estimator for $\rho^{*}$. The empirical results
+for are presented on Figure \ref{fig:Calibration-of-eigen-values}.
+The determination coefficient is rather mediocre, it could be improved
+by filtering out outliers and more generally by gathering more data.
+Improving the quality of the estimation will be the subject of further
+work on that matter. Significance tests for the coefficients of the
+linear model are not presented. The assumptions they rely on about
+the linear depency between $\widehat{q}$ and $\widehat{v}$ are clearly
+not respected here as the noise is auto-correlated. Again, further
+work needs to turn this rather heuristic method for estimating parameters
+into a fully justified statistical procedure. This article focuses
+is qualitatively assessing what phenomena can be accounted for by
+the linearized second order model.
+
+\begin{figure}
+\begin{centering}
+\begin{tabular}{cccccc}
+\multicolumn{6}{c}{\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}}\tabularnewline
+$\widehat{\lambda}_{1}=10.07$ & $\widehat{\lambda}_{2}=-4.00$ & $\widehat{\rho}^{*}=0.04$ & $\widehat{v}^{*}=10.07$ & $\widehat{q}^{*}=0.42$ & $r^{2}=0.51$\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+\protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The figure shows
+the average point used to compute $\widehat{v}^{*}$ and $\widehat{q}^{*}$.
+The affine model used to estimate $\lambda_{2}$ is also plotted.\label{fig:Calibration-of-eigen-values}}
+
+
+\end{figure}
+
+
+
+\subsection{Simulated values for $\left(v,q,\rho\right)$}
+
+The data above shows that only the congested regime is to be modeled
+for the NGSIM data. Therefore the theory developed for the $\lambda_{2}<0$
+will be put to use here.
+
+
+\subsubsection{Fourier decomposition of input for a linear PDE}
+
+The Partial Differential Equation under scrutiny here is linearized.
+Therefore, decomposing boundary conditions into a sum and then adding
+the predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$
+will give the exact solution. The spectral domain analysis presented
+above is very useful to that end and will be leveraged thanks to Fourier
+analysis. Fourier transform is a linear operator that is practically
+implemented thanks to the Fast Fourier Transform. A real signal $\left\{ f\left(t\right)\mid t\in\left[0,T\right]\right\} $
+on one of the boundaries $\left\{ \left(x=0,t\right)\mid t\in\left[0,T\right]\right\} $
+or $\left\{ \left(x=L,t\right)\mid t\in\left[0,T\right]\right\} $
+is transformed into a periodic signal by infinite duplication and
+then turned into a Fourier series $\left\{ t\rightarrow\mu+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\mid t\in\left[0,T\right]\right\} $.
+This process is known to be convergent with an infinite sum for any
+square integrable function. It is practically extremely accurate in
+our case even though the FFT only relies on a finite number of Fourier
+coefficients. For both upstream and downstream boundary conditions,
+eye inspection cannot distinguish the original signal from its Fourier
+series decomposition. In Appendix \ref{sub:Generic-computations}
+the generic way of computing the solution of the PDE inside the inner
+domain is presented. The process is quite straightforward although
+the necessary computations are somewhat cumbersome.
+
+
+\subsubsection{Simulated maps}
+
+Prior to using Fourier decomposed signals and elementary solutions,
+it is necessary to convert the data into the diagonalized basis. First
+of all, the difference with respect to the equilibrium is computed
+for each bucket: $\widehat{\widetilde{v}}_{i,j}=\widehat{v}_{i,j}-\widehat{v}^{*}$,
+$\widehat{\widetilde{q}}_{i,j}=\widehat{q}_{i,j}-\widehat{q}^{*}$.
+Once $\lambda_{1}$ and $\lambda_{2}$ have been estimated, estimates
+for $\xi_{1}$ and $\xi_{2}$ are computed thanks to the following
+equations: $\widehat{\xi}_{1_{i,j}}=\frac{\widehat{\rho}^{*}\widehat{\lambda}_{2}}{\widehat{\lambda}_{1}-\widehat{\lambda}_{2}}\widehat{\widetilde{v}}_{i,j}+\widehat{\widetilde{q}}_{i,j}$,
+$\widehat{\xi}_{2_{i,j}}=\frac{\widehat{\rho}^{*}\widehat{\lambda}_{1}}{\widehat{\lambda}_{1}-\widehat{\lambda}_{2}}\widehat{\widetilde{v}}_{i,j}$.
+Then the predicted values for $q$and $v$ can be computed thanks
+to the inverse linear transform $\widetilde{q}=\xi_{1}-\frac{\lambda_{1}}{\lambda_{2}}\xi_{2}$,
+$\widetilde{v}=\frac{\lambda_{1}-\lambda_{2}}{\rho^{*}\lambda_{1}}\xi_{2}$.
+This procedure gives comparison maps for the data and predicted values
+for both the $\left(v,q\right)$ and the $\left(\xi_{1},\xi_{2}\right)$
+domains. Figure \ref{fig:Data-versus-predicted.} shows important
+qualitative properties of the model. First of all, as expected, the
+model generally predicts with a very good accuracy the decay of all
+quantities along their characteristic lines. This is a realistic feature
+that cannot be paralleled by first order models. However, irregularities
+such as surges of flux at the center of some characteristic lines
+cannot correspond to the linearized ARZ model in any way. This is
+a limitation of the model. On this data set, such abnormal regions
+create fitting errors whose order of magnitude is that of the maximum
+observed values over the data, therefore the realism of the linearized
+PDE is very poor for such phenomena. What causes these surges of flux
+to appear is clearly a compelling question. Exploring it will be the
+subject of further research that could give rise to new models featuring
+such turbulent behaviors. The value of $\tau$used to compute the
+plots below is described in \ref{sub:Calibration-of-tau}.
+
+\begin{figure}
+\begin{centering}
+\begin{tabular}{c}
+\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_map_n=80_tau_best\string".png}\tabularnewline
+Top row: $q$. Bottom row: $v$.\tabularnewline
+\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_map_n=80_tau_best\string".png}\tabularnewline
+Top row: $\xi_{1}$. Bottom row: $\xi_{2}$.\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+\protect\caption{Data versus predicted. Top: $\left(v,q\right)$ domain. Bottom: $\left(\xi_{1},\xi_{2}\right)$
+domain. First column: data. Middle column: predictions. Third column:
+prediction - data.\label{fig:Data-versus-predicted.}}
+
+
+\end{figure}
+
+
+
+\subsubsection{Calibration of $\tau$\label{sub:Calibration-of-tau}}
+
+For each value of $\tau$ one computes the mean absolute error (MAE).
+That is to say, the average difference in absolute value between what
+is simulated and what is predicted for each discretization bucket.
+$v$ and $q$ are not physically homogeneous, therefore it is not
+sensible to aggregate the errors over these quantities. However, $\xi_{1}$
+and $\xi_{2}$ are both expressed in veh/s. Summing their MAE gives
+a reliable uni-dimensional index of the quality of the fit with respect
+to $\tau$. This quantity is computed for different values of $\tau$
+ranging from $5$ to $80$ seconds. The value offering the best fit
+is $\tau^{*}=29.68$.
+
+\begin{figure}
+\begin{centering}
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/q_v_error_80\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/xi_1_xi_2_error_80\string".png}\tabularnewline
+MAE over $q$ and $v$ & MAE over $\xi_{1}$ and $\xi_{2}$ and sum of both MAE.\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+\protect\caption{Calibration of $\tau$, one minimizes the sum of MAE over $\xi_{1}$
+and $\xi_{2}$.}
+\end{figure}
+
+
+
+\subsection{Time domain explicit resolution of the system \label{sub:Time-domain-explicit}}
+
+Going back to the diagonalized $\left(v,\: q\right)$ system, it is
+possible to exhibit an analytical solution. Indeed solving first for
+$\xi_{1}\left(x,\: t\right)$ in the PDE $\frac{\partial\xi_{1}}{\partial t}\left(x,\: t\right)+\lambda_{1}\xi_{1}\left(x,\: t\right)=-\frac{1}{\tau}\xi_{1}\left(x,\: t\right)$
+gives $\xi_{1}\left(t,\: x+\lambda_{1}t\right)=\xi_{1}\left(0,\: t\right)e^{-\frac{t}{\tau}}$
+and re-injecting in $\frac{\partial\xi_{2}}{\partial t}\left(t,\: x\right)+\lambda_{2}\frac{\partial\xi_{1}}{\partial x}\left(t,\: x\right)=-\frac{1}{\tau}\xi_{1}\left(t,\: x\right)e^{-\frac{t}{\tau}}$
+yields $\xi_{2}\left(t,\: x+\lambda_{2}t\right)=-\frac{1}{\tau}\intop_{u=0}^{t}\xi_{1}\left(0,x-\left(\lambda_{1}-\lambda_{2}\right)u\right)e^{-\frac{u}{\tau}}du+\xi_{2}\left(0,x\right)$.
+
+
+\subsection{Generic computations for time domain to Laplace domain transforms
+and vice versa\label{sub:Generic-computations}}
+
+The aim is to derive the time domain responses of generic input signals
+such as $t\rightarrow H\left(t\right)$ and $t\rightarrow cos\left(wt+\phi\right)H\left(t\right)$
+when multiplied in the Laplace domain by $\frac{1}{s+\alpha}$. This
+then enables the computation of any response that decomposes in a
+Fourier transform.
+
+
+\subsubsection{Step function input}
+
+The time domain input function is $H\left(t\right)$. One computes
+the inverse Laplace transform of $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
+which is 
+\[
+t\rightarrow\frac{1}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)
+\]
+
+
+
+\subsubsection{Phased cosine input}
+
+The time domain input function is $cos\left(wt+\phi\right)H\left(t\right)$.
+One computes the inverse Laplace transform of $s\rightarrow\frac{1}{s+\alpha}\left\{ \frac{s}{s^{2}+\omega^{2}}cos\left(\phi\right)-\frac{w}{s^{2}+w^{2}}sin\left(\phi\right)\right\} $
+which can be directly achieved in the time domain. Indeed, the result
+is given by the convolution product $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star cos\left(\omega\cdot+\phi\right)H\left(\cdot\right)\right)\left(t\right)$,
+that is to say 
+\[
+t\rightarrow\frac{-e^{-\alpha\cdot t}\left(\alpha\cdot cos\left(\phi\right)+w\cdot sin\left(\phi\right)\right)+\alpha\cdot cos\left(wt+\phi\right)+w\cdot sin\left(wt+\phi\right)}{\alpha^{2}+w^{2}}H\left(t\right)=\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+\]
+
+
+
+\subsubsection{Fourier sum input}
+
+Let the input be $t\rightarrow\mu H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\left(t\right)$.
+The time domain response is therefore 
+\[
+t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+\]
+
+
+
+\subsection{Fourier decomposition and time domain responses for $\lambda_{2}>0$}
+
+Let $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}<0$.
+Let $H\left(t\right)$ the Heaviside function.
+
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(x,s\right)\\
+\widehat{\xi_{2}}\left(x,s\right)
+\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(0,s\right)
+\end{array}\right)
+\]
+\\
+with 
+\[
+\Phi\left(x,s\right)=\left[\begin{array}{cc}
+e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}} & 0\\
+-\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{1}{s+\alpha} & e^{-\frac{sx}{\lambda_{2}}}
+\end{array}\right]
+\]
+\\
+implies the following fundamental responses for the system.
+
+
+\subsubsection{Fundamental responses in time domain:}
 \begin{itemize}
-\item Values for parameters $(\tau?)$
-\item Convergence towards equilibrium of trajectories in $(v, q)$ domain
-\item Spectral transform of data and response
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+H\left(t\right)\\
+0
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\item $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
 \end{itemize}
-\section{Results/discussion}
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+H\left(t\right)
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=0$
+\item $\xi_{2}\left(x,t\right)=H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end{itemize}
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+cos\left(\omega t+\phi\right)\\
+0
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\item $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\end{itemize}
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(0,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+cos\left(\omega t+\phi\right)
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=0$
+\item $\xi_{2}\left(x,t\right)=cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
+\end{itemize}
+\end{itemize}
+
+\subsection{Fourier decomposition and time domain responses for $\lambda_{2}<0$}
+
+This time, $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}>0$.
+
+\[
+\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(x,s\right)\\
+\widehat{\xi_{2}}\left(x,s\right)
+\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
+\widehat{\xi_{1}}\left(0,s\right)\\
+\widehat{\xi_{2}}\left(L,s\right)
+\end{array}\right)
+\]
+\\
+with
+
+\[
+\varGamma\left(x,s\right)=\left(\begin{array}{cc}
+e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}} & 0\\
+\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha} & e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}
+\end{array}\right)
+\]
+\\
+implies the following fundamental responses for the system.
+
+
+\subsubsection{Fundamental responses in time domain}
+\begin{itemize}
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(L,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+H\left(t\right)\\
+0
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
+\item $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)}\right)H\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\end{itemize}
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(L,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+H\left(t\right)
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=0$
+\item $\xi_{2}\left(x,t\right)=H\left(t-\frac{x-L}{\lambda_{2}}\right)$
+\end{itemize}
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(L,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+cos\left(\omega t+\phi\right)\\
+0
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\item $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\end{itemize}
+\item $\left(\begin{array}{c}
+\xi_{1}\left(0,t\right)\\
+\xi_{2}\left(L,t\right)
+\end{array}\right)=\left(\begin{array}{c}
+0\\
+cos\left(\omega t+\phi\right)
+\end{array}\right)$:
+
+\begin{itemize}
+\item $\xi_{1}\left(x,t\right)=0$
+\item $\xi_{2}\left(x,t\right)=cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$\end{itemize}
+\end{itemize}
+
 
 
 \section{Conclusion}

@@ -71,14 +71,54 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Spatial Bode magnitude plot for $\phi _{21}(x,s)$.}}{10}{figure.10}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Step responses}{10}{subsubsection.3.2.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Congested flow}{10}{subsection.3.3}}
-\bibdata{mybibfile}
-\bibcite{Texas}{{1}{}{{}}{{}}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Illustration of the characteristics for supercritical flow, $\lambda _1 > 0, \lambda _2 < 0$.}}{11}{figure.11}}
 \newlabel{fig:subcr}{{11}{11}{Illustration of the characteristics for supercritical flow, $\lambda _1 > 0, \lambda _2 < 0$}{figure.11}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Numerical validation}{11}{section.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data source: NGSIM trajectories}{11}{subsection.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Results/discussion}{11}{section.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{11}{section.6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces NGSIM trajectories (the color represents the measured speed of each car in m/s)}}{12}{figure.12}}
+\newlabel{fig:NGSIM-trajectories}{{12}{12}{NGSIM trajectories (the color represents the measured speed of each car in m/s)}{figure.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Reconstructing $\left (v,q\right )$ maps from NGSIM trajectories}{12}{subsection.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Binning formulae}{12}{subsubsection.4.2.1}}
+\@writefile{toc}{\contentsline {paragraph}{Binning formula for $v$:}{12}{section*.1}}
+\@writefile{toc}{\contentsline {paragraph}{Binning formula for $\rho $:}{12}{section*.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Choice motivation for a $80\times 80$ bucket based discretization grid for the NGSIM data}}{13}{figure.13}}
+\newlabel{fig:Grid control}{{13}{13}{Choice motivation for a $80\times 80$ bucket based discretization grid for the NGSIM data}{figure.13}{}}
+\@writefile{toc}{\contentsline {paragraph}{Binning formula for $q$:}{13}{section*.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Choosing the number of bins}{13}{subsubsection.4.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Sanity check for the estimators}{13}{subsubsection.4.2.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Sanity check for the estimation procedure. $\mathaccent "0362\relax {q}_{i,j}^{count}$ is plotted against $\mathaccent "0362\relax {q}_{i,j}$ across the grid of buckets. }}{14}{figure.14}}
+\newlabel{fig:Sanity-check}{{14}{14}{Sanity check for the estimation procedure. $\widehat {q}_{i,j}^{count}$ is plotted against $\widehat {q}_{i,j}$ across the grid of buckets}{figure.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Estimated values for $\left (v,q\right )$}{14}{subsection.4.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Maps}{14}{subsubsection.4.3.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Fundamental diagrams}{14}{subsubsection.4.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Estimated values for $\left (v,q,\rho \right )$. Top left: $\mathaccent "0362\relax {v}_{i,j}$. Top right: $\mathaccent "0362\relax {\rho }_{i,j}$. Bottom left: $\mathaccent "0362\relax {q}_{i,j}$. Bottom right: $\mathaccent "0362\relax {q}_{i,j}^{count}$ .}}{15}{figure.15}}
+\newlabel{fig:Estimated-values}{{15}{15}{Estimated values for $\left (v,q,\rho \right )$. Top left: $\widehat {v}_{i,j}$. Top right: $\widehat {\rho }_{i,j}$. Bottom left: $\widehat {q}_{i,j}$. Bottom right: $\widehat {q}_{i,j}^{count}$ }{figure.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Empirical fundamental diagrams. Left: $\left (\mathaccent "0362\relax {\rho },\mathaccent "0362\relax {q}^{count}\right )$. Middle: $\left (\mathaccent "0362\relax {v},\mathaccent "0362\relax {q}^{count}\right )$. Right: $\left (\mathaccent "0362\relax {\rho },\mathaccent "0362\relax {v}\right )$. }}{16}{figure.16}}
+\newlabel{fig:Empirical-fundamental-diagrams}{{16}{16}{Empirical fundamental diagrams. Left: $\left (\widehat {\rho },\widehat {q}^{count}\right )$. Middle: $\left (\widehat {v},\widehat {q}^{count}\right )$. Right: $\left (\widehat {\rho },\widehat {v}\right )$}{figure.16}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Calibration of $\lambda _{1}$ and $\lambda _{2}$, linearization point}{16}{subsubsection.4.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Simulated values for $\left (v,q,\rho \right )$}{16}{subsection.4.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Fourier decomposition of input for a linear PDE}{16}{subsubsection.4.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Calibration of $\lambda _{1}$ and $\lambda _{2}$. The figure shows the average point used to compute $\mathaccent "0362\relax {v}^{*}$ and $\mathaccent "0362\relax {q}^{*}$. The affine model used to estimate $\lambda _{2}$ is also plotted.}}{17}{figure.17}}
+\newlabel{fig:Calibration-of-eigen-values}{{17}{17}{Calibration of $\lambda _{1}$ and $\lambda _{2}$. The figure shows the average point used to compute $\widehat {v}^{*}$ and $\widehat {q}^{*}$. The affine model used to estimate $\lambda _{2}$ is also plotted}{figure.17}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Simulated maps}{17}{subsubsection.4.4.2}}
+\newlabel{sub:Calibration-of-tau}{{4.4.3}{17}{Calibration of $\tau $}{subsubsection.4.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Calibration of $\tau $}{17}{subsubsection.4.4.3}}
+\newlabel{sub:Time-domain-explicit}{{4.5}{17}{Time domain explicit resolution of the system}{subsection.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Time domain explicit resolution of the system }{17}{subsection.4.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Data versus predicted. Top: $\left (v,q\right )$ domain. Bottom: $\left (\xi _{1},\xi _{2}\right )$ domain. First column: data. Middle column: predictions. Third column: prediction - data.}}{18}{figure.18}}
+\newlabel{fig:Data-versus-predicted.}{{18}{18}{Data versus predicted. Top: $\left (v,q\right )$ domain. Bottom: $\left (\xi _{1},\xi _{2}\right )$ domain. First column: data. Middle column: predictions. Third column: prediction - data}{figure.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Calibration of $\tau $, one minimizes the sum of MAE over $\xi _{1}$ and $\xi _{2}$.}}{19}{figure.19}}
+\newlabel{sub:Generic-computations}{{4.6}{19}{Generic computations for time domain to Laplace domain transforms and vice versa}{subsection.4.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Generic computations for time domain to Laplace domain transforms and vice versa}{19}{subsection.4.6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.1}Step function input}{19}{subsubsection.4.6.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.2}Phased cosine input}{19}{subsubsection.4.6.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.3}Fourier sum input}{19}{subsubsection.4.6.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Fourier decomposition and time domain responses for $\lambda _{2}>0$}{19}{subsection.4.7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.1}Fundamental responses in time domain:}{20}{subsubsection.4.7.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Fourier decomposition and time domain responses for $\lambda _{2}<0$}{20}{subsection.4.8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.1}Fundamental responses in time domain}{20}{subsubsection.4.8.1}}
+\bibdata{mybibfile}
+\bibcite{Texas}{{1}{}{{}}{{}}}
 \bibcite{LW}{{2}{}{{}}{{}}}
 \bibcite{Richards}{{3}{}{{}}{{}}}
 \bibcite{payne1971models}{{4}{}{{}}{{}}}
@@ -90,5 +130,4 @@
 \bibcite{Hofleitner}{{10}{}{{}}{{}}}
 \bibcite{Fan}{{11}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces NGSIM trajectories (the color represents the speed in m/s}}{12}{figure.12}}
-\newlabel{fig:NGSIM-trajectories}{{12}{12}{NGSIM trajectories (the color represents the speed in m/s}{figure.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{21}{section.5}}
