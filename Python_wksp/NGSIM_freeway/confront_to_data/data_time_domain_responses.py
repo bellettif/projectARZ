@@ -8,6 +8,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 import cPickle as pickle
 import os
+import csv
 
 from time_domain_responses import *
 from fourier_transform import compute_input_fft
@@ -15,12 +16,18 @@ from fourier_transform import compute_inv_fft
 
 PLOT_FOLDER = 'new_plots'
 CALIBRATION_FOLDER = 'new_calibration_4'
+CSV_FOLDER = 'csv'
 
 if PLOT_FOLDER not in os.listdir('./'):
     os.mkdir(PLOT_FOLDER)
     
 if CALIBRATION_FOLDER not in os.listdir('./'):
     os.mkdir(CALIBRATION_FOLDER)
+
+if CSV_FOLDER not in os.listdir('../'):
+    os.mkdir('../' + CSV_FOLDER)
+
+
 
 N_TAUS = 80
 #TAU_VALUES = np.linspace(5, 80, N_TAUS)
@@ -52,8 +59,24 @@ for n_grid in [80]:
     rho_data = mat_dict['rho'] - rho_star
     q_data = mat_dict['q'] - q_star
     v_data = mat_dict['v'] - v_star
+    #
     dx = mat_dict['dx']
     dt = mat_dict['dt']
+    #
+    #    Writing data to csv
+    #
+    with open('../' + CSV_FOLDER + '/%d_%d_params.csv' % (n_grid, n_grid), 'wb') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        for param in ['lambda_1', 'lambda_2', 'rho_star', 'v_star', 'q_star']:
+            csv_writer.writerow([param, params[param]])
+        csv_writer.writerow(['dx', dx])
+        csv_writer.writerow(['dt', dt])
+    #
+    for write_target in ['rho', 'q', 'v']:
+        with open('../' + CSV_FOLDER + '/%d_%d_%s_map.csv' % (n_grid, n_grid, write_target), 'wb') as csv_file:
+            csv_writer = csv.writer(csv_file)
+            for row in mat_dict[write_target]:
+                csv_writer.writerow(row)
     n_grid_x = q_data.shape[0]
     n_grid_t = q_data.shape[1]
     #
