@@ -838,6 +838,7 @@ five lanes along the section of the freeway under scrutiny which is
 taken into account when computing the lineic density of vehicles $\rho$\@.
 The trajectories are represented in the $\left(t,x\right)$ domain
 on Figure \ref{fig:NGSIM-trajectories}.
+Only a subset of the spatial domain will be used though because of the presence of ramps that would break the homogeneity of the freeway. The viable domain is $200$ meters long.
 
 \begin{figure}
 \begin{centering}
@@ -945,10 +946,10 @@ correspond to the same vehicle or interacting vehicles, therefore
 violating the independence assumption of the theorem. Proving the
 convergence of the estimates above lies clearly beyond the scope of
 this article and therefore, as a rule of thumb we choose a setup that
-guarantees that most buckets will host more than $500$ traces. This
+guarantees that most buckets will host more than $100$ traces. This
 is achieved with a $80\times80$ grid where the $10^{th}$ percentile
-of the number of traces in a given bin is $485$. Such a grid also
-yields a $10^{th}$ percentile of $58$ distinct vehicles per bin.
+of the number of traces in a given bin is $170$. Such a grid also
+yields a $10^{th}$ percentile of $56$ distinct vehicles per bin.
 The histograms of number of traces and vehicle per bucket are represented
 on Figure \ref{fig:Grid control}.
 
@@ -1028,9 +1029,7 @@ results, $\widehat{q}^{count}$ will be used as the estimator of $q$
 from now on. The estimated values vary in a very smooth manner which
 corroborates their being well estimated and corresponding to the time
 domain solution of the linearized ARZ model (see \ref{sub:Time-domain-explicit}).
-However, high flux clusters appearing at the center of the $\left[0,T\right]\times\left[0,L\right]$
-domain clearly contradict the exponential decay along the characteristic
-lines that is prescribed by the linearized model. Persistent oscillation
+Persistent oscillation
 and smoothly decaying values along characteristic lines are mostly
 observed outside of these anomalies which clearly coincides with the
 theoretical predictions of the framework that has been developed above.
@@ -1127,7 +1126,7 @@ the linearized second order model.
 \begin{centering}
 \begin{tabular}{cccccc}
 \multicolumn{6}{c}{\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}}\tabularnewline
-$\widehat{\lambda}_{1}=10.07$ & $\widehat{\lambda}_{2}=-4.00$ & $\widehat{\rho}^{*}=0.04$ & $\widehat{v}^{*}=10.07$ & $\widehat{q}^{*}=0.42$ & $r^{2}=0.51$\tabularnewline
+$\widehat{\lambda}_{1}=8.96$ & $\widehat{\lambda}_{2}=-4.37$ & $\widehat{\rho}^{*}=0.049$ & $\widehat{v}^{*}=8.96$ & $\widehat{q}^{*}=0.44$ & $r^{2}=0.48$\tabularnewline
 \end{tabular}
 \par\end{centering}
 
@@ -1191,24 +1190,15 @@ domains. Figure \ref{fig:Data-versus-predicted.} shows important
 qualitative properties of the model. First of all, as expected, the
 model generally predicts with a very good accuracy the decay of all
 quantities along their characteristic lines. This is a realistic feature
-that cannot be paralleled by first order models. However, irregularities
-such as surges of flux at the center of some characteristic lines
-cannot correspond to the linearized ARZ model in any way. This is
-a limitation of the model. On this data set, such abnormal regions
-create fitting errors whose order of magnitude is that of the maximum
-observed values over the data, therefore the realism of the linearized
-PDE is very poor for such phenomena. What causes these surges of flux
-to appear is clearly a compelling question. Exploring it will be the
-subject of further research that could give rise to new models featuring
-such turbulent behaviors. The value of $\tau$used to compute the
+that cannot be paralleled by first order models. The general quality of the fit is rather good with most of the error on $v$ and $q$ in a $20$ percent range of the data's amplitude between minimum and maximum values. What is also quite satisfactory is that the linearized second order model manages to capture oscillations observed on the boundary and account for their decay accurately. The value of $\tau$ used to compute the
 plots below is described in \ref{sub:Calibration-of-tau}.
 
 \begin{figure}
 \begin{centering}
 \begin{tabular}{c}
-\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_map_n=80_tau_best\string".png}\tabularnewline
+\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_map_n=80_best_tau\string".png}\tabularnewline
 Top row: $q$. Bottom row: $v$.\tabularnewline
-\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_map_n=80_tau_best\string".png}\tabularnewline
+\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_map_n=80_best_tau\string".png}\tabularnewline
 Top row: $\xi_{1}$. Bottom row: $\xi_{2}$.\tabularnewline
 \end{tabular}
 \par\end{centering}
@@ -1233,7 +1223,7 @@ and $\xi_{2}$ are both expressed in veh/s. Summing their MAE gives
 a reliable uni-dimensional index of the quality of the fit with respect
 to $\tau$. This quantity is computed for different values of $\tau$
 ranging from $5$ to $80$ seconds. The value offering the best fit
-is $\tau^{*}=29.68$.
+is $\tau^{*}=39.18$.
 
 \begin{figure}
 \begin{centering}

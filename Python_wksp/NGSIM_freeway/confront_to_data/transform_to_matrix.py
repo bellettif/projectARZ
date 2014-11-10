@@ -14,7 +14,7 @@ import matplotlib.colors as colors
 import matplotlib.cm as cmx
 
 
-for n_grid in [60, 80, 100, 120]:
+for n_grid in [80]:
     buckets = pd.read_pickle('../binned_data/buckets_%d_%d.pi' % (n_grid, n_grid))
     buckets = buckets[['x_start', 'x_end', 't_start', 't_end', 'rho', 'v', 'q']]
     buckets = buckets.sort(['x_start', 't_start'])

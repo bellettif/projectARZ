@@ -99,6 +99,8 @@ all_data[['local_x', 'local_y', 'global_x',
 all_data['t'] = (all_data['time_since_epoch_ms'] - all_data['time_since_epoch_ms'].min()) / 1000.0 
 all_data['x'] = all_data['local_y']
 all_data = all_data[['x', 't', 'veh_v', 'vehicule_ID']]
+all_data = all_data[(all_data['x'] >= (578 * FOOT_TO_METER)) &
+                    (all_data['x'] <= ((578 + 698) * FOOT_TO_METER))]
 all_data['count'] = 1
 
 print len(all_data)
@@ -143,10 +145,10 @@ for n_grid in [80]:
     buckets['shifted_ids'] = buckets['ids'].shift()
     buckets['q_count'] = buckets.apply(q_counter, axis = 1)
     #
-    #    Deleting empty buckets
+    #   Deleting empty buckets
     #
-    upper_cut_x = np.percentile(buckets['x_end'].values, 95)
-    lower_cut_x = np.percentile(buckets['x_start'].values, 5)
+    upper_cut_x = np.percentile(buckets['x_end'].values, 100)
+    lower_cut_x = np.percentile(buckets['x_start'].values, 2.5)
     upper_cut_t = np.percentile(buckets['t_end'].values, 95)
     lower_cut_t = np.percentile(buckets['t_start'].values, 5)
     buckets = buckets[(buckets['x_start'] >= lower_cut_x)
