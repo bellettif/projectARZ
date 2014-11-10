@@ -57,7 +57,7 @@
 
 \begin{frontmatter}
 
-\title{Title here}
+\title{Prediction of traffic oscillation instability with spectral analysis of the Aw-Rascle-Zhang model}
 
 %% Group authors per affiliation:
 \author[add]{Authors}
@@ -91,23 +91,241 @@
 
 \section{Introduction}
 
-%\begin{itemize}
-%\item motivation (prediction, inference, control)
-%\item background (short lit review: LWR $\rightarrow$ ARZ progression, why second order models)
-%\item First order models. Defined by mass conservation and fundamental diagram. Shortcomings. No spontaneous momentum. Need to setup entropy condition. Practically used: prediction, inference. Discretized or semi-analytic solution.
-%\cite{LW}
-%\cite{Richards}
-%\item Second order models. 
-%\item goals of paper
-%\item organization of paper
-%\end{itemize}
+Around the world traffic congestion causes a drain on the economy
+due to time and fuel wasted and collisions associated with traffic
+congestion. In 2011 congestion in America alone caused a loss of \textbackslash{}\$121
+billion due to 5.5 billion hours of extra travel time and 2.9 billion
+gallons of wasted fuel. Although congestion levels in America are
+much higher now than several decades ago, they have dropped below
+the peak in 2005, but will increase when the economy improves\cite{Texas}.
+As personal vehicle ownership increases globally, traffic congestion
+continues to be a persistent problem. It is no surprise then that
+research in the physics of traffic is developed with the ultimate
+goal of mitigating road traffic. Traffic control strategies such as
+ramp metering and variable speed limits are in place today, but a
+good model of traffic dynamics is needed for proper coordination of
+control strategies. \\
 
+\subsection{First order models}
+The topic of traffic models is vast, ranging from dense arterial networks
+to large scale freeways. In this article we focus on homogeneous road
+sections, in particular no ramps or intersections are present. The
+1950\textquoteright s saw the development of the Lighthill-Whitham-Richards
+(LWR) model \cite{LW,Richards}, which became the seminal model for
+traffic flow, still studied today. This model is a conservation law
+for vehicles, based on fluid dynamics. Let $\rho$ the lineic vehicular
+density (veh/m) and $q$ the traffic flux (veh/s), dynamics follow
+the equation $\frac{\partial\rho}{\partial t}+\frac{\partial q}{\partial x}=0$.
+The simplicity of the model enabled the formulation of numerical discretization
+schemes such as Godunov (\cite{godunov,Osher}) or cell transmission
+models (\cite{daganzo1994cell,daganzo1995cell}). These are used in
+everyday transportation research (e.g. Berkeley Advanced Traffic
+Simulation system).\\
+Yet as a first-order model it has inherent shortcomings. Most of these
+have been pointed out in \cite{Dag_requiem}. The LWR model fails
+to describe realistically what happens when a vehicle crosses a shock.
+Although the Rankine-Hugoniot condition guarantees macroscopic mass
+conservation, at the microscopic scale the speed of traveling particle
+would be discontinuous. It is also well known that this first order
+model fails to predict light traffic dynamics accurately. Considering
+all drivers are if contradictory with platoons dissolving because
+users' desired speeds vary from one person to another. Stop and go
+behavior otherwise named traffic oscillations cannot appear in the
+model with expanding amplitudes although this phenomenon is observed
+in practice. This phenomenon has attracted more an more attention
+in transportation research. Jamitons, traffic jam that appears without
+the presence of a bottleneck have been reproduced in small experiments
+(\cite{Jamitons2008,Flynn08onjamitons}) and explained theoretically
+as the result of a particular configuration of the traffic system
+(\cite{Flynn09self-sustainednonlinear}) as well as an outcome of
+fuzzy fundamental diagrams (\cite{Jamitons-multi-valued-fund}). Empirical
+studies have focused on detecting and quantifying this effect (\cite{zielke2008empirical})
+on actual freeways in day-to-day traffic. Car-following behaviors
+(\cite{Mauch02freewaytraffic}) and lane-changing (\cite{lanechangin2005,lanechanging2007})
+are often seen as the cause of oscillations. Several approaches have
+been developed so as to model these empirical facts.
 
-Around the world traffic congestion causes a drain on the economy due to time and fuel wasted and collisions associated with traffic congestion. In 2011 congestion in America alone caused a loss of \$121 billion due to 5.5 billion hours of extra travel time and 2.9 billion gallons of wasted fuel. Although congestion levels in America are much higher now than several decades ago, they have dropped below the peak in 2005, but will increase when the economy improves \cite{Texas}. As personal vehicle ownership increases globally, traffic congestion continues to be a persistent problem. It is no surprise then that research in the physics of traffic developed with the ultimate goal of mitigating road traffic.
+\subsection{First generation second order models}
+This article will focus on macroscopic second order models as opposed
+to microscopic and mesoscopic framework. Payne and Whitham have developed
+in parallel an identical system of equations that aimed at a finer
+traffic modeling (\cite{payne1971models,whitham1974linear}). Their
+main aim was describing accurately what happens inside a traffic shock.
+To that end, they followed the same approach as in fluid dynamics
+and used a higher order model that would capture momentum related
+features. The Payne-Whitham model (PW) therefore consists of a mass
+conservation equation identical to that of LWR seconded by a momentum
+equation $\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\frac{p'\left(\rho\right)}{\rho}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}+\nu\frac{\partial^{2}v}{\partial x^{2}}$
+where the pressure function $p$ is strictly increasing and the speed
+equilibrium $V$ is decreasing. As Daganzo pointed later in his review
+of second order models (\cite{Dag_requiem}), this approach was flawed
+both in the derivation of its equations and its predictions. The formulation
+of PW relies on the assumption that spacing and speed are slow varying
+which would yield negligible $2^{nd}$ and $3^{rd}$ derivatives for
+these quantities. This is contradictory with the observations of Newell
+(\cite{Newel}) where his car following model predicts sharp and quick
+changes in these quantities. In terms of physics, modeling traffic
+by a gas-like model was highly unrealistic as fluids feature an anisotropic
+propagation of the information. Things are very different with traffic
+where cars will mostly react to downstream conditions. This is incompatible
+with the slope of one of the characteristic lines being greater than
+cars' speeds in the PW model. Also, at the upstream end of a jam with
+low density, traffic would flow in reverse if $\nu\neq0$ which is
+completely unrealistic. Finally, gas particles are physically identical
+when drivers have different habits and desired speeds. The heterogeneous
+composition of traffic is not taken into account in the PW model,
+hence another flaw.
 
-Traffic control strategies such as ramp metering and variable speed limits are in place today, but a good model of traffic dynamics is needed for proper coordination of control strategies. The 1950’s saw the development of the Lighthill-Whitham-Richards (LWR) model \cite{LW} \cite{Richards}, which became the seminal model for traffic flow, still studied today. This model is a conservation law for vehicles, based on fluid dynamics. Yet as a first-order model it has inherent shortcomings, such as non-physical predictions of vehicle speed as a vehicle passes through a shock and the inability to describe jamitons, phantom traffic jams which seem to appear for no reason. This prompted the development of second-order models, the prototype of which is the Payne-Whitham (PW) model \cite{payne1971models} \cite{whitham1974linear}. This and later second-order models consist of two equations, the first being the LWR equation and the second a momentum equation analogous to that describing fluid flow. Daganzo later published a study of the serious flaws of second-order traffic models, namely the emergence of gas-like behavior. While the second-order models up to that point were able to capture physics that the LWR model could not, these “improved” models also lost the anisotropy of the LWR model, incorrectly predicting that vehicles are affected by vehicles from behind \cite{Dag_requiem}. Soon after, Aw and Rascle, and independently Zhang, developed the ARZ model which avoided the inconsistencies of earlier higher-order models \cite{AR} \cite{Z}. 
+\subsection{Second generation second order models}
+After this requiem, second order traffic models where not forgotten
+though. Zhang improved the mathematical structure of his first model
+(\cite{Zhang1998}). At first it was highly similar to that of PW
+in its momentum equation $\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\rho\left(V_{*}^{'}\left(\rho\right)\right)^{2}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}$
+where $\rho V_{*}^{'}\left(\rho\right)$ represents the information
+propagation speed in traffic. This improvement was conducted independently
+of Aw and Rascle's work and eventually gave birth to an identical
+model (ARZ) (\cite{AR,Z}). The second order equation in that model,
+$\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial t}+v\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial x}=\frac{\rho\left(V\left(\rho\right)-v\right)}{\tau}$,
+does not present any wrong way travels. Indeed it corresponds to a
+setup of the PW model where $\nu=0$. Also, it does not feature any
+gas-like behavior that contradicts the elementary physics of traffic.
+The key element for the model was formulating the evolution of the
+pseudo-pressure term $v+p\left(\rho\right)$ in a convective manner.
+This indeed changed the information propagation from a gas-like anisotropic
+behavior to a quantity that would be carried by the particles in the
+system at speed $v$. This model has since been thoroughly studied.
+\cite{AR} concluded that a relaxation term accounting for traffic
+equilibrium was needed so the speed of cars would be determined by
+the fundamental diagram and not the initial data. The effect of the
+relaxation has been studied in \cite{R_improved} where the author
+proved that, interestingly, the relaxed model converges towards LWR
+when $\tau\rightarrow0$. It has been showed in \cite{Lebacque2007}
+that the first ARZ model needed a fundamental diagram extended for
+negative and maximum speeds, zero and maximum densities so as to guarantee
+solutions to the Riemann and stability with low densities. In \cite{HybridLagrangian2007}
+discretization enabled extending the AR model to a network setup with
+junctions and traffic lights. The ARZ model now has a legacy that
+started with the extended ARZ model (\cite{lebacque2007generic}).
+An extension was presented in \cite{berthelin2008model} as a pressure-less
+limit of the AR model where drivers will not significantly slow down
+if the congestion is not heavy. More recently a generalized model
+has been created (\cite{Fan}) that corrects the fact that, in the
+ARZ model, several maximum densities co-exist which seems contradictory
+with the fact that this quantity is uniquely determined by the characteristics
+of the freeway. Finally, a Godunov descretization scheme has been
+exhibited for the ARZ model in \cite{GodunovARZ}. With an extended
+fundamental diagram, this framework was able to solve the equations
+for any Riemann problem. This opened the way to a numerical comparison
+where ARZ fitted the data better than LWR.
 
+\subsection{Models suited for control}
+It has been remarked in \cite{Fan} that for congested regimes the
+LWR tends to offer a slightly better fit with respect to empirical
+measurements and is outperformed for low densities. Our aim here is
+using a model that is suitable for all regimes so as to establish
+control strategies for traffic. Therefore, the ARZ model seems like
+the best option as it offers reliable predictions in all regimes.
+Moreover, it manages to model traffic oscillations in dense traffic
+realistically (\cite{Greenberg_congestionredux}). Laplace transform
+and spectral analysis are powerful tools for control problems that
+provide a simple yet holistic represent of a system. In that regard,
+it is important to have a model that accounts realistically for oscillatory
+phenomena. Models other than second order macroscopic could have been
+chosen. Behavioral models such as \cite{Newel} and more recently
+\cite{Chen2012} depict in a detailed fashion the effects of car-following
+and lane changing on freeway dynamics. Unfortunately their formulation
+makes them hard to use for control purposes. Recent data driven approaches
+(\cite{Zheng2011}) that have tried to model spectral features of
+traffic thanks to wavelet transform are also not suitable. They are
+part of an approach where other data mining strategies could be used
+and do not focus on the dynamics core to the system.
 
+\subsection{Similarities with Saint-Venant equations}
+Our control focused analysis based on the ARZ equations is strongly
+inspired by the analysis of Saint-Venant equations in \cite{litrico2009modeling}.
+Let $v$ the fluid velocity in a canal, $q$ the flux, $T$ the top
+width and $y$ the water height. One has a mass conservation equation
+similar to LWR ($T\frac{\partial y}{\partial t}+\frac{\partial Q}{\partial x}=0$)
+and a momentum equation structurally similar to ARZ ($\frac{\partial v}{\partial t}+v\frac{\partial V}{\partial x}+g\frac{\partial y}{\partial x}=g\left(S_{b}-S_{f}\left(x,t\right)\right)$).
+$S_{b}-S_{f}\left(x,t\right)$ is a friction slope equilibrium equation
+analogous to $\frac{V\left(\rho\right)-v}{\tau}$. Linearizing this
+system about an equilibrium point enabled the design of efficient
+control strategies for canals leveraging the realism of Saint-Venant
+equations and the elegance of spectral analysis for linear systems.
+Approximations for the low frequency domain decompose the transfer
+matrix into a combination of delay and integration components. This
+leads to setting up efficient PI controllers while enabling a simpler
+theoretical analysis of the hydraulic system.
+
+\subsection{Approach and contributions}
+This article will follow the steps taken in (\cite{litrico2009modeling})
+and adapt them to the analogous ARZ equations so as to achieve a two-fold
+objective. First we aim at developing strategies that enforce the
+readability and easiness of use of the ARZ model. Solutions to these
+non-linear equations are practically hard to derive in an efficient
+manner. Linearizing the system about an equilibrium is therefore a
+sound strategy to open the way to usual control schemes with multiple
+inputs and outputs. Although theoretically close, hydrodynamics and
+traffic belong to different contexts. It will therefore be necessary,
+in particular when considering the formulation of boundary conditions,
+to carefully guarantee the well-posedness of the problem. The other
+objective is assessing the fit quality of the model by practically
+comparing its output with actual data collected as part of the NGSIM
+project.\\
+\\
+The first main contribution of the article is therefore deriving the
+linearized equations of the ARZ model in a format that highlights
+the main properties the model should feature. An equivalent of the
+Froude number is created for traffic that separates free-flowing and
+congested regimes. The linear system will be diagonalized which provides
+a very easy to use set of equations for the Riemann invariants. Deriving
+time domain responses after formulating spectral transfer matrices
+will prove that the linearized system is unstable in the free-flowing
+regime and accounts for non-linear wave propagation giving rise to
+jamitons. An important contribution here is that these waves occur
+for an entire set of values of velocity, density and flux and lead
+the linearized system away from its equilibrium point in free-flowing
+regime. The spectral form we obtain is a formulation of a second order
+model consistent with the fact that information does not propagate
+faster than cars travel that is ready to use for control. In order
+to guarantee that linearization does not destroy the realistic properties
+of ARZ a numerical experiment is conducted. NGSIM data has been used
+previously so as to assess the quality of second order models' predictions
+(\cite{GodunovARZ,Fan}). However these studies focus on averaged
+errors and only display predictions at a couple of points on the freeway.
+Here we show an entire map of the states and conduct the model assessment
+in a holistic manner. This yields a complete analysis of the strengths
+and weaknesses of the model that would be used for control. An estimation
+procedure is also conducted on the NGSIM data that, unlike \cite{Fan},
+does not rely on any assumption about the typical vehicle length or
+the safety distance factor. A new way of validating the estimation
+of macroscopic is presented that validates the whole data aggregation
+procedure. It is also described how in a linear system, Fast Fourier
+transform allows fast and simple numerical resolution for most boundary
+conditions. With this new prediction technique, no discretization
+scheme is needed and no grid size condition needs to be fulfilled.
+This procedure will prove that the linearized model successfully accounts
+for traffic oscillations and will also provide simple and consistent
+methods to estimate the parameters of the model.\
+
+\subsection{Organization of the article}
+The article is organized in two sections. The first one derives the
+linearized ARZ equation and their spectral domain form. It shows that
+this procedure can be conducted for any of the $\left(v,q\right)$,
+$\left(\rho,q\right)$, $\left(\rho,v\right)$ couple of variables.
+Velocity and flux being the easiest values that can be observed and
+controlled in traffic, we will mainly focus on that representation
+and its diagonalized form. Conditions distinguishing regimes will
+be highlighted and the traffic Froude number exhibited. We will then
+derive distributed transfer matrices and analyze their properties
+thanks to Bode plots. The numerical analysis will be conducted in
+the second section. After presenting the data, estimation procedures
+for $\left(v,q,\rho\right)$ and the parameters of the model, this
+study will confront empirical estimates with the numerical values
+predicted by the linearized model. We will explain how decomposing
+boundary input signals into fundamental elements thanks to the Fast
+Fourier Transform turns the spectral domain diagonalized form into
+a prediction tool.
 
 
 \section{The ARZ model}
@@ -1240,10 +1458,9 @@ cos\left(\omega t+\phi\right)
 \item $\xi_{2}\left(x,t\right)=cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$\end{itemize}
 \end{itemize}
 
-
-
 \section{Conclusion}
-[further steps]
+In this article we have shown how to use linearization of second order traffic model to characterize important properties of the system such as Riemann Invariants. In particular time domain responses have shown in the free-flow regime that the system is unstable and traffic waves would see their amplitude increase at an exponential rate before the system drifts away from the equilibrium point. This is a strong result that sheds a new light on traffic oscillations. In the congested regime such oscillatory phenomena are modeled as we have shown in our numerical experiments. This new method of analysis and its spectral form will later on make any control strategy easy to set up. The higher realism of the ARZ model as compared to LWR will enable efficient methods that aim at regulating traffic on freeways thank to varying speed limits and on-ramp metering. Further research needs to focus on designing such traffic optimization schemes. Numerically, new methods for macroscopic variable estimation have been developed that are consistent practically. Although it is still necessary to prove the convergence of this estimation procedure and which resolution should be used for such tasks. It is interesting to see that the grid size is then driven by statistical convergence and not by CFL conditions.
+
 
 \section*{Acknowledgments}
 
@@ -1256,6 +1473,6 @@ cos\left(\omega t+\phi\right)
 
 \section*{References}
 
-\bibliography{mybibfile}
+\bibliography{mybibfilecopy}
 
 \end{document}

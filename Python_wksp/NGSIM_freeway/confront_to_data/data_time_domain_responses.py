@@ -30,13 +30,14 @@ if CSV_FOLDER not in os.listdir('../'):
 
 
 N_TAUS = 80
-#TAU_VALUES = np.linspace(5, 80, N_TAUS)
-TAU_VALUES = [30, 35, 40, 45]
-TAU_VALUES = [29.683544]
+TAU_VALUES = np.linspace(5, 80, N_TAUS)
+#TAU_VALUES = [30, 35, 40, 45]
+#TAU_VALUES = [29.683544]
+#Best tau = 28.734177
 N_TAUS = len(TAU_VALUES)
 
-PLOT_ALL = True
-CALIBRATE_TAU = False
+PLOT_ALL = False
+CALIBRATE_TAU = True
 
 for n_grid in [80]:
     params = pickle.load(open('../system_params/%d_%d_params.pi' % (n_grid, n_grid), 'rb'))
@@ -65,18 +66,20 @@ for n_grid in [80]:
     #
     #    Writing data to csv
     #
-    with open('../' + CSV_FOLDER + '/%d_%d_params.csv' % (n_grid, n_grid), 'wb') as csv_file:
-        csv_writer = csv.writer(csv_file)
-        for param in ['lambda_1', 'lambda_2', 'rho_star', 'v_star', 'q_star']:
-            csv_writer.writerow([param, params[param]])
-        csv_writer.writerow(['dx', dx])
-        csv_writer.writerow(['dt', dt])
-    #
-    for write_target in ['rho', 'q', 'v']:
-        with open('../' + CSV_FOLDER + '/%d_%d_%s_map.csv' % (n_grid, n_grid, write_target), 'wb') as csv_file:
-            csv_writer = csv.writer(csv_file)
-            for row in mat_dict[write_target]:
-                csv_writer.writerow(row)
+    #===========================================================================
+    # with open('../' + CSV_FOLDER + '/%d_%d_params.csv' % (n_grid, n_grid), 'wb') as csv_file:
+    #     csv_writer = csv.writer(csv_file)
+    #     for param in ['lambda_1', 'lambda_2', 'rho_star', 'v_star', 'q_star']:
+    #         csv_writer.writerow([param, params[param]])
+    #     csv_writer.writerow(['dx', dx])
+    #     csv_writer.writerow(['dt', dt])
+    # #
+    # for write_target in ['rho', 'q', 'v']:
+    #     with open('../' + CSV_FOLDER + '/%d_%d_%s_map.csv' % (n_grid, n_grid, write_target), 'wb') as csv_file:
+    #         csv_writer = csv.writer(csv_file)
+    #         for row in mat_dict[write_target]:
+    #             csv_writer.writerow(row)
+    #===========================================================================
     n_grid_x = q_data.shape[0]
     n_grid_t = q_data.shape[1]
     #

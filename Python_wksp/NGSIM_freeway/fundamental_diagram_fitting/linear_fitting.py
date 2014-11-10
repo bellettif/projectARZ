@@ -28,9 +28,9 @@ for n_grid in [80]:
                            np.max(rho_values),
                            num = 100)
     y_values = coeffs[0][0] * x_values + coeffs[0][1]
-    v_star = np.mean(v_values)
     q_star = np.mean(q_values)
-    rho_star = q_star / v_star
+    rho_star = np.mean(rho_values)
+    v_star = q_star / rho_star
     lambda_1 = v_star
     lambda_2 = coeffs[0][0]
     #
