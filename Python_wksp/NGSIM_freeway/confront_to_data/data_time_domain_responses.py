@@ -17,6 +17,7 @@ from fourier_transform import compute_inv_fft
 PLOT_FOLDER = 'new_plots'
 CALIBRATION_FOLDER = 'new_calibration_4'
 CSV_FOLDER = 'csv'
+SLICE_FOLDER = 'slices'
 
 if PLOT_FOLDER not in os.listdir('./'):
     os.mkdir(PLOT_FOLDER)
@@ -27,7 +28,8 @@ if CALIBRATION_FOLDER not in os.listdir('./'):
 if CSV_FOLDER not in os.listdir('../'):
     os.mkdir('../' + CSV_FOLDER)
 
-
+if SLICE_FOLDER not in os.listdir('../'):
+    os.mkdir('../' + SLICE_FOLDER)
 
 N_TAUS = 80
 TAU_VALUES = np.linspace(5, 80, N_TAUS)
@@ -195,6 +197,37 @@ for n_grid in [80]:
         #
         q_sim = xi_1_sim - lambda_2 / lambda_1 * xi_2_sim
         v_sim = (lambda_1 - lambda_2) / (rho_star * lambda_1) * xi_2_sim
+        rho_sim = q_sim / v_sim
+        #
+        #    Plot slices
+        #
+        max_v = max(np.max(v_sim), np.max(v_data)) + v_star
+        min_v = min(np.min(v_sim), np.min(v_sim)) + v_star
+        max_q = max(np.max(q_sim), np.max(q_data)) + q_star
+        min_q = min(np.min(q_sim), np.min(q_sim)) + q_star
+        #
+        for f in range(v_sim.shape[0]):
+            plt.subplot(211)
+            plt.title("Data vs sim, x = %.2f meters" % x_values[f])
+            plt.plot(t_values, v_sim[f,:] + v_star)
+            plt.plot(t_values, v_data[f,:] + v_star)
+            plt.ylabel('v (m/s)')
+            plt.xlabel('t (s)')
+            plt.legend(('sim', 'data'))
+            plt.ylim((min_v, max_v))
+            plt.subplot(212)
+            plt.plot(t_values, q_sim[f,:] + q_star)
+            plt.plot(t_values, q_data[f,:] + q_star)
+            plt.ylabel('q (veh/s)')
+            plt.xlabel('t (s)')
+            plt.legend(('sim', 'data'))
+            plt.ylim((min_q, max_q))
+            plt.savefig('../' + SLICE_FOLDER +'/image' + str(f) + '.png')
+            plt.close()
+        print 'Building video'
+        #os.system('ffmpeg -f image2 -r 0.5 -i ../%s/frame*.png -vcodec mpeg4 -y movie.mp4' % SLICE_FOLDER)
+        print 'Done'
+        #
         if PLOT_ALL:
             #
             #    Check that boundary conditions do match
