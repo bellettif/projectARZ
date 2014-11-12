@@ -24,7 +24,7 @@ for n_grid in [80]:
     buckets = pd.read_pickle('../%s/buckets_%d_%d.pi' % (BIN_FOLDER, n_grid, n_grid))
     q_up = np.percentile(buckets['q'].values, 100)
     q_low = np.percentile(buckets['q'].values, 0)
-    rho_up = np.percentile(buckets['rho'].values, 75)
+    rho_up = np.percentile(buckets['rho'].values, 100)
     rho_low = np.percentile(buckets['rho'].values, 0)
     #
     filtered_buckets = buckets[(buckets['q'] <= q_up) & 
