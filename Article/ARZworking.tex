@@ -91,31 +91,25 @@
 
 \section{Introduction}
 
-Around the world traffic congestion causes a drain on the economy
-due to time and fuel wasted and collisions associated with traffic
-congestion. In 2011 congestion in America alone caused a loss of \textbackslash{}\$121
-billion due to 5.5 billion hours of extra travel time and 2.9 billion
-gallons of wasted fuel. Although congestion levels in America are
-much higher now than several decades ago, they have dropped below
-the peak in 2005, but will increase when the economy improves\cite{Texas}.
 As personal vehicle ownership increases globally, traffic congestion
 continues to be a persistent problem. It is no surprise then that
 research in the physics of traffic is developed with the ultimate
 goal of mitigating road traffic. Traffic control strategies such as
 ramp metering and variable speed limits are in place today, but a
 good model of traffic dynamics is needed for proper coordination of
-control strategies. \\
+control strategies. The very definition of a "good" model is a complex one and strongly depends on the practitioners' requirements. A first compulsory condition is realism. The model needs to accurately account for the phenomena that are key in the dynamics of the system under scrutiny. For traffic, models commonly consider that the flow of car behaves as a fluid and aim at offering a precise representation of such phenomena. However, approximations often make the use of such models more convenient. In such a case, for the resulting controller to be reliable, it is necessary to check that these approximation are theoretically and practically correct.\\
 
 \subsection{First order models}
-The topic of traffic models is vast, ranging from dense arterial networks
-to freeways spanning across the continent. In this article we focus on homogeneous road
-sections, in particular no ramps or intersections are present. The
-1950\textquoteright s saw the development of the Lighthill-Whitham-Richards
+In this article we model traffic on homogeneous road
+sections (no ramps or intersections are present) as a macroscopic flow of vehicles. The 1950\textquoteright s saw the development of the Lighthill-Whitham-Richards
 (LWR) model \cite{LW,Richards}, which became the seminal model for
 traffic flow, still studied today. This model is a conservation law
 for vehicles, based on fluid dynamics. Let $\rho$ the lineic vehicular
 density (veh/m) and $q$ the traffic flux (veh/s), dynamics follow
-the equation $\frac{\partial\rho}{\partial t}+\frac{\partial q}{\partial x}=0$.
+the equation
+\begin{equation}
+\frac{\partial\rho}{\partial t}+\frac{\partial q}{\partial x}=0
+\end{equation}.
 The simplicity of the model enabled the formulation of numerical discretization
 schemes such as Godunov (\cite{godunov,Osher}) or cell transmission
 models (\cite{daganzo1994cell,daganzo1995cell}). These are used in
@@ -155,7 +149,10 @@ To that end, they followed the same approach as in fluid dynamics
 and used a higher order model that would capture momentum related
 features. The Payne-Whitham model (PW) therefore consists of a mass
 conservation equation identical to that of LWR seconded by a momentum
-equation $\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\frac{p'\left(\rho\right)}{\rho}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}+\nu\frac{\partial^{2}v}{\partial x^{2}}$
+equation 
+\begin{equation}
+\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\frac{p'\left(\rho\right)}{\rho}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}+\nu\frac{\partial^{2}v}{\partial x^{2}}
+\end{equation}
 where the pressure function $p$ is strictly increasing and the speed
 equilibrium $V$ is decreasing. As Daganzo pointed later in his review
 of second order models (\cite{Dag_requiem}), this approach was flawed
@@ -180,13 +177,18 @@ hence another flaw.
 After this requiem, second order traffic models where not forgotten
 though. Zhang improved the mathematical structure of his first model
 (\cite{Zhang1998}). At first it was highly similar to that of PW
-in its momentum equation $\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\rho\left(V_{*}^{'}\left(\rho\right)\right)^{2}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}$
+in its momentum equation 
+\begin{equation}
+\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\rho\left(V_{*}^{'}\left(\rho\right)\right)^{2}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}
+\end{equation}
 where $\rho V_{*}^{'}\left(\rho\right)$ represents the information
 propagation speed in traffic. This improvement was conducted independently
 of Aw and Rascle's work and eventually gave birth to an identical
 model (ARZ) (\cite{AR,Z}). The second order equation in that model,
-$\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial t}+v\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial x}=\frac{\rho\left(V\left(\rho\right)-v\right)}{\tau}$,
-does not present any wrong way travels. Indeed it corresponds to a
+\begin{equation}
+\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial t}+v\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial x}=\frac{\rho\left(V\left(\rho\right)-v\right)}{\tau}
+\end{equation}
+,does not present any wrong way travels. Indeed it corresponds to a
 setup of the PW model where $\nu=0$. Also, it does not feature any
 gas-like behavior that contradicts the elementary physics of traffic.
 The key element for the model was formulating the evolution of the
@@ -244,7 +246,11 @@ inspired by the analysis of Saint-Venant equations in \cite{litrico2009modeling}
 Let $v$ the fluid velocity in a canal, $q$ the flux, $T$ the top
 width and $y$ the water height. One has a mass conservation equation
 similar to LWR ($T\frac{\partial y}{\partial t}+\frac{\partial Q}{\partial x}=0$)
-and a momentum equation structurally similar to ARZ ($\frac{\partial v}{\partial t}+v\frac{\partial V}{\partial x}+g\frac{\partial y}{\partial x}=g\left(S_{b}-S_{f}\left(x,t\right)\right)$).
+and a momentum equation structurally similar to ARZ 
+\begin{equation}
+\frac{\partial v}{\partial t}+v\frac{\partial V}{\partial x}+g\frac{\partial y}{\partial x}=g\left(S_{b}-S_{f}\left(x,t\right)\right)
+\end{equation}
+.
 $S_{b}-S_{f}\left(x,t\right)$ is a friction slope equilibrium equation
 analogous to $\frac{V\left(\rho\right)-v}{\tau}$. Linearizing this
 system about an equilibrium point enabled the design of efficient
@@ -819,16 +825,7 @@ and velocity data gathered in the well known NGSIM data set.
 \subsection{Data source: NGSIM trajectories}
 
 The NSGIM trajectory data set gathers trajectories of vehicles sampled
-with a $10$ Hz frequency thanks to high precision cameras. After
-converting units to the universal system, each point in the table
-contains several pieces of information such as \textbf{vehicle\_ID}
-(each vehicle has a unique ID), \textbf{veh\_class }($1$ for motorcycle,
-$2$ for cars, $3$ for trucks, only cars are taken into account here),
-\textbf{time\_since\_epoch\_ms} (time in ms since epoch timestamp),
-\textbf{local\_y} (longitudinal coordinate of the front center of
-the vehicle with respect to the entry edge of the section in the direction
-of travel) (meters), \textbf{veh\_v} (vehicle speed) (meters per second).
-$45$ minutes are recorded on a $650$ meter long section. There are
+with a $10$ Hz frequency thanks to high precision cameras. Data is pre-processed so as to only take cars into account, $45$ minutes are recorded on a $650$ meter long section. There are
 five lanes along the section of the freeway under scrutiny which is
 taken into account when computing the lineic density of vehicles $\rho$\@.
 The trajectories are represented in the $\left(t,x\right)$ domain

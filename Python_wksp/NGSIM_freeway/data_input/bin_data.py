@@ -8,6 +8,7 @@ import csv
 import pandas as pd
 import cPickle as pickle
 import numpy as np
+import os
 
 from matplotlib import pyplot as plt
 import matplotlib.colors as colors
@@ -16,7 +17,6 @@ import matplotlib.cm as cmx
 #
 #    Set up global constants
 #
-INPUT_DIR = '/Users/cusgadmin/projectARZ/US-101/vehicle-trajectory-data/'
 FOOT_TO_METER = 0.3048
 SAMPLING_RATE = 10.0 #s^-1
 N_LANES = 5
@@ -29,9 +29,41 @@ UNIT_DICT = {'v' : 'm/s',
              'median_ID' : 'NA',
              'rho' : 'veh/m'}
 
-periods = ['0750am-0805am',
-           '0805am-0820am',
-           '0820am-0835am']
+#
+#    For US-101
+#
+#===============================================================================
+# INPUT_DIR = '/Users/cusgadmin/projectARZ/US-101/vehicle-trajectory-data/'
+# OUTPUT_DIR = '../binned_data_US101/'
+# #
+# TRIM_LOW = 578 * FOOT_TO_METER
+# TRIM_HIGH = (578 + 698) * FOOT_TO_METER
+# #
+# periods = ['0750am-0805am', '0805am-0820am', '0820am-0835am']
+# #
+# CONTROL_GRID_FOLDER = 'control_grid_US101'
+# PLOT_FOLDER = 'plots_US101'
+#===============================================================================
+
+#
+#    For I-80
+#
+INPUT_DIR = '/Users/cusgadmin/projectARZ/I-80/vehicle-trajectory-data/'
+OUTPUT_DIR = '../binned_data_I80/'
+#
+TRIM_LOW = 420 * FOOT_TO_METER
+TRIM_HIGH = np.Inf
+#
+periods = ['0500pm-0515pm', '0515pm-0530pm']
+#
+CONTROL_GRID_FOLDER = 'control_grid_I80'
+PLOT_FOLDER = 'plots_I80'
+
+if CONTROL_GRID_FOLDER not in os.listdir('./'):
+    os.mkdir(CONTROL_GRID_FOLDER)
+
+if PLOT_FOLDER not in os.listdir('./'):
+    os.mkdir(PLOT_FOLDER)
 
 
 #
@@ -99,13 +131,13 @@ all_data[['local_x', 'local_y', 'global_x',
 all_data['t'] = (all_data['time_since_epoch_ms'] - all_data['time_since_epoch_ms'].min()) / 1000.0 
 all_data['x'] = all_data['local_y']
 all_data = all_data[['x', 't', 'veh_v', 'vehicule_ID']]
-all_data = all_data[(all_data['x'] >= (578 * FOOT_TO_METER)) &
-                    (all_data['x'] <= ((578 + 698) * FOOT_TO_METER))]
+all_data = all_data[(all_data['x'] >= TRIM_LOW) &
+                    (all_data['x'] <= TRIM_HIGH)]
 all_data['count'] = 1
 
 print len(all_data)
 
-for n_grid in [80]:
+for n_grid in [80, 100, 120, 140]:
     n_grid_x = n_grid_t = n_grid
     print 'Doing grid with %d points' % n_grid
     #
@@ -147,7 +179,7 @@ for n_grid in [80]:
     #
     #   Deleting empty buckets
     #
-    upper_cut_x = np.percentile(buckets['x_end'].values, 100)
+    upper_cut_x = np.percentile(buckets['x_end'].values, 95)
     lower_cut_x = np.percentile(buckets['x_start'].values, 2.5)
     upper_cut_t = np.percentile(buckets['t_end'].values, 95)
     lower_cut_t = np.percentile(buckets['t_start'].values, 5)
@@ -169,7 +201,7 @@ for n_grid in [80]:
         plt.title('Histogram of number of traces in buckets')
         plt.ylabel('Population')
         plt.xlabel('Number of traces')
-        plt.savefig('control_grid/traces_%d_%d' % (n_grid_t, n_grid_x))
+        plt.savefig('%s/traces_%d_%d' % (CONTROL_GRID_FOLDER, n_grid_t, n_grid_x))
         plt.close()
         print '%d, %d, 10 percentile of number of traces: %.2f' % (
                                                n_grid_t,
@@ -182,7 +214,7 @@ for n_grid in [80]:
         plt.title('Histogram of number of ids in buckets')
         plt.ylabel('Population')
         plt.xlabel('Number of distinct ids')
-        plt.savefig('control_grid/ids_%d_%d' % (n_grid_t, n_grid_x))
+        plt.savefig('%s/ids_%d_%d' % (CONTROL_GRID_FOLDER, n_grid_t, n_grid_x))
         plt.close()
         print '%d, %d, 10 percentile of number of ids: %.2f' % (
                                                n_grid_t,
@@ -201,7 +233,7 @@ for n_grid in [80]:
             plt.title('Average %s (%s)' % (opt, UNIT_DICT[opt]))
             plt.xlabel('t (seconds)')
             plt.ylabel('x (meters)')
-            plt.savefig('plots/%d_%d_%s_map.png' % (n_grid_t, n_grid_x, opt))
+            plt.savefig('%s/%d_%d_%s_map.png' % (PLOT_FOLDER, n_grid_t, n_grid_x, opt))
             plt.close()
         #
         #    Sanity check q against q_count
@@ -217,7 +249,8 @@ for n_grid in [80]:
                  np.linspace(0.0, 0.8, 100),
                  c = 'r')
         plt.legend(('y=x', 'Scatter'), 'lower right')
-        plt.savefig('plots/%d_%d_q_q_count.png' % (n_grid_t, n_grid_x))
+        plt.savefig('%s/%d_%d_q_q_count.png' % 
+                    (PLOT_FOLDER, n_grid_t, n_grid_x))
         plt.close()
         #
         #    Sanity check rho against rho_count
@@ -232,7 +265,8 @@ for n_grid in [80]:
             plt.title('Fundamental diagram v %s' % q_opt)
             plt.xlabel('v (m/s)')
             plt.ylabel('%s (%s)' % (q_opt, UNIT_DICT[q_opt]))
-            plt.savefig('plots/%d_%d_fundamental_diagram_v_%s.png' % (n_grid_t, n_grid_x, q_opt))
+            plt.savefig('%s/%d_%d_fundamental_diagram_v_%s.png' % 
+                        (PLOT_FOLDER, n_grid_t, n_grid_x, q_opt))
             plt.close()
             #
             plt.scatter(buckets['rho'].values,
@@ -241,7 +275,8 @@ for n_grid in [80]:
             plt.title('Fundamental diagram rho %s' % q_opt)
             plt.xlabel('rho (veh/m)')
             plt.ylabel('%s (%s)' % (q_opt, UNIT_DICT[q_opt]))
-            plt.savefig('plots/%d_%d_fundamental_diagram_rho_%s.png' % (n_grid_t, n_grid_x, q_opt))
+            plt.savefig('%s/%d_%d_fundamental_diagram_rho_%s.png' % 
+                        (PLOT_FOLDER, n_grid_t, n_grid_x, q_opt))
             plt.close()
         #
         plt.scatter(buckets['rho'].values,
@@ -250,10 +285,11 @@ for n_grid in [80]:
         plt.title('Fundamental diagram v rho')
         plt.xlabel('rho (veh/m)')
         plt.ylabel('v (m/s)')
-        plt.savefig('plots/%d_%d_fundamental_diagram_v_rho.png' % (n_grid_t, n_grid_x))
+        plt.savefig('%s/%d_%d_fundamental_diagram_v_rho.png' % 
+                    (PLOT_FOLDER, n_grid_t, n_grid_x))
         plt.close()
     #
     #    Pickling data
     #
-    pickle.dump(buckets, open('../binned_data/buckets_%d_%d.pi' % (n_grid_t, n_grid_x), 'wb'))
+    pickle.dump(buckets, open('%sbuckets_%d_%d.pi' % (OUTPUT_DIR, n_grid_t, n_grid_x), 'wb'))
     print 'Done'
