@@ -5,17 +5,30 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
-\bibitem{Texas}
-D.~Schrank, B.~Eisele, , T.~Lomax, Urban mobility report, Tech. rep., Texas A
-  and M Transportation Institute (2012).
-
 \bibitem{LW}
 M.~J. Lighthill, J.~B. Whitham, On kinematic waves. \uppercase{II}: A theory of
   traffic flow on long crowded roads., Proc. Royal. Soc. (1955) 317--345.
 
 \bibitem{Richards}
 P.~I. Richards, Shock waves on the highway, Operations Research 4~(1) (1956)
-  pp. 42--51.
+  42--51.
+
+\bibitem{Greenshieldsflux}
+B.~D. Greenshields, A study of traffic capacity, in: Highway Research Board
+  Proceedings, 1934, pp. 448--474.
+
+\bibitem{Greenbergflux}
+H.~Greenberg, An analysis of traffic flow, Operations Research.
+
+\bibitem{Newell1993}
+G.~F. Newell, A simplified theory of kinematic waves in highway traffic, part
+  \uppercase{II}: queueing at freeway bottlenecks, Transp. Res. Part B 27~(7)
+  (1993) 289--303.
+
+\bibitem{daganzo1994cell}
+C.~F. Daganzo, The cell transmission model: A dynamic representation of highway
+  traffic consistent with the hydrodynamic theory, Transp. Res. Part B 28~(4)
+  (1994) 269--287.
 
 \bibitem{godunov}
 S.~K. Godunov, A difference scheme for numerical solution of discontinuous
@@ -24,69 +37,34 @@ S.~K. Godunov, A difference scheme for numerical solution of discontinuous
 \bibitem{Osher}
 S.~Osher, Riemann solvers, the entropy condition, and difference, SIAM Journal
   on Numerical Analysis 21~(2) (1984) 217--235.
-\newblock \href {http://dx.doi.org/10.1137/0721016}
-  {\path{doi:10.1137/0721016}}.
-
-\bibitem{daganzo1994cell}
-C.~F. Daganzo, The cell transmission model: A dynamic representation of highway
-  traffic consistent with the hydrodynamic theory, Transportation Research Part
-  B: Methodological 28~(4) (1994) 269--287.
 
 \bibitem{daganzo1995cell}
-C.~F. Daganzo, The cell transmission model, part ii: network traffic,
-  Transportation Research Part B: Methodological 29~(2) (1995) 79--93.
+C.~F. Daganzo, The cell transmission model, part ii: network traffic, Transp.
+  Res. Part B 29~(2) (1995) 79--93.
 
 \bibitem{Dag_requiem}
-C.~Daganzo, Requiem for second-order fluid approximations of traffic flow,
-  Transportation Res. Part B 29~(4) (1995) 277--286.
+C.~F. Daganzo, Requiem for second-order fluid approximations of traffic flow,
+  Transp. Res. Part B 29~(4) (1995) 277--286.
 
 \bibitem{Jamitons2008}
 Y.~Sugiyama, M.~Fukui, M.~Kikuchi, K.~Hasebe, A.~Nakayama, K.~Nishinari,
   S.~ichi Tadaki, S.~Yukawa, Traffic jams without bottlenecks, experimental
-  evidence for the physical mechanism of the formation of a jam, New J.
-  Phys.\href {http://dx.doi.org/doi:10.1088/1367-2630/10/3/033001}
-  {\path{doi:doi:10.1088/1367-2630/10/3/033001}}.
+  evidence for the physical mechanism of the formation of a jam, New J. Phys.
 
 \bibitem{Flynn08onjamitons}
 M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold, On
-  “jamitons, ” self-sustained nonlinear traffic waves (2008).
+  ?jamitons, ? self-sustained nonlinear traffic waves (2008).
 
 \bibitem{Flynn09self-sustainednonlinear}
 M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold,
-  Self-sustained nonlinear waves in traffic flow, Physical Review E (2009)
+  Self-sustained nonlinear waves in traffic flow, Physical Review E 79 (2009)
   056113.
 
 \bibitem{Jamitons-multi-valued-fund}
-B.~{Seibold}, M.~R. {Flynn}, A.~R. {Kasimov}, R.~{Ruben Rosales}, {Constructing
-  set-valued fundamental diagrams from jamiton solutions in second order
-  traffic models}, ArXiv e-prints\href {http://arxiv.org/abs/1204.5510}
+B.~Seibold, M.~R. Flynn, A.~R. Kasimov, R.~R. Rosales, Constructing set-valued
+  fundamental diagrams from jamiton solutions in second order traffic models,
+  ArXiv e-prints\href {http://arxiv.org/abs/1204.5510}
   {\path{arXiv:1204.5510}}.
-
-\bibitem{zielke2008empirical}
-B.~A. Zielke, R.~L. Bertini, M.~Treiber, Empirical measurement of freeway
-  oscillation characteristics: an international comparison, Transportation
-  Research Record: Journal of the Transportation Research Board 2088~(1) (2008)
-  57--67.
-
-\bibitem{Mauch02freewaytraffic}
-M.~Mauch, M.~J. Cassidy, Freeway traffic oscillations: Observations and
-  predictions, in: In Proc. 15th Int. Symp. on Transportation and Traffic
-  Theory, Elsevier, 2002, pp. 653--674.
-
-\bibitem{lanechangin2005}
-B.~Coifman, S.~Krishnamurthy, X.~Wang,
-  \href{http://dx.doi.org/10.1007/3-540-28091-X_1}{Lane-change maneuvers
-  consuming freeway capacity}, in: S.~Hoogendoorn, S.~Luding, P.~Bovy,
-  M.~Schreckenberg, D.~Wolf (Eds.), Traffic and Granular Flow 03, Springer
-  Berlin Heidelberg, 2005, pp. 3--14.
-\newblock \href {http://dx.doi.org/10.1007/3-540-28091-X_1}
-  {\path{doi:10.1007/3-540-28091-X_1}}.
-\newline\urlprefix\url{http://dx.doi.org/10.1007/3-540-28091-X_1}
-
-\bibitem{lanechanging2007}
-S.~Ahn, C.~M. J., Freeway traffic oscillations and vehicle lane-change
-  maneuvers, Transportation and traffic theory 2007 : papers selected for
-  presentation at ISTTT17, a peer reviewed series since 1959. (2007) 691--710.
 
 \bibitem{payne1971models}
 H.~J. Payne, Models of Freeway Traffic and Control, Simulation Councils,
@@ -96,29 +74,21 @@ H.~J. Payne, Models of Freeway Traffic and Control, Simulation Councils,
 G.~B. Whitham, Linear and Nonlinear Waves, A Wiley-Interscience publication,
   Wiley, 1974.
 
-\bibitem{Newel}
-G.~F. Newell, \href{http://www.jstor.org/stable/167493}{Nonlinear effects in
-  the dynamics of car following}, Operations Research 9~(2) (1961) pp.
-  209--229.
-\newline\urlprefix\url{http://www.jstor.org/stable/167493}
+\bibitem{Newell}
+G.~F. Newell, Nonlinear effects in the dynamics of car following, Operations
+  Research 9~(2) (1961) 209--229.
+
+\bibitem{Z}
+H.~M. Zhang, A non-equilibrium traffic model devoid of gas-like behavior,
+  Transp. Res. Part B 36 (2002) 275--290.
 
 \bibitem{Zhang1998}
-H.~Zhang,
-  \href{http://www.sciencedirect.com/science/article/pii/S0191261598000149}{A
-  theory of nonequilibrium traffic flow}, Transportation Research Part B:
-  Methodological 32~(7) (1998) 485 -- 498.
-\newblock \href
-  {http://dx.doi.org/http://dx.doi.org/10.1016/S0191-2615(98)00014-9}
-  {\path{doi:http://dx.doi.org/10.1016/S0191-2615(98)00014-9}}.
-\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0191261598000149}
+H.~M. Zhang, A theory of nonequilibrium traffic flow, Transp. Res. Part B
+  32~(7) (1998) 485--498.
 
 \bibitem{AR}
 A.~Aw, M.~Rascle, Resurrection of second order models of traffic flow, SIAM
   Journal of Applied Mathematics 60~(3) (2000) 916--938.
-
-\bibitem{Z}
-H.~M. Zhang, A non-equilibrium traffic model devoid of gas-like behavior,
-  Transportation Res. Part B 36 (2002) 275--290.
 
 \bibitem{R_improved}
 M.~Rascle, An improved macroscopic model of traffic flow: derivation and links
@@ -126,71 +96,58 @@ M.~Rascle, An improved macroscopic model of traffic flow: derivation and links
   (2002) 581--590.
 
 \bibitem{Lebacque2007}
-J.-P. Lebacque, S.~Mammar, H.~Haj-Salem,
-  \href{http://www.sciencedirect.com/science/article/pii/S0191261507000112}{The
-  aw-rascle and zhang's model: Vacuum problems, existence and regularity of the
-  solutions of the riemann problem}, Transportation Research Part B:
-  Methodological 41~(7) (2007) 710 -- 721.
-\newblock \href {http://dx.doi.org/http://dx.doi.org/10.1016/j.trb.2006.11.005}
-  {\path{doi:http://dx.doi.org/10.1016/j.trb.2006.11.005}}.
-\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0191261507000112}
+J.-P. Lebacque, S.~Mammar, H.~Haj-Salem, The aw--rascle and zhang's model:
+  Vacuum problems, existence and regularity of the solutions of the riemann
+  problem, Transp. Res. Part B 41~(7) (2007) 710--721.
 
 \bibitem{HybridLagrangian2007}
-S.~Moutari, M.~Rascle, \href{http://dx.doi.org/10.1137/060678415}{A hybrid
-  lagrangian model based on the aw-rascle traffic flow model}, SIAM Journal on
-  Applied Mathematics 68~(2) (2007) 413--436.
-\newblock \href {http://arxiv.org/abs/http://dx.doi.org/10.1137/060678415}
-  {\path{arXiv:http://dx.doi.org/10.1137/060678415}}, \href
-  {http://dx.doi.org/10.1137/060678415} {\path{doi:10.1137/060678415}}.
-\newline\urlprefix\url{http://dx.doi.org/10.1137/060678415}
+S.~Moutari, M.~Rascle, A hybrid lagrangian model based on the aw-rascle traffic
+  flow model, SIAM Journal on Applied Mathematics 68~(2) (2007) 413--436.
 
-\bibitem{lebacque2007generic}
-J.-P. Lebacque, S.~Mammar, H.~H. Salem, Generic second order traffic flow
-  modelling, in: Transportation and Traffic Theory 2007. Papers Selected for
-  Presentation at ISTTT17, 2007.
-
-\bibitem{berthelin2008model}
-F.~Berthelin, P.~Degond, M.~Delitala, M.~Rascle, A model for the formation and
-  evolution of traffic jams, Archive for Rational Mechanics and Analysis
-  187~(2) (2008) 185--220.
+\bibitem{GodunovARZ}
+S.~Mammar, J.-P. Lebacque, H.~H. Salem, Riemann problem resolution and godunov
+  scheme for the aw-rascle-zhang model, Transportation Science 43~(4) (2009)
+  531--545.
 
 \bibitem{Fan}
 S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted
-  generalized aw-rascle-zhang model, Networks and Heterogeneous Media 9~(2)
+  generalized aw--rascle--zhang model, Networks and Heterogeneous Media 9~(2)
   (2014) 239--268.
-
-\bibitem{GodunovARZ}
-S.~Mammar, J.-P. Lebacque, H.~H. Salem,
-  \href{http://dx.doi.org/10.1287/trsc.1090.0283}{Riemann problem resolution
-  and godunov scheme for the aw-rascle-zhang model}, Transportation Science
-  43~(4) (2009) 531--545.
-\newblock \href {http://arxiv.org/abs/http://dx.doi.org/10.1287/trsc.1090.0283}
-  {\path{arXiv:http://dx.doi.org/10.1287/trsc.1090.0283}}, \href
-  {http://dx.doi.org/10.1287/trsc.1090.0283}
-  {\path{doi:10.1287/trsc.1090.0283}}.
-\newline\urlprefix\url{http://dx.doi.org/10.1287/trsc.1090.0283}
 
 \bibitem{Greenberg_congestionredux}
 J.~M. Greenberg, Congestion redux, SIAM J. Appl. Math 64 (2004) 1175--1185.
 
 \bibitem{Chen2012}
 D.~Chen, J.~Laval, Z.~Zheng, S.~Ahn, A behavioral car-following model that
-  captures traffic oscillations, Transportation Research Part B: Methodological
-  46~(6) (2012) 744 -- 761.
-\newblock \href {http://dx.doi.org/http://dx.doi.org/10.1016/j.trb.2012.01.009}
-  {\path{doi:http://dx.doi.org/10.1016/j.trb.2012.01.009}}.
+  captures traffic oscillations, Transp. Res. Part B 46~(6) (2012) 744--761.
 
-\bibitem{Zheng2011}
-Z.~Zheng, S.~Ahn, D.~Chen, J.~Laval, Freeway traffic oscillations: Microscopic
-  analysis of formations and propagations using wavelet transform, Procedia -
-  Social and Behavioral Sciences 17~(0) (2011) 702 -- 716, papers selected for
-  the 19th International Symposium on Transportation and Traffic Theory.
-\newblock \href
-  {http://dx.doi.org/http://dx.doi.org/10.1016/j.sbspro.2011.04.540}
-  {\path{doi:http://dx.doi.org/10.1016/j.sbspro.2011.04.540}}.
+\bibitem{Mauch02freewaytraffic}
+M.~Mauch, M.~J. Cassidy, Freeway traffic oscillations: Observations and
+  predictions, in: 15th Int. Symp. on Transportation and Traffic Theory,
+  Elsevier, 2002, pp. 653--674.
+
+\bibitem{lanechangin2005}
+B.~Coifman, S.~Krishnamurthy, X.~Wang,
+  \href{http://dx.doi.org/10.1007/3-540-28091-X_1}{Lane-change maneuvers
+  consuming freeway capacity}, in: Traffic and Granular Flow 03, Springer
+  Berlin Heidelberg, 2005, pp. 3--14.
+\newline\urlprefix\url{http://dx.doi.org/10.1007/3-540-28091-X_1}
+
+\bibitem{lanechanging2007}
+S.~Ahn, C.~M. J., Freeway traffic oscillations and vehicle lane-change
+  maneuvers, in: 17Th Int. Symp. on Transportation and Traffic Theory,
+  Elsevier, 2007, pp. 691--710.
 
 \bibitem{litrico2009modeling}
 X.~Litrico, V.~Fromion, Modeling and control of hydrosystems, Springer, 2009.
+
+\bibitem{Litricoapplic}
+X.~Litrico, V.~Fromion, H-infinity control of an irrigation canal pool with a
+  mixed control politics, IEEE Transactions on Control Systems Technology
+  14~(1) (2006) 99--111.
+
+\bibitem{Sturm}
+T.~W. Sturm, Open channel hydraulics, McGraw-Hill, 2001.
 
 \bibitem{Hofleitner}
 A.~Hofleitner, C.~Claudel, A.~Bayen, Reconstruction of boundary conditions from

@@ -57,7 +57,7 @@
 
 \begin{frontmatter}
 
-\title{Prediction of traffic oscillation instability with spectral analysis of the Aw-Rascle-Zhang model}
+\title{Prediction of traffic oscillation instability with spectral analysis of the Aw--Rascle--Zhang model}
 
 %% Group authors per affiliation:
 \author[add]{Authors}
@@ -78,7 +78,8 @@
 %\address[mysecondaryaddress]{360 Park Avenue South, New York}
 
 \begin{abstract}
-
+This article will focus on macroscopic second-order models as opposed
+to microscopic and mesoscopic frameworks.
 \end{abstract}
 
 \begin{keyword}
@@ -92,242 +93,105 @@
 \section{Introduction}
 
 As personal vehicle ownership increases globally, traffic congestion
-continues to be a persistent problem. It is no surprise then that
-research in the physics of traffic is developed with the ultimate
-goal of mitigating road traffic. Traffic control strategies such as
-ramp metering and variable speed limits are in place today, but a
-good model of traffic dynamics is needed for proper coordination of
-control strategies. The very definition of a "good" model is a complex one and strongly depends on the practitioners' requirements. A first compulsory condition is realism. The model needs to accurately account for the phenomena that are key in the dynamics of the system under scrutiny. For traffic, a common class of models considers that the flow of car behaves as a fluid and aim at offering a precise representation of such phenomena. Practically, Approximations often make the use of such models more convenient. In such a case, for controlling schemes of the system being modeled to be reliable, it is necessary to check that these approximations are theoretically and empirically correct.\\
+continues to be a persistent problem. One goal of research in the physics of traffic is to gain a greater understanding of the phenomena, of which proper control would lead to mitigation of congestion. Traffic control strategies such as
+ramp metering and variable speed limits are in place today, but improved models of traffic dynamics could lay the foundations for more efficient coordination of
+control strategies. 
 
-\subsection{First order models}
-In this article we model traffic on homogeneous road
-sections (no ramps or intersections are present) as a macroscopic flow of vehicles. The 1950\textquoteright s saw the development of the Lighthill-Whitham-Richards
-(LWR) model \cite{LW,Richards}, which became the seminal model for
-traffic flow, still studied today. This model is a conservation law
-for vehicles, based on fluid dynamics. Let $\rho$ the lineic vehicular
-density (veh/m) and $q$ the traffic flux (veh/s), dynamics follow
-the equation
-\begin{equation}
-\frac{\partial\rho}{\partial t}+\frac{\partial q}{\partial x}=0
-\end{equation}.
-The simplicity of the model enabled the formulation of numerical discretization
-schemes such as Godunov (\cite{godunov,Osher}) or cell transmission
-models (\cite{daganzo1994cell,daganzo1995cell}). These are used in
-everyday transportation research (e.g. Berkeley Advanced Traffic
-Simulation system).\\
-Yet as a first-order model it has inherent shortcomings. Most of these
-have been pointed out in \cite{Dag_requiem}. The LWR model fails
-to describe accurately what happens when a vehicle crosses a shock.
-Although the Rankine-Hugoniot condition guarantees macroscopic mass
-conservation, at the microscopic scale the speed of traveling particle
-would be unrealistically discontinuous. It is also well known that this first order
-model fails to predict light traffic dynamics in a sensible manner. Considering
-all drivers are identical is contradictory with platoons dissolving because
-users' desired speeds vary from one person to another. Also stop and go
-behavior otherwise named traffic oscillations cannot appear in the
-model with expanding amplitudes although this phenomenon is observed
-in practice. This phenomenon has attracted more an more attention
-in transportation research. Jamitons, traffic jam that appears without
-the presence of a bottleneck have been reproduced in small experiments
-(\cite{Jamitons2008,Flynn08onjamitons}) and explained theoretically
-as the result of a particular configuration of the traffic system
-(\cite{Flynn09self-sustainednonlinear}) as well as an outcome of
-fuzzy fundamental diagrams (\cite{Jamitons-multi-valued-fund}). Empirical
-studies have focused on detecting and quantifying this effect (\cite{zielke2008empirical})
-on actual freeways in day-to-day traffic. Car-following behaviors
-(\cite{Mauch02freewaytraffic}) and lane-changing (\cite{lanechangin2005,lanechanging2007})
-are often seen as the cause of oscillations. Several approaches have
-been developed in order to model these empirical facts.
+What constitutes an ``accurate" model often depends on the practitioners' requirements. The model must describe key phenomena in the dynamics of the system under scrutiny so that they can be controlled efficiently. For traffic, a common class of models relies on hydrodynamic theory, modeling vehicular flow in an aggregate manner. However, control schemes are only as reliable as the models on which they are based. Each model can reproduce some features of traffic flow; a challenge of traffic engineering is the selection of the model most appropriate for the application of interest. 
 
-\subsection{First generation second order models}
-This article will focus on macroscopic second order models as opposed
-to microscopic and mesoscopic frameworks. Payne and Whitham have developed
-in parallel an identical system of equations that aimed at a finer
-traffic modeling (\cite{payne1971models,whitham1974linear}). Their
-main objective was describing in details what happens inside a traffic shock.
-To that end, they followed the same approach as in fluid dynamics
-and used a higher order model that would capture momentum related
-features. The Payne-Whitham model (PW) therefore consists of a mass
-conservation equation identical to that of LWR seconded by a momentum
-equation 
+\subsection{First-order models}
+The 1950's saw the development of the \textit{Lighthill--Whitham--Richards}
+(LWR) model \cite{LW,Richards}, which became the seminal model for aggregate
+traffic flow. The dynamics of this first-order scalar hyperbolic conservation law is governed by
 \begin{equation}
-\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\frac{p'\left(\rho\right)}{\rho}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}+\nu\frac{\partial^{2}v}{\partial x^{2}}
+\rho_t+Q_x=0,
 \end{equation}
-where the pressure function $p$ is strictly increasing and the speed
-equilibrium $V$ is decreasing. As Daganzo pointed later in his review
-of second order models (\cite{Dag_requiem}), this approach was flawed
-both in the derivation of its equations and its predictions. The formulation
-of PW relies on the assumption that spacing and speed vary slowly
-which would yield negligible $2^{nd}$ and $3^{rd}$ derivatives for
-these quantities. This is contradictory with the observations of Newell
-(\cite{Newel}) where his car following model predicts sharp and quick
-changes in these quantities. In terms of physics, modeling traffic
-as a gas was highly unrealistic as fluids feature an anisotropic
-propagation of the information. Things are very different with traffic
-where cars will mostly react to downstream conditions. This is incompatible
-with the slope of one of the characteristic lines being greater than
-cars' speeds in the PW model. Also, at the upstream end of a jam with
-low density, traffic would flow in reverse if $\nu\neq0$ which is
-completely unrealistic. Finally, gas particles are physically identical
-whereas drivers have different habits and desired speeds. The heterogeneous
-composition of traffic is not taken into account in the PW model,
-hence another flaw.
+where $\rho$ is the lineic vehicular density (veh/m), and $Q(\rho)$ is the empirically measured traffic flux (veh/s), also referred to as the fundamental diagram. Numerous phonomenological models exist for $Q(\rho)$,  such as the Greenshields model \cite{Greenshieldsflux}, the Greenberg model \cite{Greenbergflux}, the triangular model, \cite{Newell1993, daganzo1994cell}, etc. The simplicity of the LWR model enabled the formulation of numerical discretization
+schemes such as the Godunov scheme \cite{godunov,Osher}, later renamed the cell transmission
+model \cite{daganzo1994cell,daganzo1995cell} in the transportation community. 
 
-\subsection{Second generation second order models}
-After this requiem, second order traffic models where not forgotten
-though. Zhang improved the mathematical structure of his first model
-(\cite{Zhang1998}). At first it was highly similar to that of PW
-in its momentum equation 
+First-order models have inherent shortcomings, most of which are discussed at length in \cite{Dag_requiem}, such as failure to capture accurately shock structure, light traffic dynamics, and stop-and-go behavior, otherwise known as traffic oscillations. The last phenomenon in particular has attracted increasing attention in transportation research. Jamitons, traffic jams that appear without the presence of a bottleneck, have been reproduced in small experiments \cite{Jamitons2008,Flynn08onjamitons} and explained theoretically
+as the result of both particular configurations of the traffic system
+\cite{Flynn09self-sustainednonlinear} and
+fuzzy fundamental diagrams \cite{Jamitons-multi-valued-fund}. 
+
+%Empirical studies have focused on detecting and quantifying this effect on actual freeways \cite{zielke2008empirical}. Car-following behaviors and lane-changing are often cited as the cause of oscillations \cite{Mauch02freewaytraffic, lanechangin2005,lanechanging2007}. Several approaches have been developed in order to model these empirical facts.
+
+\subsection{First-generation second-order models}
+In an effort to refine traffic modeling, Payne and Whitham followed the same approach as in fluid dynamics developed a higher-order model to capture momentum-related features \cite{payne1971models,whitham1974linear}. The \textit{Payne--Whitham} (PW) model consists of a mass conservation equation as in the LWR model,  
+
 \begin{equation}
-\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+\rho\left(V_{*}^{'}\left(\rho\right)\right)^{2}\frac{\partial\rho}{\partial x}=\frac{V\left(\rho\right)-v}{\tau}
+\rho_t + (\rho v)_x = 0, 
 \end{equation}
-where $\rho V_{*}^{'}\left(\rho\right)$ represents the information
-propagation speed in traffic. This improvement was conducted independently
-of Aw and Rascle's work and eventually gave birth to an identical
-model (ARZ) (\cite{AR,Z}). The second order equation in that model,
+where $\rho$ and $v$ are the density and velocity, respectively. This is seconded by a momentum equation,
 \begin{equation}
-\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial t}+v\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial x}=\frac{\rho\left(V\left(\rho\right)-v\right)}{\tau}
+v_t+vv_x+\frac{p'\left(\rho\right)}{\rho}\rho_x =\frac{V(\rho)-v}{\tau}+\nu v_{xx} ,
 \end{equation}
-,does not present any wrong way travels. Indeed it corresponds to a
-setup of the PW model where $\nu=0$. Also, it does not feature any
-gas-like behavior that contradicts the elementary physics of traffic.
-The key element for the model was formulating the evolution of the
-pseudo-pressure term $v+p\left(\rho\right)$ in a convective manner.
-This indeed changed the information propagation from a gas-like anisotropic
-behavior to a quantity that would be carried by the particles in the
-system at speed $v$. This model has since been thoroughly studied.
+where the pressure function, $p(\rho)$, is strictly increasing and the equilibrium speed, $V(\rho)$, is nonincreasing. Both are empirically measured and $V(\rho)$ satisfies $Q(\rho) = \rho V(\rho)$. The parameters $\tau$ and $\nu$ are nonnegative, representing the relaxation time and coefficient of viscosity, respectively. This approach, however, has issues in both the derivation of its equations, and its predictions \cite{Dag_requiem}. The PW model relies on the assumption that spacing and speed vary slowly, yielding negligible second and third derivatives for these quantities. This is contradictory with the observations of Newell \cite{Newell} given that the car-following model predicts sharp changes in these quantities. Also, the PW model violates the anisoptropy of traffic flow and can predict negative speeds \cite{Z}.
+
+%Despite the common practice, modeling traffic as a gas is highly unrealistic as fluids feature isotropic propagation of information, while in traffic cars react mainly to downstream conditions. This is incompatible with the PW model since the slope of one of the characteristic curves is greater than cars' speeds. Also, at the upstream end of a jam with low density, traffic would flow in reverse if $\nu\neq0$, which is unrealistic. Finally, gas particles are physically identical whereas drivers have different habits and desired speeds. 
+
+\subsection{Second-generation second-order models}
+Despite the pessimism Daganzo expressed in \cite{Dag_requiem} regarding higher-order models inspired by fluid dynamics, Zhang proposed improved models to resolve issues plaguing earlier second-order models. In \cite{Zhang1998}, he proposed a modification of the momentum equation of the PW model to tackle the issue of backward-propagating traffic.
+%\begin{equation}
+%v_t+vv_x+\rho\left(V'\left(\rho\right)\right)^{2}\rho_x=\frac{V\left(\rho\right)-v}{\tau},
+%\end{equation}
+%where $\rho V'\left(\rho\right)$ represents the information
+%propagation speed in traffic. 
+Soon after, Aw and Rascle \cite{AR} presented a model with the following momentum equation:
+\begin{equation}
+\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial t}+v\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial x}=\frac{V(\rho)-v}{\tau}.
+\end{equation}
+Including the pressure term, $p(\rho)$, in a convective derivative guarantees no information travels faster than the speed of the cars. Aw and Rascle demonstrated in \cite{AR} that ``with a suitable choice of function $p$," the above class of models avoids inconsistencies of earlier second-order models. Zhang proposed in \cite{Z} the same model with $p(\rho) = -V(\rho)$. With this choice of $p(\rho)$, the model is referred to as the \textit{Aw--Rascle--Zhang} (ARZ) model.
+
+This model has since been thoroughly studied. The work in
 \cite{AR} concluded that a relaxation term accounting for traffic
 equilibrium was needed so the speed of cars would be determined by
-the fundamental diagram and not the initial data. The effect of the
-relaxation has been studied in \cite{R_improved} where the author
-proved that, interestingly, the relaxed model converges towards LWR
-when $\tau\rightarrow0$. It has been showed in \cite{Lebacque2007}
-that the first ARZ model needed a fundamental diagram extended for
-negative and maximum speeds, zero and maximum densities so as to guarantee
-solutions to the Riemann and stability with low densities. In \cite{HybridLagrangian2007}
-discretization enabled extending the AR model to a network setup with
-junctions and traffic lights. The ARZ model now has a legacy that
-started with the extended ARZ model (\cite{lebacque2007generic}).
-An extension was presented in \cite{berthelin2008model} as a pressure-less
-limit of the AR model where drivers will not significantly slow down
-if the congestion is not heavy. More recently a generalized model
-has been created (\cite{Fan}) that corrects the fact that, in the
-ARZ model, several maximum densities co-exist which seems contradictory
-with the fact that this quantity is uniquely determined by the characteristics
-of the freeway. Finally, a Godunov descretization scheme has been
-exhibited for the ARZ model in \cite{GodunovARZ}. With an extended
-fundamental diagram, this framework was able to solve numerically the equations
-for any Riemann problem. This opened the way to a numerical comparison
-where ARZ fitted the data better than LWR.
+the fundamental diagram and not the initial data. Rascle later proved in \cite{R_improved} that the relaxed model converges towards the LWR model as $\tau \rightarrow 0$. The first ARZ model required a fundamental diagram extended to negative and maximum speeds, and zero and maximum densities so as to guarantee
+solutions to the Riemann problem and stability with low densities \cite{Lebacque2007}. In \cite{HybridLagrangian2007}, 
+discretization enabled extension of the AR model to a network setup with junctions and traffic lights. With an extended fundamental diagram, any Riemann problem for the ARZ model can be solved, allowing for a Godunov descretization scheme and numerical comparison
+in which the ARZ model fits real data better than the LWR model \cite{GodunovARZ}.
 
-\subsection{Models suited for control}
-It has been remarked in \cite{Fan} that for congested regimes
-LWR tends to offer a slightly better fit that ARZ with respect to empirical
-measurements and is outperformed for low densities. Our aim here is
-using a model that is suitable for all regimes so as to establish
-generic control strategies for traffic. The second order model
-manages to account for traffic oscillations in dense traffic
-realistically (\cite{Greenberg_congestionredux}) hence our electing it. Laplace transform
-and spectral analysis are powerful tools for control problems that
-provide a simple yet holistic represent of a system. In that regard,
-it is important to have a model that predicts oscillatory
-phenomena. Models other than second order macroscopic could have been
-chosen. Behavioral models such as \cite{Newel} and more recently
-\cite{Chen2012} depict in a detailed fashion the effects of car-following
-and lane changing on freeway dynamics. Unfortunately their formulation
-makes them hard to use for control purposes. Recent data driven approaches
-(\cite{Zheng2011}) that have tried to model spectral features of
-traffic thanks to wavelet transform are also not suitable. They are
-mostly heuristic in that they do not focus on the dynamics core to the system.
+%The ARZ model now has a legacy that started with the extended ARZ model \cite{lebacque2007generic}. An extension was presented in \cite{berthelin2008model} as a pressure-less limit of the AR model where drivers will not significantly slow down if the congestion is not heavy. More recently a generalized model proposed in \cite{Fan} corrects the fact that, in the ARZ model, several maximum densities co-exist, seemingly contradictory to the fact that this quantity is uniquely determined by the characteristics of the freeway.  
+
+\subsection{Models appropriate for control}
+It is noted in \cite{Fan} that for congested regimes, the 
+LWR model tends to offer a slightly better fit than the ARZ model with respect to empirical measurements but is outperformed for low densities. Ideally we would use a model suitable for all regimes so as to establish generic control strategies for traffic. Because such a model does not exist, we choose instead to develop the ARZ model linearized around arbitrary nominal conditions. Certain second-order models, including the ARZ model, realistically account for traffic oscillations in dense traffic \cite{Greenberg_congestionredux}. Laplace transform and spectral analysis are powerful tools for control problems, providing a simple yet holistic representation of a system. In this regard,
+it is important to have a model that predicts oscillatory phenomena. Behavioral models such as in \cite{Newell}, and more recently
+\cite{Chen2012}, depict in a detailed fashion the effects of car-following
+and lane-changing on freeway dynamics, effects often cited as the cause of oscillations \cite{Mauch02freewaytraffic, lanechangin2005,lanechanging2007}. However, second-order macroscopic models are most suited for our method. 
+
+%Recent data driven approaches \cite{Zheng2011} that attempt to model spectral features of traffic using wavelet transform are also not suitable. They are mostly heuristic in that they do not focus on the dynamics core to the system.
 
 \subsection{Similarities with Saint-Venant equations}
 Our control analysis of the ARZ equations is strongly
-inspired by the analysis of Saint-Venant equations in \cite{litrico2009modeling}.
-Let $v$ the fluid velocity in a canal, $q$ the flux, $T$ the top
-width and $y$ the water height. One has a mass conservation equation
-similar to LWR ($T\frac{\partial y}{\partial t}+\frac{\partial Q}{\partial x}=0$)
-and a momentum equation structurally similar to ARZ 
-\begin{equation}
-\frac{\partial v}{\partial t}+v\frac{\partial V}{\partial x}+g\frac{\partial y}{\partial x}=g\left(S_{b}-S_{f}\left(x,t\right)\right)
-\end{equation}
-.
-$S_{b}-S_{f}\left(x,t\right)$ is a friction slope equilibrium equation
-analogous to $\frac{V\left(\rho\right)-v}{\tau}$. Linearizing this
-system about an equilibrium point enabled the design of efficient
-control strategies for canals leveraging the realism of Saint-Venant
-equations and the elegance of spectral analysis for linear systems.
-Approximations for the low frequency domain decompose the transfer
-matrix into a combination of delay and integration components. This
-leads to setting up efficient PI controllers while enabling a simpler
-theoretical analysis of the hydraulic system.
+inspired by the pioneering analysis of the Saint-Venant equations in \cite{litrico2009modeling}. The equations are as follows:
+\begin{align}
+T\frac{\partial y}{\partial t}+\frac{\partial q}{\partial x}&=0, \\
+\frac{\partial v}{\partial t}+v\frac{\partial v}{\partial x}+g\frac{\partial y}{\partial x}&=g\left(S_{b}-S_{f}\right),
+\end{align}
+where $v$ is the fluid velocity in a canal, $q$ the flux, $T$ the top width, $y$ the water height, $S_f$ the friction slope, and $S_b$ the bed slope. Note the structural similarity to the ARZ equations. In the equilibrium regime, the term $S_{b}-S_{f}\left(x,t\right)$ is zero under uniform flow, making it analogous to the relaxation term $\frac{V(\rho)-v}{\tau}$, defined to be zero at the equilibrium. Linearizing this system around an equilibrium point enables the use of spectral methods to design efficient control strategies for canals \cite{Litricoapplic}. Approximations for the low frequency domain decompose the transfer matrix into a combination of delay and integration components, allowing for design of efficient PI controllers while enabling a simpler theoretical analysis of hydraulic systems.
 
 \subsection{Approach and contributions}
-This article will follow the steps taken in (\cite{litrico2009modeling})
-and adapt them to the analogous ARZ equations so as to achieve a two-fold
-objective. First we aim at developing strategies that enforce the
-readability and easiness of use of the ARZ model. Solutions to these
-non-linear equations are practically hard to derive in an analytical
-manner. Linearizing the system about an equilibrium is therefore a
-sound strategy that opens the way to efficient control schemes with multiple
-inputs and outputs. Although theoretically close, hydrodynamics and
-traffic belong to different contexts. It will therefore be necessary,
-in particular when considering the formulation of boundary conditions,
-to carefully guarantee the well-posedness of the problem. The other
-objective is assessing the fit quality of the model by practically
-comparing its output with actual data collected as part of the NGSIM
-project.\\
-\\
-The first main contribution of the article is therefore deriving the
-linearized equations of the ARZ model in a format that highlights
-the main properties the model should feature. An equivalent of the
-Froude in hydrodynamics number is created for traffic that separates free-flowing and
-congested regimes. The linear system will be diagonalized which provides
-a very easy to use set of equations for the Riemann invariants. Deriving
-time domain responses after formulating spectral transfer matrices
-will prove that the linearized system is unstable in the free-flowing
-regime and accounts for non-linear wave propagation giving rise to
-jamitons. An important contribution here is that these waves occur
-for an entire set of values of velocity, density and flux and lead
-the linearized system away from its equilibrium point in free-flowing
-regime. We will show that the spectral form we obtain is a formulation of a second order
-model consistent with the fact that information does not propagate
-faster than cars travel. In order
-to guarantee that linearization does not destroy the realistic properties
-of ARZ a numerical experiment is conducted. NGSIM data has been used
-previously so as to assess the quality of second order models' predictions
-(\cite{GodunovARZ,Fan}). However these studies focus on averaged
-errors and only display predictions at a couple of points on the freeway.
-Here we show an entire map of the states and conduct the model assessment
-in a holistic manner. This yields a complete analysis of the strengths
-and weaknesses of the model that would be used for control. The estimation
-procedure, unlike \cite{Fan},
-does not rely on any assumption about the typical vehicle length or
-the safety distance factor. The whole procedure is validated by comparing estimates based on independent data features. It is also described how in a linear system, Fast Fourier
-transform allows fast and simple numerical resolution for most boundary
-conditions. With this new prediction technique, no discretization
-scheme is needed and no grid size condition needs to be fulfilled.
-This procedure will prove that the linearized model successfully accounts
-for traffic oscillations and will also provide simple and consistent
-methods to calibrate the $\tau$ parameter of the model.\
+This article adapts the corresponding spectral framework of \cite{litrico2009modeling} to the analogous ARZ equations so as to achieve a two-fold objective:
+
+\begin{itemize}
+\item We aim to develop strategies that enforce ease of use of the ARZ model. Analytical solutions to these non-linear equations are difficult to derive but linearization facilitates design of efficient control schemes with multiple inputs and outputs. We must also be careful in the formulation of boundary conditions, to guarantee the well-posedness of the problem.
+\item We assess the fit quality of the model by comparing its output with actual data collected as part of the NGSIM project. 
+\end{itemize}
+
+The contributions of this article are as follows:
+
+\begin{itemize}
+\item \textit{Modeling}: We derive the characteristic form by linearization and diagonalization of the ARZ model. This form highlights important features of the model, leading to the definition of an analogue of the Froude number from hydrodynamics \cite{litrico2009modeling}, separating free-flow and congested regimes.  
+
+\item \textit{Spectral analysis}: From the charateristic form we derive the spectral form. Time domain responses derived from the spectral transfer matrices show that the linearized system is unstable in the free-flow regime and accounts for nonlinear wave propagation, giving rise to jamitons. These waves occur for an entire set of values of velocity, density, and flux and lead the linearized system away from its equilibrium point in the free-flow regime. 
+
+\item \textit{Numerical vaildation}: A numerical experiment using NGSIM data is conducted to verify that linearization does not destroy realistic properties of the ARZ model. Previous studies also using NGSIM data to assess predictions of second-order models focused on averaged errors and only displayed predictions at a couple of points along the freeway \cite{GodunovARZ,Fan}. Here we show an entire map of the states and conduct model assessment in a holistic manner, providing a complete analysis of the strengths and weaknesses of the model to be used for control. Our estimation procedure, unlike \cite{Fan}, does not rely on any assumption about the typical vehicle length or the safety distance factor. Additionally, no discretization scheme is needed and no grid size condition needs to be fulfilled. This procedure proves that the linearized model successfully accounts for traffic oscillations and also provides simple and consistent methods to calibrate the relaxation time, $\tau$.
+\end{itemize}
 
 \subsection{Organization of the article}
-The article is organized in two sections. The first one derives the
-linearized ARZ equation and their spectral domain form. It shows that
-this procedure can be conducted for any of the $\left(v,q\right)$,
-$\left(\rho,q\right)$, $\left(\rho,v\right)$ couple of variables.
-Velocity and flux being the easiest values that can be observed and
-controlled in traffic, we will mainly focus on that representation
-and its diagonalized form. Conditions distinguishing regimes will
-be highlighted and the traffic Froude number exhibited. We will then
-derive distributed transfer matrices and analyze their properties
-thanks to Bode plots. The numerical analysis will be conducted in
-the second section. After presenting the data, estimation procedures
-for $\left(v,q,\rho\right)$ and the parameters of the model, this
-study will confront empirical estimates with the numerical values
-predicted by the linearized model. We will explain how decomposing
-boundary input signals into fundamental elements thanks to the Fast
-Fourier Transform turns the spectral domain diagonalized form into
-a prediction tool.
+The rest of this article is organized as follows. In Section 2 we present the characteristic form of the ARZ model in several state variables, leading to the derivation of the spectral form of the flux and velocity system in section 3. We focus on these states in particular as they are the most easily observed and controlled in traffic. Properties of the spectral form in the two flow regimes are also analyzed. Section 4 focuses on numerical analysis. We present estimation procedures for $(v,q,\rho)$ and the model parameters, comparing empirical estimates with numerical predictions of the linearized model. We use Fast Fourier Transform to turn the spectral model into a prediction tool.
 
 
 \section{The ARZ model}
@@ -337,18 +201,12 @@ a prediction tool.
 %\item $(v, q)$ form, well-posedness 
 %\end{itemize}
 
-Aw and Rascle \cite{AR} and Zhang \cite{Z} independently developed a macroscopic second-order model of traffic flow to address the shortcomings of previously existing higher-order models. The (AR) model proposed by Aw and Rascle consists of the usual vehicle conservation and momentum equations:
-\begin{align} 
-\rho_t + (\rho v)_x &= 0, \label{AR1} \\
-(v + p(\rho))_t + v(v + p(\rho))_x &=0 \label{AR2},
-\end{align}
-where $v(x,t)$ and $\rho(x,t)$ are the density and velocity, respectively, and $p(\rho)$ is a smooth, increasing function analogous to the pressure term in fluid flow. Aw and Rascle demonstrate in \cite{AR} that ``with a suitable choice of function $p$," the above class of models avoids inconsistencies of earlier second-order models. 
-Zhang proposed in \cite{Z} the same model with $p(\rho) = -V(\rho)$, where $V(\rho) = Q(\rho)/\rho$ is the equilibrium velocity profile, and $Q(\rho)$ is the density-flow relation given by the fundamental diagram. In this paper we consider the Aw-Rascle-Zhang (ARZ) model with a relaxation term:
+In this article we consider the ARZ model with relaxation term. The model is reproduced below: 
 \begin{align} 
 \rho_t + (\rho v)_x &= 0, \label{ARZ1} \\
-(v + p(\rho))_t + v(v + p(\rho))_x &=\dfrac{V(\rho) - v}{\tau} \label{ARZ2},
+(v - V(\rho))_t + v(v - V(\rho))_x &=\dfrac{V(\rho) - v}{\tau} \label{ARZ2},
 \end{align}
-where $\tau$ is the relaxation time. Without the relaxation term cars never reach the maximum allowable speed \cite{R_improved}. Note that at the equilibrium velocity this term is zero. 
+where $\rho$ is the density, $v$ is the velocity, $\tau$ is the relaxation time, and $V(\rho) = Q(\rho)/\rho$ is the equilibrium velocity profile, where $Q(\rho)$ is the density-flow relation given by the fundamental diagram. Without the relaxation term cars never reach the maximum allowable speed \cite{R_improved}. Note that at the equilibrium velocity this term is zero. 
 
 In vector form the ARZ model is
 \begin{equation} \label{ARZrhov}
@@ -410,14 +268,14 @@ V\left( \frac{q}{v}\right) - v \\
 \end{equation}
 
 \subsection{Linearization}
-We are interested only in small deviations, $(\tilde{\rho}(x,t), \tilde{v}(x,t))$, from the equilibrium. Consider the steady flow solution $(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$. Then \eqref{ARZrhov} becomes
+We are interested in small deviations, $(\tilde{\rho}(x,t), \tilde{v}(x,t))$, from the nominal profile. Consider the nominal solution $(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$ satisfying $v_t = \rho_t = 0$. Then \eqref{ARZrhov} becomes
 \begin{align}
 v^* \frac{d\rho^*}{dx} + \frac{dv^*}{dx}\rho^* = 0, \\
 \left( v^* + \rho^* V'( \rho^*) \right)\frac{dv^*}{dx} = \dfrac{V(\rho^*) - v^*}{\tau} = 0.
 \end{align}
-We must have $\frac{dv^*}{dx}=0$ else $v^* + \rho^* V'( \rho^*) = 0$. Then we have also $\frac{d\rho^*}{dx} = 0$. Hence the steady-state solution is uniform along the road. 
+Then we must have $v^*_x=\rho^*_x=0$, so the solution is uniform along the road. 
 
-We linearize the ARZ model \eqref{ARZrhov} about the steady-state described above. We obtain the linearized system
+Linearizing the ARZ model \eqref{ARZrhov} around the nominal solution described above, we obtain
 \begin{equation} \label{rhovlin}
 \begin{pmatrix}
 \tilde{\rho} \\ \tilde{v}
@@ -438,7 +296,7 @@ v^* & \rho^* \\
 \end{pmatrix}
 \end{equation}
 
-Similarly for the density-flow system \eqref{ARZrhoq}, we linearize about the equilibrium $(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$ with deviations $(\tilde{\rho}(x,t), \tilde{q}(x,t))$. The linearized system is as follows 
+Similarly for the density-flow system \eqref{ARZrhoq}, we linearize around the equilibrium $(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$ with deviations $(\tilde{\rho}(x,t), \tilde{q}(x,t))$. The linearized system is as follows 
 \begin{equation} \label{rhoqlin}
 \begin{pmatrix}
 \tilde{\rho} \\ \tilde{q}
@@ -488,7 +346,7 @@ We rewrite the model in the characteristic form by diagonalizing the linearized 
 %\lambda_1 &= v^*, \\
 %\lambda_2 &= v^* + \rho^* V'( \rho^*).
 %\end{align}
-We begin with the density-flow system. Manipulating the equations in \eqref{rhovlin}, we find
+We begin with the density-flow system. Standard algebraic manipulations of the equations in \eqref{rhovlin} lead to:
 \begin{equation}
 \begin{pmatrix}
 \zeta_1 \\ \zeta_2
@@ -508,8 +366,9 @@ We begin with the density-flow system. Manipulating the equations in \eqref{rhov
 \zeta_1 \\ \zeta_2
 \end{pmatrix},
 \end{equation}
-where $\zeta_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\zeta_2 = \tilde{v}$ are the characteristic variables of the $(\rho, v)$ system, and $\lambda_1 = v^*$ and $\lambda_2 = v^* + \rho^* V'( \rho^*)$ are the eigenvalues. Note that $V'( \rho^*) < 0$ so $\lambda_2 \leq \lambda_1 = v^*$. Therefore this is consistent with the physical dynamics of the system as no waves travel faster than the equilibrium car speed. \\
-We proceed in the same manner above to diagonalize the $(\rho,q)$ system \eqref{rhoqlin}. The diagonal form is
+where $\zeta_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\zeta_2 = \tilde{v}$ are the Riemann invariants of the $(\rho, v)$ system, and $\lambda_1 = v^*$ and $\lambda_2 = v^* + \rho^* V'( \rho^*)$ are the eigenvalues. Note that $V'( \rho^*) < 0$ so $\lambda_2 \leq \lambda_1 = v^*$. Therefore this is consistent with the physical dynamics of the system as no waves travel faster than the equilibrium vehicle speed. 
+
+We proceed in the same manner as above to diagonalize the $(\rho,q)$ system \eqref{rhoqlin}. The diagonal form is
 \begin{equation} \label{rhoqlindiag}
 \begin{pmatrix}
 \chi_1 \\ \chi_2
@@ -529,7 +388,8 @@ We proceed in the same manner above to diagonalize the $(\rho,q)$ system \eqref{
 \chi_1 \\ \chi_2
 \end{pmatrix},
 \end{equation}
-where $\chi_1 = -\lambda_2 \tilde{\rho} + \tilde{q}$ and $\chi_2 = -\lambda_1 \tilde{\rho} + \tilde{q}$ are the characteristic variables in the $(\rho,q)$ system and the eigenvalues $\lambda_1$ and $\lambda_2$ are the same as in the density-velocity system due to the relation $q^* = \rho^*v^*$. \\
+where $\chi_1 = -\lambda_2 \tilde{\rho} + \tilde{q}$ and $\chi_2 = -\lambda_1 \tilde{\rho} + \tilde{q}$ are the characteristic variables in the $(\rho,q)$ system and the eigenvalues $\lambda_1$ and $\lambda_2$ are the same as in the density-velocity system due to the relation $q^* = \rho^*v^*$. 
+
 Diagonalization of the velocity-flow system is more involved. Letting $\xi(x,t) = (\tilde{v}, \tilde{q})^T$, we can rewrite \eqref{vqlin} as
 \begin{equation} \label{vqlinxi}
 \eta_t + A\eta_x = B\eta.
@@ -568,19 +428,28 @@ where
 -\frac{1}{\lambda_1 - \lambda_2}\tilde{v} 
 \end{pmatrix}. 
 \end{equation}
-Let $\xi = (\chi_1, -q^*\chi_2)^T$. Then we have
+
+Let $\xi = (\xi_1, \xi_2)^T = (\chi_1, -q^*\chi_2)^T$. Then we have
 \begin{equation} \label{vqlindiag}
-\xi_t + \begin{pmatrix}
+\begin{pmatrix}
+\xi_1 \\ \xi_2
+\end{pmatrix}_t + \begin{pmatrix}
 \lambda_1 & 0 \\
 0 & \lambda_2
-\end{pmatrix} \xi_x = \begin{pmatrix}
+\end{pmatrix} \begin{pmatrix}
+\xi_1 \\ \xi_2
+\end{pmatrix}_x = \begin{pmatrix}
 -\frac{1}{\tau} & 0 \\
 -\frac{1}{\tau} & 0
-\end{pmatrix} \xi,
+\end{pmatrix} \begin{pmatrix}
+\xi_1 \\ \xi_2
+\end{pmatrix},
 \end{equation}
 and
 \begin{equation} \label{eq:Riemannzeta}
-\xi = \begin{pmatrix}
+\begin{pmatrix}
+\xi_1 \\ \xi_2
+\end{pmatrix} = \begin{pmatrix}
 \dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q} \\ 
 \dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v} 
 \end{pmatrix} = 
@@ -592,25 +461,28 @@ and
 \end{pmatrix}
 \end{equation}
 
-\subsection{``Froude number"}
-In fluid mechanics the Froude number is a dimensionless number which delineates the boundary between flow regimes. Using the eigenvalues of the system in the characteristic form, we are able to define a useful analog to this number.
-Since $V(\rho)$ is nonincreasing function we have $V'(\rho^*) \leq 0$. Thus there are two flow regimes, where $\lambda_1 \lambda_2 < 0$ and one characteristic curve travels downstream, and where $\lambda_1 \lambda_2 > 0$ and both characteristic curves travel upstream. 
+\subsection{The Traffic Froude Number}
+In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{Sturm, litrico2009modeling}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful analog to this number.
+Since $V(\rho)$ is nonincreasing function, we have $V'(\rho^*) \leq 0$. Thus there are two flow regimes, one where $\lambda_1 \lambda_2 < 0$ and one characteristic curve travels downstream, and one where $\lambda_1 \lambda_2 > 0$ and both characteristic curves travel upstream. 
 
-Define $F := \dfrac{\rho^*V'( \rho^*)}{v^*}$. Then we have
+We define the Traffic Froude Number (TFN) as
+\begin{equation}
+F = \dfrac{\rho^*V'( \rho^*)}{v^*}.
+\end{equation} 
+Then we have
 \begin{equation*}
 \begin{cases}
 F > 1 &\Rightarrow |\rho^*V'(\rho^*)| > v^* \quad \Rightarrow \lambda_2  <0 \\
 F < 1 &\Rightarrow |\rho^*V'(\rho^*)| < v^* \quad \Rightarrow \lambda_2 > 0
 \end{cases}.
 \end{equation*}
-Note also that $\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$. Hence the system is in free flow when $F<1$ and congestion when $F>1$. 
+Note also that $\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$. Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the supercritical and subcritical regimes, respectively \cite{litrico2009modeling}.
 
 
-\section{Frequency domain analysis}
+\section{Spectral analysis of the linearized ARZ model}
 We consider only the $(v,q)$ system for the frequency domain analysis for practical control purposes as described above.
 \subsection{State-transition matrix}
-In this section we analyze the linearized ARZ model in the frequency domain. For control purposes we are most interested in the $(v,q)$ system. \\
-Working with the \eqref{vqlindiag} we obtain the following ODE
+Taking the Laplace transform of the diagonalized form \eqref{vqlindiag} we obtain the following ODE
 \begin{equation}
 \dfrac{\partial \hat{\zeta} (x,s)}{\partial x} = \mathscr{A}(s)\hat{\zeta}(x,s) + \mathscr{B}\zeta(x,t=0^-),
 \end{equation}
@@ -703,7 +575,7 @@ We generate Bode plots using the following parameters taken from \cite{Hofleitne
 The Bode plots for the physical variables are display on Figure ~\ref{fig:Magn_phase_physx} and Figure \ref{Magn_spatial_physx}. For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented on Figure \ref{fig:Magn_phase_diag} and Figure \ref{Magn_spatial_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
 
 \begin{figure}
-\begin{centering}
+\centering
 \begin{tabular}{cc}
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{IOv_-3to-1}
 & 
@@ -714,12 +586,11 @@ The Bode plots for the physical variables are display on Figure ~\ref{fig:Magn_p
 Magnitude and phase bode plots for $\psi_{11}(L,s)$ and $\psi_{12}(L,s)$ (left) and for $\psi_{21}(L,s)$ and $\psi_{22}(L,s)$ (right). (Physical variables)
 \label{fig:Magn_phase_physx}
 }
-\par\end{centering}
 \end{figure}
 
 
 \begin{figure}
-\begin{centering}
+\centering
 \begin{tabular}{cc}
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr11_-3to-1}
 &
@@ -739,7 +610,6 @@ Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 \tabularnewline
 \end{tabular}
 \caption{Spatial magnitude Bode plots for physical variables\label{Magn_spatial_physx}}
-\par\end{centering}
 \end{figure}
 
 \begin{figure}[H]
@@ -749,7 +619,7 @@ Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 \end{figure}
 
 \begin{figure}
-\begin{centering}
+\centering
 \begin{tabular}{cc}
 \includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{diagdistr11freeflow}
 &
@@ -761,7 +631,6 @@ Spatial magnitude Bode plot for $\phi_{22}(x,s)$.
 \tabularnewline
 \end{tabular}
 \caption{Spatial magnitude Bode plots for Riemann invariants\label{Magn_spatial_diag}}
-\par\end{centering}
 \end{figure}
 
 \subsubsection{Step responses}
@@ -832,13 +701,13 @@ The trajectories are represented in the $\left(t,x\right)$ domain
 on Figure \ref{fig:NGSIM-trajectories}.
 Only a subset of the spatial domain will be used though because of the presence of ramps that would break the homogeneity of the freeway. The viable domain is $200$ meters long.
 
-\begin{figure}
-\begin{centering}
-\includegraphics[width=12cm]{/Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_low_res}
-\par\end{centering}
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{Numerics/US-101_all_traj_low_res}
 
 \protect\caption{NGSIM trajectories (the color represents the measured speed of each
-car in m/s)\label{fig:NGSIM-trajectories}}
+car in m/s)}
+\label{fig:NGSIM-trajectories}
 \end{figure}
 
 
@@ -945,18 +814,15 @@ yields a $10^{th}$ percentile of $56$ distinct vehicles per bin.
 The histograms of number of traces and vehicle per bucket are represented
 on Figure \ref{fig:Grid control}.
 
-\begin{figure}
-\begin{centering}
+\begin{figure}[H]
+\centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
-Histogram of number of traces per bucket & Histogram of number of distinct vehicles per bucket\tabularnewline
+\includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
+Histogram of number of traces per bucket & Histogram of number of distinct vehicles per bucket \tabularnewline
 \end{tabular}
-\par\end{centering}
-
-\protect\caption{Choice motivation for a $80\times80$ bucket based discretization
-grid for the NGSIM data\label{fig:Grid control}}
-
-
+\caption{Choice motivation for a $80\times 80$ bucket based discretization
+grid for the NGSIM data}
+\label{fig:Grid control}
 \end{figure}
 
 
@@ -978,11 +844,9 @@ is plotted against $\widehat{q}_{i,j}$ coincides almost perfectly
 with the line $y=x$ therefore validating the overall binning and
 estimation procedure.
 
-\begin{figure}
-\begin{centering}
-\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Sanity check/80_80_q_q_count\string".png}
-\par\end{centering}
-
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
 \protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{count}$
 is plotted against $\widehat{q}_{i,j}$ across the grid of buckets.
 \label{fig:Sanity-check}}
@@ -1022,19 +886,15 @@ from now on.
 Damped oscillations
 and smoothly decaying values along characteristic lines are the main characteristic the practical implementation of the model should feature.
 
-\begin{figure}
-\begin{centering}
+\begin{figure}[H]
+\centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_rho_map\string".png}\tabularnewline
-\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_count_map\string".png}\tabularnewline
+\includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_rho_map\string".png}\tabularnewline
+\includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_q_count_map\string".png}\tabularnewline
 \end{tabular}
-\par\end{centering}
-
 \protect\caption{Estimated values for $\left(v,q,\rho\right)$. Top left: $\widehat{v}_{i,j}$.
 Top right: $\widehat{\rho}_{i,j}$. Bottom left: $\widehat{q}_{i,j}$.
 Bottom right: $\widehat{q}_{i,j}^{count}$ .\label{fig:Estimated-values}}
-
-
 \end{figure}
 
 
@@ -1061,13 +921,11 @@ in that context. Observed deviations from the equilibrium are indeed
 generally small. (The equilibrium, i.e. the linearization point, is estimated
 below).
 
-\begin{figure}
-\begin{centering}
+\begin{figure}[H]
+\centering
 \begin{tabular}{ccc}
-\includegraphics[width=5cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count\string".png} & \includegraphics[width=5cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png} & \includegraphics[width=5cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png}\tabularnewline
+\includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count\string".png} & \includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png} & \includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png}\tabularnewline
 \end{tabular}
-\par\end{centering}
-
 \protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{count}\right)$.
 Middle: $\left(\widehat{v},\widehat{q}^{count}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
 \label{fig:Empirical-fundamental-diagrams}}
@@ -1109,19 +967,15 @@ into a fully justified statistical procedure. This article focuses
 is qualitatively assessing what phenomena can be accounted for by
 the linearized second order model.
 
-\begin{figure}
-\begin{centering}
+\begin{figure}[H]
+\centering
 \begin{tabular}{cccccc}
-\multicolumn{6}{c}{\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}}\tabularnewline
+\multicolumn{6}{c}{\includegraphics[width=8cm]{\string"/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}}\tabularnewline
 $\widehat{\lambda}_{1}=8.96$ & $\widehat{\lambda}_{2}=-4.37$ & $\widehat{\rho}^{*}=0.049$ & $\widehat{v}^{*}=8.96$ & $\widehat{q}^{*}=0.44$ & $r^{2}=0.48$\tabularnewline
 \end{tabular}
-\par\end{centering}
-
 \protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The figure shows
 the average point used to compute $\widehat{v}^{*}$ and $\widehat{q}^{*}$.
 The affine model used to estimate $\lambda_{2}$ is also plotted.\label{fig:Calibration-of-eigen-values}}
-
-
 \end{figure}
 
 
@@ -1180,21 +1034,17 @@ quantities along their characteristic lines. This is a realistic feature
 that cannot be paralleled by first order models. The general quality of the fit is rather good with most of the error on $v$ and $q$ in a $20$ percent range of the data's amplitude between minimum and maximum values. What is also quite satisfactory is that the linearized second order model manages to capture oscillations observed on the boundary and account for their decay accurately. The value of $\tau$ used to compute the
 plots below is described in \ref{sub:Calibration-of-tau}.
 
-\begin{figure}
-\begin{centering}
+\begin{figure}[H]
+\centering
 \begin{tabular}{c}
-\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_map_n=80_best_tau\string".png}\tabularnewline
+\includegraphics[width=12cm]{\string"/Numerics/Maps simulated/vq_map_n=80_best_tau\string".png}\tabularnewline
 Top row: $q$. Bottom row: $v$.\tabularnewline
-\includegraphics[width=12cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_map_n=80_best_tau\string".png}\tabularnewline
+\includegraphics[width=12cm]{\string"/Numerics/Maps simulated/xi_map_n=80_best_tau\string".png}\tabularnewline
 Top row: $\xi_{1}$. Bottom row: $\xi_{2}$.\tabularnewline
 \end{tabular}
-\par\end{centering}
-
 \protect\caption{Data versus predicted. Top: $\left(v,q\right)$ domain. Bottom: $\left(\xi_{1},\xi_{2}\right)$
 domain. First column: data. Middle column: predictions. Third column:
 prediction - data.\label{fig:Data-versus-predicted.}}
-
-
 \end{figure}
 
 
@@ -1212,14 +1062,12 @@ to $\tau$. This quantity is computed for different values of $\tau$
 ranging from $5$ to $80$ seconds. The value offering the best fit
 is $\tau^{*}=39.18$.
 
-\begin{figure}
-\begin{centering}
+\begin{figure}[H]
+\centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/q_v_error_80\string".png} & \includegraphics[width=8cm]{\string"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/xi_1_xi_2_error_80\string".png}\tabularnewline
+\includegraphics[width=8cm]{\string"/Numerics/Calibration of Tau/q_v_error_80\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Calibration of Tau/xi_1_xi_2_error_80\string".png}\tabularnewline
 MAE over $q$ and $v$ & MAE over $\xi_{1}$ and $\xi_{2}$ and sum of both MAE.\tabularnewline
 \end{tabular}
-\par\end{centering}
-
 \protect\caption{Calibration of $\tau$, one minimizes the sum of MAE over $\xi_{1}$
 and $\xi_{2}$.}
 \end{figure}

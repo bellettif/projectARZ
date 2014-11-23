@@ -1,17 +1,24 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 NOV 2014 10:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.24)  23 NOV 2014 06:53
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
 **ARZworking.tex
-(./ARZworking.tex
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 78 languages loaded.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/elsarticle/elsarticle.cls
+(C:\Users\Mandy\Documents\GitHub\projectARZ\Article\ARZworking.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\elsarticle\elsarticle.cls"
 Document Class: elsarticle 2009/09/17, 1.2.0: Elsevier Ltd
 \@bls=\dimen102
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -26,31 +33,31 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen103
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/pdftex-def/pdftex.def
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
@@ -58,16 +65,16 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/pifont.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\pifont.sty"
 Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
 LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/upzd.fd
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\upzd.fd"
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Try loading font information for U+psy on input line 64.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/psnfss/upsy.fd
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\upsy.fd"
 File: upsy.fd 2001/06/04 font definitions for U/psy.
 ))
 \c@tnote=\count88
@@ -88,8 +95,8 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@sep=\skip43
 \@@sep=\skip44
 
-(./ARZworking.spl)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/natbib/natbib.sty
+(C:\Users\Mandy\Documents\GitHub\projectARZ\Article\ARZworking.spl)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
 \bibsep=\skip46
@@ -97,21 +104,19 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count94
 )
 \splwrite=\write3
-\openout3 = `ARZworking.spl'.
-
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/geometry/geometry.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count95
@@ -126,17 +131,18 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen115
 \Gm@layoutvoffset=\dimen116
 \Gm@dimlist=\toks17
-)
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hyperref.sty
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
 Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
@@ -165,7 +171,7 @@ Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
 )
 Package hobsub Info: Skipping package `hobsub' (already loaded).
 Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
-Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
 Package: xcolor-patch 2011/01/30 xcolor patch
 Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
@@ -173,22 +179,22 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/auxhook.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen117
 \Hy@linkcounter=\count98
 \Hy@pagecounter=\count99
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/pd1enc.def
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count100
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -200,7 +206,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count101
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -225,36 +231,36 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hpdftex.def
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count106
 \c@bookmark@seq@number=\count107
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip47
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsmath.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amstext.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsgen.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks18
 \ex@=\dimen121
 ))
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsbsy.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen122
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/amsmath/amsopn.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count108
@@ -295,11 +301,11 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty"
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup4
 )
-(/usr/local/texlive/2014/texmf-dist/tex/latex/float/float.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count120
 \float@exts=\toks23
@@ -307,9 +313,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box33
 )
-(./ARZworking.aux)
-\openout1 = `ARZworking.aux'.
-
+(C:\Users\Mandy\Documents\GitHub\projectARZ\Article\ARZworking.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
@@ -325,7 +329,7 @@ LaTeX Font Info:    ... okay on input line 56.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
 
-(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count121
 \scratchdimen=\dimen130
@@ -338,21 +342,7 @@ LaTeX Font Info:    ... okay on input line 56.
 \MPnumerator=\count125
 \makeMPintoPDFobject=\count126
 \everyMPtoPDFconversion=\toks26
-) (/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -389,10 +379,10 @@ e
 
 \AtBeginShipoutBox=\box35
 Package hyperref Info: Link coloring OFF on input line 56.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count127
@@ -401,158 +391,164 @@ LaTeX Info: Redefining \ref on input line 56.
 LaTeX Info: Redefining \pageref on input line 56.
 LaTeX Info: Redefining \nameref on input line 56.
 
-(./ARZworking.out) (./ARZworking.out)
+(C:\Users\Mandy\Documents\GitHub\projectARZ\Article\ARZworking.out)
+(C:\Users\Mandy\Documents\GitHub\projectARZ\Article\ARZworking.out)
 \@outlinefile=\write4
-\openout4 = `ARZworking.out'.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 89.
 
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 88.
-
-(/usr/local/texlive/2014/texmf-dist/tex/latex/jknapltx/ursfs.fd
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+) [1
+
+
+{C:/Users/Mandy/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 179.
+
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 94--101
-
- []
-
-[1
-
-
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 265--312
-
- []
-
-[3] [4] [5] [6] <figures/supercr.pdf, id=325, 614.295pt x 794.97pt>
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 179.
+ [3] [4] [5]
+[6] <figures/supercr.pdf, id=333, 614.295pt x 794.97pt>
 File: figures/supercr.pdf Graphic file (type pdf)
 
 <use figures/supercr.pdf>
-Package pdftex.def Info: figures/supercr.pdf used on input line 664.
+Package pdftex.def Info: figures/supercr.pdf used on input line 536.
 (pdftex.def)             Requested size: 256.0748pt x 159.40701pt.
- [7]
-Underfull \hbox (badness 10000) in paragraph at lines 669--670
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
-) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.694 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.694 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.694 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.694 \end{align}
-                 
-Underfull \hbox (badness 10000) in paragraph at lines 701--702
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.566 \end{align}
+                  <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/s
+upercr.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 573--574
 
  []
 
-<figures/IOv_-3to-1.pdf, id=355, 614.295pt x 794.97pt>
+<figures/IOv_-3to-1.pdf, id=364, 614.295pt x 794.97pt>
 File: figures/IOv_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/IOv_-3to-1.pdf>
-Package pdftex.def Info: figures/IOv_-3to-1.pdf used on input line 708.
+Package pdftex.def Info: figures/IOv_-3to-1.pdf used on input line 580.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/IOq_-3to-1.pdf, id=356, 614.295pt x 794.97pt>
+<figures/IOq_-3to-1.pdf, id=365, 614.295pt x 794.97pt>
 File: figures/IOq_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/IOq_-3to-1.pdf>
-Package pdftex.def Info: figures/IOq_-3to-1.pdf used on input line 710.
+Package pdftex.def Info: figures/IOq_-3to-1.pdf used on input line 582.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 707--716
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 579--588
  [][] 
  []
 
-<figures/distr11_-3to-1.pdf, id=357, 614.295pt x 794.97pt>
+<figures/distr11_-3to-1.pdf, id=366, 614.295pt x 794.97pt>
 File: figures/distr11_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr11_-3to-1.pdf>
-Package pdftex.def Info: figures/distr11_-3to-1.pdf used on input line 724.
+Package pdftex.def Info: figures/distr11_-3to-1.pdf used on input line 595.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr12_-3to-1.pdf, id=358, 614.295pt x 794.97pt>
+<figures/distr12_-3to-1.pdf, id=367, 614.295pt x 794.97pt>
 File: figures/distr12_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr12_-3to-1.pdf>
-Package pdftex.def Info: figures/distr12_-3to-1.pdf used on input line 726.
+Package pdftex.def Info: figures/distr12_-3to-1.pdf used on input line 597.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr21_-3to-1.pdf, id=359, 614.295pt x 794.97pt>
+<figures/distr21_-3to-1.pdf, id=368, 614.295pt x 794.97pt>
 File: figures/distr21_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr21_-3to-1.pdf>
-Package pdftex.def Info: figures/distr21_-3to-1.pdf used on input line 732.
+Package pdftex.def Info: figures/distr21_-3to-1.pdf used on input line 603.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr22_-3to-1.pdf, id=360, 614.295pt x 794.97pt>
+<figures/distr22_-3to-1.pdf, id=369, 614.295pt x 794.97pt>
 File: figures/distr22_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr22_-3to-1.pdf>
-Package pdftex.def Info: figures/distr22_-3to-1.pdf used on input line 734.
+Package pdftex.def Info: figures/distr22_-3to-1.pdf used on input line 605.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 723--741
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 594--612
  [][] 
  []
 
-<figures/diagIOfreeflow.pdf, id=361, 614.295pt x 794.97pt>
+<figures/diagIOfreeflow.pdf, id=370, 614.295pt x 794.97pt>
 File: figures/diagIOfreeflow.pdf Graphic file (type pdf)
 
 <use figures/diagIOfreeflow.pdf>
-Package pdftex.def Info: figures/diagIOfreeflow.pdf used on input line 747.
+Package pdftex.def Info: figures/diagIOfreeflow.pdf used on input line 617.
 (pdftex.def)             Requested size: 312.9803pt x 231.07935pt.
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ [8pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.750 
-       <./figures/supercr.pdf>] [9pdfTeX warning (ext4): destination with the s
-ame identifier (name{figure.2}) has been already used, duplicate ignored
+l.620 
+      pdfTeX warning (ext4): destination with the same identifier (name{equatio
+n.3.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.750 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-3}) has been already used, duplicate ignored
+l.620 
+      pdfTeX warning (ext4): destination with the same identifier (name{equatio
+n.3.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.750 
-       <./figures/IOv_-3to-1.pdf> <./figures/IOq_-3to-1.pdf> <./figures/distr11
-_-3to-1.pdf> <./figures/distr12_-3to-1.pdf> <./figures/distr21_-3to-1.pdf> <./f
-igures/distr22_-3to-1.pdf>]
-<figures/diagdistr11freeflow.pdf, id=432, 614.295pt x 794.97pt>
+l.620 
+      pdfTeX warning (ext4): destination with the same identifier (name{equatio
+n.3.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.620 
+      pdfTeX warning (ext4): destination with the same identifier (name{equatio
+n.3.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.620 
+       <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/IOv_-3to-1.p
+df> <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/IOq_-3to-1.pdf>
+] [9pdfTeX warning (ext4): destination with the same identifier (name{figure.3}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.620 
+       <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/distr11_-3to
+-1.pdf> <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/distr12_-3t
+o-1.pdf> <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/distr21_-3
+to-1.pdf> <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/distr22_-
+3to-1.pdf>] <figures/diagdistr11freeflow.pdf, id=433, 614.295pt x 794.97pt>
 File: figures/diagdistr11freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr11freeflow.pdf>
-Package pdftex.def Info: figures/diagdistr11freeflow.pdf used on input line 754
+Package pdftex.def Info: figures/diagdistr11freeflow.pdf used on input line 624
 .
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/diagdistr21freeflow.pdf, id=433, 614.295pt x 794.97pt>
+<figures/diagdistr21freeflow.pdf, id=434, 614.295pt x 794.97pt>
 File: figures/diagdistr21freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr21freeflow.pdf>
-Package pdftex.def Info: figures/diagdistr21freeflow.pdf used on input line 756
+Package pdftex.def Info: figures/diagdistr21freeflow.pdf used on input line 626
 .
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 753--763
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 623--633
  [][] 
  []
 
@@ -561,85 +557,85 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 753--763
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.775 \end{align}
+l.644 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{figure.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.775 \end{align}
-                  <./figures/diagdistr11freeflow.pdf> <./figures/diagdistr21fre
-eflow.pdf> <./figures/diagIOfreeflow.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 779--780
+l.644 \end{align}
+                  <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/d
+iagdistr11freeflow.pdf> <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/fig
+ures/diagdistr21freeflow.pdf> <C:/Users/Mandy/Documents/GitHub/projectARZ/Artic
+le/figures/diagIOfreeflow.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 648--649
 
  []
 
-<figures/subcr.pdf, id=463, 614.295pt x 794.97pt>
+<figures/subcr.pdf, id=464, 614.295pt x 794.97pt>
 File: figures/subcr.pdf Graphic file (type pdf)
  <use figures/subcr.pdf>
-Package pdftex.def Info: figures/subcr.pdf used on input line 783.
+Package pdftex.def Info: figures/subcr.pdf used on input line 652.
 (pdftex.def)             Requested size: 256.0748pt x 159.40701pt.
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.811 \end{align}
+l.680 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.811 \end{align}
+l.680 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.811 \end{align}
+l.680 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.811 \end{align}
+l.680 \end{align}
                   [11pdfTeX warning (ext4): destination with the same identifie
 r (name{figure.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.825 \subsection
-                 {Data source: NGSIM trajectories} <./figures/subcr.pdf>]
-</Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_low_res.p
-ng, id=479, 1156.32pt x 578.16pt>
-File: /Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_low_
-res.png Graphic file (type png)
+l.694 \subsection
+                 {Data source: NGSIM trajectories} <C:/Users/Mandy/Documents/Gi
+tHub/projectARZ/Article/figures/subcr.pdf>]
+<figures/Numerics/US-101_all_traj_low_res.png, id=480, 1156.32pt x 578.16pt>
+File: figures/Numerics/US-101_all_traj_low_res.png Graphic file (type png)
 
-<use /Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_low_r
-es.png>
-Package pdftex.def Info: /Users/cusgadmin/projectARZ/Article/figures/Numerics/U
-S-101_all_traj_low_res.png used on input line 837.
+<use figures/Numerics/US-101_all_traj_low_res.png>
+Package pdftex.def Info: figures/Numerics/US-101_all_traj_low_res.png used on i
+nput line 706.
 (pdftex.def)             Requested size: 341.43306pt x 170.71451pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 846.
+(hyperref)                removing `math shift' on input line 715.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 846.
+(hyperref)                removing `\left' on input line 715.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 846.
+(hyperref)                removing `\right' on input line 715.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 846.
+(hyperref)                removing `math shift' on input line 715.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--896
+Underfull \hbox (badness 10000) in paragraph at lines 754--765
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 885--896
+Underfull \hbox (badness 10000) in paragraph at lines 754--765
 
  []
 
@@ -648,447 +644,407 @@ Underfull \hbox (badness 10000) in paragraph at lines 885--896
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.896 \[
-         </Users/cusgadmin/projectARZ/Article/figures/Numerics/US-101_all_traj_
-low_res.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 909--924
+l.765 \[
+         <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures/Numerics/U
+S-101_all_traj_low_res.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 778--793
 
  []
 
 
-Overfull \hbox (3.0611pt too wide) in paragraph at lines 909--924
-[]$\OT1/cmr/m/n/10 . There-fore, $\OML/cmm/m/it/10 card []$
+Overfull \hbox (3.0611pt too wide) in paragraph at lines 778--793
+$[]$\OT1/cmr/m/n/10 . There-fore, $\OML/cmm/m/it/10 card []$
  []
 
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/trac
-es_80_80".png, id=491, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid
-/traces_80_80".png Graphic file (type png)
-
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/
-traces_80_80".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Discretisation grid/traces_80_80".png used on input line 951.
+<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=491, 578.16pt x 4
+33.62pt>
+File: figures/"/Numerics/Discretisation grid/traces_80_80".png Graphic file (ty
+pe png)
+ <use figures/"/Numerics/Discretisation grid/traces_80_80".png>
+Package pdftex.def Info: figures/"/Numerics/Discretisation grid/traces_80_80".p
+ng used on input line 820.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/ids_
-80_80".png, id=492, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid
-/ids_80_80".png Graphic file (type png)
-
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation grid/
-ids_80_80".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Discretisation grid/ids_80_80".png used on input line 951.
+<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=492, 578.16pt x 433.
+62pt>
+File: figures/"/Numerics/Discretisation grid/ids_80_80".png Graphic file (type 
+png)
+ <use figures/"/Numerics/Discretisation grid/ids_80_80".png>
+Package pdftex.def Info: figures/"/Numerics/Discretisation grid/ids_80_80".png 
+used on input line 820.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 950--954
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 819--824
  [][] 
  []
 
-
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Sanity check/80_80_q_q_c
-ount".png, id=494, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Sanity check/80_80_
-q_q_count".png Graphic file (type png)
-
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Sanity check/80_80_q
-_q_count".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Sanity check/80_80_q_q_count".png used on input line 983.
-(pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 993.
-
-[13] [14pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.8}) has been already used, duplicate ignored
+[13pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1012 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1012 
-        </Users/cusgadmin/projectARZ/Article/figures/Numerics/Discretisation gr
-id/traces_80_80.png> </Users/cusgadmin/projectARZ/Article/figures/Numerics/Disc
-retisation grid/ids_80_80.png> </Users/cusgadmin/projectARZ/Article/figures/Num
-erics/Sanity check/80_80_q_q_count.png>]
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_v_map".p
-ng, id=513, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_v_m
-ap".png Graphic file (type png)
-
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_v_ma
-p".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps data/80_80_v_map".png used on input line 1028.
+l.846 
+       <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures//Numerics/Di
+scretisation grid/traces_80_80.png> <C:/Users/Mandy/Documents/GitHub/projectARZ
+/Article/figures//Numerics/Discretisation grid/ids_80_80.png>]
+<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=503, 578.16pt x 433.6
+2pt>
+File: figures/"/Numerics/Sanity check/80_80_q_q_count".png Graphic file (type p
+ng)
+ <use figures/"/Numerics/Sanity check/80_80_q_q_count".png>
+Package pdftex.def Info: figures/"/Numerics/Sanity check/80_80_q_q_count".png u
+sed on input line 849.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_rho_map"
-.png, id=514, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_rho
-_map".png Graphic file (type png)
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_rho_
-map".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps data/80_80_rho_map".png used on input line 1028.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\left' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\right' on input line 857.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 857.
+
+<figures/"/Numerics/Maps data/80_80_v_map".png, id=505, 578.16pt x 433.62pt>
+File: figures/"/Numerics/Maps data/80_80_v_map".png Graphic file (type png)
+
+<use figures/"/Numerics/Maps data/80_80_v_map".png>
+Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_v_map".png used on 
+input line 892.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_map".p
-ng, id=515, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_m
-ap".png Graphic file (type png)
+<figures/"/Numerics/Maps data/80_80_rho_map".png, id=506, 578.16pt x 433.62pt>
+File: figures/"/Numerics/Maps data/80_80_rho_map".png Graphic file (type png)
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_ma
-p".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps data/80_80_q_map".png used on input line 1029.
+<use figures/"/Numerics/Maps data/80_80_rho_map".png>
+Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_rho_map".png used o
+n input line 892.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_count_
-map".png, id=516, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_c
-ount_map".png Graphic file (type png)
+<figures/"/Numerics/Maps data/80_80_q_map".png, id=507, 578.16pt x 433.62pt>
+File: figures/"/Numerics/Maps data/80_80_q_map".png Graphic file (type png)
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_q_co
-unt_map".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps data/80_80_q_count_map".png used on input line 1029.
+<use figures/"/Numerics/Maps data/80_80_q_map".png>
+Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_q_map".png used on 
+input line 893.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 1027--1031
+<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=508, 578.16pt x 433.62
+pt>
+File: figures/"/Numerics/Maps data/80_80_q_count_map".png Graphic file (type pn
+g)
+ <use figures/"/Numerics/Maps data/80_80_q_count_map".png>
+Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_q_count_map".png us
+ed on input line 893.
+(pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
+
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 891--897
  [][] 
  []
+
+[14pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.899 
+       <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures//Numerics/Sa
+nity check/80_80_q_q_count.png>]
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png, id=51
+9, 578.16pt x 433.62pt>
+File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png G
+raphic file (type png)
+
+<use figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png>
+Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
+_rho_q_count".png used on input line 927.
+(pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
+
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=520,
+ 578.16pt x 433.62pt>
+File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png Gra
+phic file (type png)
+
+<use figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png>
+Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
+_v_q_count".png used on input line 927.
+(pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
+File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png Gra
+phic file (type png)
+
+<use figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png>
+Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
+_v_q_count".png used on input line 927.
+(pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 
 [15pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1063 
-        </Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_v
-_map.png> </Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80
-_rho_map.png> </Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/8
-0_80_q_map.png> </Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data
-/80_80_q_count_map.png>]
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamen
-tal_diagram_rho_q_count".png, id=528, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fun
-damental_diagram_rho_q_count".png Graphic file (type png)
+l.933 
+       <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures//Numerics/Ma
+ps data/80_80_v_map.png> <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/fi
+gures//Numerics/Maps data/80_80_rho_map.png> <C:/Users/Mandy/Documents/GitHub/p
+rojectARZ/Article/figures//Numerics/Maps data/80_80_q_map.png> <C:/Users/Mandy/
+Documents/GitHub/projectARZ/Article/figures//Numerics/Maps data/80_80_q_count_m
+ap.png>]
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fund
-amental_diagram_rho_q_count".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps data/80_80_fundamental_diagram_rho_q_count".png used on input line 1067.
-(pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
-
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamen
-tal_diagram_v_q_count".png, id=529, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fun
-damental_diagram_v_q_count".png Graphic file (type png)
-
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fund
-amental_diagram_v_q_count".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps data/80_80_fundamental_diagram_v_q_count".png used on input line 1067.
-(pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fun
-damental_diagram_v_q_count".png Graphic file (type png)
-
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fund
-amental_diagram_v_q_count".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps data/80_80_fundamental_diagram_v_q_count".png used on input line 1067.
-(pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 936.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1078.
+(hyperref)                removing `\lambda' on input line 936.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1078.
+(hyperref)                removing `subscript' on input line 936.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1078.
+(hyperref)                removing `math shift' on input line 936.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1078.
+(hyperref)                removing `math shift' on input line 936.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1078.
+(hyperref)                removing `\lambda' on input line 936.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1078.
+(hyperref)                removing `subscript' on input line 936.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1078.
+(hyperref)                removing `math shift' on input line 936.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1078.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1080--1111
+Underfull \hbox (badness 10000) in paragraph at lines 938--969
 
  []
 
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of eigen val
-ues/Fundamental diagram fitting n = 80".png, id=531, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of eige
-n values/Fundamental diagram fitting n = 80".png Graphic file (type png)
+<figures/"/Numerics/Calibration of eigen values/Fundamental diagram fitting n =
+ 80".png, id=531, 578.16pt x 433.62pt>
+File: figures/"/Numerics/Calibration of eigen values/Fundamental diagram fittin
+g n = 80".png Graphic file (type png)
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of eigen
- values/Fundamental diagram fitting n = 80".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Calibration of eigen values/Fundamental diagram fitting n = 80".png used on inp
-ut line 1115.
+<use figures/"/Numerics/Calibration of eigen values/Fundamental diagram fitting
+ n = 80".png>
+Package pdftex.def Info: figures/"/Numerics/Calibration of eigen values/Fundame
+ntal diagram fitting n = 80".png used on input line 973.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1129.
+(hyperref)                removing `math shift' on input line 983.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 1129.
+(hyperref)                removing `\left' on input line 983.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\rho' on input line 1129.
+(hyperref)                removing `\rho' on input line 983.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 1129.
+(hyperref)                removing `\right' on input line 983.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1129.
+(hyperref)                removing `math shift' on input line 983.
 
 [16pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1160 \subsubsection
-                     {Simulated maps} </Users/cusgadmin/projectARZ/Article/figu
-res/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count.png> </Users/cusga
-dmin/projectARZ/Article/figures/Numerics/Maps data/80_80_fundamental_diagram_v_
-q_count.png>]
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_map_n=
-80_best_tau".png, id=542, 1011.78pt x 722.7pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_m
-ap_n=80_best_tau".png Graphic file (type png)
+l.1012 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.12}) has been already used, duplicate ignored
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/vq_ma
-p_n=80_best_tau".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps simulated/vq_map_n=80_best_tau".png used on input line 1186.
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1012 
+        <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures//Numerics/M
+aps data/80_80_fundamental_diagram_rho_q_count.png> <C:/Users/Mandy/Documents/G
+itHub/projectARZ/Article/figures//Numerics/Maps data/80_80_fundamental_diagram_
+v_q_count.png> <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures//Num
+erics/Calibration of eigen values/Fundamental diagram fitting n = 80.png>]
+<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=544, 1011.78pt
+ x 722.7pt>
+File: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png Graphic file 
+(type png)
+ <use figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png>
+Package pdftex.def Info: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau
+".png used on input line 1040.
 (pdftex.def)             Requested size: 341.43306pt x 243.88417pt.
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_map_n=
-80_best_tau".png, id=543, 1011.78pt x 722.7pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_m
-ap_n=80_best_tau".png Graphic file (type png)
-
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/xi_ma
-p_n=80_best_tau".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Maps simulated/xi_map_n=80_best_tau".png used on input line 1188.
+<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=545, 1011.78pt
+ x 722.7pt>
+File: figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png Graphic file 
+(type png)
+ <use figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png>
+Package pdftex.def Info: figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau
+".png used on input line 1042.
 (pdftex.def)             Requested size: 341.43306pt x 243.88417pt.
 
+[17]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1202.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\tau' on input line 1202.
+(hyperref)                removing `math shift' on input line 1052.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1202.
+(hyperref)                removing `\tau' on input line 1052.
 
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/q_v_e
-rror_80".png, id=544, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/
-q_v_error_80".png Graphic file (type png)
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1052.
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/q
-_v_error_80".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Calibration of Tau/q_v_error_80".png used on input line 1218.
+
+<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=551, 578.16pt x 43
+3.62pt>
+File: figures/"/Numerics/Calibration of Tau/q_v_error_80".png Graphic file (typ
+e png)
+ <use figures/"/Numerics/Calibration of Tau/q_v_error_80".png>
+Package pdftex.def Info: figures/"/Numerics/Calibration of Tau/q_v_error_80".pn
+g used on input line 1068.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/xi_1_
-xi_2_error_80".png, id=545, 578.16pt x 433.62pt>
-File: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/
-xi_1_xi_2_error_80".png Graphic file (type png)
+<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=552, 578.16p
+t x 433.62pt>
+File: figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png Graphic fil
+e (type png)
 
-<use "/Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of Tau/x
-i_1_xi_2_error_80".png>
-Package pdftex.def Info: "/Users/cusgadmin/projectARZ/Article/figures/Numerics/
-Calibration of Tau/xi_1_xi_2_error_80".png used on input line 1218.
+<use figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png>
+Package pdftex.def Info: figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_
+80".png used on input line 1068.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 1217--1221
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 1067--1072
  [][] 
  []
 
-[17pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
+[18pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1245 \]
-          </Users/cusgadmin/projectARZ/Article/figures/Numerics/Calibration of 
-eigen values/Fundamental diagram fitting n = 80.png>] [18pdfTeX warning (ext4):
- destination with the same identifier (name{figure.13}) has been already used, 
-duplicate ignored
+l.1074 
+        <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures//Numerics/M
+aps simulated/vq_map_n=80_best_tau.png> <C:/Users/Mandy/Documents/GitHub/projec
+tARZ/Article/figures//Numerics/Maps simulated/xi_map_n=80_best_tau.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\lambda' on input line 1120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 1120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1120.
+
+[19pdfTeX warning (ext4): destination with the same identifier (name{figure.14}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1245 \]
-          </Users/cusgadmin/projectARZ/Article/figures/Numerics/Maps simulated/
-vq_map_n=80_best_tau.png> </Users/cusgadmin/projectARZ/Article/figures/Numerics
-/Maps simulated/xi_map_n=80_best_tau.png>]
+l.1157 \item $
+              \xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t...
+ <C:/Users/Mandy/Documents/GitHub/projectARZ/Article/figures//Numerics/Calibrat
+ion of Tau/q_v_error_80.png> <C:/Users/Mandy/Documents/GitHub/projectARZ/Articl
+e/figures//Numerics/Calibration of Tau/xi_1_xi_2_error_80.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1272.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1272.
+(hyperref)                removing `math shift' on input line 1198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1272.
+(hyperref)                removing `\lambda' on input line 1198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1272.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1300
-.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1300.
-
- [19pdfTeX warning (ext4): destination with the same identifier (name{figure.14
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1311 \end{itemize}
-                     </Users/cusgadmin/projectARZ/Article/figures/Numerics/Cali
-bration of Tau/q_v_error_80.png> </Users/cusgadmin/projectARZ/Article/figures/N
-umerics/Calibration of Tau/xi_1_xi_2_error_80.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1350.
+(hyperref)                removing `subscript' on input line 1198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1350.
+(hyperref)                removing `math shift' on input line 1198.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1350.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1350.
-
-
-Overfull \hbox (49.12878pt too wide) in paragraph at lines 1388--1389
-[]$\OML/cmm/m/it/10 ^^X[] [] \OT1/cmr/m/n/10 = [] []$ 
+Overfull \hbox (49.12878pt too wide) in paragraph at lines 1236--1237
+[]$\OML/cmm/m/it/10 [] [] \OT1/cmr/m/n/10 = [] []$ 
  []
 
-[20] (./ARZworking.bbl [21]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
- [22])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1444.
+[20] (C:\Users\Mandy\Documents\GitHub\projectARZ\Article\ARZworking.bbl
+[21] [22])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1292.
  [23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1444.
- (./ARZworking.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1444.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1444.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1292.
+
+(C:\Users\Mandy\Documents\GitHub\projectARZ\Article\ARZworking.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1292.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1292.
 
 Package rerunfilecheck Info: File `ARZworking.out' has not changed.
-(rerunfilecheck)             Checksum: 5B7BD1F2E9ADBE8FE50BD3DF054A7DE8;3217.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1444.
+(rerunfilecheck)             Checksum: 80B8009B2E5EC80DE05284EB724501DD;3292.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1292.
  ) 
 Here is how much of TeX's memory you used:
- 7226 strings out of 493117
- 110415 string characters out of 6135433
- 214930 words of memory out of 5000000
- 10404 multiletter control sequences out of 15000+600000
- 9702 words of font info for 37 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 34i,15n,32p,1416b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.p
-fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex
-8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10
-.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.p
-fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
-/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/20
-14/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2014
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2014/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dis
-t/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/rsfs/rsfs7.pfb>
-Output written on ARZworking.pdf (23 pages, 3090753 bytes).
+ 7121 strings out of 493921
+ 106741 string characters out of 3144876
+ 207075 words of memory out of 3000000
+ 10130 multiletter control sequences out of 15000+200000
+ 9702 words of font info for 37 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 34i,15n,32p,1417b,528s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex7.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmti7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmti8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/hoekwater/r
+sfs/rsfs10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/hoekwater/rsfs/rs
+fs7.pfb>
+Output written on ARZworking.pdf (23 pages, 3152242 bytes).
 PDF statistics:
- 734 PDF objects out of 1000 (max. 8388607)
- 594 compressed objects within 6 object streams
+ 705 PDF objects out of 1000 (max. 8388607)
  165 named destinations out of 1000 (max. 500000)
  459 words of extra memory for PDF output out of 10000 (max. 10000000)
 

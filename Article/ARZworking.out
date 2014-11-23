@@ -1,16 +1,16 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{First order models}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{First generation second order models}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Second generation second order models}{section.1}% 4
-\BOOKMARK [2][-]{subsection.1.4}{Models suited for control}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.1}{First-order models}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{First-generation second-order models}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Second-generation second-order models}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Models appropriate for control}{section.1}% 5
 \BOOKMARK [2][-]{subsection.1.5}{Similarities with Saint-Venant equations}{section.1}% 6
 \BOOKMARK [2][-]{subsection.1.6}{Approach and contributions}{section.1}% 7
 \BOOKMARK [2][-]{subsection.1.7}{Organization of the article}{section.1}% 8
 \BOOKMARK [1][-]{section.2}{The ARZ model}{}% 9
 \BOOKMARK [2][-]{subsection.2.1}{Linearization}{section.2}% 10
 \BOOKMARK [2][-]{subsection.2.2}{Characteristic form}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.3}{``Froude number"}{section.2}% 12
-\BOOKMARK [1][-]{section.3}{Frequency domain analysis}{}% 13
+\BOOKMARK [2][-]{subsection.2.3}{The Traffic Froude Number}{section.2}% 12
+\BOOKMARK [1][-]{section.3}{Spectral analysis of the linearized ARZ model}{}% 13
 \BOOKMARK [2][-]{subsection.3.1}{State-transition matrix}{section.3}% 14
 \BOOKMARK [2][-]{subsection.3.2}{Free flow case}{section.3}% 15
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Bode plots}{subsection.3.2}% 16
