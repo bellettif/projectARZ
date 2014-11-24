@@ -203,7 +203,7 @@ The contributions of this article are as follows:
 The rest of this article is organized as follows. In Section 2 we present the characteristic form of the ARZ model in several state variables, leading to the derivation of the spectral form of the flux and velocity system in section 3. We focus on these states in particular as they are the most easily observed and controlled in traffic. Properties of the spectral form in the two flow regimes are also analyzed. Section 4 focuses on numerical analysis. We present estimation procedures for $(v,q,\rho)$ and the model parameters, comparing empirical estimates with numerical predictions of the linearized model. We use \textit{Fast Fourier Transform} (FFT) to turn the spectral model into a prediction tool.
 
 
-\section{The ARZ model}
+\section{The ARZ model} \label{ARZSection}
 
 %\begin{itemize}
 %\item physical description of ARZ model + usual form
@@ -800,8 +800,8 @@ guarantees that most bins will host more than $100$ traces. This
 is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile
 of the number of traces in a given bin is $170$. Such a grid also
 yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin.
-The histograms of number of traces and vehicle per bin are represented
-on Figure \ref{fig:Grid control}.
+The histograms of number of traces and vehicle per cell are represented
+in Figure \ref{fig:Grid control}.
 
 \begin{figure}[H]
 \centering
@@ -814,13 +814,8 @@ grid for the NGSIM data.}
 \label{fig:Grid control}
 \end{figure}
 
-
-
-\subsubsection{Sanity check for the estimators}
-
-This article does not provide any theoretical proof of the convergence
-of the binned estimators for $\left(v,\rho,q\right)$ presented above.
-It is nonetheless possible to check practically that the procedure
+While it is not the goal of the present article to present theoretical proofs of the convergence
+of the binned estimators for $\left(v,\rho,q\right)$, it is nonetheless possible to check practically that the procedure
 is coherent. Two estimators are provided for $q$ that use radically
 different techniques. The first one relies on the average measured
 speed and the number of traces in a bin. The other one on counting
@@ -828,7 +823,7 @@ vehicles transiting from a cell to another. Verifying that they both
 give similar results for a given cell will therefore confirm that
 these estimators for $q$ are trustworthy. It will also certify that
 the estimation technique for $\rho$ is valid. As one can observe
-on Figure \ref{fig:Sanity-check}, the scatter plot of $\widehat{q}_{i,j}^{count}$
+in Figure \ref{fig:Sanity-check}, the scatter plot of $\widehat{q}_{i,j}^{\text{count}}$
 is plotted against $\widehat{q}_{i,j}$ coincides almost perfectly
 with the line $y=x$ therefore validating the overall binning and
 estimation procedure.
@@ -836,7 +831,7 @@ estimation procedure.
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
-\protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{count}$
+\protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
 is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 \label{fig:Sanity-check}}
 \end{figure}
@@ -846,9 +841,9 @@ is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 \subsection{Estimated values for $\left(v,q\right)$}
 
 In order to check how well the linearized ARZ model fits actual data,
-one choses a bounded domain and compares the theoretical solution
-given by the second order model and the data observed. Here we focus
-one the values of $v$ and $q$ as they correspond to the setup that
+we chose a bounded domain and compares the theoretical solution
+given by the second order model and the observed data. Here we focus
+on the values of $v$ and $q$ as they correspond to the setup that
 is the most worth studying. It is also the most directly practical
 for control. Now that estimates of the actual values of $v$ and $q$
 have been designed, they will be used to compute fundamental diagrams
@@ -863,17 +858,34 @@ as an estimate. Plotting maps of both the predicted values and the
 observed one will also highlight the phenomena the linearized model
 accounts for and those it cannot characterize.
 
-
-\subsubsection{Maps}
-
-Once the values $\widehat{v}_{i,j}$, $\widehat{\rho}_{i,j}$, $\widehat{q}_{i,j}$,
-$\widehat{q}_{i,j}^{count}$ have been computed they can be plotted
+\textbf{Maps.} Once the values $\widehat{v}_{i,j}$, $\widehat{\rho}_{i,j}$, $\widehat{q}_{i,j}$,
+$\widehat{q}_{i,j}^{\text{count}}$ have been computed they can be plotted
 on the discretization grid (see Figure \ref{fig:Estimated-values}).
-As $\widehat{q}$ and $\widehat{q}^{count}$ give extremely similar
-results, $\widehat{q}^{count}$ will be used as the estimator of $q$
+As $\widehat{q}$ and $\widehat{q}^{\text{count}}$ give extremely similar
+results, $\widehat{q}^{\text{count}}$ will be used as the estimator of $q$
 from now on.
 Damped oscillations
 and smoothly decaying values along characteristic lines are the main characteristic the practical implementation of the model should feature.
+
+\textbf{Fundamental diagrams.} From the values that have been estimated it is very straightforward
+to compute fundamental diagrams as in Figure \ref{fig:Empirical-fundamental-diagrams}.
+One of the potential flaws of studying these fundamental diagrams
+and using them to calibrate the model's parameters as we do below
+could come from the fact that the dataset is small. Even though many
+points are collected, they only give information about cars traveling
+in a small region of time and space. Therefore it is certain that
+our measurements are highly correlated. This seems
+to be confirmed by the fact that the fundamental diagrams below only
+correspond to the congested regime. \textit{OPTIONAL: Most of the points are concentrated
+about the same region. This is not enough to guarantee that the estimated
+quantities are reliable. However, NGSIM is to this day one of the
+most comprehensive data sets of vehicle behavior on a freeway. It
+is therefore one of the best ways one has to validate that a traffic
+model is realistic. The fact that most points lie in the same region
+is also a sign that the linearization hypothesis is reasonable
+in that context. Observed deviations from the equilibrium are indeed
+generally small. (The equilibrium, i.e. the linearization point, is estimated
+below).}
 
 \begin{figure}[H]
 \centering
@@ -883,40 +895,16 @@ and smoothly decaying values along characteristic lines are the main characteris
 \end{tabular}
 \protect\caption{Estimated values for $\left(v,q,\rho\right)$. Top left: $\widehat{v}_{i,j}$.
 Top right: $\widehat{\rho}_{i,j}$. Bottom left: $\widehat{q}_{i,j}$.
-Bottom right: $\widehat{q}_{i,j}^{count}$ .\label{fig:Estimated-values}}
+Bottom right: $\widehat{q}_{i,j}^{\text{count}}$ .\label{fig:Estimated-values}}
 \end{figure}
-
-
-
-\subsubsection{Fundamental diagrams}
-
-From the values that have been estimated it is very straightforward
-to compute fundamental diagrams as on Figure \ref{fig:Empirical-fundamental-diagrams}.
-One of the potential flaws of studying these fundamental diagrams
-and using them to calibrate the model's parameters as we do below
-could come from the fact that the data set is small. Even though many
-points are collected, they only give information about cars traveling
-in a small region of time and space. Therefore it is certain that
-our measurements are highly correlated. This seems
-to be confirmed by the fact that the fundamental diagrams below only
-correspond to the congested regime. Most of the points are concentrated
-about the same region. This is not enough to guarantee that the estimated
-quantities are reliable. However, NGSIM is to this day one of the
-most comprehensive data sets of vehicle behavior on a freeway. It
-is therefore one of the best ways one has to validate that a traffic
-model is realistic. The fact that most points lie in the same region
-is also a sign that the linearization hypothesis is reasonable
-in that context. Observed deviations from the equilibrium are indeed
-generally small. (The equilibrium, i.e. the linearization point, is estimated
-below).
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{ccc}
 \includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count\string".png} & \includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png} & \includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png}\tabularnewline
 \end{tabular}
-\protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{count}\right)$.
-Middle: $\left(\widehat{v},\widehat{q}^{count}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
+\protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{\text{count}}\right)$.
+Middle: $\left(\widehat{v},\widehat{q}^{\text{count}}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
 \label{fig:Empirical-fundamental-diagrams}}
 \end{figure}
 
@@ -924,27 +912,27 @@ Middle: $\left(\widehat{v},\widehat{q}^{count}\right)$. Right: $\left(\widehat{\
 
 \subsubsection{Calibration of $\lambda_{1}$ and $\lambda_{2}$, linearization point}
 
-$\lambda_{1}=v^{*}$ and $\lambda_{2}=Q'\left(v^{*}\right)$ therefore
+From section \ref{ARZSection}, $\lambda_{1}=v^{*}$ and $\lambda_{2}=Q'\left(v^{*}\right)$, therefore
 the calibration of $\lambda_{1}$ consists in finding a value of $v$
 around which the fundamental diagram $\left(v,q\right)$ will be linearized.
-$\lambda_{2}$ will consist in the estimated slope of the fundamental
-diagram. $\lambda_{2}$ is estimated with a standard Ordinary Least
+By definition, $\lambda_{2}$ corresponds to the slope of the fundamental
+diagram. It is estimated in practice thanks to a standard Ordinary Least
 Squares method. The data set above only corresponds to the congested
 regime and the fundamental diagram is almost affine.\\
 \\
-The method used here is therefore quite straightforward. The estimator
+The method used here is the following. The estimator
 for $v^{*}$ is chosen as the empirical mean of $\widehat{v}_{i,j}$:
 $\widehat{\lambda}_{1}=\widehat{v}^{*}$. A linear model is fitted:
-$\widehat{q}^{count}=b_{1}\widehat{v}+b_{0}+\varepsilon$ (where $\varepsilon$
+$\widehat{q}^{\text{count}}=b_{1}\widehat{v}+b_{0}+\varepsilon$ (where $\varepsilon$
 represents the noise in the model that would ideally be centered,
 homoschedastic and uncorrelated but is not practically) and the estimator
 for $\lambda_{2}$ is then $\widehat{\lambda}_{2}=\widehat{b}_{1}$.
-$q^{*}$ is estimated by the empirical average of $\widehat{q}^{count}$
+$q^{*}$ is estimated by the empirical average of $\widehat{q}^{\text{count}}$
 and $\rho^{*}$ by the ratio of the estimates for $q^{*}$ and $v^{*}$.
 Provided each estimator is convergent, the continuity of the functional
 $\left(x,y\right)\rightarrow\frac{x}{y}$ on its domain guarantees
-the convergence of the estimator for $\rho^{*}$. The empirical results are presented on Figure \ref{fig:Calibration-of-eigen-values}.
-The determination coefficient is mediocre, it could be improved
+the convergence of the estimator for $\rho^{*}$. The empirical results are presented in Figure \ref{fig:Calibration-of-eigen-values}.
+The determination coefficient is poor, it could be improved
 by filtering out outliers and more generally by gathering more data.
 Improving the quality of the estimation will be the subject of further
 work on that matter. Significance tests for the coefficients of the
@@ -952,33 +940,31 @@ linear model are not presented. The assumptions they rely on about
 the linear depency between $\widehat{q}$ and $\widehat{v}$ are clearly
 not respected here as the noise is auto-correlated. Further
 work needs to turn this rather heuristic method for estimating parameters
-into a fully justified statistical procedure. This article focuses
-is qualitatively assessing what phenomena can be accounted for by
-the linearized second order model.
+into a fully justified statistical procedure. Note that the goal of the present article is to provide a new model and corresponding spectral analysis, which we want to illustrate with state of the art data. Thus, development of statistical methods to handle this data is out of the scope of the present investigation.
 
 \begin{figure}[H]
 \centering
-\begin{tabular}{cccccc}
-\multicolumn{6}{c}{\includegraphics[width=8cm]{\string"/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}}\tabularnewline
-$\widehat{\lambda}_{1}=8.96$ & $\widehat{\lambda}_{2}=-4.37$ & $\widehat{\rho}^{*}=0.049$ & $\widehat{v}^{*}=8.96$ & $\widehat{q}^{*}=0.44$ & $r^{2}=0.48$\tabularnewline
-\end{tabular}
+\includegraphics[width=8cm]{\string"/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}
 \protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The figure shows
 the average point used to compute $\widehat{v}^{*}$ and $\widehat{q}^{*}$.
-The affine model used to estimate $\lambda_{2}$ is also plotted.\label{fig:Calibration-of-eigen-values}}
+The affine model used to estimate $\lambda_{2}$ is also plotted. $\widehat{\lambda}_{1}=8.96$, $\widehat{\lambda}_{2}=-4.37$,$\widehat{\rho}^{*}=0.049$, $\widehat{v}^{*}=8.96$, $\widehat{q}^{*}=0.44$, $r^{2}=0.48$}
+\label{fig:Calibration-of-eigen-values}
 \end{figure}
 
-
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
+\protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
+is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
+\label{fig:Sanity-check}}
+\end{figure}
 
 \subsection{Simulated values for $\left(v,q,\rho\right)$}
 
-The data above shows that only the congested regime is to be modeled
-for the NGSIM data. Therefore the theory developed for the $\lambda_{2}<0$
+The data above shows that only the congested regime data is available in the considered period of NGSIM. Therefore the theory developed for the $\lambda_{2}<0$
 will be put to use here.
 
-
-\subsubsection{Fourier decomposition of input for a linear PDE}
-
-The Partial Differential Equation under scrutiny here is linearized.
+\textbf{Fourier decomposition of input for a linear PDE. }The Partial Differential Equation under scrutiny here is linearized.
 Therefore, decomposing boundary conditions into a sum and then adding
 the predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$
 will give the exact solution. The spectral domain analysis presented

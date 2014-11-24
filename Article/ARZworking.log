@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 NOV 2014 14:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 NOV 2014 15:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -307,7 +307,11 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box33
 )
-(./ARZworking.aux)
+(./ARZworking.aux
+
+LaTeX Warning: Label `fig:Sanity-check' multiply defined.
+
+)
 \openout1 = `ARZworking.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
@@ -324,8 +328,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
-
-(/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count121
 \scratchdimen=\dimen130
@@ -431,7 +434,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 553.
 
-<figures/supercr.pdf, id=335, 614.295pt x 794.97pt>
+<figures/supercr.pdf, id=322, 614.295pt x 794.97pt>
 File: figures/supercr.pdf Graphic file (type pdf)
  <use figures/supercr.pdf>
 Package pdftex.def Info: figures/supercr.pdf used on input line 558.
@@ -467,14 +470,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
  []
 
-<figures/IOv_-3to-1.pdf, id=364, 614.295pt x 794.97pt>
+<figures/IOv_-3to-1.pdf, id=352, 614.295pt x 794.97pt>
 File: figures/IOv_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/IOv_-3to-1.pdf>
 Package pdftex.def Info: figures/IOv_-3to-1.pdf used on input line 602.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/IOq_-3to-1.pdf, id=365, 614.295pt x 794.97pt>
+<figures/IOq_-3to-1.pdf, id=353, 614.295pt x 794.97pt>
 File: figures/IOq_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/IOq_-3to-1.pdf>
@@ -485,28 +488,28 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 601--610
  [][] 
  []
 
-<figures/distr11_-3to-1.pdf, id=366, 614.295pt x 794.97pt>
+<figures/distr11_-3to-1.pdf, id=354, 614.295pt x 794.97pt>
 File: figures/distr11_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr11_-3to-1.pdf>
 Package pdftex.def Info: figures/distr11_-3to-1.pdf used on input line 617.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr12_-3to-1.pdf, id=367, 614.295pt x 794.97pt>
+<figures/distr12_-3to-1.pdf, id=355, 614.295pt x 794.97pt>
 File: figures/distr12_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr12_-3to-1.pdf>
 Package pdftex.def Info: figures/distr12_-3to-1.pdf used on input line 619.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr21_-3to-1.pdf, id=368, 614.295pt x 794.97pt>
+<figures/distr21_-3to-1.pdf, id=356, 614.295pt x 794.97pt>
 File: figures/distr21_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr21_-3to-1.pdf>
 Package pdftex.def Info: figures/distr21_-3to-1.pdf used on input line 625.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr22_-3to-1.pdf, id=369, 614.295pt x 794.97pt>
+<figures/distr22_-3to-1.pdf, id=357, 614.295pt x 794.97pt>
 File: figures/distr22_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr22_-3to-1.pdf>
@@ -517,7 +520,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 616--634
  [][] 
  []
 
-<figures/diagIOfreeflow.pdf, id=370, 614.295pt x 794.97pt>
+<figures/diagIOfreeflow.pdf, id=358, 614.295pt x 794.97pt>
 File: figures/diagIOfreeflow.pdf Graphic file (type pdf)
 
 <use figures/diagIOfreeflow.pdf>
@@ -544,7 +547,7 @@ l.642
        <./figures/IOv_-3to-1.pdf> <./figures/IOq_-3to-1.pdf> <./figures/distr11
 _-3to-1.pdf> <./figures/distr12_-3to-1.pdf> <./figures/distr21_-3to-1.pdf> <./f
 igures/distr22_-3to-1.pdf>]
-<figures/diagdistr11freeflow.pdf, id=441, 614.295pt x 794.97pt>
+<figures/diagdistr11freeflow.pdf, id=429, 614.295pt x 794.97pt>
 File: figures/diagdistr11freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr11freeflow.pdf>
@@ -552,7 +555,7 @@ Package pdftex.def Info: figures/diagdistr11freeflow.pdf used on input line 646
 .
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/diagdistr21freeflow.pdf, id=442, 614.295pt x 794.97pt>
+<figures/diagdistr21freeflow.pdf, id=430, 614.295pt x 794.97pt>
 File: figures/diagdistr21freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr21freeflow.pdf>
@@ -591,7 +594,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 670--671
 
  []
 
-<figures/subcr.pdf, id=472, 614.295pt x 794.97pt>
+<figures/subcr.pdf, id=460, 614.295pt x 794.97pt>
 File: figures/subcr.pdf Graphic file (type pdf)
  <use figures/subcr.pdf>
 Package pdftex.def Info: figures/subcr.pdf used on input line 674.
@@ -623,7 +626,7 @@ r (name{figure.6}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.714 
        <./figures/subcr.pdf>]
-<figures/Numerics/US-101_all_traj_low_res.png, id=489, 1156.32pt x 578.16pt>
+<figures/Numerics/US-101_all_traj_low_res.png, id=477, 1156.32pt x 578.16pt>
 File: figures/Numerics/US-101_all_traj_low_res.png Graphic file (type png)
 
 <use figures/Numerics/US-101_all_traj_low_res.png>
@@ -646,7 +649,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
                                                   \fi \fi 
 l.759 \end{equation}
                      <./figures/Numerics/US-101_all_traj_low_res.png>]
-<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=501, 578.16pt x 4
+<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=489, 578.16pt x 4
 33.62pt>
 File: figures/"/Numerics/Discretisation grid/traces_80_80".png Graphic file (ty
 pe png)
@@ -655,7 +658,7 @@ Package pdftex.def Info: figures/"/Numerics/Discretisation grid/traces_80_80".p
 ng used on input line 809.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=502, 578.16pt x 433.
+<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=490, 578.16pt x 433.
 62pt>
 File: figures/"/Numerics/Discretisation grid/ids_80_80".png Graphic file (type 
 png)
@@ -673,68 +676,68 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 808--813
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.835 
+l.830 
        <./figures//Numerics/Discretisation grid/traces_80_80.png> <./figures//N
 umerics/Discretisation grid/ids_80_80.png>]
-<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=514, 578.16pt x 433.6
+<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=502, 578.16pt x 433.6
 2pt>
 File: figures/"/Numerics/Sanity check/80_80_q_q_count".png Graphic file (type p
 ng)
  <use figures/"/Numerics/Sanity check/80_80_q_q_count".png>
 Package pdftex.def Info: figures/"/Numerics/Sanity check/80_80_q_q_count".png u
-sed on input line 838.
+sed on input line 833.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 846.
+(hyperref)                removing `math shift' on input line 841.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 846.
+(hyperref)                removing `\left' on input line 841.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 846.
+(hyperref)                removing `\right' on input line 841.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 846.
+(hyperref)                removing `math shift' on input line 841.
 
-<figures/"/Numerics/Maps data/80_80_v_map".png, id=516, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_v_map".png, id=505, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_v_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_v_map".png>
 Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_v_map".png used on 
-input line 881.
+input line 893.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_rho_map".png, id=517, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_rho_map".png, id=506, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_rho_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_rho_map".png>
 Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_rho_map".png used o
-n input line 881.
+n input line 893.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_map".png, id=518, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_q_map".png, id=507, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_q_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_q_map".png>
 Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_q_map".png used on 
-input line 882.
+input line 894.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=519, 578.16pt x 433.62
+<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=508, 578.16pt x 433.62
 pt>
 File: figures/"/Numerics/Maps data/80_80_q_count_map".png Graphic file (type pn
 g)
  <use figures/"/Numerics/Maps data/80_80_q_count_map".png>
 Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_q_count_map".png us
-ed on input line 882.
+ed on input line 894.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 880--886
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 892--898
  [][] 
  []
 
@@ -743,235 +746,246 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 880--886
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.888 
+l.900 
        <./figures//Numerics/Sanity check/80_80_q_q_count.png>]
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png, id=53
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png, id=52
 0, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png G
 raphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png>
 Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
-_rho_q_count".png used on input line 916.
+_rho_q_count".png used on input line 904.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=531,
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=521,
  578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png Gra
 phic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png>
 Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
-_v_q_count".png used on input line 916.
+_v_q_count".png used on input line 904.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png Gra
 phic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png>
 Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
-_v_q_count".png used on input line 916.
+_v_q_count".png used on input line 904.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\lambda' on input line 913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\lambda' on input line 913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 913.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 915--946
+
+ []
 
 [15pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.922 
+l.946 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.946 
        <./figures//Numerics/Maps data/80_80_v_map.png> <./figures//Numerics/Map
 s data/80_80_rho_map.png> <./figures//Numerics/Maps data/80_80_q_map.png> <./fi
-gures//Numerics/Maps data/80_80_q_count_map.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 925.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 925.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 925.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 925.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 925.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 925.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 925.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 925.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 927--958
-
- []
-
-
+gures//Numerics/Maps data/80_80_q_count_map.png> <./figures//Numerics/Maps data
+/80_80_fundamental_diagram_rho_q_count.png> <./figures//Numerics/Maps data/80_8
+0_fundamental_diagram_v_q_count.png>]
 <figures/"/Numerics/Calibration of eigen values/Fundamental diagram fitting n =
- 80".png, id=542, 578.16pt x 433.62pt>
+ 80".png, id=534, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Calibration of eigen values/Fundamental diagram fittin
 g n = 80".png Graphic file (type png)
 
 <use figures/"/Numerics/Calibration of eigen values/Fundamental diagram fitting
  n = 80".png>
 Package pdftex.def Info: figures/"/Numerics/Calibration of eigen values/Fundame
-ntal diagram fitting n = 80".png used on input line 962.
+ntal diagram fitting n = 80".png used on input line 949.
+(pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
+File: figures/"/Numerics/Sanity check/80_80_q_q_count".png Graphic file (type p
+ng)
+ <use figures/"/Numerics/Sanity check/80_80_q_q_count".png>
+Package pdftex.def Info: figures/"/Numerics/Sanity check/80_80_q_q_count".png u
+sed on input line 958.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 972.
+(hyperref)                removing `math shift' on input line 964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 972.
+(hyperref)                removing `\left' on input line 964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\rho' on input line 972.
+(hyperref)                removing `\rho' on input line 964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 972.
+(hyperref)                removing `\right' on input line 964.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 972.
+(hyperref)                removing `math shift' on input line 964.
 
-[16pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1001 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.12}) has been already used, duplicate ignored
+l.993 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1001 
-        <./figures//Numerics/Maps data/80_80_fundamental_diagram_rho_q_count.pn
-g> <./figures//Numerics/Maps data/80_80_fundamental_diagram_v_q_count.png> <./f
-igures//Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80
-.png>]
-<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=555, 1011.78pt
+l.993 
+       <./figures//Numerics/Calibration of eigen values/Fundamental diagram fit
+ting n = 80.png>]
+<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=545, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png Graphic file 
 (type png)
  <use figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png>
 Package pdftex.def Info: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau
-".png used on input line 1029.
+".png used on input line 1021.
 (pdftex.def)             Requested size: 341.43306pt x 243.88417pt.
 
-<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=556, 1011.78pt
+<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=546, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png Graphic file 
 (type png)
  <use figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png>
 Package pdftex.def Info: figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau
-".png used on input line 1031.
+".png used on input line 1023.
 (pdftex.def)             Requested size: 341.43306pt x 243.88417pt.
 
 [17]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1041.
+(hyperref)                removing `math shift' on input line 1033.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\tau' on input line 1041.
+(hyperref)                removing `\tau' on input line 1033.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1041.
+(hyperref)                removing `math shift' on input line 1033.
 
 
-<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=562, 578.16pt x 43
+<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=552, 578.16pt x 43
 3.62pt>
 File: figures/"/Numerics/Calibration of Tau/q_v_error_80".png Graphic file (typ
 e png)
  <use figures/"/Numerics/Calibration of Tau/q_v_error_80".png>
 Package pdftex.def Info: figures/"/Numerics/Calibration of Tau/q_v_error_80".pn
-g used on input line 1057.
+g used on input line 1049.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=563, 578.16p
+<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=553, 578.16p
 t x 433.62pt>
 File: figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png Graphic fil
 e (type png)
 
 <use figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png>
 Package pdftex.def Info: figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_
-80".png used on input line 1057.
+80".png used on input line 1049.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-Overfull \hbox (9.48906pt too wide) in paragraph at lines 1056--1061
+Overfull \hbox (9.48906pt too wide) in paragraph at lines 1048--1053
  [][] 
  []
 
-[18pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
+[18pdfTeX warning (ext4): destination with the same identifier (name{figure.14}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1063 
+l.1055 
         <./figures//Numerics/Maps simulated/vq_map_n=80_best_tau.png> <./figure
 s//Numerics/Maps simulated/xi_map_n=80_best_tau.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1109.
+(hyperref)                removing `math shift' on input line 1101.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1109.
+(hyperref)                removing `\lambda' on input line 1101.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1109.
+(hyperref)                removing `subscript' on input line 1101.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1109.
+(hyperref)                removing `math shift' on input line 1101.
 
-[19pdfTeX warning (ext4): destination with the same identifier (name{figure.14}
+[19pdfTeX warning (ext4): destination with the same identifier (name{figure.15}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1146 \item $
+l.1138 \item $
               \xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t...
  <./figures//Numerics/Calibration of Tau/q_v_error_80.png> <./figures//Numerics
 /Calibration of Tau/xi_1_xi_2_error_80.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1187.
+(hyperref)                removing `math shift' on input line 1179.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1187.
+(hyperref)                removing `\lambda' on input line 1179.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1187.
+(hyperref)                removing `subscript' on input line 1179.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1187.
+(hyperref)                removing `math shift' on input line 1179.
 
 
-Overfull \hbox (49.12878pt too wide) in paragraph at lines 1225--1226
+Overfull \hbox (49.12878pt too wide) in paragraph at lines 1217--1218
 []$\OML/cmm/m/it/10 ^^X[] [] \OT1/cmr/m/n/10 = [] []$ 
  []
 
@@ -981,26 +995,26 @@ Missing character: There is no © in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
  [22])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1281.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1273.
  [23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1281.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1273.
  (./ARZworking.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1281.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1281.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1273.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1273.
 
 Package rerunfilecheck Info: File `ARZworking.out' has not changed.
-(rerunfilecheck)             Checksum: B50FC586749ABBE9A136396D6A84D30E;3194.
+(rerunfilecheck)             Checksum: 711F7471CAD8E9D5F8689397BBA1CA58;2959.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1281.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1273.
  ) 
 Here is how much of TeX's memory you used:
- 7254 strings out of 493117
- 108461 string characters out of 6135433
- 215033 words of memory out of 5000000
- 10422 multiletter control sequences out of 15000+600000
+ 7250 strings out of 493117
+ 108362 string characters out of 6135433
+ 215231 words of memory out of 5000000
+ 10420 multiletter control sequences out of 15000+600000
  9702 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,21n,32p,1416b,522s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1030,10 +1044,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dis
 t/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/public/rsfs/rsfs7.pfb>
-Output written on ARZworking.pdf (23 pages, 3091721 bytes).
+Output written on ARZworking.pdf (23 pages, 3092370 bytes).
 PDF statistics:
- 728 PDF objects out of 1000 (max. 8388607)
- 588 compressed objects within 6 object streams
- 168 named destinations out of 1000 (max. 500000)
- 451 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 718 PDF objects out of 1000 (max. 8388607)
+ 578 compressed objects within 6 object streams
+ 166 named destinations out of 1000 (max. 500000)
+ 427 words of extra memory for PDF output out of 10000 (max. 10000000)
 
