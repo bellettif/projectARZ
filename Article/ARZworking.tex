@@ -146,7 +146,7 @@ Despite the criticism expressed in \cite{Dag_requiem} regarding higher-order mod
 %where $\rho V'\left(\rho\right)$ represents the information
 %propagation speed in traffic. 
 Soon after, Aw and Rascle \cite{AR} presented a model with the following momentum equation:
-\begin{equation}
+\begin{equation} \label{ARZEq}
 \frac{\partial\left(v+p\left(\rho\right)\right)}{\partial t}+v\frac{\partial\left(v+p\left(\rho\right)\right)}{\partial x}=\frac{V(\rho)-v}{\tau}.
 \end{equation}
 Including the pressure term, $p(\rho)$, in a convective derivative guarantees that no information travels faster than the speed of the cars. Aw and Rascle demonstrated in \cite{AR} that ``with a suitable choice of function $p$," the above class of models avoids inconsistencies of earlier second-order models. Zhang proposed in \cite{Z} the same model with $p(\rho) = -V(\rho)$. With this choice of $p(\rho)$, the model is referred to as the \textit{Aw--Rascle--Zhang} (ARZ) model, which is the model used in the present article.
@@ -964,34 +964,21 @@ is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 The data above shows that only the congested regime data is available in the considered period of NGSIM. Therefore the theory developed for the $\lambda_{2}<0$
 will be put to use here.
 
-\textbf{Fourier decomposition of input for a linear PDE. }The Partial Differential Equation under scrutiny here is linearized.
-Therefore, decomposing boundary conditions into a sum and then adding
-the predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$
-will give the exact solution. The spectral domain analysis presented
-above is very useful to that end and will be leveraged thanks to Fourier
+\textbf{Fourier decomposition of input for a linear PDE. } Because the PDE of interest (\eqref{ARZEq}) is linear, we can decompose boundary conditions into a sum and then adding
+the predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$. The spectral domain analysis presented
+earlier is useful to that end and will be leveraged using Fourier
 analysis. Fourier transform is a linear operator that is practically
-implemented thanks to the Fast Fourier Transform. A real signal $\left\{ f\left(t\right)\mid t\in\left[0,T\right]\right\} $
-on one of the boundaries $\left\{ \left(x=0,t\right)\mid t\in\left[0,T\right]\right\} $
-or $\left\{ \left(x=L,t\right)\mid t\in\left[0,T\right]\right\} $
-is transformed into a periodic signal by infinite duplication and
-then turned into a Fourier series $\left\{ t\rightarrow\mu+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\mid t\in\left[0,T\right]\right\} $.
-This process is known to be convergent with an infinite sum for any
-square integrable function. It is practically extremely accurate in
-our case even though the FFT only relies on a finite number of Fourier
-coefficients. For both upstream and downstream boundary conditions,
+implemented using the FFT.
+%A real signal $\left\{ f\left(t\right)\mid t\in\left[0,T\right]\right\} $ on one of the boundaries $\left\{ \left(x=0,t\right)\mid t\in\left[0,T\right]\right\} $ or $\left\{ \left(x=L,t\right)\mid t\in\left[0,T\right]\right\} $ is transformed into a periodic signal by infinite duplication and then turned into a Fourier series $\left\{ t\rightarrow\mu+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\mid t\in\left[0,T\right]\right\} $. This process is known to be convergent with an infinite sum for any square integrable function. It is practically extremely accurate in our case even though the FFT only relies on a finite number of Fourier coefficients. 
+For both upstream and downstream boundary conditions,
 eye inspection cannot distinguish the original signal from its Fourier
 series decomposition. In Appendix \ref{sub:Generic-computations}
 the generic way of computing the solution of the PDE inside the inner
 domain is presented. The process is quite straightforward although
-the necessary computations are somewhat cumbersome.
-
-
-\subsubsection{Simulated maps}
-
-Prior to using Fourier decomposed signals and elementary solutions,
+the necessary computations are somewhat cumbersome. \textbf{Simulated maps.} Prior to using Fourier decomposed signals and elementary solutions,
 it is necessary to convert the data into the diagonalized basis. First
 of all, the difference with respect to the equilibrium is computed
-for each bin: $\widehat{\widetilde{v}}_{i,j}=\widehat{v}_{i,j}-\widehat{v}^{*}$,
+for each cell: $\widehat{\widetilde{v}}_{i,j}=\widehat{v}_{i,j}-\widehat{v}^{*}$,
 $\widehat{\widetilde{q}}_{i,j}=\widehat{q}_{i,j}-\widehat{q}^{*}$.
 Once $\lambda_{1}$ and $\lambda_{2}$ have been estimated, estimates
 for $\xi_{1}$ and $\xi_{2}$ are computed thanks to the following
@@ -1003,11 +990,11 @@ $\widetilde{v}=\frac{\lambda_{1}-\lambda_{2}}{\rho^{*}\lambda_{1}}\xi_{2}$.
 This procedure gives comparison maps for the data and predicted values
 for both the $\left(v,q\right)$ and the $\left(\xi_{1},\xi_{2}\right)$
 domains. Figure \ref{fig:Data-versus-predicted.} shows important
-qualitative properties of the model. First of all, as expected, the
+qualitative properties of the model. First, as expected, the
 model generally predicts with a very good accuracy the decay of all
 quantities along their characteristic lines. This is a realistic feature
-that cannot be paralleled by first order models. The general quality of the fit is rather good with most of the error on $v$ and $q$ in a $20$ percent range of the data's amplitude between minimum and maximum values. What is also quite satisfactory is that the linearized second order model manages to capture oscillations observed on the boundary and account for their decay accurately. The value of $\tau$ used to compute the
-plots below is described in \ref{sub:Calibration-of-tau}.
+that cannot be paralleled by first order models. The general quality of the fit is rather good with most of the error on $v$ and $q$ in a $20\%$ range of the data's amplitude between minimum and maximum values. What is also quite satisfactory is that the linearized second order model manages to capture oscillations observed on the boundary and account for their decay accurately. The value of $\tau$ used to compute the
+plots below is described in below.
 
 \begin{figure}[H]
 \centering
