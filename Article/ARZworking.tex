@@ -715,7 +715,7 @@ and velocity data gathered from the well-known NGSIM data set.
 
 \subsection{Data source: NGSIM trajectories}
 
-We use the NSGIM trajectory data set for a section of the US-101 highway. the set gathers trajectories of vehicles sampled with a 10 Hz frequency thanks to high precision cameras. The data is pre-processed so as to take only cars into account; 45 minutes are recorded on a 650-meter long section with five lanes. The lanes are taken into account when computing the lineic density of vehicles $\rho$.
+We use the NSGIM trajectory data set for a section of the US-101 highway. The set gathers trajectories of vehicles sampled with a 10 Hz frequency thanks to high precision cameras. The data is pre-processed so as to take only cars into account; 45 minutes are recorded on a 650-meter long section with five lanes. The lanes are taken into account when computing the lineic density of vehicles $\rho$.
 The trajectories are represented in the $(t,x)$ domain
 in Figure \ref{fig:NGSIM-trajectories}.
 Only a subset of the spatial domain is used due to the presence of ramps, which breaks the homogeneity of the freeway. The viable domain is 200 meters long.
@@ -736,25 +736,23 @@ The NGSIM data set does not directly provide the values $v(t,x)$
 and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$.
 In order to obtain macroscopic quantities out of the microscopic measurements,
 we divide the space-time grid
-into small bins $\left(\left[i\Delta t,\, \left(i+1\right)\Delta t\right]\times\left[j\Delta x, \, (j+1)\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$, where $n_t$ and $n_x$ are the number of bins in time and space, respectively. This operation consists of gathering corresponding data points into bins, then estimating the quantities of interest in each bin. 
+into cells $\left(\left[i\Delta t,\, \left(i+1\right)\Delta t\right]\times\left[j\Delta x, \, (j+1)\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$, where $n_t$ and $n_x$ are the number of cells in time and space, respectively. This operation consists of gathering corresponding data points into cells, then estimating the quantities of interest in each cell. 
 
-\noindent \textbf{Binning formulae}
+The size of each cell is $\Delta t\times\Delta x$. Within each cell, a specific number of traces, or footprints of a vehicle along its trajectory, are available, and $\rho$, $v$, and $q$ are assumed to be constant. We present several formulae to map a set of traces to speed, flow, and density over the space-time grid. 
 
-The size of each bin is $\Delta t\times\Delta x$. Within each bucket, a finite number of traces, or footprints of a vehicle along its trajectory, are available, and $\rho$, $v$, and $q$ are assumed to be constant. We present several formulae to map a set of traces to speed, flow, and density over the space-time grid. 
-
-\textit{Binning formula for $v$}: Since the speed is assumed to be constant in each bin, a straightforward estimate for the speed is the empirical average. Let $\widehat{v}_{i,j}$ be the estimator for the speed in bin $(i,j)$:
+\textit{Binning formula for $v$}: Since the speed is assumed to be constant in each cell, a straightforward estimate for the speed is the empirical average. Let $\widehat{v}_{i,j}$ be the estimator for the speed in cell $(i,j)$:
 
 \begin{equation}
 \widehat{v}_{i,j}=\mean_{\trc \in \bin_{i,j}}(v(\trc))
 \end{equation}
 
-\textit{Binning formula for $\rho$}: Consider a bin with index $(i,j)$. By definition, 
+\textit{Binning formula for $\rho$}: Consider a cell with index $(i,j)$. By definition, 
 \begin{equation}
 \rho_{i,j}=\frac{1}{n_{\lns}\Delta x\Delta t}\iint_{\left(t,x\right)\in [i\Delta t, \,(i+1)\Delta t] \times [j\Delta x,\,(j+1)\Delta t]}\rho(x,t) \text{d}x \text{d}t.
 \end{equation}
 
-The position of each vehicle is recorded every 0.1 second. We count the number of traces in a given bin and normalize it by the sampling rate. The contribution of a given vehicle to the density of a bin is proportional to the
-number of traces it has left in the bin. If the speed is assumed to be locally constant, this contribution is proportional to the time this vehicle spends in the bin and is consistent with the conservation of the total number of vehicles across all bins.
+The position of each vehicle is recorded every 0.1 second. We count the number of traces in a given cell and normalize it by the sampling rate. The contribution of a given vehicle to the density of a cell is proportional to the
+number of traces it has left in the cell. If the speed is assumed to be locally constant, this contribution is proportional to the time this vehicle spends in the cell and is consistent with the conservation of the total number of vehicles across all cells.
 
 \begin{equation}
 \widehat{\rho}_{i,j}=\frac{1}{n_{\lns} \Delta x \Delta t \: \text{sampling rate}}\card ( \{ \trc \mid \trc \in \bin \} ),
@@ -763,12 +761,12 @@ where $\card (\cdot)$ gives the number of elements in a set, i.e., its cardinal.
 
 \textit{Binning formula for $q$}:
 
-By definition, $q\left(x,t\right)=\rho\left(x,t\right)v\left(x,t\right)$, so a logical first estimate for $q$ in bin $(i,j)$ is 
+By definition, $q\left(x,t\right)=\rho\left(x,t\right)v\left(x,t\right)$, so a logical first estimate for $q$ in cell $(i,j)$ is 
 \begin{equation}
 \widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}.
 \end{equation}
 
-We can also approximate the flux going through a given bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+We can also approximate the flux going through a given cell $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
 by the number of cars crossing the $x$ coordinate $\left(j+1\right)\Delta x$
 between times $i\:\Delta t$ and $\left(i+1\right)\Delta t$ normalized
 by the duration $\Delta t$.
@@ -792,16 +790,16 @@ based on counting cars in a straightforward way:
 The discretization grid is $\left\{ \left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]\mid\left(i,j\right)\in\left\{ 1\ldots N\right\} \times\left\{ 1\ldots N\right\} \right\} $.
 As the estimation formulae above rely on averaging, having a comfortable
 number of points in each bin provides more stable estimates. It is
-worth mentioning that usual Central Limit theorem based reasoning
+worth mentioning that usual central limit theorem based reasoning
 for convergence of such estimates is flawed as several samples may
 correspond to the same vehicle or interacting vehicles, therefore
 violating the independence assumption of the theorem. Proving the
 convergence of the estimates above lies clearly beyond the scope of
 this article and therefore, as a rule of thumb we choose a setup that
 guarantees that most bins will host more than $100$ traces. This
-is achieved with a $80\times80$ grid where the $10^{th}$ percentile
+is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile
 of the number of traces in a given bin is $170$. Such a grid also
-yields a $10^{th}$ percentile of $56$ distinct vehicles per bin.
+yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin.
 The histograms of number of traces and vehicle per bin are represented
 on Figure \ref{fig:Grid control}.
 
@@ -809,10 +807,10 @@ on Figure \ref{fig:Grid control}.
 \centering
 \begin{tabular}{cc}
 \includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
-Histogram of number of traces per bin & Histogram of number of distinct vehicles per bin \tabularnewline
+Histogram of number of traces per cell. & Histogram of number of distinct vehicles per cell. \tabularnewline
 \end{tabular}
-\caption{Choice motivation for a $80\times 80$ bin based discretization
-grid for the NGSIM data}
+\caption{Experimental justification for a $80\times 80$ cell based discretization
+grid for the NGSIM data.}
 \label{fig:Grid control}
 \end{figure}
 
@@ -827,7 +825,7 @@ is coherent. Two estimators are provided for $q$ that use radically
 different techniques. The first one relies on the average measured
 speed and the number of traces in a bin. The other one on counting
 vehicles transiting from a cell to another. Verifying that they both
-give similar results for a given bucket will therefore confirm that
+give similar results for a given cell will therefore confirm that
 these estimators for $q$ are trustworthy. It will also certify that
 the estimation technique for $\rho$ is valid. As one can observe
 on Figure \ref{fig:Sanity-check}, the scatter plot of $\widehat{q}_{i,j}^{count}$
