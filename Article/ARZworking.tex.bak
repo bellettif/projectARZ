@@ -7,6 +7,12 @@
 \graphicspath{{figures/}}
 %\setlength\parindent{0pt}
 
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\trc}{trace}
+\DeclareMathOperator{\mean}{mean}
+\DeclareMathOperator{\bin}{bin}
+\DeclareMathOperator{\lns}{lanes}
+\DeclareMathOperator{\cnt}{count}
 
 \makeatletter
 \def\ps@pprintTitle{%
@@ -15,6 +21,7 @@
  \def\@oddfoot{\centerline{\thepage}}%
  \let\@evenfoot\@oddfoot}
 \makeatother
+
 
 %\usepackage{lineno,hyperref}
 %\modulolinenumbers[5]
@@ -685,111 +692,80 @@ with
 The ARZ equations provide a finer modeling of various phenomena affecting the dynamics of vehicular flow on a freeway. The spectral form of the linearized
 model provides a simple framework for establishing control strategies for the system. Prior to
 using such techniques, it is necessary to assess how realistic the
-model is in its linearized form. This section will subsequently confront the prediction of the model and the actual flow
-and velocity data gathered in the well known NGSIM data set.
+model is in its linearized form. This section compares the prediction of the model with actual flow
+and velocity data gathered from the well-known NGSIM data set.
 
 
 \subsection{Data source: NGSIM trajectories}
 
-The NSGIM trajectory data set gathers trajectories of vehicles sampled
-with a $10$ Hz frequency thanks to high precision cameras. Data is pre-processed so as to only take cars into account, $45$ minutes are recorded on a $650$ meter long section. There are
-five lanes along the section of the freeway under scrutiny which is
-taken into account when computing the lineic density of vehicles $\rho$\@.
-The trajectories are represented in the $\left(t,x\right)$ domain
-on Figure \ref{fig:NGSIM-trajectories}.
-Only a subset of the spatial domain will be used though because of the presence of ramps that would break the homogeneity of the freeway. The viable domain is $200$ meters long.
+We use the NSGIM trajectory data set for a section of the US-101 highway. the set gathers trajectories of vehicles sampled with a 10 Hz frequency thanks to high precision cameras. The data is pre-processed so as to take only cars into account; 45 minutes are recorded on a 650-meter long section with five lanes. The lanes are taken into account when computing the lineic density of vehicles $\rho$.
+The trajectories are represented in the $(t,x)$ domain
+in Figure \ref{fig:NGSIM-trajectories}.
+Only a subset of the spatial domain is used due to the presence of ramps, which breaks the homogeneity of the freeway. The viable domain is 200 meters long.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=12cm]{Numerics/US-101_all_traj_low_res}
-
-\protect\caption{NGSIM trajectories (the color represents the measured speed of each
-car in m/s)}
+\protect\caption{NGSIM trajectories. Color represents the measured speed of each
+car in m/s.}
 \label{fig:NGSIM-trajectories}
 \end{figure}
 
 
 
-\subsection{Reconstructing $\left(v,q\right)$ maps from NGSIM trajectories}
+\subsection{Reconstructing $(v,q)$ maps from NGSIM trajectories}
 
-The NGSIM does not directly provide the values $v\left(t,x\right)$
-and $q\left(t,x\right)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$.
+The NGSIM data set does not directly provide the values $v(t,x)$
+and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$.
 In order to obtain macroscopic quantities out of the microscopic measurements,
-one divides the time and space grid $\left[0,T\right]\times\left[0,L\right]$
-into small buckets $\left(\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$.
-Here $i$ corresponds to time and $j$ to space. The operation consists
-in gathering the corresponding data points into bins and then estimating
-the quantities of interest in each bin. Let $card$ denote the function
-that gives the number of elements in a given set i.e. its cardinal.
+we divide the space-time grid
+into small bins $\left(\left[i\Delta t,\, \left(i+1\right)\Delta t\right]\times\left[j\Delta x, \, (j+1)\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$, where $n_t$ and $n_x$ are the number of bins in time and space, respectively. This operation consists of gathering corresponding data points into bins, then estimating the quantities of interest in each bin. 
 
+\noindent \textbf{Binning formulae}
 
-\subsubsection{Binning formulae}
+The size of each bin is $\Delta t\times\Delta x$. Within each bucket, a finite number of traces, or footprints of a vehicle along its trajectory, are available, and $\rho$, $v$, and $q$ are assumed to be constant. We present several formulae to map a set of traces to speed, flow, and density over the space-time grid. 
 
-The size of each bucket is $\Delta t\times\Delta x$. In each bucket,
-a certain number of traces are available and $\rho$, $v$ and $q$
-are assumed to be constant. Here several formulae are presented that
-enable the conversion of a set of records of vehicles' positions into
-a map of speed, flow and density as a function of time and position.
+\textit{Binning formula for $v$}: Since the speed is assumed to be constant in each bin, a straightforward estimate for the speed is the empirical average. Let $\widehat{v}_{i,j}$ be the estimator for the speed in bin $(i,j)$:
 
+\begin{equation}
+\widehat{v}_{i,j}=\mean_{\trc \in \bin_{i,j}}(v(\trc))
+\end{equation}
 
-\paragraph{Binning formula for $v$:}
+\textit{Binning formula for $\rho$}: Consider a bin with index $(i,j)$. By definition, 
+\begin{equation}
+\rho_{i,j}=\frac{1}{n_{\lns}\Delta x\Delta t}\iint_{\left(t,x\right)\in [i\Delta t, \,(i+1)\Delta t] \times [j\Delta x,\,(j+1)\Delta t]}\rho(x,t) \text{d}x \text{d}t.
+\end{equation}
 
-The speed is assumed to be constant in each bucket. Thus a straightforward
-estimator for that quantity is the empirical average. Let $\widehat{v}_{i,j}$
-the estimator for the speed in bucket $\left(i,j\right)$.
+The position of each vehicle is recorded every 0.1 second. We count the number of traces in a given bin and normalize it by the sampling rate. The contribution of a given vehicle to the density of a bin is proportional to the
+number of traces it has left in the bin. If the speed is assumed to be locally constant, this contribution is proportional to the time this vehicle spends in the bin and is consistent with the conservation of the total number of vehicles across all bins.
 
-\[
-\widehat{v}_{i,j}=mean_{trace\in bucket_{i,j}}\left(v\left(trace\right)\right)
-\]
+\begin{equation}
+\widehat{\rho}_{i,j}=\frac{1}{n_{\lns} \Delta x \Delta t \: \text{sampling rate}}\card ( \{ \trc \mid \trc \in \bin \} ),
+\end{equation}
+where $\card (\cdot)$ gives the number of elements in a set, i.e., its cardinal.
 
+\textit{Binning formula for $q$}:
 
+By definition, $q\left(x,t\right)=\rho\left(x,t\right)v\left(x,t\right)$, so a logical first estimate for $q$ in bin $(i,j)$ is 
+\begin{equation}
+\widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}.
+\end{equation}
 
-\paragraph{Binning formula for $\rho$:}
-
-One considers a bucket with index $(i,j)$. by definition 
-\[
-\rho_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t}\int\int_{\left(t,x\right)\in\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]}\rho\left(x,t\right)dxdt
-\]
-\\
-Any given vehicle will have its position recorded every $0.1$ second.
-Therefore it is also possible to count the number of traces in a given
-bucket and normalize it by the sampling rate. The contribution of
-a given vehicle to the density of a bucket is proportional to the
-number of traces it has left in the bucket. If the speed is assumed
-to be locally constant, this is proportional to the time this vehicle
-spends in the bucket and consistent with the conservation of the total
-number of vehicles across all buckets.\\
-\\
-\[
-\widehat{\rho}_{i,j}=\frac{1}{n_{lanes}\:\Delta x\:\Delta t\:\mbox{sampling rate}}card\left(\left\{ trace\mid trace\:\in\: bucket\right\} \right)
-\]
-
-
-
-\paragraph{Binning formula for $q$:}
-
-By definition, $q\left(x,t\right)=\rho\left(x,t\right)v\left(x,t\right)$
-so a first estimator for $q$ in the bucket $\left(i,j\right)$ is
-logically 
-\[
-\widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}
-\]
-\\
-One can also approximate the flux going through a given bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
+We can also approximate the flux going through a given bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
 by the number of cars crossing the $x$ coordinate $\left(j+1\right)\Delta x$
 between times $i\:\Delta t$ and $\left(i+1\right)\Delta t$ normalized
-by the duration $\Delta t$.\\
-\\
-If a given vehicle with identification number $id_{0}$ crosses $\left(j+1\right)\Delta x$
-between time $i\:\Delta t$ and time $\left(i+1\right)\:\Delta t$,
-then $id_{0}$ is present in the bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[j\:\Delta x,\:\left(j+1\right)\:\Delta t\right]$
-and the bucket $\left[i\:\Delta t,\:\left(i+1\right)\:\Delta t\right]\times\left[\left(j+1\right)\:\Delta x,\:\left(j+2\right)\:\Delta t\right]$.
-Therefore, $card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)$
+by the duration $\Delta t$.
+
+If a given vehicle with identification number id crosses $\left(j+1\right)\Delta x$
+between time $i\Delta t$ and time $\left(i+1\right)\Delta t$,
+then id is present in bins $\left[i\Delta t,\,\left(i+1\right)\Delta t\right]\times\left[j\Delta x,\,\left(j+1\right)\Delta t\right]$
+and $\left[i\Delta t,\,\left(i+1\right)\Delta t\right]\times\left[\left(j+1\right)\Delta x,\,\left(j+2\right)\Delta t\right]$.
+Therefore, $\card\left(\left\{ \text{id}\left(\trc \right)\mid \trc \in \bin_{i,j}\right\} \cap\left\{ \text{id} \left(\trc\right)\mid \trc\in \bin_{i,j+1}\right\} \right)$
 is the number of vehicles that have crossed the coordinate $\left(j+1\right)\Delta x$
 in that interval of time. This gives another estimator of the flux
 based on counting cars in a straightforward way: 
 \[
-\widehat{q}_{i,j}^{count}=\frac{1}{n_{lanes}\Delta t}\: card\left(\left\{ id\left(trace\right)\mid trace\in bucket_{i,j}\right\} \cap\left\{ id\left(trace\right)\mid trace\in bucket_{i,j+1}\right\} \right)
+\widehat{q}_{i,j}^{\cnt}=\frac{1}{n_{\lns}\Delta t}\: \card\left(\left\{ \text{id} \left(\trc\right)\mid \trc \in \bin_{i,j}\right\} \cap\left\{ id\left( \trc \right)\mid \trc\in \bin_{i,j+1}\right\} \right)
 \]
 
 
@@ -805,20 +781,20 @@ correspond to the same vehicle or interacting vehicles, therefore
 violating the independence assumption of the theorem. Proving the
 convergence of the estimates above lies clearly beyond the scope of
 this article and therefore, as a rule of thumb we choose a setup that
-guarantees that most buckets will host more than $100$ traces. This
+guarantees that most bins will host more than $100$ traces. This
 is achieved with a $80\times80$ grid where the $10^{th}$ percentile
 of the number of traces in a given bin is $170$. Such a grid also
 yields a $10^{th}$ percentile of $56$ distinct vehicles per bin.
-The histograms of number of traces and vehicle per bucket are represented
+The histograms of number of traces and vehicle per bin are represented
 on Figure \ref{fig:Grid control}.
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
 \includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
-Histogram of number of traces per bucket & Histogram of number of distinct vehicles per bucket \tabularnewline
+Histogram of number of traces per bin & Histogram of number of distinct vehicles per bin \tabularnewline
 \end{tabular}
-\caption{Choice motivation for a $80\times 80$ bucket based discretization
+\caption{Choice motivation for a $80\times 80$ bin based discretization
 grid for the NGSIM data}
 \label{fig:Grid control}
 \end{figure}
@@ -846,7 +822,7 @@ estimation procedure.
 \centering
 \includegraphics[width=8cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
 \protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{count}$
-is plotted against $\widehat{q}_{i,j}$ across the grid of buckets.
+is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 \label{fig:Sanity-check}}
 \end{figure}
 
@@ -1014,7 +990,7 @@ the necessary computations are somewhat cumbersome.
 Prior to using Fourier decomposed signals and elementary solutions,
 it is necessary to convert the data into the diagonalized basis. First
 of all, the difference with respect to the equilibrium is computed
-for each bucket: $\widehat{\widetilde{v}}_{i,j}=\widehat{v}_{i,j}-\widehat{v}^{*}$,
+for each bin: $\widehat{\widetilde{v}}_{i,j}=\widehat{v}_{i,j}-\widehat{v}^{*}$,
 $\widehat{\widetilde{q}}_{i,j}=\widehat{q}_{i,j}-\widehat{q}^{*}$.
 Once $\lambda_{1}$ and $\lambda_{2}$ have been estimated, estimates
 for $\xi_{1}$ and $\xi_{2}$ are computed thanks to the following
@@ -1051,7 +1027,7 @@ prediction - data.\label{fig:Data-versus-predicted.}}
 
 For each value of $\tau$ one computes the mean absolute error (MAE).
 That is to say, the average difference in absolute value between what
-is simulated and what is predicted for each discretization bucket.
+is simulated and what is predicted for each discretization bin.
 $v$ and $q$ are not physically homogeneous, therefore it is not
 sensible to aggregate the errors over these quantities. However, $\xi_{1}$
 and $\xi_{2}$ are both expressed in veh/s. Summing their MAE gives

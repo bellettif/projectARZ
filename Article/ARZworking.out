@@ -19,23 +19,22 @@
 \BOOKMARK [1][-]{section.4}{Numerical validation}{}% 19
 \BOOKMARK [2][-]{subsection.4.1}{Data source: NGSIM trajectories}{section.4}% 20
 \BOOKMARK [2][-]{subsection.4.2}{Reconstructing \(v,q\) maps from NGSIM trajectories}{section.4}% 21
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Binning formulae}{subsection.4.2}% 22
-\BOOKMARK [3][-]{subsubsection.4.2.2}{Choosing the number of bins}{subsection.4.2}% 23
-\BOOKMARK [3][-]{subsubsection.4.2.3}{Sanity check for the estimators}{subsection.4.2}% 24
-\BOOKMARK [2][-]{subsection.4.3}{Estimated values for \(v,q\)}{section.4}% 25
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Maps}{subsection.4.3}% 26
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Fundamental diagrams}{subsection.4.3}% 27
-\BOOKMARK [3][-]{subsubsection.4.3.3}{Calibration of 1 and 2, linearization point}{subsection.4.3}% 28
-\BOOKMARK [2][-]{subsection.4.4}{Simulated values for \(v,q,\)}{section.4}% 29
-\BOOKMARK [3][-]{subsubsection.4.4.1}{Fourier decomposition of input for a linear PDE}{subsection.4.4}% 30
-\BOOKMARK [3][-]{subsubsection.4.4.2}{Simulated maps}{subsection.4.4}% 31
-\BOOKMARK [3][-]{subsubsection.4.4.3}{Calibration of }{subsection.4.4}% 32
-\BOOKMARK [2][-]{subsection.4.5}{Generic computations for time domain to Laplace domain transforms and vice versa}{section.4}% 33
-\BOOKMARK [3][-]{subsubsection.4.5.1}{Step function input}{subsection.4.5}% 34
-\BOOKMARK [3][-]{subsubsection.4.5.2}{Phased cosine input}{subsection.4.5}% 35
-\BOOKMARK [3][-]{subsubsection.4.5.3}{Fourier sum input}{subsection.4.5}% 36
-\BOOKMARK [2][-]{subsection.4.6}{Fourier decomposition and time domain responses for 2>0}{section.4}% 37
-\BOOKMARK [3][-]{subsubsection.4.6.1}{Fundamental responses in time domain:}{subsection.4.6}% 38
-\BOOKMARK [2][-]{subsection.4.7}{Fourier decomposition and time domain responses for 2<0}{section.4}% 39
-\BOOKMARK [3][-]{subsubsection.4.7.1}{Fundamental responses in time domain}{subsection.4.7}% 40
-\BOOKMARK [1][-]{section.5}{Conclusion}{}% 41
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Choosing the number of bins}{subsection.4.2}% 22
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Sanity check for the estimators}{subsection.4.2}% 23
+\BOOKMARK [2][-]{subsection.4.3}{Estimated values for \(v,q\)}{section.4}% 24
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Maps}{subsection.4.3}% 25
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Fundamental diagrams}{subsection.4.3}% 26
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Calibration of 1 and 2, linearization point}{subsection.4.3}% 27
+\BOOKMARK [2][-]{subsection.4.4}{Simulated values for \(v,q,\)}{section.4}% 28
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Fourier decomposition of input for a linear PDE}{subsection.4.4}% 29
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Simulated maps}{subsection.4.4}% 30
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Calibration of }{subsection.4.4}% 31
+\BOOKMARK [2][-]{subsection.4.5}{Generic computations for time domain to Laplace domain transforms and vice versa}{section.4}% 32
+\BOOKMARK [3][-]{subsubsection.4.5.1}{Step function input}{subsection.4.5}% 33
+\BOOKMARK [3][-]{subsubsection.4.5.2}{Phased cosine input}{subsection.4.5}% 34
+\BOOKMARK [3][-]{subsubsection.4.5.3}{Fourier sum input}{subsection.4.5}% 35
+\BOOKMARK [2][-]{subsection.4.6}{Fourier decomposition and time domain responses for 2>0}{section.4}% 36
+\BOOKMARK [3][-]{subsubsection.4.6.1}{Fundamental responses in time domain:}{subsection.4.6}% 37
+\BOOKMARK [2][-]{subsection.4.7}{Fourier decomposition and time domain responses for 2<0}{section.4}% 38
+\BOOKMARK [3][-]{subsubsection.4.7.1}{Fundamental responses in time domain}{subsection.4.7}% 39
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 40
