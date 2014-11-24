@@ -12,10 +12,10 @@
 \BOOKMARK [2][-]{subsection.2.3}{The Traffic Froude Number}{section.2}% 12
 \BOOKMARK [1][-]{section.3}{Spectral analysis of the linearized ARZ model}{}% 13
 \BOOKMARK [2][-]{subsection.3.1}{State-transition matrix}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.2}{Free-flow case}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.2}{Free-flow case \(F>1\)}{section.3}% 15
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Bode plots}{subsection.3.2}% 16
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Step responses}{subsection.3.2}% 17
-\BOOKMARK [2][-]{subsection.3.3}{Congestion regime}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.3}{Congestion regime \(F<1\)}{section.3}% 18
 \BOOKMARK [1][-]{section.4}{Numerical validation}{}% 19
 \BOOKMARK [2][-]{subsection.4.1}{Data source: NGSIM trajectories}{section.4}% 20
 \BOOKMARK [2][-]{subsection.4.2}{Reconstructing \(v,q\) maps from NGSIM trajectories}{section.4}% 21

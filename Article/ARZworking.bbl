@@ -30,6 +30,26 @@ C.~F. Daganzo, The cell transmission model: A dynamic representation of highway
   traffic consistent with the hydrodynamic theory, Transp. Res. Part B 28~(4)
   (1994) 269--287.
 
+\bibitem{Wang2005141}
+Y.~Wang, M.~Papageorgiou,
+  \href{http://www.sciencedirect.com/science/article/pii/S0191261504000438}{Real-time
+  freeway traffic state estimation based on extended kalman filter: a general
+  approach}, Transportation Research Part B: Methodological 39~(2) (2005) 141
+  -- 167.
+\newblock \href {http://dx.doi.org/http://dx.doi.org/10.1016/j.trb.2004.03.003}
+  {\path{doi:http://dx.doi.org/10.1016/j.trb.2004.03.003}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0191261504000438}
+
+\bibitem{Papageorgiou198929}
+M.~Papageorgiou, J.-M. Blosseville, H.~Hadj-Salem,
+  \href{http://www.sciencedirect.com/science/article/pii/0191261589900210}{Macroscopic
+  modelling of traffic flow on the boulevard périphérique in paris},
+  Transportation Research Part B: Methodological 23~(1) (1989) 29 -- 47.
+\newblock \href
+  {http://dx.doi.org/http://dx.doi.org/10.1016/0191-2615(89)90021-0}
+  {\path{doi:http://dx.doi.org/10.1016/0191-2615(89)90021-0}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/0191261589900210}
+
 \bibitem{godunov}
 S.~K. Godunov, A difference scheme for numerical solution of discontinuous
   solution of hydrodynamic equations, Math. Sbornik 47 (1969) 271--306.
@@ -137,6 +157,11 @@ B.~Coifman, S.~Krishnamurthy, X.~Wang,
 S.~Ahn, C.~M. J., Freeway traffic oscillations and vehicle lane-change
   maneuvers, in: 17Th Int. Symp. on Transportation and Traffic Theory,
   Elsevier, 2007, pp. 691--710.
+
+\bibitem{Zheng2011}
+Z.~Zheng, S.~Ahn, D.~Chen, J.~Laval, Freeway traffic oscillations: Microscopic
+  analysis of formations and propagations using wavelet transform, Trans. Res.
+  Part B 45~(9) (2011) 1378--1388.
 
 \bibitem{litrico2009modeling}
 X.~Litrico, V.~Fromion, Modeling and control of hydrosystems, Springer, 2009.
