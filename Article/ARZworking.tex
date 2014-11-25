@@ -969,13 +969,15 @@ the predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$.
 earlier is useful to that end and will be leveraged using Fourier
 analysis. Fourier transform is a linear operator that is practically
 implemented using the FFT.
-%A real signal $\left\{ f\left(t\right)\mid t\in\left[0,T\right]\right\} $ on one of the boundaries $\left\{ \left(x=0,t\right)\mid t\in\left[0,T\right]\right\} $ or $\left\{ \left(x=L,t\right)\mid t\in\left[0,T\right]\right\} $ is transformed into a periodic signal by infinite duplication and then turned into a Fourier series $\left\{ t\rightarrow\mu+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\mid t\in\left[0,T\right]\right\} $. This process is known to be convergent with an infinite sum for any square integrable function. It is practically extremely accurate in our case even though the FFT only relies on a finite number of Fourier coefficients. 
+%A real signal $\left\{ f\left(t\right)\mid t\in\left[0,T\right]\right\} $ on one of the boundaries $\left\{ \left(x=0,t\right)\mid t\in\left[0,T\right]\right\} $ or $\left\{ \left(x=L,t\right)\mid t\in\left[0,T\right]\right\} $ is transformed into a periodic signal by infinite duplication and then turned into a Fourier series $\left\{ t\rightarrow\mu+\sum_{k=1}^{n}\beta_{k}\cdot \left(k\cdot wt+\phi_{k}\right)H\mid t\in\left[0,T\right]\right\} $. This process is known to be convergent with an infinite sum for any square integrable function. It is practically extremely accurate in our case even though the FFT only relies on a finite number of Fourier coefficients. 
 For both upstream and downstream boundary conditions,
 eye inspection cannot distinguish the original signal from its Fourier
 series decomposition. In Appendix \ref{sub:Generic-computations}
 the generic way of computing the solution of the PDE inside the inner
 domain is presented. The process is quite straightforward although
-the necessary computations are somewhat cumbersome. \textbf{Simulated maps.} Prior to using Fourier decomposed signals and elementary solutions,
+the necessary computations are somewhat cumbersome.
+
+\textbf{Simulated maps.} Prior to using Fourier decomposed signals and elementary solutions,
 it is necessary to convert the data into the diagonalized basis. First
 of all, the difference with respect to the equilibrium is computed
 for each cell: $\widehat{\widetilde{v}}_{i,j}=\widehat{v}_{i,j}-\widehat{v}^{*}$,
@@ -993,36 +995,27 @@ domains. Figure \ref{fig:Data-versus-predicted.} shows important
 qualitative properties of the model. First, as expected, the
 model generally predicts with a very good accuracy the decay of all
 quantities along their characteristic lines. This is a realistic feature
-that cannot be paralleled by first order models. The general quality of the fit is rather good with most of the error on $v$ and $q$ in a $20\%$ range of the data's amplitude between minimum and maximum values. What is also quite satisfactory is that the linearized second order model manages to capture oscillations observed on the boundary and account for their decay accurately. The value of $\tau$ used to compute the
-plots below is described in below.
+that cannot be paralleled by first order models. The general quality of the fit is rather good with most of the error on $v$ and $q$ in a $20\%$ range of the data's amplitude between minimum and maximum values. What is also quite satisfactory is that the linearized second order model manages to capture oscillations observed on the boundary and account for their decay accurately. The value of $\tau$ used to compute the plots below is described in the following paragraph.
 
-\begin{figure}[H]
-\centering
-\begin{tabular}{c}
-\includegraphics[width=12cm]{\string"/Numerics/Maps simulated/vq_map_n=80_best_tau\string".png}\tabularnewline
-Top row: $q$. Bottom row: $v$.\tabularnewline
-\includegraphics[width=12cm]{\string"/Numerics/Maps simulated/xi_map_n=80_best_tau\string".png}\tabularnewline
-Top row: $\xi_{1}$. Bottom row: $\xi_{2}$.\tabularnewline
-\end{tabular}
-\protect\caption{Data versus predicted. Top: $\left(v,q\right)$ domain. Bottom: $\left(\xi_{1},\xi_{2}\right)$
-domain. First column: data. Middle column: predictions. Third column:
-prediction - data.\label{fig:Data-versus-predicted.}}
-\end{figure}
-
-
-
-\subsubsection{Calibration of $\tau$\label{sub:Calibration-of-tau}}
-
-For each value of $\tau$ one computes the mean absolute error (MAE).
+\textbf{Calibration of $\tau$\label{sub:Calibration-of-tau}} For each value of $\tau$ one computes the \textit{mean absolute error} (MAE).
 That is to say, the average difference in absolute value between what
-is simulated and what is predicted for each discretization bin.
-$v$ and $q$ are not physically homogeneous, therefore it is not
+is simulated and what is predicted for each discretization cell. Quantities $v$ and $q$ are not physically homogeneous, therefore it is not
 sensible to aggregate the errors over these quantities. However, $\xi_{1}$
 and $\xi_{2}$ are both expressed in veh/s. Summing their MAE gives
 a reliable uni-dimensional index of the quality of the fit with respect
 to $\tau$. This quantity is computed for different values of $\tau$
 ranging from $5$ to $80$ seconds. The value offering the best fit
 is $\tau^{*}=39.18$.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{c}
+\includegraphics[width=15cm]{\string"/Numerics/Maps simulated/vq_map_n=80_best_tau\string".png}\tabularnewline
+\includegraphics[width=15cm]{\string"/Numerics/Maps simulated/xi_map_n=80_best_tau\string".png}
+\end{tabular}
+\protect\caption{Data versus predicted. Top Figure: $\left(v,q\right)$ domain, top row is $v$, bottom row is $q$. Bottom: $\left(\xi_{1},\xi_{2}\right)$
+domain, top row is $\xi_{1}$, bottom row is $\xi_{2}$. First column: data. Middle column: predictions. Third column: error (difference between prediction and data).\label{fig:Data-versus-predicted.}}
+\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -1034,18 +1027,23 @@ MAE over $q$ and $v$ & MAE over $\xi_{1}$ and $\xi_{2}$ and sum of both MAE.\tab
 and $\xi_{2}$.}
 \end{figure}
 
+\section{Conclusion}
+In this article we have shown how to use linearization of second order traffic model to characterize important properties of the system such as Riemann Invariants. In particular time domain responses predict in the free-flow regime that the system is unstable and traffic waves would see their amplitude increase at an exponential rate before the system drifts away from the equilibrium point. This is a strong result that sheds a new light on traffic oscillations. In the congested regime such oscillatory phenomena are also present as we have shown in our numerical experiments. The new method of analysis and its spectral form will later on make any control strategy easy to set up. The higher realism of the ARZ model as compared to LWR will enable efficient traffic regulation on freeways thank to varying speed limits and on-ramp metering. It will also avoid resonating with jamitons. Further work needs to focus on designing such traffic optimization schemes. Numerically, new methods for macroscopic variable estimation have been developed that are reliable practically. Although it is still necessary to prove the convergence of this estimation procedure and which resolution should be used for such tasks. It is interesting to see that, thanks to the spectral resolution of the problem, the choice of the grid size is then driven by statistical convergence and not by CFL conditions.
 
-\subsection{Generic computations for time domain to Laplace domain transforms
+
+\newpage
+\appendix
+\section{Generic computations for time domain to Laplace domain transforms
 and vice versa\label{sub:Generic-computations}}
 
 The aim is to derive the time domain responses of generic input signals
-such as $t\rightarrow H\left(t\right)$ and $t\rightarrow cos\left(wt+\phi\right)H\left(t\right)$
+such as $t\rightarrow H\left(t\right)$ and $t\rightarrow \cos\left(wt+\phi\right)H\left(t\right)$
 when multiplied in the Laplace domain by $\frac{1}{s+\alpha}$. This
 then enables the computation of any response that decomposes in a
 Fourier transform.
 
 
-\subsubsection{Step function input}
+\subsection{Step function input}
 
 The time domain input function is $H\left(t\right)$. One computes
 the inverse Laplace transform of $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
@@ -1056,25 +1054,25 @@ t\rightarrow\frac{1}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)
 
 
 
-\subsubsection{Phased cosine input}
+\subsection{Phased cosine input}
 
-The time domain input function is $cos\left(wt+\phi\right)H\left(t\right)$.
-One computes the inverse Laplace transform of $s\rightarrow\frac{1}{s+\alpha}\left\{ \frac{s}{s^{2}+\omega^{2}}cos\left(\phi\right)-\frac{w}{s^{2}+w^{2}}sin\left(\phi\right)\right\} $
+The time domain input function is $\cos\left(wt+\phi\right)H\left(t\right)$.
+One computes the inverse Laplace transform of $s\rightarrow\frac{1}{s+\alpha}\left\{ \frac{s}{s^{2}+\omega^{2}}\cos\left(\phi\right)-\frac{w}{s^{2}+w^{2}}\sin\left(\phi\right)\right\} $
 which can be directly achieved in the time domain. Indeed, the result
-is given by the convolution product $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star cos\left(\omega\cdot+\phi\right)H\left(\cdot\right)\right)\left(t\right)$,
+is given by the convolution product $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star \cos\left(\omega\cdot+\phi\right)H\left(\cdot\right)\right)\left(t\right)$,
 that is to say 
 \[
-t\rightarrow\frac{-e^{-\alpha\cdot t}\left(\alpha\cdot cos\left(\phi\right)+w\cdot sin\left(\phi\right)\right)+\alpha\cdot cos\left(wt+\phi\right)+w\cdot sin\left(wt+\phi\right)}{\alpha^{2}+w^{2}}H\left(t\right)=\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+t\rightarrow\frac{-e^{-\alpha\cdot t}\left(\alpha\cdot \cos\left(\phi\right)+w\cdot \sin\left(\phi\right)\right)+\alpha\cdot \cos\left(wt+\phi\right)+w\cdot \sin\left(wt+\phi\right)}{\alpha^{2}+w^{2}}H\left(t\right)=\kappa_{\alpha,w,\phi}^{\text{cos}}\left(t\right)
 \]
 
 
 
-\subsubsection{Fourier sum input}
+\subsection{Fourier sum input}
 
-Let the input be $t\rightarrow\mu H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot cos\left(k\cdot wt+\phi_{k}\right)H\left(t\right)$.
+Let the input be $t\rightarrow\mu H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot \cos\left(k\cdot wt+\phi_{k}\right)H\left(t\right)$.
 The time domain response is therefore 
 \[
-t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot\kappa_{\alpha,w,\phi}^{cos}\left(t\right)
+t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot\kappa_{\alpha,w,\phi}^{\text{cos}}\left(t\right)
 \]
 
 
@@ -1082,7 +1080,6 @@ t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{
 \subsection{Fourier decomposition and time domain responses for $\lambda_{2}>0$}
 
 Let $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}<0$.
-Let $H\left(t\right)$ the Heaviside function.
 
 \[
 \left(\begin{array}{c}
@@ -1135,25 +1132,25 @@ H\left(t\right)
 \xi_{1}\left(0,t\right)\\
 \xi_{2}\left(0,t\right)
 \end{array}\right)=\left(\begin{array}{c}
-cos\left(\omega t+\phi\right)\\
+\cos\left(\omega t+\phi\right)\\
 0
 \end{array}\right)$:
 
 \begin{itemize}
-\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
-\item $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
+\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}\cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\item $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
 \end{itemize}
 \item $\left(\begin{array}{c}
 \xi_{1}\left(0,t\right)\\
 \xi_{2}\left(0,t\right)
 \end{array}\right)=\left(\begin{array}{c}
 0\\
-cos\left(\omega t+\phi\right)
+\cos\left(\omega t+\phi\right)
 \end{array}\right)$:
 
 \begin{itemize}
 \item $\xi_{1}\left(x,t\right)=0$
-\item $\xi_{2}\left(x,t\right)=cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
+\item $\xi_{2}\left(x,t\right)=\cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
 \end{itemize}
 \end{itemize}
 
@@ -1213,30 +1210,26 @@ H\left(t\right)
 \xi_{1}\left(0,t\right)\\
 \xi_{2}\left(L,t\right)
 \end{array}\right)=\left(\begin{array}{c}
-cos\left(\omega t+\phi\right)\\
+\cos\left(\omega t+\phi\right)\\
 0
 \end{array}\right)$:
 
 \begin{itemize}
-\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
-\item $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{cos}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
+\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}\cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
+\item $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
 \end{itemize}
 \item $\left(\begin{array}{c}
 \xi_{1}\left(0,t\right)\\
 \xi_{2}\left(L,t\right)
 \end{array}\right)=\left(\begin{array}{c}
 0\\
-cos\left(\omega t+\phi\right)
+\cos\left(\omega t+\phi\right)
 \end{array}\right)$:
 
 \begin{itemize}
 \item $\xi_{1}\left(x,t\right)=0$
-\item $\xi_{2}\left(x,t\right)=cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$\end{itemize}
+\item $\xi_{2}\left(x,t\right)=\cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$\end{itemize}
 \end{itemize}
-
-\section{Conclusion}
-In this article we have shown how to use linearization of second order traffic model so as to characterize important properties of the system such as Riemann Invariants. In particular time domain responses predict in the free-flow regime that the system is unstable and traffic waves would see their amplitude increase at an exponential rate before the system drifts away from the equilibrium point. This is a strong result that sheds a new light on traffic oscillations. In the congested regime such oscillatory phenomena are also present as we have shown in our numerical experiments. The new method of analysis and its spectral form will later on make any control strategy easy to set up. The higher realism of the ARZ model as compared to LWR will enable efficient traffic regulation on freeways thank to varying speed limits and on-ramp metering. It will also avoid resonating with jamitons. Further work needs to focus on designing such traffic optimization schemes. Numerically, new methods for macroscopic variable estimation have been developed that are reliable practically. Although it is still necessary to prove the convergence of this estimation procedure and which resolution should be used for such tasks. It is interesting to see that, thanks to the spectral resolution of the problem, the choice of the grid size is then driven by statistical convergence and not by CFL conditions.
-
 
 \section*{Acknowledgments}
 
