@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 NOV 2014 15:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 NOV 2014 20:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -434,7 +434,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 553.
 
-<figures/supercr.pdf, id=310, 614.295pt x 794.97pt>
+<figures/supercr.pdf, id=311, 614.295pt x 794.97pt>
 File: figures/supercr.pdf Graphic file (type pdf)
  <use figures/supercr.pdf>
 Package pdftex.def Info: figures/supercr.pdf used on input line 558.
@@ -470,14 +470,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
  []
 
-<figures/IOv_-3to-1.pdf, id=340, 614.295pt x 794.97pt>
+<figures/IOv_-3to-1.pdf, id=341, 614.295pt x 794.97pt>
 File: figures/IOv_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/IOv_-3to-1.pdf>
 Package pdftex.def Info: figures/IOv_-3to-1.pdf used on input line 602.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/IOq_-3to-1.pdf, id=341, 614.295pt x 794.97pt>
+<figures/IOq_-3to-1.pdf, id=342, 614.295pt x 794.97pt>
 File: figures/IOq_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/IOq_-3to-1.pdf>
@@ -488,28 +488,28 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 601--610
  [][] 
  []
 
-<figures/distr11_-3to-1.pdf, id=342, 614.295pt x 794.97pt>
+<figures/distr11_-3to-1.pdf, id=343, 614.295pt x 794.97pt>
 File: figures/distr11_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr11_-3to-1.pdf>
 Package pdftex.def Info: figures/distr11_-3to-1.pdf used on input line 617.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr12_-3to-1.pdf, id=343, 614.295pt x 794.97pt>
+<figures/distr12_-3to-1.pdf, id=344, 614.295pt x 794.97pt>
 File: figures/distr12_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr12_-3to-1.pdf>
 Package pdftex.def Info: figures/distr12_-3to-1.pdf used on input line 619.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr21_-3to-1.pdf, id=344, 614.295pt x 794.97pt>
+<figures/distr21_-3to-1.pdf, id=345, 614.295pt x 794.97pt>
 File: figures/distr21_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr21_-3to-1.pdf>
 Package pdftex.def Info: figures/distr21_-3to-1.pdf used on input line 625.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/distr22_-3to-1.pdf, id=345, 614.295pt x 794.97pt>
+<figures/distr22_-3to-1.pdf, id=346, 614.295pt x 794.97pt>
 File: figures/distr22_-3to-1.pdf Graphic file (type pdf)
 
 <use figures/distr22_-3to-1.pdf>
@@ -520,7 +520,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 616--634
  [][] 
  []
 
-<figures/diagIOfreeflow.pdf, id=346, 614.295pt x 794.97pt>
+<figures/diagIOfreeflow.pdf, id=347, 614.295pt x 794.97pt>
 File: figures/diagIOfreeflow.pdf Graphic file (type pdf)
 
 <use figures/diagIOfreeflow.pdf>
@@ -547,7 +547,7 @@ l.642
        <./figures/IOv_-3to-1.pdf> <./figures/IOq_-3to-1.pdf> <./figures/distr11
 _-3to-1.pdf> <./figures/distr12_-3to-1.pdf> <./figures/distr21_-3to-1.pdf> <./f
 igures/distr22_-3to-1.pdf>]
-<figures/diagdistr11freeflow.pdf, id=417, 614.295pt x 794.97pt>
+<figures/diagdistr11freeflow.pdf, id=418, 614.295pt x 794.97pt>
 File: figures/diagdistr11freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr11freeflow.pdf>
@@ -555,7 +555,7 @@ Package pdftex.def Info: figures/diagdistr11freeflow.pdf used on input line 646
 .
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/diagdistr21freeflow.pdf, id=418, 614.295pt x 794.97pt>
+<figures/diagdistr21freeflow.pdf, id=419, 614.295pt x 794.97pt>
 File: figures/diagdistr21freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr21freeflow.pdf>
@@ -594,7 +594,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 670--671
 
  []
 
-<figures/subcr.pdf, id=448, 614.295pt x 794.97pt>
+<figures/subcr.pdf, id=449, 614.295pt x 794.97pt>
 File: figures/subcr.pdf Graphic file (type pdf)
  <use figures/subcr.pdf>
 Package pdftex.def Info: figures/subcr.pdf used on input line 674.
@@ -626,7 +626,7 @@ r (name{figure.6}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.714 
        <./figures/subcr.pdf>]
-<figures/Numerics/US-101_all_traj_low_res.png, id=465, 1156.32pt x 578.16pt>
+<figures/Numerics/US-101_all_traj_low_res.png, id=466, 1156.32pt x 578.16pt>
 File: figures/Numerics/US-101_all_traj_low_res.png Graphic file (type png)
 
 <use figures/Numerics/US-101_all_traj_low_res.png>
@@ -649,7 +649,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
                                                   \fi \fi 
 l.759 \end{equation}
                      <./figures/Numerics/US-101_all_traj_low_res.png>]
-<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=476, 578.16pt x 4
+<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=477, 578.16pt x 4
 33.62pt>
 File: figures/"/Numerics/Discretisation grid/traces_80_80".png Graphic file (ty
 pe png)
@@ -658,7 +658,7 @@ Package pdftex.def Info: figures/"/Numerics/Discretisation grid/traces_80_80".p
 ng used on input line 809.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=477, 578.16pt x 433.
+<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=478, 578.16pt x 433.
 62pt>
 File: figures/"/Numerics/Discretisation grid/ids_80_80".png Graphic file (type 
 png)
@@ -679,7 +679,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 808--813
 l.830 
        <./figures//Numerics/Discretisation grid/traces_80_80.png> <./figures//N
 umerics/Discretisation grid/ids_80_80.png>]
-<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=490, 578.16pt x 433.6
+<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=491, 578.16pt x 433.6
 2pt>
 File: figures/"/Numerics/Sanity check/80_80_q_q_count".png Graphic file (type p
 ng)
@@ -704,7 +704,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 841.
 
-<figures/"/Numerics/Maps data/80_80_v_map".png, id=493, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_v_map".png, id=494, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_v_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_v_map".png>
@@ -712,7 +712,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_v_map".png used on
 input line 893.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_rho_map".png, id=494, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_rho_map".png, id=495, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_rho_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_rho_map".png>
@@ -720,7 +720,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_rho_map".png used o
 n input line 893.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_map".png, id=495, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_q_map".png, id=496, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_q_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_q_map".png>
@@ -728,7 +728,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_q_map".png used on
 input line 894.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=496, 578.16pt x 433.62
+<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=497, 578.16pt x 433.62
 pt>
 File: figures/"/Numerics/Maps data/80_80_q_count_map".png Graphic file (type pn
 g)
@@ -749,7 +749,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 892--898
 l.900 
        <./figures//Numerics/Sanity check/80_80_q_q_count.png>]
 <figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png, id=50
-8, 578.16pt x 433.62pt>
+9, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png G
 raphic file (type png)
 
@@ -758,7 +758,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
 _rho_q_count".png used on input line 904.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=509,
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=510,
  578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png Gra
 phic file (type png)
@@ -830,7 +830,7 @@ gures//Numerics/Maps data/80_80_q_count_map.png> <./figures//Numerics/Maps data
 /80_80_fundamental_diagram_rho_q_count.png> <./figures//Numerics/Maps data/80_8
 0_fundamental_diagram_v_q_count.png>]
 <figures/"/Numerics/Calibration of eigen values/Fundamental diagram fitting n =
- 80".png, id=522, 578.16pt x 433.62pt>
+ 80".png, id=523, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Calibration of eigen values/Fundamental diagram fittin
 g n = 80".png Graphic file (type png)
 
@@ -880,7 +880,7 @@ l.979
 l.979 
        <./figures//Numerics/Calibration of eigen values/Fundamental diagram fit
 ting n = 80.png>]
-<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=533, 1011.78pt
+<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=534, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png Graphic file 
 (type png)
@@ -889,7 +889,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau
 ".png used on input line 1013.
 (pdftex.def)             Requested size: 426.79134pt x 304.85522pt.
 
-<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=534, 1011.78pt
+<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=535, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png Graphic file 
 (type png)
@@ -910,7 +910,7 @@ Overfull \vbox (4.48051pt too high) has occurred while \output is active []
 l.1019 
         <./figures//Numerics/Maps simulated/vq_map_n=80_best_tau.png> <./figure
 s//Numerics/Maps simulated/xi_map_n=80_best_tau.png>]
-<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=546, 578.16pt x 43
+<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=547, 578.16pt x 43
 3.62pt>
 File: figures/"/Numerics/Calibration of Tau/q_v_error_80".png Graphic file (typ
 e png)
@@ -919,7 +919,7 @@ Package pdftex.def Info: figures/"/Numerics/Calibration of Tau/q_v_error_80".pn
 g used on input line 1023.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=547, 578.16p
+<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=548, 578.16p
 t x 433.62pt>
 File: figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png Graphic fil
 e (type png)
@@ -938,44 +938,44 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 1022--1027
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1034 \newpage
+l.1042 \newpage
                 <./figures//Numerics/Calibration of Tau/q_v_error_80.png> <./fi
 gures//Numerics/Calibration of Tau/xi_1_xi_2_error_80.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1080.
+(hyperref)                removing `math shift' on input line 1088.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1080.
+(hyperref)                removing `\lambda' on input line 1088.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1080.
+(hyperref)                removing `subscript' on input line 1088.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1080.
+(hyperref)                removing `math shift' on input line 1088.
 
 [20]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1157.
+(hyperref)                removing `math shift' on input line 1165.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 1157.
+(hyperref)                removing `\lambda' on input line 1165.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1157.
+(hyperref)                removing `subscript' on input line 1165.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1157.
+(hyperref)                removing `math shift' on input line 1165.
 
 
-Overfull \hbox (49.12878pt too wide) in paragraph at lines 1195--1196
+Overfull \hbox (49.12878pt too wide) in paragraph at lines 1203--1204
 []$\OML/cmm/m/it/10 ^^X[] [] \OT1/cmr/m/n/10 = [] []$ 
  []
 
@@ -985,12 +985,12 @@ Missing character: There is no © in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
  [22])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1247.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1255.
  [23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1247.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1255.
  (./ARZworking.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1247.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1247.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1255.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1255.
 
 Package rerunfilecheck Info: File `ARZworking.out' has not changed.
 (rerunfilecheck)             Checksum: 766802DF8A1CA2602C2A70D35B6F36AF;2665.
@@ -998,7 +998,7 @@ Package rerunfilecheck Info: File `ARZworking.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1247.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1255.
  ) 
 Here is how much of TeX's memory you used:
  7245 strings out of 493117
@@ -1007,7 +1007,7 @@ Here is how much of TeX's memory you used:
  10418 multiletter control sequences out of 15000+600000
  9702 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,21n,32p,1416b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,21n,32p,1030b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.p
@@ -1034,10 +1034,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dis
 t/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/public/rsfs/rsfs7.pfb>
-Output written on ARZworking.pdf (23 pages, 3092090 bytes).
+Output written on ARZworking.pdf (23 pages, 3093601 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 566 compressed objects within 6 object streams
+ 710 PDF objects out of 1000 (max. 8388607)
+ 570 compressed objects within 6 object streams
  163 named destinations out of 1000 (max. 500000)
  403 words of extra memory for PDF output out of 10000 (max. 10000000)
 
