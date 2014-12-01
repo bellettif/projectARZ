@@ -243,17 +243,17 @@ for n_grid in [80]:
             plt.subplot(211)
             plt.plot(xi_1_data_0)
             plt.plot(xi_1_sim[0])
-            plt.title('xi_1(0,t) condition n = %d' % n_grid)
+            plt.title(r'$\xi_{1}(0,t)$ condition n = %d' % n_grid)
             plt.xlabel('t')
-            plt.ylabel('xi_1')
-            plt.legend(('xi_1_data', 'xi_1_sim'), 'upper right')
+            plt.ylabel(r'$\xi_1$')
+            plt.legend((r'$\xi_{1_{data}}$', r'$\xi_{1_{sim}}$'), 'upper right')
             plt.subplot(212)
             plt.plot(xi_2_data_L)
             plt.plot(xi_2_sim[-1])
-            plt.title('xi_2(L,t) condition n = %d' % n_grid)
+            plt.title(r'$\xi_{2}(0,t)$ condition n = %d' % n_grid)
             plt.xlabel('t')
-            plt.ylabel('xi_2')
-            plt.legend(('xi_2', 'xi_2_sim'), 'upper right')
+            plt.ylabel(r'$\xi_2$')
+            plt.legend((r'$\xi_{2_{data}}$', r'$\xi_{2_{sim}}$'), 'upper right')
             plt.savefig('%s/Boundary_conditions_check_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             #
@@ -286,7 +286,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_1 data (veh/s)')
+            plt.title(r'$\xi_{1}^{data}$ (veh/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -304,7 +304,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_1 sim (veh/s)')
+            plt.title(r'$\xi_{1}^{sim}$ (veh/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -322,7 +322,7 @@ for n_grid in [80]:
                        vmin = -1.0,
                        vmax = 1.0,
                        interpolation = 'None')
-            plt.title('relative error xsi_1')
+            plt.title(r'Relative error $\xi_{1}$')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -347,7 +347,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_2 data (veh/s)')
+            plt.title(r'$\xi_{2}^{data}$ (veh/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -365,7 +365,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
-            plt.title('xi_2 sim (veh/s)')
+            plt.title(r'$\xi_{2}^{sim}$ (veh/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -383,7 +383,7 @@ for n_grid in [80]:
                        vmin = -1.0,
                        vmax = 1.0,
                        interpolation = 'None')
-            plt.title('Relative error xi_2')
+            plt.title(r'Relative error $\xi_{2}$')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -398,22 +398,23 @@ for n_grid in [80]:
             cbar.ax.tick_params(labelsize = fontsize)
             fig = plt.gcf()
             fig.set_size_inches((height, width))
+            plt.tight_layout()
             plt.savefig('%s/xi_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             #
             #    Plot histogram of error in xi_1, xi_2 domain
             #
             plt.hist(np.ravel(xi_1_data[::-1] - xi_1_sim[::-1]), bins = 100)
-            plt.xlabel('xi_1 error (veh/s)')
-            plt.title('Histogram of xi_1 error')
-            plt.ylabel('xi_1 data - xi_1 sim')
+            plt.xlabel(r'$\xi_{1_{error}}$ (veh/s)')
+            plt.title(r'Histogram of $\xi_{1_{error}}$')
+            plt.ylabel(r'$\xi_{1_{data}} - \xi_{1_{sim}}$')
             plt.savefig('%s/xi_1_error_%d_%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             #
             plt.hist(np.ravel(xi_2_data[::-1] - xi_2_sim[::-1]), bins = 100)
-            plt.xlabel('xi_2 error (veh/s)')
-            plt.title('Histogram of xi_2 error')
-            plt.ylabel('xi_2 data - xi_2 sim')
+            plt.xlabel(r'$\xi_{2_{error}}$ (veh/s)')
+            plt.title(r'Histogram of $\xi_{2_{error}}$')
+            plt.ylabel(r'$\xi_{2_{data}} - \xi_{2_{sim}}$')
             plt.savefig('%s/xi_2_error_%d_%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             #
@@ -434,7 +435,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
-            plt.title('v data (m/s)')
+            plt.title('$v^{data}$ (m/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -452,7 +453,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value, 
                        interpolation = 'None')
-            plt.title('v sim (m/s)')
+            plt.title('$v^{sim}$ (m/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -470,7 +471,7 @@ for n_grid in [80]:
                        vmin = -1.0,
                        vmax = 1.0,
                        interpolation = 'None')
-            plt.title('relative error v')
+            plt.title('Relative error v')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -495,7 +496,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
-            plt.title('q data (veh/s)')
+            plt.title('$q^{data}$ (veh/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -513,7 +514,7 @@ for n_grid in [80]:
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
-            plt.title('q sim (veh/s)')
+            plt.title('$q^{sim}$ (veh/s)')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -531,7 +532,7 @@ for n_grid in [80]:
                        vmin = -1.0,
                        vmax = 1.0,
                        interpolation = 'None')
-            plt.title('relative error q')
+            plt.title('Relative error q')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -546,7 +547,8 @@ for n_grid in [80]:
             # Done
             fig = plt.gcf()
             fig.set_size_inches((height,width))
-            plt.savefig('%s/vq_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
+            plt.tight_layout()
+            plt.savefig('%s/vq_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU), dpi = 300)
             plt.close()
             #
             #    Plot histogram of error in v, q domain
