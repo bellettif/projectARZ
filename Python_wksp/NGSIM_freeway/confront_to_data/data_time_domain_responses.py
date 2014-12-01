@@ -14,10 +14,10 @@ from time_domain_responses import *
 from fourier_transform import compute_input_fft
 from fourier_transform import compute_inv_fft
 
-PLOT_FOLDER = 'plots_I80'
-CALIBRATION_FOLDER = 'calibration_I80'
-CSV_FOLDER = 'csv_I80'
-SLICE_FOLDER = 'slices_I80'
+PLOT_FOLDER = 'plots_US101'
+CALIBRATION_FOLDER = 'calibration_US101'
+CSV_FOLDER = 'csv_US101'
+SLICE_FOLDER = 'slices_US101'
 
 if PLOT_FOLDER not in os.listdir('./'):
     os.mkdir(PLOT_FOLDER)
@@ -34,19 +34,16 @@ if SLICE_FOLDER not in os.listdir('../'):
 N_TAUS = 80
 TAU_VALUES = np.linspace(5, 80, N_TAUS)
 #TAU_VALUES = [30, 35, 40, 45]
-#TAU_VALUES = [29.683544]
-#Best tau = 28.734177
-#42.025316
-#TAU_VALUES = [39.177215]
-TAU_VALUES = [68.607595]
+TAU_VALUES = [39.177215] #Best tau for US101
+#TAU_VALUES = [68.607595]
 N_TAUS = len(TAU_VALUES)
 
 PLOT_ALL = True
 CALIBRATE_TAU = False
-BUILD_VIDEO = True
+BUILD_VIDEO = False
 
-PARAM_FOLDER = 'system_params_I80'
-MATRIX_FOLDER = 'matrices_I80'
+PARAM_FOLDER = 'system_params_US101'
+MATRIX_FOLDER = 'matrices_US101'
 
 for n_grid in [80]:
     params = pickle.load(open('../%s/%d_%d_params.pi' % (PARAM_FOLDER, n_grid, n_grid), 'rb'))
@@ -203,6 +200,10 @@ for n_grid in [80]:
         q_sim = xi_1_sim - lambda_2 / lambda_1 * xi_2_sim
         v_sim = (lambda_1 - lambda_2) / (rho_star * lambda_1) * xi_2_sim
         rho_sim = q_sim / v_sim
+        relative_error_xi_1 = 2.0 * (xi_1_data - xi_1_sim) / (xi_1_data + xi_1_sim)
+        relative_error_xi_2 = 2.0 * (xi_2_data - xi_2_sim) / (xi_2_data + xi_2_sim)
+        relative_error_q = 2.0 * (q_data - q_sim) / (q_data + q_sim + 2.0 * q_star)
+        relative_error_v = 2.0 * (v_data - v_sim) / (v_data + v_sim + 2.0 * v_star)
         #
         if BUILD_VIDEO:
             #
@@ -270,16 +271,16 @@ for n_grid in [80]:
             #    Xi_1
             #        Values from data
             min_value = min(np.min(xi_1_data),
-                            np.min(xi_1_sim),
-                            np.min(xi_1_data - xi_1_sim))
+                            np.min(xi_1_sim))
+                            #np.min(xi_1_data - xi_1_sim))
             max_value = max(np.max(xi_1_data),
-                            np.max(xi_1_sim),
-                            np.max(xi_1_data - xi_1_sim))
+                            np.max(xi_1_sim))
+                            #np.max(xi_1_data - xi_1_sim))
             #
             #
             height = 14; width = 10
             #
-            #
+            # 
             plt.subplot(231)
             plt.imshow(xi_1_data[::-1], 
                        vmin = min_value,
@@ -295,7 +296,7 @@ for n_grid in [80]:
             plt.xticks(x_ticks, x_ticks_values, 
                        rotation = 'vertical',
                        fontsize = fontsize)
-            cbar = cbar = plt.colorbar()
+            cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
             plt.subplot(232)
@@ -316,12 +317,12 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
-            plt.subplot(233)
-            plt.imshow(xi_1_data - xi_1_sim[::-1],
-                       vmin = min_value,
-                       vmax = max_value,
+            plt.subplot(233) 
+            plt.imshow(relative_error_xi_1[::-1],
+                       vmin = -1.0,
+                       vmax = 1.0,
                        interpolation = 'None')
-            plt.title('xi_1 data - xi_1 sim (veh/s)')
+            plt.title('relative error xsi_1')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -336,11 +337,11 @@ for n_grid in [80]:
             #    Xi_2
             #        Values from data
             min_value = min(np.min(xi_2_data),
-                            np.min(xi_2_sim),
-                            np.min(xi_2_data - xi_2_sim))
+                            np.min(xi_2_sim))
+                            #np.min(xi_2_data - xi_2_sim))
             max_value = max(np.max(xi_2_data),
-                            np.max(xi_2_sim),
-                            np.max(xi_2_data - xi_2_sim))
+                            np.max(xi_2_sim))
+                            #np.max(xi_2_data - xi_2_sim))
             plt.subplot(234)
             plt.imshow(xi_2_data[::-1], 
                        vmin = min_value,
@@ -378,11 +379,11 @@ for n_grid in [80]:
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
             plt.subplot(236)
-            plt.imshow(xi_2_data[::-1] - xi_2_sim[::-1],
-                       vmin = min_value,
-                       vmax = max_value,
+            plt.imshow(relative_error_xi_2[::-1],
+                       vmin = -1.0,
+                       vmax = 1.0,
                        interpolation = 'None')
-            plt.title('xi_2 data - xi_2 sim (veh/s)')
+            plt.title('Relative error xi_2')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -422,14 +423,14 @@ for n_grid in [80]:
             #        Values from data
             #        Determining color scale
             min_value = min(np.min(v_data),
-                            np.min(v_sim),
-                            np.min(v_data - v_sim))
+                            np.min(v_sim)) + v_star
+                            #np.min(v_data - v_sim))
             max_value = max(np.max(v_data),
-                            np.max(v_sim),
-                            np.max(v_data - v_sim))
+                            np.max(v_sim)) + v_star
+                            #np.max(v_data - v_sim))
             #
             plt.subplot(231)
-            plt.imshow(v_data[::-1], 
+            plt.imshow(v_data[::-1] + v_star,
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
@@ -447,7 +448,7 @@ for n_grid in [80]:
             cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
             plt.subplot(232)
-            plt.imshow(v_sim[::-1],
+            plt.imshow(v_sim[::-1] + v_star,
                        vmin = min_value,
                        vmax = max_value, 
                        interpolation = 'None')
@@ -465,11 +466,11 @@ for n_grid in [80]:
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
             plt.subplot(233)
-            plt.imshow(v_data[::-1] - v_sim[::-1],
-                       vmin = min_value,
-                       vmax = max_value,
+            plt.imshow(relative_error_v[::-1],
+                       vmin = -1.0,
+                       vmax = 1.0,
                        interpolation = 'None')
-            plt.title('v data - v sim (m/s)')
+            plt.title('relative error v')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
@@ -484,13 +485,13 @@ for n_grid in [80]:
             #    q
             #        Values from data
             min_value = min(np.min(q_data),
-                            np.min(q_sim),
-                            np.min(q_data - q_sim))
+                            np.min(q_sim)) + q_star
+                            #np.min(q_data - q_sim))
             max_value = max(np.max(q_data),
-                            np.max(q_sim),
-                            np.max(q_data - q_sim))
+                            np.max(q_sim)) + q_star
+                            #np.max(q_data - q_sim))
             plt.subplot(234)
-            plt.imshow(q_data[::-1], 
+            plt.imshow(q_data[::-1] + q_star, 
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
@@ -508,7 +509,7 @@ for n_grid in [80]:
             cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
             plt.subplot(235)
-            plt.imshow(q_sim[::-1], 
+            plt.imshow(q_sim[::-1] + q_star, 
                        vmin = min_value,
                        vmax = max_value,
                        interpolation = 'None')
@@ -526,11 +527,11 @@ for n_grid in [80]:
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
             plt.subplot(236)
-            plt.imshow(q_data[::-1] - q_sim[::-1], 
-                       vmin = min_value,
-                       vmax = max_value,
+            plt.imshow(relative_error_q[::-1], 
+                       vmin = -1.0,
+                       vmax = 1.0,
                        interpolation = 'None')
-            plt.title('q data - q sim (veh/s)')
+            plt.title('relative error q')
             plt.xlabel('t (seconds)',
                        fontsize = fontsize)
             plt.ylabel('x (meters)',
