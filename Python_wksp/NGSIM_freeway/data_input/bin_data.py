@@ -29,35 +29,36 @@ UNIT_DICT = {'v' : 'm/s',
              'median_ID' : 'NA',
              'rho' : 'veh/m'}
 
-#
+#===============================================================================
+# 
 #    For US-101
+#===============================================================================
+INPUT_DIR = '/Users/cusgadmin/projectARZ/US-101/vehicle-trajectory-data/'
+OUTPUT_DIR = '../binned_data_US101/'
 #
-#===============================================================================
-# INPUT_DIR = '/Users/cusgadmin/projectARZ/US-101/vehicle-trajectory-data/'
-# OUTPUT_DIR = '../binned_data_US101/'
-# #
-# TRIM_LOW = 578 * FOOT_TO_METER
-# TRIM_HIGH = (578 + 698) * FOOT_TO_METER
-# #
-# periods = ['0750am-0805am', '0805am-0820am', '0820am-0835am']
-# #
-# CONTROL_GRID_FOLDER = 'control_grid_US101'
-# PLOT_FOLDER = 'plots_US101'
-#===============================================================================
+TRIM_LOW = 578 * FOOT_TO_METER
+TRIM_HIGH = (578 + 698) * FOOT_TO_METER
+#
+periods = ['0750am-0805am', '0805am-0820am', '0820am-0835am']
+#
+CONTROL_GRID_FOLDER = 'control_grid_US101'
+PLOT_FOLDER = 'plots_US101'
 
 #
 #    For I-80
 #
-INPUT_DIR = '/Users/cusgadmin/projectARZ/I-80/vehicle-trajectory-data/'
-OUTPUT_DIR = '../binned_data_I80/'
-#
-TRIM_LOW = 420 * FOOT_TO_METER
-TRIM_HIGH = np.Inf
-#
-periods = ['0500pm-0515pm', '0515pm-0530pm']
-#
-CONTROL_GRID_FOLDER = 'control_grid_I80'
-PLOT_FOLDER = 'plots_I80'
+#===============================================================================
+# INPUT_DIR = '/Users/cusgadmin/projectARZ/I-80/vehicle-trajectory-data/'
+# OUTPUT_DIR = '../binned_data_I80/'
+# #
+# TRIM_LOW = 420 * FOOT_TO_METER
+# TRIM_HIGH = np.Inf
+# #
+# periods = ['0500pm-0515pm', '0515pm-0530pm']
+# #
+# CONTROL_GRID_FOLDER = 'control_grid_I80'
+# PLOT_FOLDER = 'plots_I80'
+#===============================================================================
 
 if CONTROL_GRID_FOLDER not in os.listdir('./'):
     os.mkdir(CONTROL_GRID_FOLDER)
@@ -201,6 +202,7 @@ for n_grid in [80, 100, 120, 140]:
         plt.title('Histogram of number of traces in buckets')
         plt.ylabel('Population')
         plt.xlabel('Number of traces')
+        plt.grid()
         plt.savefig('%s/traces_%d_%d' % (CONTROL_GRID_FOLDER, n_grid_t, n_grid_x))
         plt.close()
         print '%d, %d, 10 percentile of number of traces: %.2f' % (
@@ -214,6 +216,7 @@ for n_grid in [80, 100, 120, 140]:
         plt.title('Histogram of number of ids in buckets')
         plt.ylabel('Population')
         plt.xlabel('Number of distinct ids')
+        plt.grid()
         plt.savefig('%s/ids_%d_%d' % (CONTROL_GRID_FOLDER, n_grid_t, n_grid_x))
         plt.close()
         print '%d, %d, 10 percentile of number of ids: %.2f' % (
