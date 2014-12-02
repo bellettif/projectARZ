@@ -232,6 +232,10 @@ for n_grid in [80, 100, 120, 140]:
                         buckets['x_start'].values,
                         c = buckets[opt],
                         lw = 0)
+            plt.xlim((np.min(buckets['t_start'].values),
+                      np.max(buckets['t_start'].values)))
+            plt.ylim((np.min(buckets['x_start'].values),
+                      np.max(buckets['x_start'].values)))
             plt.colorbar(sc)
             plt.title('Average %s (%s)' % (opt, UNIT_DICT[opt]))
             plt.xlabel('t (seconds)')

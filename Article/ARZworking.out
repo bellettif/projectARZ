@@ -22,12 +22,13 @@
 \BOOKMARK [3][-]{subsubsection.4.2.1}{Choosing the number of bins}{subsection.4.2}% 22
 \BOOKMARK [2][-]{subsection.4.3}{Estimated values for \(v,q\)}{section.4}% 23
 \BOOKMARK [2][-]{subsection.4.4}{Verification of the spectral form}{section.4}% 24
-\BOOKMARK [1][-]{section.5}{Conclusion}{}% 25
-\BOOKMARK [1][-]{appendix.A}{Generic computations for time domain to Laplace domain transforms and vice versa}{}% 26
-\BOOKMARK [2][-]{subsection.A.1}{Step function input}{appendix.A}% 27
-\BOOKMARK [2][-]{subsection.A.2}{Phased cosine input}{appendix.A}% 28
-\BOOKMARK [2][-]{subsection.A.3}{Fourier sum input}{appendix.A}% 29
-\BOOKMARK [2][-]{subsection.A.4}{Fourier decomposition and time domain responses for 2>0}{appendix.A}% 30
-\BOOKMARK [3][-]{subsubsection.A.4.1}{Fundamental responses in time domain:}{subsection.A.4}% 31
-\BOOKMARK [2][-]{subsection.A.5}{Fourier decomposition and time domain responses for 2<0}{appendix.A}% 32
-\BOOKMARK [3][-]{subsubsection.A.5.1}{Fundamental responses in time domain}{subsection.A.5}% 33
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Findings and conclusion from the numerical experiments}{subsection.4.4}% 25
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 26
+\BOOKMARK [1][-]{appendix.A}{Generic computations for time domain to Laplace domain transforms and vice versa}{}% 27
+\BOOKMARK [2][-]{subsection.A.1}{Step function input}{appendix.A}% 28
+\BOOKMARK [2][-]{subsection.A.2}{Phased cosine input}{appendix.A}% 29
+\BOOKMARK [2][-]{subsection.A.3}{Fourier sum input}{appendix.A}% 30
+\BOOKMARK [2][-]{subsection.A.4}{Fourier decomposition and time domain responses for 2>0}{appendix.A}% 31
+\BOOKMARK [3][-]{subsubsection.A.4.1}{Fundamental responses in time domain:}{subsection.A.4}% 32
+\BOOKMARK [2][-]{subsection.A.5}{Fourier decomposition and time domain responses for 2<0}{appendix.A}% 33
+\BOOKMARK [3][-]{subsubsection.A.5.1}{Fundamental responses in time domain}{subsection.A.5}% 34
