@@ -50,13 +50,14 @@ dB22 = 20*log10(abs(psi22));
 phase22 = (180/pi)*unwrap(angle(psi22));
 
 fig1 = figure(1);
+set(fig1,'defaulttextinterpreter','latex');
 subplot(2,2,1)
 semilogx(w,dB11)
 xlabel('Frequency [Hz]')
 ylabel('Gain [dB]')
 grid on
 xlim([w(1) w(end)])
-title('\psi_{11}(L,s)')
+title('$\psi_{11}(L,s)$')
 
 subplot(2,2,3)
 semilogx(w,phase11)
@@ -71,7 +72,7 @@ xlabel('Frequency [Hz]')
 ylabel('Gain [dB]')
 grid on
 xlim([w(1) w(end)])
-title('\psi_{12}(L,s)')
+title('$\psi_{12}(L,s)$')
 
 subplot(2,2,4)
 semilogx(w,phase12)
@@ -80,17 +81,18 @@ ylabel('Phase [deg]')
 grid on
 xlim([w(1) w(end)])
 
-% set(findall(gcf,'-property','FontSize'),'FontSize',14)
-% print(fig1,'-dpdf','IOv_-3to-1')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig1,'-dpdf','IOv_-3to-1')
 
 fig2 = figure(2)
+set(fig2,'defaulttextinterpreter','latex');
 subplot(2,2,1)
 semilogx(w,dB21)
 xlabel('Frequency [Hz]')
 ylabel('Gain [dB]')
 grid on
 xlim([w(1) w(end)])
-title('\psi_{21}(L,s)')
+title('$\psi_{21}(L,s)$')
 
 subplot(2,2,3)
 semilogx(w,phase21)
@@ -100,12 +102,12 @@ grid on
 xlim([w(1) w(end)])
 
 subplot(2,2,2)
-semilogx(w,dB22)
+semilogx(w,zeros(length(dB22))) %dB22)
 xlabel('Frequency [Hz]')
 ylabel('Gain [dB]')
 grid on
 xlim([w(1) w(end)])
-title('\psi_{22}(L,s)')
+title('$\psi_{22}(L,s)$')
 
 subplot(2,2,4)
 semilogx(w,phase22)
@@ -115,8 +117,8 @@ grid on
 xlim([w(1) w(end)])
 
 
-% set(findall(gcf,'-property','FontSize'),'FontSize',14)
-% print(fig2,'-dpdf','IOq_-3to-1')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig2,'-dpdf','IOq_-3to-1')
 %% distributed
 clear; clc; close all;
 
@@ -175,46 +177,54 @@ dB22 = 20*log10(abs(psi22));
 phase22 = (180/pi)*unwrap(angle(psi22));
 %%
 fig1 = figure(1);
+set(fig1,'defaulttextinterpreter','latex');
 surf(w,X,dB11,'Edgecolor','none')
 xlabel('Frequency [Hz]')
 ylabel('x [m]')
+zlabel('gain [dB]')
 set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
-title('Bode plot for \psi_{11}(x,s)')
+title('Bode plot for $\psi_{11}(x,s)$')
 view([1 -2 1])
-% set(findall(gcf,'-property','FontSize'),'FontSize',14)
-% print(fig1,'-dpdf','distr11_-3to-1')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig1,'-dpdf','distr11_-3to-1')
 
 fig2 = figure(2);
+set(fig2,'defaulttextinterpreter','latex');
 surf(w,X,dB12,'Edgecolor','none')
 xlabel('Frequency [Hz]')
 ylabel('x [m]')
+zlabel('gain [dB]')
 set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 view([1 -1.8 3])
-title('Bode plot for \psi_{12}(x,s)')
-% set(findall(gcf,'-property','FontSize'),'FontSize',14)
-% print(fig2,'-dpdf','distr12_-3to-1')
+title('Bode plot for $\psi_{12}(x,s)$')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig2,'-dpdf','distr12_-3to-1')
 
 fig3 = figure(3);
+set(fig3,'defaulttextinterpreter','latex');
 surf(w,X,dB21,'Edgecolor','none')
 xlabel('Frequency [Hz]')
 ylabel('x [m]')
+zlabel('gain [dB]')
 set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
-title('Bode plot for \psi_{21}(x,s)')
+title('Bode plot for $\psi_{21}(x,s)$')
 view([1 -1.8 2])
-% set(findall(gcf,'-property','FontSize'),'FontSize',14)
-% print(fig3,'-dpdf','distr21_-3to-1')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig3,'-dpdf','distr21_-3to-1')
 
 fig4 = figure(4);
+set(fig4,'defaulttextinterpreter','latex');
 surf(w,X,dB22,'Edgecolor','none')
 xlabel('Frequency [Hz]')
 ylabel('x [m]')
+zlabel('gain [dB]')
 set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
-title('Bode plot for \psi_{22}(x,s)')
+title('Bode plot for $\psi_{22}(x,s)$')
 view([1 -2 1.5])
-% set(findall(gcf,'-property','FontSize'),'FontSize',14)
-% print(fig4,'-dpdf','distr22_-3to-1')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig4,'-dpdf','distr22_-3to-1')
 

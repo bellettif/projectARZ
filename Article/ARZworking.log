@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  2 DEC 2014 13:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  2 DEC 2014 14:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -534,7 +534,7 @@ used, duplicate ignored
 l.634 
        <./figures/distr11_-3to-1.pdf> <./figures/distr12_-3to-1.pdf> <./figures
 /distr21_-3to-1.pdf> <./figures/distr22_-3to-1.pdf>]
-<figures/diagdistr11freeflow.pdf, id=410, 614.295pt x 794.97pt>
+<figures/diagdistr11freeflow.pdf, id=680, 614.295pt x 794.97pt>
 File: figures/diagdistr11freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr11freeflow.pdf>
@@ -542,7 +542,7 @@ Package pdftex.def Info: figures/diagdistr11freeflow.pdf used on input line 638
 .
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/diagdistr21freeflow.pdf, id=411, 614.295pt x 794.97pt>
+<figures/diagdistr21freeflow.pdf, id=681, 614.295pt x 794.97pt>
 File: figures/diagdistr21freeflow.pdf Graphic file (type pdf)
 
 <use figures/diagdistr21freeflow.pdf>
@@ -597,7 +597,7 @@ ame{equation.3.4}) has been already used, duplicate ignored
                    \relax 
 l.686 \end{align}
                  
-<figures/Numerics/US-101_all_traj_low_res_mod.png, id=443, 1156.32pt x 578.16pt
+<figures/Numerics/US-101_all_traj_low_res_mod.png, id=728, 1156.32pt x 578.16pt
 >
 File: figures/Numerics/US-101_all_traj_low_res_mod.png Graphic file (type png)
  <use figures/Numerics/US-101_all_traj_low_res_mod.png>
@@ -620,7 +620,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
                                                   \fi \fi 
 l.756 
        <./figures/Numerics/US-101_all_traj_low_res_mod.png>]
-<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=466, 578.16pt x 4
+<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=751, 578.16pt x 4
 33.62pt>
 File: figures/"/Numerics/Discretisation grid/traces_80_80".png Graphic file (ty
 pe png)
@@ -629,7 +629,7 @@ Package pdftex.def Info: figures/"/Numerics/Discretisation grid/traces_80_80".p
 ng used on input line 760.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=467, 578.16pt x 433.
+<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=752, 578.16pt x 433.
 62pt>
 File: figures/"/Numerics/Discretisation grid/ids_80_80".png Graphic file (type 
 png)
@@ -643,7 +643,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 759--764
  []
 
 
-<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=469, 578.16pt x 433.6
+<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=754, 578.16pt x 433.6
 2pt>
 File: figures/"/Numerics/Sanity check/80_80_q_q_count".png Graphic file (type p
 ng)
@@ -683,7 +683,7 @@ l.785
        <./figures//Numerics/Discretisation grid/traces_80_80.png> <./figures//N
 umerics/Discretisation grid/ids_80_80.png> <./figures//Numerics/Sanity check/80
 _80_q_q_count.png>]
-<figures/"/Numerics/Maps data/80_80_v_map".png, id=486, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_v_map".png, id=771, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_v_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_v_map".png>
@@ -691,7 +691,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_v_map".png used on
 input line 804.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_rho_map".png, id=487, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_rho_map".png, id=772, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_rho_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_rho_map".png>
@@ -699,7 +699,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_rho_map".png used o
 n input line 804.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_map".png, id=488, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_q_map".png, id=773, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_q_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_q_map".png>
@@ -707,7 +707,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_q_map".png used on
 input line 805.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=489, 578.16pt x 433.62
+<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=774, 578.16pt x 433.62
 pt>
 File: figures/"/Numerics/Maps data/80_80_q_count_map".png Graphic file (type pn
 g)
@@ -721,8 +721,8 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 803--809
  []
 
 
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png, id=49
-0, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png, id=77
+5, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png G
 raphic file (type png)
 
@@ -731,7 +731,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
 _rho_q_count".png used on input line 815.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=491,
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=776,
  578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png Gra
 phic file (type png)
@@ -741,7 +741,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
 _v_q_count".png used on input line 815.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_rho".png, id=492, 578
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_rho".png, id=777, 578
 .16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_rho".png Graphic
  file (type png)
@@ -761,7 +761,7 @@ l.821
 s data/80_80_rho_map.png> <./figures//Numerics/Maps data/80_80_q_map.png> <./fi
 gures//Numerics/Maps data/80_80_q_count_map.png>]
 <figures/"/Numerics/Calibration of eigen values/Fundamental diagram fitting n =
- 80".png, id=506, 578.16pt x 433.62pt>
+ 80".png, id=790, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Calibration of eigen values/Fundamental diagram fittin
 g n = 80".png Graphic file (type png)
 
@@ -793,7 +793,7 @@ l.846
 > <./figures//Numerics/Maps data/80_80_fundamental_diagram_v_q_count.png> <./fi
 gures//Numerics/Maps data/80_80_fundamental_diagram_v_rho.png> <./figures//Nume
 rics/Calibration of eigen values/Fundamental diagram fitting n = 80.png>]
-<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=520, 1011.78pt
+<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=804, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png Graphic file 
 (type png)
@@ -802,7 +802,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau
 ".png used on input line 868.
 (pdftex.def)             Requested size: 426.79134pt x 304.85522pt.
 
-<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=521, 1011.78pt
+<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=805, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png Graphic file 
 (type png)
@@ -829,7 +829,7 @@ Overfull \vbox (4.48051pt too high) has occurred while \output is active []
 l.874 
        <./figures//Numerics/Maps simulated/vq_map_n=80_best_tau.png> <./figures
 //Numerics/Maps simulated/xi_map_n=80_best_tau.png>]
-<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=533, 578.16pt x 43
+<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=817, 578.16pt x 43
 3.62pt>
 File: figures/"/Numerics/Calibration of Tau/q_v_error_80".png Graphic file (typ
 e png)
@@ -838,7 +838,7 @@ Package pdftex.def Info: figures/"/Numerics/Calibration of Tau/q_v_error_80".pn
 g used on input line 878.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=534, 578.16p
+<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=818, 578.16p
 t x 433.62pt>
 File: figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png Graphic fil
 e (type png)
@@ -953,10 +953,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dis
 t/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/public/rsfs/rsfs7.pfb>
-Output written on ARZworking.pdf (22 pages, 4037073 bytes).
+Output written on ARZworking.pdf (22 pages, 4493671 bytes).
 PDF statistics:
- 693 PDF objects out of 1000 (max. 8388607)
- 554 compressed objects within 6 object streams
+ 978 PDF objects out of 1000 (max. 8388607)
+ 818 compressed objects within 9 object streams
  161 named destinations out of 1000 (max. 500000)
  398 words of extra memory for PDF output out of 10000 (max. 10000000)
 
