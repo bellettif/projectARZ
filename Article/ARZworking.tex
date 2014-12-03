@@ -84,12 +84,11 @@
 %\address[mysecondaryaddress]{360 Park Avenue South, New York}
 
 \begin{abstract}
-This article will focus on macroscopic second-order models as opposed
-to microscopic and mesoscopic frameworks.
+This article develops a linearized and diagonilazed version of the Aw-Rascle-Zhang model for freeway traffic modeling. We will focus on flow and speed macroscopic second-order models as opposed to microscopic and mesoscopic frameworks and leverage the simplifications brought by the linear approximation thanks to a spectral analysis of the system. An equivalent of the Froude number in hydrodynamics is designed that enables quick analysis of the nature of vehicle traffic flow. We prove that our linearization about an equilibrium is stable for congested regimes and unstable otherwise. Empirical NGSIM data corresponding to congested traffic trajectories is used so as to confront the linearized model's predictions to actual macroscopic behavior of traffic jam. The model achieves very good accuracy with a relative error of less than $20\%$ for speed and flow. It replicates in particular the propagation of boundary conditions' oscillations into the interior resolution domain of the PDE under study.
 \end{abstract}
 
 \begin{keyword}
-
+Second order models, Aw-Rascle-Zhang, Spectral Analysis, Linear Systems, Linearization of PDEs
 \end{keyword}
 
 \end{frontmatter}
@@ -495,9 +494,19 @@ F > 1 &\Rightarrow |\rho^*V'(\rho^*)| > v^* \quad \Rightarrow \lambda_2  <0 \\
 F < 1 &\Rightarrow |\rho^*V'(\rho^*)| < v^* \quad \Rightarrow \lambda_2 > 0
 \end{cases}.
 \end{equation*}
-Note also that $\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$. Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the subcritical and supercritical regimes, respectively \cite{litrico2009modeling}
+Note also that $\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$. Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the subcritical and supercritical regimes, respectively \cite{litrico2009modeling}. The direction of characteristic lines is illustrated in Figure \ref{Characteristics}.
 
 For traffic, the interpretation of the different regimes is somewhat different. Free flow regime corresponds to these situations where drivers are not slowed down by heavy traffic and go as fast as the authorized speed. The congested regime arises when traffic is denser and, because too many cars are present on the same freeway section, drivers slow down and eventually form traffic jam.
+
+\begin{figure}
+\begin{centering}
+\begin{tabular}{cc}
+\includegraphics[width=6cm]{Congested-regime} & \includegraphics[width=6cm]{Free-flow-regime}\tabularnewline
+$F<1$, $\lambda_{2}<0$, $\lambda_{1}>0$ & $F>1$, $\lambda_{1}>\lambda_{2}>0$\tabularnewline
+\end{tabular}
+\par\end{centering}
+\protect\caption{Illustration of characteristics in congested (supercritical) and free-flow regime (subcritical).\label{Characteristics}}
+\end{figure}
 
 
 \section{Spectral analysis of the linearized ARZ model}
