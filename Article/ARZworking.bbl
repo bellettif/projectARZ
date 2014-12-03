@@ -18,7 +18,8 @@ B.~D. Greenshields, A study of traffic capacity, in: Highway Research Board
   Proceedings, 1934, pp. 448--474.
 
 \bibitem{Greenbergflux}
-H.~Greenberg, An analysis of traffic flow, Operations Research.
+H.~Greenberg, An analysis of traffic flow, Operations Research 7~(1) (1959)
+  79--85.
 
 \bibitem{Newell1993}
 G.~F. Newell, A simplified theory of kinematic waves in highway traffic, part
@@ -43,12 +44,17 @@ Y.~Wang, M.~Papageorgiou,
 \bibitem{Papageorgiou198929}
 M.~Papageorgiou, J.-M. Blosseville, H.~Hadj-Salem,
   \href{http://www.sciencedirect.com/science/article/pii/0191261589900210}{Macroscopic
-  modelling of traffic flow on the boulevard périphérique in paris},
+  modelling of traffic flow on the boulevard peripherique in paris},
   Transportation Research Part B: Methodological 23~(1) (1989) 29 -- 47.
 \newblock \href
   {http://dx.doi.org/http://dx.doi.org/10.1016/0191-2615(89)90021-0}
   {\path{doi:http://dx.doi.org/10.1016/0191-2615(89)90021-0}}.
 \newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/0191261589900210}
+
+\bibitem{Flynn09self-sustainednonlinear}
+M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold,
+  Self-sustained nonlinear waves in traffic flow, Physical Review E 79 (2009)
+  056113.
 
 \bibitem{godunov}
 S.~K. Godunov, A difference scheme for numerical solution of discontinuous
@@ -72,13 +78,8 @@ Y.~Sugiyama, M.~Fukui, M.~Kikuchi, K.~Hasebe, A.~Nakayama, K.~Nishinari,
   evidence for the physical mechanism of the formation of a jam, New J. Phys.
 
 \bibitem{Flynn08onjamitons}
-M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold, On
-  ?jamitons, ? self-sustained nonlinear traffic waves (2008).
-
-\bibitem{Flynn09self-sustainednonlinear}
-M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold,
-  Self-sustained nonlinear waves in traffic flow, Physical Review E 79 (2009)
-  056113.
+M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold, On jamitons,
+  self-sustained nonlinear traffic waves (2008).
 
 \bibitem{Jamitons-multi-valued-fund}
 B.~Seibold, M.~R. Flynn, A.~R. Kasimov, R.~R. Rosales, Constructing set-valued
@@ -178,5 +179,11 @@ T.~W. Sturm, Open channel hydraulics, McGraw-Hill, 2001.
 A.~Hofleitner, C.~Claudel, A.~Bayen, Reconstruction of boundary conditions from
   internal conditions using viability theory, in: American Control Conference,
   IEEE, 2012, pp. 640--645.
+
+\bibitem{edie1963discussion}
+L.~Edie, P.~of~New York~Authority,
+  \href{http://books.google.com/books?id=3uBmYgEACAAJ}{Discussion of Traffic
+  Stream Measurements and Definitions}, Port of New York Authority, 1963.
+\newline\urlprefix\url{http://books.google.com/books?id=3uBmYgEACAAJ}
 
 \end{thebibliography}
