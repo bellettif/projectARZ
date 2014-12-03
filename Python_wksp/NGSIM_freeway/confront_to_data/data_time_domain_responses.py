@@ -41,6 +41,7 @@ N_TAUS = len(TAU_VALUES)
 PLOT_ALL = True
 CALIBRATE_TAU = False
 BUILD_VIDEO = False
+TEST_FOURIER = True
 
 PARAM_FOLDER = 'system_params_US101'
 MATRIX_FOLDER = 'matrices_US101'
@@ -123,6 +124,13 @@ for n_grid in [80]:
                                          freqs_L, 
                                          dt,
                                          len(xi_2_data_L))
+    if TEST_FOURIER:
+        median_rel_error_xi_1 = np.median(2.0 * (reconstruct_xi_1_data - xi_1_data_0) /
+                                         (reconstruct_xi_1_data + xi_1_data_0))
+        print 'Fourier median rel error xi_1 = %.2f' % median_rel_error_xi_1
+        median_rel_error_xi_2 = np.median(2.0 * (reconstruct_xi_2_data - xi_2_data_L) /
+                                         (reconstruct_xi_2_data + xi_2_data_L))
+        print 'Fourier median rel error xi_2 = %.2f' % median_rel_error_xi_2
     if PLOT_ALL:
         plt.subplot(211)
         plt.plot(xi_1_data_0)

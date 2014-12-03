@@ -820,7 +820,7 @@ Middle: $\left(\widehat{v},\widehat{q}^{\text{count}}\right)$. Right: $\left(\wi
 \end{figure}
 
 
-\textbf{Calibration of $\lambda_{1}$ and $\lambda_{2}$, linearization point.} In Section \ref{ARZSection}, we found that $\lambda_{1}$ is exactly $v^*$ and $\lambda_{2}$ is the slope of the fundamental diagram at $v^*$. Thus to calibrate the eigenvalues we must find the linearization point. We estimate the linearization point using the Ordinary Least Squares method. Note the dataset used corresponds only to the congested regime and the fundamental diagram is almost affine. The estimator, $\widehat{\lambda}_1=\widehat{v}^*$ is chosen as the empirical mean of $\widehat{v}_{i,j}$. To estimate $\lambda_{2}$, we fit a linear model $\widehat{q}^{\text{count}}=b_{1}\widehat{v}+b_{0}+\varepsilon$, where $\varepsilon$
+\textbf{Calibration of $\lambda_{1}$ and $\lambda_{2}$, linearization point.} In Section \ref{ARZSection}, we found that $\lambda_{1}$ is exactly $v^*$ and $\lambda_{2}$ is the slope of the fundamental diagram at $v^*$. Thus to calibrate the eigenvalues we must find the linearization point. We estimate the linearization point using the Ordinary Least Squares method. Note the dataset used corresponds only to the congested regime and the fundamental diagram is almost affine. The estimator, $\widehat{\lambda}_1=\widehat{v}^*$ is chosen as the empirical mean of $\widehat{v}_{i,j}$. To estimate $\lambda_{2}$, we fit a linear model $\widehat{q}^{\text{count}}=b_{1}\widehat{\rho}+b_{0}+\varepsilon$, where $\varepsilon$
 represents the noise in the model that would ideally be centered,
 homoschedastic, and uncorrelated but is not practically. Then $\widehat{\lambda}_{2}=\widehat{b}_{1}$ and we take $\widehat{q}^*$ as the empirical average of $\widehat{q}^{\cnt}$. The ratio of $\widehat{q}^*$ and $\widehat{v}^*$ gives the estimate $\widehat{\rho}^*$.
 Provided each estimator is convergent, the continuity of the functional
@@ -832,7 +832,7 @@ into a fully justified statistical procedure. Note that the goal of the present 
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{\string"/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}
-\protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$, $\widehat{\lambda}_{2}=-4.37$,$\widehat{\rho}^{*}=0.049$, $\widehat{v}^{*}=8.96$, $\widehat{q}^{*}=0.44$, with $r^{2}=0.48$}
+\protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$ m/s, $\widehat{\lambda}_{2}=-4.37$ m/s,$\widehat{\rho}^{*}=0.049$ veh/m, $\widehat{v}^{*}=8.96$ m/s, $\widehat{q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}
 \label{fig:Calibration-of-eigen-values}
 \end{figure}
 
@@ -845,7 +845,7 @@ is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 \end{figure}
 
 \subsection{Verification of the spectral form}
-In this section we demonstrate the performance of the spectral form as a prediction tool using the time domain responses derived from the transfer functions (see \ref{sub:Generic-computations}) and FFT. Since we are working with a linearized system, we can decompose boundary conditions then add predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$. 
+In this section we demonstrate the performance of the spectral form as a prediction tool using the time domain responses derived from the transfer functions (see \ref{sub:Generic-computations}) and FFT. Since we are working with a linearized system, we can decompose boundary conditions then add predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$. Fourier decomposition of boundary conditions is here extremely accurate as the median relative errors for the interpolation of the values of $\xi_{1}\left(x=0,\right)$ and $\xi_{2}\left(x=L,\right)$ are respectively $2\%$ and $3\%$.
 %A real signal $\left\{ f\left(t\right)\mid t\in\left[0,T\right]\right\} $ on one of the boundaries $\left\{ \left(x=0,t\right)\mid t\in\left[0,T\right]\right\} $ or $\left\{ \left(x=L,t\right)\mid t\in\left[0,T\right]\right\} $ is transformed into a periodic signal by infinite duplication and then turned into a Fourier series $\left\{ t\rightarrow\mu+\sum_{k=1}^{n}\beta_{k}\cdot \left(k\cdot wt+\phi_{k}\right)H\mid t\in\left[0,T\right]\right\} $. This process is known to be convergent with an infinite sum for any square integrable function. It is practically extremely accurate in our case even though the FFT only relies on a finite number of Fourier coefficients. 
 
 
@@ -886,22 +886,27 @@ and $\xi_{2}$.}
 \subsubsection{Findings and conclusion from the numerical experiments}
 The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
 \begin{itemize}
-\item The TFN delineates two regimes, congested, for $F > 1$, corresponding 
+\item The TFN delineates two regimes, congested, for $F > 1$ and free-flowing for $F < 1$. Linearization makes fully sense practically for the latter as the system remains about the equilibrium point.
+\item The numerical experiments above show that the linearized ARZ model does reproduce NGSIM data very accurately for a homogeneous segment of the US-101 freeway. Oscillations are accounted for as well as their damping delay.
+\item Finding that traffic becomes unstable for free-flowing regime apparently contradicts the findings of \cite{Jamitons-multi-valued-fund}. Here we do not use the same equilibrium velocity function and therefore it is not surprising we find that linear instability occurs for low densities instead of medium to high densities.
+\item Our prediction method with the linearized ARZ model presents several advantages over the Godunov scheme. As long as FFT reproduces accurately boundary conditions, there is no need to check that CFL-like conditions are respected. 
+\item Fourier is a smooth sinusoidal decomposition basis that only features spectral accuracy. Wavelet decomposition has been used so as to predict traffic both with spectral and temporal accuracy in \cite{Zheng2011} potentially enabling more precise prediction. However, such a method does not provide any easy way to design control schemes for traffic.
 \end{itemize}
 
 
 \section{Conclusion}
 
-As the full nonlinear ARZ equations are difficult to analyze, no closed form solutions are available. The linearized equations, are a stepping stone for the spectral methods presented here, allowing for elegantly simple yet powerful analysis tools, with the caveat that this holds only for local solutions. Nevertheless, the linearized model is able to capture important realistic features which first order models cannot. 
+As the full nonlinear ARZ equations have no closed form solutions, they are difficult to analyze. The linearized equations enable the use of spectral methods presented here, allowing for elegantly simple yet powerful analysis tools. These equations are diagonalized, and solved explicitly using a spectral representation (transfer function). Using this approximation, we are able to analyze them around a nominal flow and characterize the oscillatory behavior of the solution. The linearized model is able to capture important features of the flow which first order models cannot. 
 
-%With the linearized ARZ model, we were also able to define an interesting quantity. We found the eigenvalues of the linearized system to be constant, prompting the definition of the Traffic Froude Number, $F$, which indicates the flow regime of the road section under consideration. Note that the Froude number inequalities delineating the supercritical and subcritical regimes in hydronamics are reversed for our definition of the TFN. 
+With the linearized ARZ model, we were also able to define the Traffic Froude Number. This quantity is computed using the eigenvalues of the system and characterizes the flow regime of the road section under consideration.
 
-The spectral form also lead to interesting conclusions about the stability of the linearized system. The time domain responses given in Appendix A show that the system is unstable when $\lambda_2 > 0$ and stable when $\lambda_2 < 0$. That is, in the free-flow regime, $F < 1$, oscillations increase and the system leaves the linear regime, while in the congested regime, $F>1$, oscillations decrease and the system remains in the linear regime. Thus, the TFN is also an indication of linear stability. 
+%We found the eigenvalues of the linearized system to be constant, prompting the definition of the Traffic Froude Number, $F$, which indicates the flow regime of the road section under consideration. Note that the Froude number inequalities delineating the supercritical and subcritical regimes in hydronamics are reversed for our definition of the TFN. 
 
-The present analysis also complements the wavelet-based approach used in \cite{Zheng2011}. Fourier transform based analysis is a powerful tool in our numerical experiments that does not require any CFL-like condition for stability. The linearity of the system clearly predicts smoother behavior than what is found with wavelet decomposition, and as we have shown, the resulting macroscopic predictions are fairly accurate.
+Considering the transfer function of the linearized system of equations delineates the conditions for stability of the approximation about the equilibrium. The time domain responses we derive show that the system is unstable when $\lambda_2 > 0$ and stable when $\lambda_2 < 0$. In the free-flow regime, $F < 1$, oscillations increase and the system leaves the linear regime, while in the congested regime, $F>1$, oscillations decrease. In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines. Thus, the TFN is also an indicator of linear stability.
 
+The behavior predicted in congested regime for traffic does not present shocks and Fourier analysis cannot account for turbulent behavior as well as Wavelet transforms. However, our spectral domain study paves the way to applying standard linear system control theory to traffic, with a linearized second model that empirically is more accurate than its first order counterparts. Future work will therefore focus on controller design based on the spectral framework presented here.
 
-Future work will focus on controller design based on the spectral framework presented here. 
+%The present analysis also complements the wavelet-based approach used in \cite{Zheng2011}. Fourier transform based analysis is a powerful tool in our numerical experiments that does not require any CFL-like condition for stability. The linearity of the system clearly predicts smoother behavior than what is found with wavelet decomposition, and as we have shown, the resulting macroscopic predictions are fairly accurate.
 
 
 %Second order models, because of their inherent complexity, were hard to analyze so far. No closed form solution was available and the frequency domain responses could not be written explicitly. Although it only offers an approximate representation of the system, our linearizing about an equilibrium has enabled a powerful yet simple analytical foundation for analysis. In particular, we have shown how to characterize important properties of the system such as Riemann Invariants and the \textit{Traffic Froude Number} that separates two classes of behaviors solutions to the ARZ equation can follow.
