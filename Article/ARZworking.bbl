@@ -7,7 +7,7 @@
 
 \bibitem{LW}
 M.~J. Lighthill, J.~B. Whitham, On kinematic waves. \uppercase{II}: A theory of
-  traffic flow on long crowded roads., Proc. Royal. Soc. (1955) 317--345.
+  traffic flow on long crowded roads, Proc. Royal. Soc. (1955) 317--345.
 
 \bibitem{Richards}
 P.~I. Richards, Shock waves on the highway, Operations Research 4~(1) (1956)
@@ -32,29 +32,29 @@ C.~F. Daganzo, The cell transmission model: A dynamic representation of highway
   (1994) 269--287.
 
 \bibitem{Wang2005141}
-Y.~Wang, M.~Papageorgiou,
-  \href{http://www.sciencedirect.com/science/article/pii/S0191261504000438}{Real-time
-  freeway traffic state estimation based on extended kalman filter: a general
-  approach}, Transportation Research Part B: Methodological 39~(2) (2005) 141
-  -- 167.
-\newblock \href {http://dx.doi.org/http://dx.doi.org/10.1016/j.trb.2004.03.003}
-  {\path{doi:http://dx.doi.org/10.1016/j.trb.2004.03.003}}.
-\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0191261504000438}
+Y.~Wang, M.~Papageorgiou, Real-time freeway traffic state estimation based on
+  extended \uppercase{K}alman filter: a general approach, Transportation
+  Research Part B: Methodological 39~(2) (2005) 141 -- 167.
 
 \bibitem{Papageorgiou198929}
-M.~Papageorgiou, J.-M. Blosseville, H.~Hadj-Salem,
-  \href{http://www.sciencedirect.com/science/article/pii/0191261589900210}{Macroscopic
-  modelling of traffic flow on the boulevard peripherique in paris},
-  Transportation Research Part B: Methodological 23~(1) (1989) 29 -- 47.
-\newblock \href
-  {http://dx.doi.org/http://dx.doi.org/10.1016/0191-2615(89)90021-0}
-  {\path{doi:http://dx.doi.org/10.1016/0191-2615(89)90021-0}}.
-\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/0191261589900210}
+Macroscopic modelling of traffic flow on the \uppercase{B}oulevard
+  \uppercase{P}eripherique in \uppercase{P}aris, Transportation Research Part
+  B: Methodological 23~(1) (1989) 29 -- 47.
 
 \bibitem{Flynn09self-sustainednonlinear}
 M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold,
   Self-sustained nonlinear waves in traffic flow, Physical Review E 79 (2009)
-  056113.
+  56--113.
+
+\bibitem{treiber2013traffic}
+M.~Treiber, A.~Kesting, Traffic flow dynamics, Traffic Flow Dynamics: Data,
+  Models and Simulation, ISBN 978-3-642-32459-8. Springer-Verlag Berlin
+  Heidelberg, 2013 1.
+
+\bibitem{garavello2006trafficbook}
+M.~Garavello, B.~Piccoli, Traffic Flow on Networks: Conservation Laws Models,
+  AIMS series on applied mathematics, American Institute of Mathematical
+  Sciences, 2006.
 
 \bibitem{godunov}
 S.~K. Godunov, A difference scheme for numerical solution of discontinuous
@@ -65,8 +65,8 @@ S.~Osher, Riemann solvers, the entropy condition, and difference, SIAM Journal
   on Numerical Analysis 21~(2) (1984) 217--235.
 
 \bibitem{daganzo1995cell}
-C.~F. Daganzo, The cell transmission model, part ii: network traffic, Transp.
-  Res. Part B 29~(2) (1995) 79--93.
+C.~F. Daganzo, The cell transmission model, part \uppercase{II}: network
+  traffic, Transp. Res. Part B 29~(2) (1995) 79--93.
 
 \bibitem{Dag_requiem}
 C.~F. Daganzo, Requiem for second-order fluid approximations of traffic flow,
@@ -113,8 +113,8 @@ A.~Aw, M.~Rascle, Resurrection of second order models of traffic flow, SIAM
 
 \bibitem{R_improved}
 M.~Rascle, An improved macroscopic model of traffic flow: derivation and links
-  with the lighthill-whitham model, Mathematical and computer modelling 35
-  (2002) 581--590.
+  with the \uppercase{L}ighthill-\uppercase{W}hitham model, Mathematical and
+  computer modelling 35 (2002) 581--590.
 
 \bibitem{Lebacque2007}
 J.-P. Lebacque, S.~Mammar, H.~Haj-Salem, The aw--rascle and zhang's model:
@@ -122,8 +122,14 @@ J.-P. Lebacque, S.~Mammar, H.~Haj-Salem, The aw--rascle and zhang's model:
   problem, Transp. Res. Part B 41~(7) (2007) 710--721.
 
 \bibitem{HybridLagrangian2007}
-S.~Moutari, M.~Rascle, A hybrid lagrangian model based on the aw-rascle traffic
-  flow model, SIAM Journal on Applied Mathematics 68~(2) (2007) 413--436.
+S.~Moutari, M.~Rascle, A hybrid lagrangian model based on the
+  \uppercase{A}w--\uppercase{R}ascle traffic flow model, SIAM Journal on
+  Applied Mathematics 68~(2) (2007) 413--436.
+
+\bibitem{garavello2006traffic}
+M.~Garavello, B.~Piccoli, Traffic flow on a road network using the
+  \uppercase{A}w--\uppercase{R}ascle model, Communications in Partial
+  Differential Equations 31~(2) (2006) 243--275.
 
 \bibitem{GodunovARZ}
 S.~Mammar, J.-P. Lebacque, H.~H. Salem, Riemann problem resolution and godunov
@@ -148,11 +154,9 @@ M.~Mauch, M.~J. Cassidy, Freeway traffic oscillations: Observations and
   Elsevier, 2002, pp. 653--674.
 
 \bibitem{lanechangin2005}
-B.~Coifman, S.~Krishnamurthy, X.~Wang,
-  \href{http://dx.doi.org/10.1007/3-540-28091-X_1}{Lane-change maneuvers
-  consuming freeway capacity}, in: Traffic and Granular Flow 03, Springer
-  Berlin Heidelberg, 2005, pp. 3--14.
-\newline\urlprefix\url{http://dx.doi.org/10.1007/3-540-28091-X_1}
+B.~Coifman, S.~Krishnamurthy, X.~Wang, Lane-change maneuvers consuming freeway
+  capacity, in: Traffic and Granular Flow 03, Springer Berlin Heidelberg, 2005,
+  pp. 3--14.
 
 \bibitem{lanechanging2007}
 S.~Ahn, C.~M. J., Freeway traffic oscillations and vehicle lane-change
@@ -181,9 +185,7 @@ A.~Hofleitner, C.~Claudel, A.~Bayen, Reconstruction of boundary conditions from
   IEEE, 2012, pp. 640--645.
 
 \bibitem{edie1963discussion}
-L.~Edie, P.~of~New York~Authority,
-  \href{http://books.google.com/books?id=3uBmYgEACAAJ}{Discussion of Traffic
-  Stream Measurements and Definitions}, Port of New York Authority, 1963.
-\newline\urlprefix\url{http://books.google.com/books?id=3uBmYgEACAAJ}
+L.~Edie, P.~of~New York~Authority, Discussion of Traffic Stream Measurements
+  and Definitions, Port of New York Authority, 1963.
 
 \end{thebibliography}

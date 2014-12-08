@@ -22,6 +22,7 @@
 \citation{Greenbergflux}
 \citation{Newell1993,daganzo1994cell}
 \citation{Wang2005141,Papageorgiou198929,Flynn09self-sustainednonlinear}
+\citation{treiber2013traffic,garavello2006trafficbook}
 \citation{godunov,Osher}
 \citation{daganzo1994cell,daganzo1995cell}
 \citation{Dag_requiem}
@@ -44,6 +45,7 @@
 \citation{R_improved}
 \citation{Lebacque2007}
 \citation{HybridLagrangian2007}
+\citation{garavello2006traffic}
 \citation{GodunovARZ}
 \citation{Fan}
 \citation{Fan}
@@ -60,11 +62,12 @@
 \citation{litrico2009modeling,Litricoapplic}
 \citation{litrico2009modeling}
 \citation{litrico2009modeling}
-\citation{GodunovARZ,Fan}
-\citation{Fan}
+\citation{litrico2009modeling}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Models appropriate for control}{3}{subsection.1.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Similarities with Saint-Venant equations}{3}{subsection.1.5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Approach and contributions}{3}{subsection.1.6}}
+\citation{GodunovARZ,Fan}
+\citation{Fan}
 \citation{R_improved}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.7}Organization of the article}{4}{subsection.1.7}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}The ARZ model}{4}{section.2}}
@@ -94,8 +97,8 @@
 \newlabel{TFv0q0tovxqx}{{36}{7}{State-transition matrix}{equation.3.36}{}}
 \citation{Hofleitner}
 \citation{Fan}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Free-flow case ($F1$)}{8}{subsection.3.2}}
-\newlabel{vqfreeflow}{{37}{8}{Free-flow case ($F1$)}{equation.3.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Free-flow case ($F<1$)}{8}{subsection.3.2}}
+\newlabel{vqfreeflow}{{37}{8}{Free-flow case ($F<1$)}{equation.3.37}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Bode plots}{8}{subsubsection.3.2.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Magnitude and phase bode plots for $\psi _{11}(L,s)$ and $\psi _{12}(L,s)$ (left) and for $\psi _{21}(L,s)$ and $\psi _{22}(L,s)$ (right). (Physical variables).  }}{8}{figure.2}}
 \newlabel{fig:Magn_phase_physx}{{2}{8}{Magnitude and phase bode plots for $\psi _{11}(L,s)$ and $\psi _{12}(L,s)$ (left) and for $\psi _{21}(L,s)$ and $\psi _{22}(L,s)$ (right). (Physical variables)}{figure.2}{}}
@@ -106,37 +109,38 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Magnitude and phase Bode plots for $\phi _{11}(L,s)$ and $\phi _{21}(L,s)$.}}{10}{figure.4}}
 \newlabel{fig:Magn_phase_diag}{{4}{10}{Magnitude and phase Bode plots for $\phi _{11}(L,s)$ and $\phi _{21}(L,s)$}{figure.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Step responses}{10}{subsubsection.3.2.2}}
+\citation{Jamitons-multi-valued-fund}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Congested regime ($F>1$)}{11}{subsection.3.3}}
 \newlabel{vqcongested}{{41}{11}{Congested regime ($F>1$)}{equation.3.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Findings and conclusion from the theoretical study}{11}{subsection.3.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Numerical validation}{11}{section.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data source: NGSIM trajectories}{11}{subsection.4.1}}
 \citation{edie1963discussion}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data source: NGSIM trajectories}{12}{subsection.4.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces NGSIM trajectories. Color represents the measured speed of each car in m/s.}}{12}{figure.6}}
 \newlabel{fig:NGSIM-trajectories}{{6}{12}{NGSIM trajectories. Color represents the measured speed of each car in m/s}{figure.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Reconstructing $(v,q)$ maps from NGSIM trajectories}{12}{subsection.4.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Choosing the number of bins}{13}{subsubsection.4.2.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Experimental justification for a $80\times 80$ cell based discretization grid for the NGSIM data.}}{13}{figure.7}}
 \newlabel{fig:Grid control}{{7}{13}{Experimental justification for a $80\times 80$ cell based discretization grid for the NGSIM data}{figure.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Sanity check for the estimation procedure. $\mathaccent "0362\relax {q}_{i,j}^{\text  {count}}$ is plotted against $\mathaccent "0362\relax {q}_{i,j}$ across the grid of bins. }}{13}{figure.8}}
-\newlabel{fig:Sanity-check}{{8}{13}{Sanity check for the estimation procedure. $\widehat {q}_{i,j}^{\text {count}}$ is plotted against $\widehat {q}_{i,j}$ across the grid of bins}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Sanity check for the estimation procedure. $\mathaccent "0362\relax {q}_{i,j}^{\text  {count}}$ is plotted against $\mathaccent "0362\relax {q}_{i,j}$ across the grid of bins. }}{14}{figure.8}}
+\newlabel{fig:Sanity-check}{{8}{14}{Sanity check for the estimation procedure. $\widehat {q}_{i,j}^{\text {count}}$ is plotted against $\widehat {q}_{i,j}$ across the grid of bins}{figure.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Estimated values for $\left (v,q\right )$}{14}{subsection.4.3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Estimated values for $\left (v,q,\rho \right )$. Top left: $\mathaccent "0362\relax {v}_{i,j}$. Top right: $\mathaccent "0362\relax {\rho }_{i,j}$. Bottom left: $\mathaccent "0362\relax {q}_{i,j}$. Bottom right: $\mathaccent "0362\relax {q}_{i,j}^{\text  {count}}$ .}}{14}{figure.9}}
-\newlabel{fig:Estimated-values}{{9}{14}{Estimated values for $\left (v,q,\rho \right )$. Top left: $\widehat {v}_{i,j}$. Top right: $\widehat {\rho }_{i,j}$. Bottom left: $\widehat {q}_{i,j}$. Bottom right: $\widehat {q}_{i,j}^{\text {count}}$ }{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Estimated values for $\left (v,q,\rho \right )$. Top left: $\mathaccent "0362\relax {v}_{i,j}$. Top right: $\mathaccent "0362\relax {\rho }_{i,j}$. Bottom left: $\mathaccent "0362\relax {q}_{i,j}$. Bottom right: $\mathaccent "0362\relax {q}_{i,j}^{\text  {count}}$ .}}{15}{figure.9}}
+\newlabel{fig:Estimated-values}{{9}{15}{Estimated values for $\left (v,q,\rho \right )$. Top left: $\widehat {v}_{i,j}$. Top right: $\widehat {\rho }_{i,j}$. Bottom left: $\widehat {q}_{i,j}$. Bottom right: $\widehat {q}_{i,j}^{\text {count}}$ }{figure.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Empirical fundamental diagrams. Left: $\left (\mathaccent "0362\relax {\rho },\mathaccent "0362\relax {q}^{\text  {count}}\right )$. Middle: $\left (\mathaccent "0362\relax {v},\mathaccent "0362\relax {q}^{\text  {count}}\right )$. Right: $\left (\mathaccent "0362\relax {\rho },\mathaccent "0362\relax {v}\right )$. }}{15}{figure.10}}
 \newlabel{fig:Empirical-fundamental-diagrams}{{10}{15}{Empirical fundamental diagrams. Left: $\left (\widehat {\rho },\widehat {q}^{\text {count}}\right )$. Middle: $\left (\widehat {v},\widehat {q}^{\text {count}}\right )$. Right: $\left (\widehat {\rho },\widehat {v}\right )$}{figure.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Calibration of $\lambda _{1}$ and $\lambda _{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda _{2}$ and the linearization point is also plotted. The estimates are: $\mathaccent "0362\relax {\lambda }_{1}=8.96$ m/s, $\mathaccent "0362\relax {\lambda }_{2}=-4.37$ m/s,$\mathaccent "0362\relax {\rho }^{*}=0.049$ veh/m, $\mathaccent "0362\relax {v}^{*}=8.96$ m/s, $\mathaccent "0362\relax {q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}}{15}{figure.11}}
-\newlabel{fig:Calibration-of-eigen-values}{{11}{15}{Calibration of $\lambda _{1}$ and $\lambda _{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda _{2}$ and the linearization point is also plotted. The estimates are: $\widehat {\lambda }_{1}=8.96$ m/s, $\widehat {\lambda }_{2}=-4.37$ m/s,$\widehat {\rho }^{*}=0.049$ veh/m, $\widehat {v}^{*}=8.96$ m/s, $\widehat {q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Calibration of $\lambda _{1}$ and $\lambda _{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda _{2}$ and the linearization point is also plotted. The estimates are: $\mathaccent "0362\relax {\lambda }_{1}=8.96$ m/s, $\mathaccent "0362\relax {\lambda }_{2}=-4.37$ m/s,$\mathaccent "0362\relax {\rho }^{*}=0.049$ veh/m, $\mathaccent "0362\relax {v}^{*}=8.96$ m/s, $\mathaccent "0362\relax {q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}}{16}{figure.11}}
+\newlabel{fig:Calibration-of-eigen-values}{{11}{16}{Calibration of $\lambda _{1}$ and $\lambda _{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda _{2}$ and the linearization point is also plotted. The estimates are: $\widehat {\lambda }_{1}=8.96$ m/s, $\widehat {\lambda }_{2}=-4.37$ m/s,$\widehat {\rho }^{*}=0.049$ veh/m, $\widehat {v}^{*}=8.96$ m/s, $\widehat {q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}{figure.11}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Sanity check for the estimation procedure. $\mathaccent "0362\relax {q}_{i,j}^{\text  {count}}$ is plotted against $\mathaccent "0362\relax {q}_{i,j}$ across the grid of bins. }}{16}{figure.12}}
 \newlabel{fig:Sanity-check}{{12}{16}{Sanity check for the estimation procedure. $\widehat {q}_{i,j}^{\text {count}}$ is plotted against $\widehat {q}_{i,j}$ across the grid of bins}{figure.12}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Verification of the spectral form}{16}{subsection.4.4}}
-\newlabel{sub:Calibration-of-tau}{{4.4}{16}{Verification of the spectral form}{subsection.4.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Data versus predicted. Top Figure: $\left (v,q\right )$ domain, top row is $v$, bottom row is $q$. Bottom: $\left (\xi _{1},\xi _{2}\right )$ domain, top row is $\xi _{1}$, bottom row is $\xi _{2}$. First column: data. Middle column: predictions. Third column: error (difference between prediction and data).}}{17}{figure.13}}
-\newlabel{fig:Data-versus-predicted.}{{13}{17}{Data versus predicted. Top Figure: $\left (v,q\right )$ domain, top row is $v$, bottom row is $q$. Bottom: $\left (\xi _{1},\xi _{2}\right )$ domain, top row is $\xi _{1}$, bottom row is $\xi _{2}$. First column: data. Middle column: predictions. Third column: error (difference between prediction and data)}{figure.13}{}}
-\citation{Jamitons-multi-valued-fund}
+\newlabel{sub:Calibration-of-tau}{{4.4}{17}{Verification of the spectral form}{subsection.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Data versus predicted. Top Figure: $\left (v,q\right )$ domain, top row is $v$, bottom row is $q$. Bottom: $\left (\xi _{1},\xi _{2}\right )$ domain, top row is $\xi _{1}$, bottom row is $\xi _{2}$. First column: data. Middle column: predictions. Third column: error (difference between prediction and data).}}{18}{figure.13}}
+\newlabel{fig:Data-versus-predicted.}{{13}{18}{Data versus predicted. Top Figure: $\left (v,q\right )$ domain, top row is $v$, bottom row is $q$. Bottom: $\left (\xi _{1},\xi _{2}\right )$ domain, top row is $\xi _{1}$, bottom row is $\xi _{2}$. First column: data. Middle column: predictions. Third column: error (difference between prediction and data)}{figure.13}{}}
 \citation{Zheng2011}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Calibration of $\tau $, one minimizes the sum of MAE over $\xi _{1}$ and $\xi _{2}$.}}{18}{figure.14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Findings and conclusion from the numerical experiments}{18}{subsubsection.4.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{18}{section.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Calibration of $\tau $, one minimizes the sum of MAE over $\xi _{1}$ and $\xi _{2}$.}}{19}{figure.14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Findings and conclusion from the numerical experiments}{19}{subsection.4.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{19}{section.5}}
 \newlabel{sub:Generic-computations}{{Appendix A}{20}{Generic computations for time domain to Laplace domain transforms and vice versa}{appendix.A}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {Appendix A}Generic computations for time domain to Laplace domain transforms and vice versa}{20}{appendix.A}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {Appendix A.1}Step function input}{20}{subsection.A.1}}
@@ -156,33 +160,36 @@
 \bibcite{Wang2005141}{{7}{}{{}}{{}}}
 \bibcite{Papageorgiou198929}{{8}{}{{}}{{}}}
 \bibcite{Flynn09self-sustainednonlinear}{{9}{}{{}}{{}}}
-\bibcite{godunov}{{10}{}{{}}{{}}}
-\bibcite{Osher}{{11}{}{{}}{{}}}
-\bibcite{daganzo1995cell}{{12}{}{{}}{{}}}
-\bibcite{Dag_requiem}{{13}{}{{}}{{}}}
-\bibcite{Jamitons2008}{{14}{}{{}}{{}}}
-\bibcite{Flynn08onjamitons}{{15}{}{{}}{{}}}
-\bibcite{Jamitons-multi-valued-fund}{{16}{}{{}}{{}}}
-\bibcite{payne1971models}{{17}{}{{}}{{}}}
-\bibcite{whitham1974linear}{{18}{}{{}}{{}}}
-\bibcite{Newell}{{19}{}{{}}{{}}}
-\bibcite{Z}{{20}{}{{}}{{}}}
-\bibcite{Zhang1998}{{21}{}{{}}{{}}}
-\bibcite{AR}{{22}{}{{}}{{}}}
-\bibcite{R_improved}{{23}{}{{}}{{}}}
-\bibcite{Lebacque2007}{{24}{}{{}}{{}}}
-\bibcite{HybridLagrangian2007}{{25}{}{{}}{{}}}
-\bibcite{GodunovARZ}{{26}{}{{}}{{}}}
-\bibcite{Fan}{{27}{}{{}}{{}}}
-\bibcite{Greenberg_congestionredux}{{28}{}{{}}{{}}}
-\bibcite{Chen2012}{{29}{}{{}}{{}}}
-\bibcite{Mauch02freewaytraffic}{{30}{}{{}}{{}}}
-\bibcite{lanechangin2005}{{31}{}{{}}{{}}}
-\bibcite{lanechanging2007}{{32}{}{{}}{{}}}
-\bibcite{Zheng2011}{{33}{}{{}}{{}}}
-\bibcite{litrico2009modeling}{{34}{}{{}}{{}}}
-\bibcite{Litricoapplic}{{35}{}{{}}{{}}}
-\bibcite{Sturm}{{36}{}{{}}{{}}}
-\bibcite{Hofleitner}{{37}{}{{}}{{}}}
-\bibcite{edie1963discussion}{{38}{}{{}}{{}}}
+\bibcite{treiber2013traffic}{{10}{}{{}}{{}}}
+\bibcite{garavello2006trafficbook}{{11}{}{{}}{{}}}
+\bibcite{godunov}{{12}{}{{}}{{}}}
+\bibcite{Osher}{{13}{}{{}}{{}}}
+\bibcite{daganzo1995cell}{{14}{}{{}}{{}}}
+\bibcite{Dag_requiem}{{15}{}{{}}{{}}}
+\bibcite{Jamitons2008}{{16}{}{{}}{{}}}
+\bibcite{Flynn08onjamitons}{{17}{}{{}}{{}}}
+\bibcite{Jamitons-multi-valued-fund}{{18}{}{{}}{{}}}
+\bibcite{payne1971models}{{19}{}{{}}{{}}}
+\bibcite{whitham1974linear}{{20}{}{{}}{{}}}
+\bibcite{Newell}{{21}{}{{}}{{}}}
+\bibcite{Z}{{22}{}{{}}{{}}}
+\bibcite{Zhang1998}{{23}{}{{}}{{}}}
+\bibcite{AR}{{24}{}{{}}{{}}}
+\bibcite{R_improved}{{25}{}{{}}{{}}}
+\bibcite{Lebacque2007}{{26}{}{{}}{{}}}
+\bibcite{HybridLagrangian2007}{{27}{}{{}}{{}}}
+\bibcite{garavello2006traffic}{{28}{}{{}}{{}}}
+\bibcite{GodunovARZ}{{29}{}{{}}{{}}}
+\bibcite{Fan}{{30}{}{{}}{{}}}
+\bibcite{Greenberg_congestionredux}{{31}{}{{}}{{}}}
+\bibcite{Chen2012}{{32}{}{{}}{{}}}
+\bibcite{Mauch02freewaytraffic}{{33}{}{{}}{{}}}
+\bibcite{lanechangin2005}{{34}{}{{}}{{}}}
+\bibcite{lanechanging2007}{{35}{}{{}}{{}}}
+\bibcite{Zheng2011}{{36}{}{{}}{{}}}
+\bibcite{litrico2009modeling}{{37}{}{{}}{{}}}
+\bibcite{Litricoapplic}{{38}{}{{}}{{}}}
+\bibcite{Sturm}{{39}{}{{}}{{}}}
+\bibcite{Hofleitner}{{40}{}{{}}{{}}}
+\bibcite{edie1963discussion}{{41}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
