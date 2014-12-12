@@ -66,7 +66,7 @@
 \title{Prediction of traffic oscillation instability with spectral analysis of the Aw--Rascle--Zhang model}
 
 %% Group authors per affiliation:
-\author[add]{Authors}
+\author[add]{Francois Belletti, Mandy Huo, Xavier Litrico, Alexandre M. Bayen}
 \address[add]{address}
 %\author{Elsevier\fnref{myfootnote}}
 %\address{Radarweg 29, Amsterdam}
@@ -549,10 +549,10 @@ Hence
 with
 \begin{subequations} \label{TFv0q0tovxqx}
 \begin{align}
-\phi_{11} &= e^{-\frac{x}{\tau \lambda_1}}e^{-\frac{x}{\lambda_1}s}, \\ 
-\phi_{12} &= 0, \\
-\phi_{21} &= \dfrac{\lambda_1 \left( e^{-\frac{x}{\tau \lambda_1}}e^{-\frac{x}{\lambda_1}s} - e^{-\frac{x}{\lambda_2}s}\right)}{\lambda_2 - \tau (\lambda_1 - \lambda_2)s}, \\
-\phi_{22} &= e^{-\frac{x}{\lambda_2}s}.
+\phi_{11}(x,s) &= e^{-\frac{x}{\tau \lambda_1}}e^{-\frac{x}{\lambda_1}s}, \\ 
+\phi_{12}(x,s) &= 0, \\
+\phi_{21}(x,s) &= \dfrac{\lambda_1 \left( e^{-\frac{x}{\tau \lambda_1}}e^{-\frac{x}{\lambda_1}s} - e^{-\frac{x}{\lambda_2}s}\right)}{\lambda_2 - \tau (\lambda_1 - \lambda_2)s}, \\
+\phi_{22}(x,s) &= e^{-\frac{x}{\lambda_2}s}.
 \end{align}
 \end{subequations}
 \subsection{Free-flow case ($F<1$)}
@@ -579,14 +579,44 @@ Using \eqref{eq:Riemannzeta}, we can write
 with
 \begin{subequations}
 \begin{align}
-\psi_{11}(x,s) &=\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{x}{\lambda_{1}}s}-e^{-\frac{x}{\lambda_{2}}s}\right)\frac{\alpha}{s+\alpha}+e^{-\frac{x}{\lambda_{2}}s}, \\
-\psi_{12}(x,s)&=-\frac{1}{\rho^* \tau}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{x}{\lambda_{1}}s}-e^{-\frac{x}{\lambda_{2}}s}\right)\frac{1}{s+\alpha}, \\
-\psi_{21}(x,s)&=-\rho^{*} \tau\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{x}{\lambda_{1}}s}-e^{-\frac{x}{\lambda_{2}}s}\right)\frac{\alpha s}{s+\alpha}, \\
-\psi_{22}(x,s)&=-\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{x}{\lambda_{1}}s}-e^{-\frac{x}{\lambda_{2}}s}\right)\frac{\alpha}{s+\alpha}+e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{x}{\lambda_{1}}s}.
+\psi_{11}(x,s) &= 
+\frac{
+	\alpha e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}
+		+ s e^{-\frac{x}{\lambda_{2}}}
+}{
+	s + \alpha
+}, \\
+\psi_{12}(x,s) &=
+-\frac{1}{\rho^* \tau}
+\frac{
+	e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}		{\tau}\right)}
+	- 
+	e^{-\frac{x}{\lambda_{2}}}
+}{
+	s + \alpha
+}, \\
+\psi_{21}(x,s) &=
+-\rho^{*} \tau \alpha s
+\frac{
+	e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}		{\tau}\right)}
+	- 
+	e^{-\frac{x}{\lambda_{2}}}
+}{
+	s + \alpha
+}, \\
+\psi_{22}(x,s) &=
+\frac{
+	s e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}
+		+ \alpha e^{-\frac{x}{\lambda_{2}}}
+}{
+	s + \alpha
+}.
 \end{align}
 \end{subequations}
 
-where $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$. 
+where $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$.  
+
+We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$. Therefore numerators and denominators cancel out for $s \rightarrow -\alpha$ and $-\alpha$ $(>0)$ is not a pole of any transfer function. This is not enough to prove stability of the system though. In particular a Taylor expansion about $-\alpha$ of the numerator in the Laplace domain does not give a straightforward conclusion. The stability of higher order terms remains unknown. However, we will show below that a region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime.
 
 \subsubsection{Bode plots}
 
@@ -657,12 +687,48 @@ Spatial magnitude Bode plot for $\phi_{22}(x,s)$.
 We analyze the behavior of the system given step inputs $v(0,t)=v_{\text{step}}H(t)$ and $q(0,t)=q_{\text{step}}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses:
 
 \begin{align} 
-v(x,t) &= v_{\text{step}}\left[e^{-\frac{x}{\lambda_1\tau}}\left(1 - e^{-\alpha \left(t-\frac{x}{\lambda_1}\right)}\right)H\left(t-\frac{x}{\lambda_1}\right) + e^{-\alpha\left(t-\frac{x}{\lambda_2}\right)}H\left(t-\frac{x}{\lambda_2}\right)\right] \notag \\
-&\quad+ \dfrac{q_{\text{step}}}{\rho^* \tau}\left[- e^{-\frac{x}{\lambda_1\tau}}\left(1 - e^{-\alpha\left(t-\frac{x}{\lambda_1}\right)}\right)H\left(t-\frac{x}{\lambda_1}\right) + \left(1 - e^{-\alpha\left(t-\frac{x}{\lambda_2}\right)}\right)H\left(t-\frac{x}{\lambda_2}\right) \right] \\
-q(x,t) &= v_{\text{step}}\rho^*\tau \alpha\left[e^{-\frac{x}{\lambda_1\tau}}e^{-\alpha\left(t-\frac{x}{\lambda_1}\right)}H\left(t-\frac{x}{\lambda_1}\right) - e^{-\alpha\left(t-\frac{x}{\lambda_2}\right)}H\left(t-\frac{x}{\lambda_2}\right) \right] \notag \\
-&\quad+ q_{\text{step}}\left[ e^{-\frac{x}{\lambda_1\tau}}e^{-\alpha\left(t-\frac{x}{\lambda_1}\right)}H\left(t-\frac{x}{\lambda_1}\right) + \left(1 - e^{-\alpha\left(t-\frac{x}{\lambda_2}\right)}\right)H\left(t-\frac{x}{\lambda_2}\right)\right]
+v(x,t) &= v_{\text{step}}
+\left[
+	e^{-\frac{x}{\lambda_{1}\tau}} H\left(t-\frac{x}{\lambda_{1}}\right)
+	+
+	e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+	\left(
+		H\left(t - \frac{x}{\lambda_{2}} \right) - H\left(t - \frac{x}{\lambda_{1}} \right)
+	\right)
+\right]
+\notag \\
+&\quad
+- \dfrac{q_{\text{step}}}{\rho^* \tau}
+\left[
+	e^{-\frac{x}{\lambda_{1}\tau}} H\left(t-\frac{x}{\lambda_{1}}\right) - H\left(t - \frac{x}{\lambda_{2}} \right) +
+	e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+	\left(
+		H\left(t - \frac{x}{\lambda_{2}} \right) - H\left(t - \frac{x}{\lambda_{1}} 	\right)
+	\right)
+\right] \\
+	q(x,t) &= v_{\text{step}} \rho^*\tau \alpha e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+		\left(
+		H\left(t - \frac{x}{\lambda_{1}} \right) - H\left(t - \frac{x}{\lambda_{2}} 	\right)
+	\right)
+\notag \\
+&\quad+ 
+q_{\text{step}}
+\left[
+H\left(t - \frac{x}{\lambda_{2}} \right) + e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+		\left(
+		H\left(t - \frac{x}{\lambda_{1}} \right) - H\left(t - \frac{x}{\lambda_{2}} 	\right)
+	\right)
+\right]
 \end{align}
 
+With this set of time domain expressions, we can see that generally a cone of exponentially growing speed and flow appears in the domain between the characteristic lines corresponding to $\lambda_{1}$ and $\lambda_{2}$. This is caused by $\alpha$ being negative in the free flow regime and means that, in this region of the domain $\left[0,T\right] \times \left[0,L\right]$, the linearized system can diverge exponentially fast from the linearization point.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=8cm]{Exp-growth}
+\par\end{centering}
+\protect\caption{Illustration of the exponential growth cone appearing in the free-flowing regime for the time domain expressions of $v$ and $q$.\label{Exp-growth}}
+\end{figure}
 
 \subsection{Congested regime ($F>1$)}
 We now consider the system in the congested regime.
@@ -685,9 +751,10 @@ Using \eqref{TFRiemann} we can write
 with 
 \begin{subequations}
 \begin{align}
-\gamma_{11}\left(x,s\right)&=e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}, \\
+\gamma_{11}\left(x,s\right)&=
+e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)} ,\\
 \gamma_{12}\left(x,s\right)&=0, \\
-\gamma_{21}\left(x,s\right)&=\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}, \\
+\gamma_{21}\left(x,s\right)&=\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}, \\
 \gamma_{22}\left(x,s\right)&=e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}.
 \end{align}
 \end{subequations}
