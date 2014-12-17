@@ -478,7 +478,7 @@ and
 
 \subsection{The Traffic Froude Number}
 In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{Sturm, litrico2009modeling}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful counterpart to this number.
-Since $V(\rho)$ is nonincreasing function, we have $V'(\rho^*) \leq 0$. Thus there are two flow regimes: one in which $\lambda_1 \lambda_2 < 0$ and one characteristic line travels downstream whereas the other characteristic line travels downstream, and one in which $\lambda_1 \lambda_2 > 0$ and both characteristic lines travel upstream.
+Since $V(\rho)$ is nonincreasing function, we have $V'(\rho^*) \leq 0$. Assuming $V'(\rho^*) \neq 0$ there are two flow regimes: one in which $\lambda_1 \lambda_2 < 0$ and one characteristic line travels downstream whereas the other characteristic line travels upstream, and one in which $\lambda_1 \lambda_2 > 0$ and both characteristic lines travel downstream.
 
 We define the \textit{Traffic Froude Number} (TFN) as
 \begin{equation}
@@ -616,7 +616,7 @@ with
 
 where $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$.  
 
-We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$. Therefore numerators and denominators cancel out for $s \rightarrow -\alpha$ and $-\alpha$ $(>0)$ is not a pole of any transfer function. This is not enough to prove stability of the system though. In particular a Taylor expansion about $-\alpha$ of the numerator in the Laplace domain does not give a straightforward conclusion. The stability of higher order terms remains unknown. However, we will show below that a region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime.
+We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$. It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and therefore the system is not bounded-input/bounded-output stable. However, a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$ and $-\alpha$ is not a pole of any transfer function. This is enough to show that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated from the spectral domain study (where $t$ varies and $x$ remains constant).
 
 \subsubsection{Bode plots}
 
@@ -721,7 +721,7 @@ H\left(t - \frac{x}{\lambda_{2}} \right) + e^{-\alpha \left(t - \frac{x}{\lambda
 \right]
 \end{align}
 
-With this set of time domain expressions, we can see that generally a cone of exponentially growing speed and flow appears in the domain between the characteristic lines corresponding to $\lambda_{1}$ and $\lambda_{2}$. This is caused by $\alpha$ being negative in the free flow regime and means that, in this region of the domain $\left[0,T\right] \times \left[0,L\right]$, the linearized system can diverge exponentially fast from the linearization point.
+With this set of time domain expressions, we can see that a cone of exponentially growing speed and flow generally appears between the characteristic lines corresponding to $\lambda_{1}$ and $\lambda_{2}$. This is caused by $\alpha$ being negative in the free flow regime and means that, in this region of the domain $\left[0,T\right] \times \left[0,L\right]$, the $\left(\rho,q\right)$ state of the linearized system can diverge exponentially fast from the linearization point.
 
 \begin{figure}
 \begin{centering}
@@ -765,7 +765,7 @@ Note that equation \eqref{vqcongested} corresponds to a closed form solution of 
 The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
 \begin{itemize}
 \item The TFN delineates two regimes, congested, for $F > 1$ and free-flowing for $F < 1$. This classification, and the resulting stability result legitimize the use of linearization around a nominal point in the stable region.
-\item  The assessment of instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data).
+\item  The assessment of instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, instability only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain.
 \end{itemize}
 
 \section{Numerical validation}
@@ -837,7 +837,7 @@ number of points in each bin provides more stable estimates. It is worth mention
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
+\includegraphics[width=6cm]{\string"/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=6cm]{\string"/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
 Histogram of number of traces per cell. & Histogram of number of distinct vehicles per cell. \tabularnewline
 \end{tabular}
 \caption{Experimental justification for a $80\times 80$ cell based discretization
@@ -850,7 +850,7 @@ different techniques: the first relies on the average measured speed and the num
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=8cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
+\includegraphics[width=6cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
 \protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
 is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 \label{fig:Sanity-check}}
@@ -867,16 +867,17 @@ To calibrate the relaxation time $\tau$, we analyze the errors of predicted valu
 
 \textbf{Fundamental diagrams.} From the estimated values we can easily compute the fundamental diagrams given in Figure \ref{fig:Empirical-fundamental-diagrams}. We use the fundamental diagrams to calibrate the model parameters. Though the dataset used is dense, it covers only a small region of time and space. Thus, its small size is a potential flaw in our model parameter calibration as it is certain that
 our measurements are highly correlated. This seems
-to be confirmed by the fact that the fundamental diagrams below correspond only to the congested regime. \textit{OPTIONAL: Most of the points are concentrated
-about the same region. This is not enough to guarantee that the estimated
-quantities are reliable. However, NGSIM is to this day one of the
-most comprehensive data sets of vehicle behavior on a freeway. It
-is therefore one of the best ways one has to validate that a traffic
-model is realistic. The fact that most points lie in the same region
-is also a sign that the linearization hypothesis is reasonable
-in that context. Observed deviations from the equilibrium are indeed
-generally small. (The equilibrium, i.e. the linearization point, is estimated
-below).}
+to be confirmed by the fact that the fundamental diagrams below correspond only to the congested regime. \
+%textit{OPTIONAL: Most of the points are concentrated
+%about the same region. This is not enough to guarantee that the estimated
+%quantities are reliable. However, NGSIM is to this day one of the
+%most comprehensive data sets of vehicle behavior on a freeway. It
+%is therefore one of the best ways one has to validate that a traffic
+%model is realistic. The fact that most points lie in the same region
+%is also a sign that the linearization hypothesis is reasonable
+%in that context. Observed deviations from the equilibrium are indeed
+%generally small. (The equilibrium, i.e. the linearization point, is estimated
+%below).}
 
 \begin{figure}[H]
 \centering
@@ -914,14 +915,6 @@ into a fully justified statistical procedure. Note that the goal of the present 
 \includegraphics[width=8cm]{\string"/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}
 \protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$ m/s, $\widehat{\lambda}_{2}=-4.37$ m/s,$\widehat{\rho}^{*}=0.049$ veh/m, $\widehat{v}^{*}=8.96$ m/s, $\widehat{q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}
 \label{fig:Calibration-of-eigen-values}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=8cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
-\protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
-is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
-\label{fig:Sanity-check}}
 \end{figure}
 
 \subsection{Verification of the spectral form}
@@ -979,9 +972,9 @@ With the linearized ARZ model, we were also able to define the Traffic Froude Nu
 
 %We found the eigenvalues of the linearized system to be constant, prompting the definition of the Traffic Froude Number, $F$, which indicates the flow regime of the road section under consideration. Note that the Froude number inequalities delineating the supercritical and subcritical regimes in hydronamics are reversed for our definition of the TFN. 
 
-Considering the transfer function of the linearized system of equations delineates the conditions for stability of the approximation about the equilibrium. The time domain responses we derive show that the system is unstable when one of the eigenvalues is negative. In the free-flow regime, $F < 1$, oscillations increase and the system leaves the linear regime, while in the congested regime, $F>1$, oscillations decrease. In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines. Thus, the TFN is also an indicator of linear stability.
+Considering the transfer function of the linearized system of equations delineates the conditions for stability of the approximation about the equilibrium. The time domain responses we derive show that the system is unstable when one of the eigenvalues is negative. In the free-flow regime, $F < 1$, values of flow and speed increase exponentially in a conic region of space and time and the system leaves the linear regime, while in the congested regime, $F>1$, oscillations decrease. In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines. Thus, the TFN is also an indicator of linear stability.
 
-The behavior predicted in congested regime for traffic does not present shocks and Fourier spectral analysis cannot account for more nonlinear and non-smooth behavior as well as wavelet transforms. However, our spectral domain study paves the way to applying standard linear system control theory to traffic, with a linearized second model that empirically is more accurate than its first order counterparts. Future work will therefore focus on controller design based on the spectral framework presented here.
+The behavior predicted in congested regime for traffic does not present shocks and Fourier spectral analysis cannot account for more nonlinear and non-smooth behavior as well as wavelet transforms. However, our spectral domain study paves the way to applying standard linear system control theory to traffic, with a linearized second model that is empirically reliable in terms of reproducing actual data. Future work will therefore focus on controller design based on the spectral framework presented here.
 
 %The present analysis also complements the wavelet-based approach used in \cite{Zheng2011}. Fourier transform based analysis is a powerful tool in our numerical experiments that does not require any CFL-like condition for stability. The linearity of the system clearly predicts smoother behavior than what is found with wavelet decomposition, and as we have shown, the resulting macroscopic predictions are fairly accurate.
 
