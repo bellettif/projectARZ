@@ -9,16 +9,15 @@ tau = 15; % relaxation time, [s]
 rho0 = 0.01; % rho*, linearization point
 
 % Greenshields Hamiltonian 
-% rhomax = 0.1; % jam density, [veh/m]
-% qmax = 1300/3600; % max flow, [veh/s]
-% 
-% q = @(rho) 4*qmax*rho*(rhomax - rho)/(rhomax^2);
-% qprime = @(rho) 4*qmax/rhomax - 8*qmax*rho/rhomax^2;
+rhomax = 0.1; % jam density, [veh/m]
+qmax = 1300/3600; % max flow, [veh/s]
+q = @(rho) 4*qmax*rho*(rhomax - rho)/(rhomax^2);
+qprime = @(rho) 4*qmax/rhomax - 8*qmax*rho/rhomax^2;
 
 % Triangular Hamiltonian
-rhomax = 0.1274; % jam density, [veh/m]
-qmax = 2040/3600; % max flow, [veh/s]
-rhoc = 0.0186; % critical density, [veh/m]
+%rhomax = 0.1274; % jam density, [veh/m]
+%qmax = 2040/3600; % max flow, [veh/s]
+%rhoc = 0.0186; % critical density, [veh/m]
 
 q = @(rho) (rho<=rhoc)*(qmax*rho/rhoc) + (rho>rhoc)*(qmax*(rho-rhomax)/(rhoc - rhomax));
 qprime = @(rho) (rho<=rhoc)*(qmax/rhoc) + (rho>rhoc)*qmax/(rhoc - rhomax);

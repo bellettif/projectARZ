@@ -164,38 +164,41 @@ dB22 = 20*log10(abs(gamma22));
 phase22 = (180/pi)*unwrap(angle(gamma22));
 %% Spatial Bode, lambda2 < 0
 fig1 = figure(1);
+set(fig1,'defaulttextinterpreter','latex');
 surf(w,X,dB11,'Edgecolor','none')
 xlabel('Frequency [Hz]')
 ylabel('x [m]')
 set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
-title('Bode plot for \gamma_{11}(x,s)')
+title('Bode plot for $\gamma_{11}(x,s)$')
 view([1 -2 1])
-%set(findall(gcf,'-property','FontSize'),'FontSize',14)
-%print(fig1,'-dpdf','diagdistr11')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig1,'-dpdf','diagdistr11congested')
 
 fig2 = figure(2);
+set(fig2,'defaulttextinterpreter','latex');
 surf(w,X,dB21,'Edgecolor','none')
 xlabel('Frequency [Hz]')
 ylabel('x [m]')
 set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
-title('Bode plot for \gamma_{21}(x,s)')
+title('Bode plot for $\gamma_{21}(x,s)$')
 view([1 -1.8 2])
-%set(findall(gcf,'-property','FontSize'),'FontSize',14)
-%print(fig2,'-dpdf','diagdistr21')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig2,'-dpdf','diagdistr21congested')
 
 %% IO Bode, lambda2 < 0
 idx = length(X);
 
 fig4 = figure(4);
+set(fig4,'defaulttextinterpreter','latex');
 subplot(2,2,1)
 semilogx(w,dB11(idx,:))
 xlabel('Frequency [Hz]')
 ylabel('Gain [dB]')
 grid on
 xlim([w(1) w(end)])
-title('\gamma_{11}(L,s)')
+title('$\gamma_{11}(L,s)$')
 subplot(2,2,3)
 semilogx(w,phase11(idx,:))
 xlabel('Frequency [Hz]')
@@ -209,7 +212,7 @@ xlabel('Frequency [Hz]')
 ylabel('Gain [dB]')
 grid on
 xlim([w(1) w(end)])
-title('\gamma_{21}(L,s)')
+title('$\gamma_{21}(L,s)$')
 subplot(2,2,4)
 semilogx(w,phase22(idx,:))
 xlabel('Frequency [Hz]')
@@ -217,7 +220,7 @@ ylabel('Phase [deg]')
 grid on
 xlim([w(1) w(end)])
 
-% set(findall(gcf,'-property','FontSize'),'FontSize',14)
-% print(fig4,'-dpdf','diagIO')
+set(findall(gcf,'-property','FontSize'),'FontSize',14)
+print(fig4,'-dpdf','diagIOcongested')
 
 

@@ -555,6 +555,24 @@ with
 \phi_{22}(x,s) &= e^{-\frac{x}{\lambda_2}s}.
 \end{align}
 \end{subequations}
+
+
+Let $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$. It is indeed clear that $\phi_{11}\left(x,s\right)$ decomposes as the product of a distributed delay corresponding to information propagating at speed $\lambda_{1}$ and attenuation proportional to $\frac{x}{\tau\lambda_{1}}$. Here $\tau\lambda_{1}$ plays the role of a characteristic spatial length. Similarly $\phi_{22}$ is a delay corresponding to information propagating at speed $\lambda_{2}$. The interpretation of $\phi_{21}$ is more cumbersome. In low frequencies ($\left|s\right|\ll\alpha$), this transfer function takes a much more transparent form. Indeed, in the expression
+$
+\phi_{21}(x,s) = 
+\frac{\frac{\lambda_{1}}{\lambda_{2}} \alpha}
+{s + \alpha}
+e^{-\frac{x}{\lambda_2}s}
+	\left(
+		1 - e^{-\frac{x}{\lambda_1 \tau}\left(s + \alpha\right)}
+	\right)
+\simeq \frac{\lambda_{1}}{\lambda_{2}} e^{-\frac{x}{\lambda_2}s}
+	\left(
+		1 - e^{-\frac{x}{\lambda_1 \tau}}
+	\right)
+$
+the transfer function appears as the combination of a distributed delay where $\lambda_{2}$ is the propagation speed and a gain where $\lambda_{1}\tau$ is a characteristic distance.
+
 \subsection{Free-flow case ($F<1$)}
 Consider the system in the free-flow regime. 
 
@@ -613,8 +631,6 @@ with
 }.
 \end{align}
 \end{subequations}
-
-where $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$.  
 
 We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$. It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and therefore the system is not bounded-input/bounded-output stable. However, a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$ and $-\alpha$ is not a pole of any transfer function. This is enough to show that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated from the spectral domain study (where $t$ varies and $x$ remains constant).
 
