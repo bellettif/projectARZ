@@ -885,6 +885,178 @@ e^{-\frac{sx}{\lambda_{2}}}
 $
 is the combination of a gain, a distributed delay with propagation speed $\lambda_{2}$, and a sum of gain and delay components. The component $e^{\frac{sL}{\lambda_{2}}\left(1 - \frac{\lambda_{1}}{\lambda_{2}}\right)}$ seems to correspond to an anticipation term. This is to be expected given the upstream orientation of the characteristic lines of $\xi_{2}$. Indeed, the information contained in $\xi_{1}\left(0,s\right)$ flows backwards along the characteristic lines of $\xi_{2}$. The resulting bode plot is presented below in Figure \ref{fig:Magn_phase_physx_congested}.
 
+\subsubsection{Transfer functions for physical variables in congested regime}
+In congested regime, the boundary conditions used to control the system are $\hat{xi_{1}}\left(0,\cdot\right)$ and $\hat{xi_{2}}\left(0,\cdot\right)$. By linearity of the Laplace transform 
+$\hat{\xi_{1}\left(0,s\right)} = 
+\frac{
+	\rho^{*}\lambda_{2}
+}{
+	\lambda_{1} - \lambda_{2}
+} 
+\hat{v}\left(0,s\right)
++
+\hat{q}\left(0,s\right)
+$.
+Therefore, as
+$\hat{\xi_{2}}\left(0,s\right) =
+\gamma_{21}\left(0,s\right)
+\hat{\xi_{1}}\left(0,s\right)
++
+\gamma_{22}\left(0,s\right)
+\hat{\xi_{2}}\left(L,s\right)$
+, we get
+$\hat{\xi_{1}}\left(0,s\right) =
+\frac{1}{d\left(s\right)}
+\hat{q}\left(0,s\right)
++
+\frac{n\left(s\right)}{d\left(s\right)}
+\hat{v}\left(L,s\right)
+$
+where
+$d\left(s\right) = 1 - \frac{\lambda_{2}}{\lambda_{1}}\gamma_{21}\left(0,s\right)$
+and
+$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$. The $\left(v,q\right)$ system has indeed only two degrees of freedom. Therefore we consider that the only inputs to the system are $q\left(0,\cdot\right)$ and $v\left(L,\cdot\right)$. $v\left(0,\cdot\right)$ is then completely determined and can be interpreted as an output of the system.
+The corresponding transfer equation is
+\begin{equation}
+\begin{pmatrix}
+	\hat{v}\left(x,s\right)
+	\\
+	\hat{q}\left(x,s\right)
+\end{pmatrix}
+=
+Q^{-1}\Gamma\left(x,s\right)
+\underset{\Theta\left(x,s\right)}{
+\underbrace{
+\begin{pmatrix}
+	\frac{n\left(s\right)}{d\left(s\right)}
+		&
+	\frac{1}{d\left(s\right)}	
+	\\
+	\frac{\rho^{*}\lambda_{1}}{\lambda_{1} - \lambda_{2}}
+		&
+	0
+\end{pmatrix}
+}
+}
+\begin{pmatrix}
+	\hat{v}\left(L,s\right)
+	\\
+	\hat{q}\left(0,s\right)
+\end{pmatrix}
+\end{equation}
+where
+\begin{subequations}
+\begin{align}
+\theta_{11}\left(x,s\right) &=
+\frac{
+	\alpha 
+		e^{
+			-\frac{x}{\tau \lambda_{1}}
+		}
+		e^{
+			-\frac{s}{\lambda_{1}}
+				\left(
+					x - L\frac{\lambda_{1}}{\lambda_{2}}
+				\right)	
+		}
+	+
+	s 
+		e^{-\frac{s}{\lambda_{2}}\left(x - L\right)}
+}{
+	s
+	+
+	\alpha
+	e^{-\frac{L}{\tau\lambda_{1}}}
+	e^{
+	\frac{sL}{\lambda_{1}}
+	\left(
+		1 - \frac{\lambda_{1}}{\lambda_{2}}
+	\right)
+	}
+}
+,\\
+\theta_{12}\left(x,s\right) &=
+\frac{1}{\rho^{*}\tau}
+\frac{
+	e^{-\frac{L}{\lambda_{1}\tau}}
+	e^{-\frac{s}{\lambda_{2}}
+		\left(
+			x - L
+				\left(1 - 
+					\frac{\lambda_{2}}{\lambda_{1}}
+				\right)
+		\right)
+	}
+	-
+	e^{-\frac{x}{\lambda_{1}\tau}}
+	e^{-\frac{sx}{\lambda_{1}}}
+}
+{
+	s
+	+
+	\alpha
+	e^{-\frac{L}{\tau\lambda_{1}}}
+	e^{
+	\frac{sL}{\lambda_{1}}
+	\left(
+		1 - \frac{\lambda_{1}}{\lambda_{2}}
+	\right)
+	}
+},\\
+\theta_{21}\left(x,s\right) &=
+\frac{\rho^{*}s}{\lambda_{1} - \lambda_{2}}
+\frac{
+	e^{-\frac{x}{\tau\lambda_{1}}}
+	e^{-\frac{s}{\lambda_{1}}
+		\left(
+			x - L\frac{\lambda_{1}}{\lambda_{2}}
+		\right)
+	}
+	-
+	e^{-\frac{s\left(L-x\right)}{\lambda_{2}}}
+}{
+	s
+	+
+	\alpha
+	e^{-\frac{L}{\tau\lambda_{1}}}
+	e^{
+	\frac{sL}{\lambda_{1}}
+	\left(
+		1 - \frac{\lambda_{1}}{\lambda_{2}}
+	\right)
+	}
+},\\
+\theta_{22}\left(x,s\right) &=
+\frac{
+	\alpha
+	e^{-\frac{L}{\lambda_{1}\tau}}
+	e^{-\frac{s}{\lambda_{2}}
+		\left(
+			x - L
+				\left(
+				1 - \frac{\lambda_{2}}{\lambda_{1}}
+				\right)
+		\right)
+	}
+	+
+	s
+	e^{-\frac{x}{\lambda_{1}\tau}}
+	e^{-\frac{sx}{\lambda_{1}}}
+}{
+	s
+	+
+	\alpha
+	e^{-\frac{L}{\tau\lambda_{1}}}
+	e^{
+	\frac{sL}{\lambda_{1}}
+	\left(
+		1 - \frac{\lambda_{1}}{\lambda_{2}}
+	\right)
+	}
+}
+.
+\end{align}
+\end{subequations}
 
 \subsubsection{Bode plots for congested regime}
 We use the same fundamental diagram as in the free-flow case. However the linearization point, $\rho^* = 0.08$ veh/m, corresponds to the congested region of the Greeshields diagram.
