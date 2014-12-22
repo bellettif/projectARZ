@@ -557,7 +557,7 @@ with
 \end{subequations}
 
 
-Let $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$. It is indeed clear that $\phi_{11}\left(x,s\right)$ decomposes as the product of a distributed delay corresponding to information propagating at speed $\lambda_{1}$ and attenuation proportional to $\frac{x}{\tau\lambda_{1}}$. Here $\tau\lambda_{1}$ plays the role of a characteristic spatial length. Similarly $\phi_{22}$ is a delay corresponding to information propagating at speed $\lambda_{2}$. The interpretation of $\phi_{21}$ is more cumbersome. In low frequencies ($\left|s\right|\ll\alpha$), this transfer function takes a much more transparent form. Indeed, in the expression
+Let $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$. It is indeed clear that $\phi_{11}\left(x,s\right)$ decomposes as the product of a distributed delay corresponding to information propagating at speed $\lambda_{1}$ and attenuation proportional to $\frac{x}{\tau\lambda_{1}}$. Here $\tau\lambda_{1}$ plays the role of a characteristic spatial length. Similarly $\phi_{22}$ is a delay corresponding to information propagating at speed $\lambda_{2}$. The interpretation of $\phi_{21}$ is more cumbersome. In low frequencies ($\left|s\right|\ll\left|\alpha\right|$), this transfer function takes a much more transparent form. Indeed, in the expression
 $
 \phi_{21}(x,s) = 
 \frac{\frac{\lambda_{1}}{\lambda_{2}} \alpha}
@@ -634,69 +634,143 @@ with
 
 We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$. It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and therefore the system is not bounded-input/bounded-output stable. However, a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$ and $-\alpha$ is not a pole of any transfer function. This is enough to show that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated from the spectral domain study (where $t$ varies and $x$ remains constant).
 
-\subsubsection{Bode plots}
+\subsubsection{Low frequency approximation in free-flow regime}
+Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This is sensible concretely as one expects traffic related phenomena to occur at a low frequency. We find the following approximate expressions for the transfer functions above:
+\begin{subequations}
+\begin{align}
+\psi_{11}(x,s) &=
+	e^{-\frac{xs}{\lambda_{2}}}
+	\frac{
+	s + \alpha e^{-\frac{x}{\tau\lambda_{1}\alpha}
+		\left(s + \alpha\right)	
+		}
+	}{
+	s + \alpha
+	}
+&\simeq
+e^{-\frac{xs}{\lambda_{1}}}
+e^{-\frac{x}{\tau\lambda_{1}}}
+, \\
+\psi_{12}(x,s) &=
+\frac{
+	e^{-\frac{xs}{\lambda_{2}}}
+}{
+	\rho^{*}\tau
+}
+\frac{
+	1 - e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
+}{
+	s + \alpha
+}
+&\simeq
+\frac{
+	e^{-\frac{xs}{\lambda_{2}}}
+}{
+	\rho^{*}\tau\alpha
+}
+\left(
+	1 - e^{-\frac{x}{\tau\lambda_{1}}}
+\right)
+, \\
+\psi_{21}(x,s) &=
+s \rho^{*} \tau \alpha
+e^{-\frac{xs}{\lambda_{2}}}
+\frac{
+	1 - e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
+}{
+	s + \alpha
+}
+& \simeq
+s \rho^{*} \tau
+e^{-\frac{xs}{\lambda_{2}}}
+\left(
+	1 - e^{-\frac{x}{\tau\lambda_{1}}}
+\right)
+, \\
+\psi_{22}(x,s) &=
+e^{-\frac{xs}{\lambda_{1}}}
+\frac{
+	\alpha + s e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
+}{
+	s + \alpha
+}
+&\simeq
+e^{-\frac{xs}{\lambda_{2}}}
+.
+\end{align}
+\end{subequations}
+
+Interpreting the low frequency expressions is fairly straightforward:
+\begin{itemize}
+\item In $\psi_{11}$, $e^{-\frac{xs}{\lambda_{1}}}$ is a distributed delay with propagation speed $\lambda_{1}$ and $e^{-\frac{x}{\tau\lambda_{1}}}$ a distributed gain with characteristic distance $\tau\lambda_{1}$.
+\item In $\psi_{12}$ and $\psi_{21}$ we can notice the combination of a distributed delay with  characteristic speed $\lambda_{2}$ and a distributed gain with $\tau\lambda_{1}$ as a characteristic distance.
+\item The approximate expression for $\psi_{22}$ highlights the presence of a distributed delay where the information propagates at speed $\lambda_{2}$.
+\end{itemize}
+
+
+\subsubsection{Bode plots for free-flow regime}
 
 We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{\text{max}}$ = 1300 veh/h, $\rho_{\text{max}}$ = 0.1 veh/m, and $L$ = 100 m. The Greenshields fundamental diagram, $Q( \rho) = 4 \frac{q_{\text{max}}}{\rho_{\text{max}}^2}\rho (\rho_{\text{max}} - \rho)$, is used to approximate the fundamental diagram. For inhomogenous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$ veh/m.
 
-The Bode plots for the physical variables are displayed in Figures \ref{fig:Magn_phase_physx} and \ref{Magn_spatial_physx}. For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented in Figure \ref{fig:Magn_phase_diag} and Figure \ref{Magn_spatial_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
-
-\begin{figure}[H]
-\centering
-\begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{IOv_-3to-1}
-& 
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{IOq_-3to-1}
-\tabularnewline
-\end{tabular}
-\caption{
-Magnitude and phase bode plots for $\psi_{11}(L,s)$ and $\psi_{12}(L,s)$ (left) and for $\psi_{21}(L,s)$ and $\psi_{22}(L,s)$ (right). (Physical variables).
-\label{fig:Magn_phase_physx}
-}
-\end{figure}
-
+The Bode plots for the physical variables are displayed in Figures \ref{fig:Magn_spatial_physx} and \ref{fig:Magn_phase_physx}.
+For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented in Figure \ref{fig:Magn_spatial_diag} and Figure \ref{fig:Magn_phase_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
 
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr11_-3to-1}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_diag_phi_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr12_-3to-1}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_diag_phi_21}
 \tabularnewline
-Spatial magnitude Bode plot for $\psi_{11}(x,s)$.
+Spatial magnitude Bode plot for $\phi_{11}(x,s)$.
 &
-Spatial magnitude Bode plot for $\psi_{12}(x,s)$.
-\tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr21_-3to-1}
-&
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr22_-3to-1}
-\tabularnewline
-Spatial magnitude Bode plot for $\psi_{21}(x,s)$.
-&
-Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
+Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
 \tabularnewline
 \end{tabular}
-\caption{Spatial magnitude Bode plots for physical variables\label{Magn_spatial_physx}}
+\caption{Spatial magnitude Bode plots for Riemann invariants\label{fig:Magn_spatial_diag}}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 110mm]{diagIOfreeflow}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 110mm]{Bode_free_flow/IO_diag}
 \caption{Magnitude and phase Bode plots for $\phi_{11}(L,s)$ and $\phi_{21}(L,s)$.\label{fig:Magn_phase_diag}}
 \end{figure}
 
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{diagdistr11freeflow}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{diagdistr21freeflow}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_12}
 \tabularnewline
-Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
+Spatial magnitude Bode plot for $\psi_{11}(x,s)$.
 &
-Spatial magnitude Bode plot for $\phi_{22}(x,s)$.
+Spatial magnitude Bode plot for $\psi_{12}(x,s)$.
+\tabularnewline
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_21}
+&
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_22}
+\tabularnewline
+Spatial magnitude Bode plot for $\psi_{21}(x,s)$.
+&
+Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 \tabularnewline
 \end{tabular}
-\caption{Spatial magnitude Bode plots for Riemann invariants\label{Magn_spatial_diag}}
+\caption{Spatial magnitude Bode plots for physical variables\label{fig:Magn_spatial_physx}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{cc}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{Bode_free_flow/IO_v}
+& 
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{Bode_free_flow/IO_q}
+\tabularnewline
+\end{tabular}
+\caption{
+Magnitude and phase bode plots for $\psi_{11}(L,s)$ and $\psi_{12}(L,s)$ (left) and for $\psi_{21}(L,s)$ and $\psi_{22}(L,s)$ (right). (Physical variables).
+\label{fig:Magn_phase_physx}
+}
 \end{figure}
 
 \subsubsection{Step responses}
@@ -757,11 +831,11 @@ Using \eqref{TFRiemann} we can write
 \end{pmatrix} = \underbrace{
 \Phi(x,s) \begin{pmatrix}
 1 & 0\\
--\frac{\phi_{21}\left(L,s\right)}{\phi_{22}\left(L,s\right)} & \frac{1}{\phi_{22}}
+-\frac{\phi_{21}\left(L,s\right)}{\phi_{22}\left(L,s\right)} & \frac{1}{\phi_{22}\left(L,s\right)}
 \end{pmatrix}}_\text{$\Gamma (x,s)$}
 \begin{pmatrix}
 \hat{\xi_{1}}\left(0,s\right)\\
-\hat{\xi_{2}}\left(0,s\right)
+\hat{\xi_{2}}\left(L,s\right)
 \end{pmatrix}.
 \end{equation}
 with 
@@ -770,18 +844,81 @@ with
 \gamma_{11}\left(x,s\right)&=
 e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)} ,\\
 \gamma_{12}\left(x,s\right)&=0, \\
-\gamma_{21}\left(x,s\right)&=\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha}, \\
+\gamma_{21}\left(x,s\right)&=
+\alpha\frac{\lambda_{1}}{\lambda_{2}}
+	\left(
+		e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}
+		-
+		e^{-\frac{L}{\lambda_{1}\tau}}
+		e^{-\frac{s}{\lambda_{2}}\left(x-L \left(1 - \frac{\lambda_{2}}{\lambda_{1}} \right)\right)}
+	\right)
+\frac{1}{s+\alpha}, \\
 \gamma_{22}\left(x,s\right)&=e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}.
 \end{align}
 \end{subequations}
 
 Note that equation \eqref{vqcongested} corresponds to a closed form solution of our initial system, written in spectral form.
 
+For low frequencies ($\left|s\right|\ll\left|\alpha\right|$), 
+$\gamma_{21}\left(x,s\right)=
+\alpha\frac{\lambda_{1}}{\lambda_{2}}
+e^{-\frac{sx}{\lambda_{2}}}
+	\left(
+		e^{-\frac{x\left(s+\alpha\right)}{\lambda_{1}\tau}}
+		-
+		e^{-\frac{L}{\lambda_{1}\tau}}
+		e^{\frac{sL}{\lambda_{2}}
+			\left(1 - \frac{\lambda_{1}}{\lambda_{2}}\right)
+		}
+	\right)
+\simeq \\
+\frac{\lambda_{1}}{\lambda_{2}}
+e^{-\frac{sx}{\lambda_{2}}}
+	\left(
+	e^{-\frac{x\alpha}{\lambda_{1}\tau}}
+	-
+		e^{-\frac{L}{\lambda_{1}\tau}}
+		e^{\frac{sL}{\lambda_{2}}
+			\left(1 - \frac{\lambda_{1}}{\lambda_{2}}\right)
+		}
+	\right)
+$
+is the combination of a gain, a distributed delay with propagation speed $\lambda_{2}$, and a sum of gain and delay components. The component $e^{\frac{sL}{\lambda_{2}}\left(1 - \frac{\lambda_{1}}{\lambda_{2}}\right)}$ seems to correspond to an anticipation term. This is to be expected given the upstream orientation of the characteristic lines of $\xi_{2}$. Indeed, the information contained in $\xi_{1}\left(0,s\right)$ flows backwards along the characteristic lines of $\xi_{2}$. The resulting bode plot is presented below in Figure \ref{fig:Magn_phase_physx_congested}.
+
+
+\subsubsection{Bode plots for congested regime}
+We use the same fundamental diagram as in the free-flow case. However the linearization point, $\rho^* = 0.08$ veh/m, corresponds to the congested region of the Greeshields diagram.
+
+\begin{figure}[H]
+\centering
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{Bode_congested/IO_diag}
+\caption{
+Magnitude and phase bode plots for $\gamma_{11}(L,s)$ and $\gamma_{21}(L,s)$ (left). (Riemann invariants).
+\label{fig:Magn_phase_physx_congested}
+}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tabular}{cc}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_diag_gamma_11}
+&
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_diag_gamma_21}
+\tabularnewline
+Spatial magnitude Bode plot for $\gamma_{11}(x,s)$.
+&
+Spatial magnitude Bode plot for $\gamma_{21}(x,s)$.
+\tabularnewline
+\end{tabular}
+\caption{Spatial magnitude Bode plots for Riemann invariants\label{fig:Magn_spatial_diag_congested}}
+\end{figure}
+
 \subsection{Findings and conclusion from the theoretical study}
 The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
 \begin{itemize}
 \item The TFN delineates two regimes, congested, for $F > 1$ and free-flowing for $F < 1$. This classification, and the resulting stability result legitimize the use of linearization around a nominal point in the stable region.
 \item  The assessment of instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, instability only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain.
+\item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency for the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in gain and delay components. In the spectral domain, $\lambda_{1}$ and $\lambda_{2}$ do appear as information propagation speed. In several gain elements, $\tau\lambda_{1}$ and $\tau\lambda_{2}$ act as characteristic damping distances.
 \end{itemize}
 
 \section{Numerical validation}

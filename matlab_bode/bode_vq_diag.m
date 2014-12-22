@@ -150,6 +150,7 @@ gamma22 = gamma11;
 
 for i = 1:length(X);
     x = X(i);
+    (x - L*(lambda1 - lambda2)/lambda1)
     gamma11(i,:) = exp((-x/lambda1)*(s+1/tau));
     gamma21(i,:) = lambda1*(exp((-x/lambda1)*(s+1/tau)) - ...
         exp(-L/(tau*lambda1) - (x - L*(lambda1 - lambda2)/lambda1)*s/lambda2))./...
