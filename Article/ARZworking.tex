@@ -600,7 +600,7 @@ with
 \psi_{11}(x,s) &= 
 \frac{
 	\alpha e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}
-		+ s e^{-\frac{x}{\lambda_{2}}}
+		+ s e^{-\frac{xs}{\lambda_{2}}}
 }{
 	s + \alpha
 }, \\
@@ -609,7 +609,7 @@ with
 \frac{
 	e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}		{\tau}\right)}
 	- 
-	e^{-\frac{x}{\lambda_{2}}}
+	e^{-\frac{xs}{\lambda_{2}}}
 }{
 	s + \alpha
 }, \\
@@ -618,21 +618,21 @@ with
 \frac{
 	e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}		{\tau}\right)}
 	- 
-	e^{-\frac{x}{\lambda_{2}}}
+	e^{-\frac{xs}{\lambda_{2}}}
 }{
 	s + \alpha
 }, \\
 \psi_{22}(x,s) &=
 \frac{
 	s e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}
-		+ \alpha e^{-\frac{x}{\lambda_{2}}}
+		+ \alpha e^{-\frac{xs}{\lambda_{2}}}
 }{
 	s + \alpha
 }.
 \end{align}
 \end{subequations}
 
-We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$. It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and therefore the system is not bounded-input/bounded-output stable. However, a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$ and $-\alpha$ is not a pole of any transfer function. This is enough to show that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated from the spectral domain study (where $t$ varies and $x$ remains constant).
+It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and therefore the system is not bounded-input/bounded-output stable. However, We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$ and $-\alpha$ is not a pole of any transfer function. This is enough to show that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated with the spectral domain study (where $t$ varies and $x$ remains constant).
 
 \subsubsection{Low frequency approximation in free-flow regime}
 Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This is sensible concretely as one expects traffic related phenomena to occur at a low frequency. We find the following approximate expressions for the transfer functions above:
@@ -648,7 +648,7 @@ Analyzing the expressions above becomes easier when approximating them for $\lef
 	s + \alpha
 	}
 &\simeq
-e^{-\frac{xs}{\lambda_{1}}}
+e^{-\frac{xs}{\lambda_{2}}}
 e^{-\frac{x}{\tau\lambda_{1}}}
 , \\
 \psi_{12}(x,s) &=
@@ -688,7 +688,7 @@ e^{-\frac{xs}{\lambda_{2}}}
 \right)
 , \\
 \psi_{22}(x,s) &=
-e^{-\frac{xs}{\lambda_{1}}}
+e^{-\frac{xs}{\lambda_{2}}}
 \frac{
 	\alpha + s e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
 }{
@@ -703,7 +703,7 @@ e^{-\frac{xs}{\lambda_{2}}}
 Interpreting the low frequency expressions is fairly straightforward:
 \begin{itemize}
 \item In $\psi_{11}$, $e^{-\frac{xs}{\lambda_{1}}}$ is a distributed delay with propagation speed $\lambda_{1}$ and $e^{-\frac{x}{\tau\lambda_{1}}}$ a distributed gain with characteristic distance $\tau\lambda_{1}$.
-\item In $\psi_{12}$ and $\psi_{21}$ we can notice the combination of a distributed delay with  characteristic speed $\lambda_{2}$ and a distributed gain with $\tau\lambda_{1}$ as a characteristic distance.
+\item In $\psi_{12}$ and $\psi_{21}$ we can notice the combination of a distributed delay with  characteristic speed $\lambda_{2}$ and a distributed gain with $\tau\lambda_{1}$ as a characteristic distance. It is also remarkable that $\widetilde{q}(x,s)$ appears as the result of a derivation of $\widetilde{v}(0,s)$.
 \item The approximate expression for $\psi_{22}$ highlights the presence of a distributed delay where the information propagates at speed $\lambda_{2}$.
 \end{itemize}
 
@@ -845,14 +845,21 @@ with
 e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)} ,\\
 \gamma_{12}\left(x,s\right)&=0, \\
 \gamma_{21}\left(x,s\right)&=
-\alpha\frac{\lambda_{1}}{\lambda_{2}}
-	\left(
-		e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)}
-		-
-		e^{-\frac{L}{\lambda_{1}\tau}}
-		e^{-\frac{s}{\lambda_{2}}\left(x-L \left(1 - \frac{\lambda_{2}}{\lambda_{1}} \right)\right)}
-	\right)
-\frac{1}{s+\alpha}, \\
+\frac{\lambda_{1}}{\lambda_{2}}
+\frac{\alpha}{s + \alpha}
+e^{-\frac{sx}{\lambda_{2}}}
+e^{-\frac{x}{\lambda_{1}\tau\alpha}
+\left(s+\alpha\right)}
+\left(
+	1 -
+	e^{-\frac{\left(L - x\right)
+		}{
+		\lambda_{1}\tau\alpha
+		}
+		\left(s+\alpha\right)
+		}
+\right)
+, \\
 \gamma_{22}\left(x,s\right)&=e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}.
 \end{align}
 \end{subequations}
@@ -860,30 +867,17 @@ e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)} ,\\
 Note that equation \eqref{vqcongested} corresponds to a closed form solution of our initial system, written in spectral form.
 
 For low frequencies ($\left|s\right|\ll\left|\alpha\right|$), 
-$\gamma_{21}\left(x,s\right)=
-\alpha\frac{\lambda_{1}}{\lambda_{2}}
-e^{-\frac{sx}{\lambda_{2}}}
-	\left(
-		e^{-\frac{x\left(s+\alpha\right)}{\lambda_{1}\tau}}
-		-
-		e^{-\frac{L}{\lambda_{1}\tau}}
-		e^{\frac{sL}{\lambda_{2}}
-			\left(1 - \frac{\lambda_{1}}{\lambda_{2}}\right)
-		}
-	\right)
-\simeq \\
+$\gamma_{21}\left(x,s\right)
+\simeq
 \frac{\lambda_{1}}{\lambda_{2}}
 e^{-\frac{sx}{\lambda_{2}}}
-	\left(
-	e^{-\frac{x\alpha}{\lambda_{1}\tau}}
-	-
-		e^{-\frac{L}{\lambda_{1}\tau}}
-		e^{\frac{sL}{\lambda_{2}}
-			\left(1 - \frac{\lambda_{1}}{\lambda_{2}}\right)
-		}
-	\right)
+e^{-\frac{x}{\lambda_{1}\tau}}
+\left(
+	1 -
+	e^{-\frac{L-x}{\lambda_{1}\tau}}
+\right)
 $
-is the combination of a gain, a distributed delay with propagation speed $\lambda_{2}$, and a sum of gain and delay components. The component $e^{\frac{sL}{\lambda_{2}}\left(1 - \frac{\lambda_{1}}{\lambda_{2}}\right)}$ seems to correspond to an anticipation term. This is to be expected given the upstream orientation of the characteristic lines of $\xi_{2}$. Indeed, the information contained in $\xi_{1}\left(0,s\right)$ flows backwards along the characteristic lines of $\xi_{2}$. The resulting bode plot is presented below in Figure \ref{fig:Magn_phase_physx_congested}.
+is the combination of a gain, a distributed delay with propagation speed $-\lambda_{2}$, and a distributed gain with characteristic distance $\lambda_{1}\tau$ that cancels out for $x = L$. The resulting bode plot is presented below in Figure \ref{fig:Magn_phase_physx_congested}.
 
 \subsubsection{Transfer functions for physical variables in congested regime}
 In congested regime, the boundary conditions used to control the system are $\hat{xi_{1}}\left(0,\cdot\right)$ and $\hat{xi_{2}}\left(0,\cdot\right)$. By linearity of the Laplace transform 
@@ -924,9 +918,9 @@ The corresponding transfer equation is
 	\hat{q}\left(x,s\right)
 \end{pmatrix}
 =
-Q^{-1}\Gamma\left(x,s\right)
 \underset{\Theta\left(x,s\right)}{
 \underbrace{
+Q^{-1}\Gamma\left(x,s\right)
 \begin{pmatrix}
 	\frac{n\left(s\right)}{d\left(s\right)}
 		&
@@ -951,7 +945,7 @@ where
 \frac{
 	\alpha 
 		e^{
-			-\frac{x}{\tau \lambda_{1}}
+			-\frac{x}{\tau\lambda_{1}}
 		}
 		e^{
 			-\frac{s}{\lambda_{1}}
@@ -968,7 +962,7 @@ where
 	\alpha
 	e^{-\frac{L}{\tau\lambda_{1}}}
 	e^{
-	\frac{sL}{\lambda_{1}}
+	-\frac{sL}{\lambda_{1}}
 	\left(
 		1 - \frac{\lambda_{1}}{\lambda_{2}}
 	\right)
@@ -978,7 +972,7 @@ where
 \theta_{12}\left(x,s\right) &=
 \frac{1}{\rho^{*}\tau}
 \frac{
-	e^{-\frac{L}{\lambda_{1}\tau}}
+	e^{-\frac{L}{\tau\lambda_{1}}}
 	e^{-\frac{s}{\lambda_{2}}
 		\left(
 			x - L
@@ -988,7 +982,7 @@ where
 		\right)
 	}
 	-
-	e^{-\frac{x}{\lambda_{1}\tau}}
+	e^{-\frac{x}{\tau\lambda_{1}}}
 	e^{-\frac{sx}{\lambda_{1}}}
 }
 {
@@ -997,7 +991,7 @@ where
 	\alpha
 	e^{-\frac{L}{\tau\lambda_{1}}}
 	e^{
-	\frac{sL}{\lambda_{1}}
+	-\frac{sL}{\lambda_{1}}
 	\left(
 		1 - \frac{\lambda_{1}}{\lambda_{2}}
 	\right)
@@ -1013,14 +1007,14 @@ where
 		\right)
 	}
 	-
-	e^{-\frac{s\left(L-x\right)}{\lambda_{2}}}
+	e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}
 }{
 	s
 	+
 	\alpha
 	e^{-\frac{L}{\tau\lambda_{1}}}
 	e^{
-	\frac{sL}{\lambda_{1}}
+	-\frac{sL}{\lambda_{1}}
 	\left(
 		1 - \frac{\lambda_{1}}{\lambda_{2}}
 	\right)
@@ -1029,7 +1023,7 @@ where
 \theta_{22}\left(x,s\right) &=
 \frac{
 	\alpha
-	e^{-\frac{L}{\lambda_{1}\tau}}
+	e^{-\frac{L}{\tau\lambda_{1}}}
 	e^{-\frac{s}{\lambda_{2}}
 		\left(
 			x - L
@@ -1040,7 +1034,7 @@ where
 	}
 	+
 	s
-	e^{-\frac{x}{\lambda_{1}\tau}}
+	e^{-\frac{x}{\tau\lambda_{1}}}
 	e^{-\frac{sx}{\lambda_{1}}}
 }{
 	s
@@ -1048,7 +1042,7 @@ where
 	\alpha
 	e^{-\frac{L}{\tau\lambda_{1}}}
 	e^{
-	\frac{sL}{\lambda_{1}}
+	-\frac{sL}{\lambda_{1}}
 	\left(
 		1 - \frac{\lambda_{1}}{\lambda_{2}}
 	\right)
