@@ -560,7 +560,7 @@ with
 Let $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$. It is indeed clear that $\phi_{11}\left(x,s\right)$ decomposes as the product of a distributed delay corresponding to information propagating at speed $\lambda_{1}$ and attenuation proportional to $\frac{x}{\tau\lambda_{1}}$. Here $\tau\lambda_{1}$ plays the role of a characteristic spatial length. Similarly $\phi_{22}$ is a delay corresponding to information propagating at speed $\lambda_{2}$. The interpretation of $\phi_{21}$ is more cumbersome. In low frequencies ($\left|s\right|\ll\left|\alpha\right|$), this transfer function takes a much more transparent form. Indeed, in the expression
 $
 \phi_{21}(x,s) = 
-\frac{\frac{\lambda_{1}}{\lambda_{2}} \alpha}
+\frac{\lambda_{1}}{\lambda_{2}}\frac{\alpha}
 {s + \alpha}
 e^{-\frac{x}{\lambda_2}s}
 	\left(
@@ -605,16 +605,16 @@ with
 	s + \alpha
 }, \\
 \psi_{12}(x,s) &=
--\frac{1}{\rho^* \tau}
+\frac{1}{\rho^* \tau}
 \frac{
-	e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}		{\tau}\right)}
-	- 
 	e^{-\frac{sx}{\lambda_{2}}}
+	-
+	e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}		{\tau}\right)}
 }{
 	s + \alpha
 }, \\
 \psi_{21}(x,s) &=
-\rho^{*} \tau \alpha s
+s \rho^{*} \tau \alpha
 \frac{
 	e^{-\frac{sx}{\lambda_{2}}}
 	-
@@ -632,10 +632,10 @@ with
 \end{align}
 \end{subequations}
 
-It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and therefore the system is not bounded-input/bounded-output stable. However, We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$ and $-\alpha$ is not a pole of any transfer function. This is enough to show that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated with the spectral domain study (where $t$ varies and $x$ remains constant).
+It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and therefore the system is not bounded-input/bounded-output stable. However, We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. Therefore $-\alpha$ is not a pole of any transfer function. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated with the spectral domain study (where $t$ varies and $x$ remains constant).
 
 \subsubsection{Low frequency approximation for physical variables in free-flow regime}
-Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This is sensible concretely as one expects traffic related phenomena to occur at a low frequency. We find the following approximate expressions for the transfer functions above:
+Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This is sensible concretely as one expects traffic related phenomena to occur at a relatively low frequency. We find the following approximate expressions for the transfer functions above:
 \begin{subequations}
 \begin{align}
 \psi_{11}(x,s) &=
@@ -653,10 +653,11 @@ e^{-\frac{x}{\tau\lambda_{1}}}
 , \\
 \psi_{12}(x,s) &=
 \frac{
-	e^{-\frac{sx}{\lambda_{2}}}
+	1
 }{
 	\rho^{*}\tau
 }
+e^{-\frac{sx}{\lambda_{2}}}
 \frac{
 	1 - e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
 }{
@@ -664,10 +665,11 @@ e^{-\frac{x}{\tau\lambda_{1}}}
 }
 &\simeq
 \frac{
-	e^{-\frac{sx}{\lambda_{2}}}
+	1
 }{
 	\rho^{*}\tau\alpha
 }
+e^{-\frac{sx}{\lambda_{2}}}
 \left(
 	1 - e^{-\frac{x}{\tau\lambda_{1}}}
 \right)
@@ -702,7 +704,7 @@ e^{-\frac{sx}{\lambda_{2}}}
 
 Interpreting the low frequency expressions is fairly straightforward:
 \begin{itemize}
-\item In $\psi_{11}$, $e^{-\frac{sx}{\lambda_{1}}}$ is a distributed delay with propagation speed $\lambda_{1}$ and $e^{-\frac{x}{\tau\lambda_{1}}}$ a distributed gain with characteristic distance $\tau\lambda_{1}$.
+\item In $\psi_{11}$, $e^{-\frac{sx}{\lambda_{2}}}$ is a distributed delay with propagation speed $\lambda_{2}$ and $e^{-\frac{x}{\tau\lambda_{1}}}$ a distributed gain with characteristic distance $\tau\lambda_{1}$.
 \item In $\psi_{12}$ and $\psi_{21}$ we can notice the combination of a distributed delay with  characteristic speed $\lambda_{2}$ and a distributed gain with $\tau\lambda_{1}$ as a characteristic distance. It is also remarkable that $\widetilde{q}(x,s)$ appears as the result of a derivation of $\widetilde{v}(0,s)$.
 \item The approximate expression for $\psi_{22}$ highlights the presence of a distributed delay where the information propagates at speed $\lambda_{2}$.
 \end{itemize}
@@ -710,7 +712,7 @@ Interpreting the low frequency expressions is fairly straightforward:
 
 \subsubsection{Bode plots for free-flow regime}
 
-We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{\text{max}}$ = 1300 veh/h, $\rho_{\text{max}}$ = 0.1 veh/m, and $L$ = 100 m. The Greenshields fundamental diagram, $Q( \rho) = 4 \frac{q_{\text{max}}}{\rho_{\text{max}}^2}\rho (\rho_{\text{max}} - \rho)$, is used to approximate the fundamental diagram. For inhomogenous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$ veh/m. Here the characteristic frequency of the system, $\left|\alpha\right|$, equals 0.53 Hz.
+We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{\text{max}}$ = 1300 veh/h, $\rho_{\text{max}}$ = 0.1 veh/m, and $L$ = 100 m. The Greenshields fundamental diagram, $Q( \rho) = 4 \frac{q_{\text{max}}}{\rho_{\text{max}}^2}\rho (\rho_{\text{max}} - \rho)$, is used to approximate the fundamental diagram. For inhomogenous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$ veh/m. Here the characteristic frequency of the system, $\left|\alpha\right|$, equals 0.53 Hz which is indeed sensible for traffic flow modeling.
 
 The Bode plots for the physical variables are displayed in Figure \ref{fig:Magn_spatial_physx}.
 For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented in Figure \ref{fig:Magn_spatial_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
@@ -877,7 +879,7 @@ e^{-\frac{x}{\lambda_{1}\tau}}
 	e^{-\frac{L-x}{\lambda_{1}\tau}}
 \right)
 $
-is the combination of a gain, a distributed delay with propagation speed $-\lambda_{2}$, and a distributed gain with characteristic distance $\lambda_{1}\tau$ that cancels out for $x = L$. The resulting bode plot is presented below in Figure \ref{fig:Magn_phase_physx_congested}.
+is the combination of a gain, a distributed delay with propagation speed $-\lambda_{2}$, and a distributed gain with characteristic distance $\lambda_{1}\tau$ that cancels out for $x = L$. The resulting bode plot is presented below in Figure \ref{fig:Magn_spatial_diag_congested}.
 
 \subsubsection{Transfer functions for physical variables in congested regime}
 In congested regime, the boundary conditions used to control the system are $\hat{\xi}_{1}\left(0,\cdot\right)$ and $\hat{\xi}_{2}\left(0,\cdot\right)$. By linearity of the Laplace transform 
@@ -998,7 +1000,7 @@ where
 	}
 },\\
 \theta_{21}\left(x,s\right) &=
-\rho^{*}s\alpha\tau
+\rho^{*}\tau\alpha s
 \frac{
 	e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}
 	-
@@ -1102,7 +1104,7 @@ e^{-\frac{sx}{\lambda_{2}}}
 	1 - e^{\frac{L-x}{\tau\lambda_{1}}}
 \right),\\
 \theta_{21}\left(x,s\right) &=
-\rho^{*}s\alpha\tau
+s \rho^{*}\tau\alpha
 e^{\frac{s\left(L-x\right)}{\lambda_{2}}}
 \frac{
 	1 - 
@@ -1117,7 +1119,7 @@ e^{\frac{s\left(L-x\right)}{\lambda_{2}}}
 	}
 }
 &\simeq
-\rho^{*}s\tau
+s \rho^{*}\tau
 e^{\frac{s\left(L-x\right)}{\lambda_{2}}}
 e^{\frac{L}{\tau\lambda_{1}}}
 \left(
@@ -1142,15 +1144,17 @@ e^{-\frac{sx}{\lambda_{2}}}.
 \end{align}
 \end{subequations}
 
-Interpreting the approximate transfer functions in low frequencies:
+With such expressions, interpreting the approximate transfer functions in low frequencies becomes fairly easy:
 \begin{itemize}
 \item The transfer function $\theta_{11}$ (resp. $\theta_{12}$) appears as the combination of a distributed delay with propagation speed $\lambda_{2}$ and a distributed gain (resp. attenuation) with characteristic distance $\lambda_{1}\tau$.
-\item We can almost draw the same conclusions for $\theta_{21}$ where a derivation term is combined to the transfer function.
-\item Once simplified, $theta_{22}$ corresponds to a distributed delay with propagation speed $\lambda_{2}$.
+\item We can draw the same conclusions for $\theta_{21}$ although a derivation term is combined to the transfer function. Again a derivator relates the output flux to the input speed.
+\item Once simplified, $\theta_{22}$ corresponds to a distributed delay with propagation speed $\lambda_{2}$.
 \end{itemize}
 
+Comparing the approximate expressions of the transfer functions relating physical variables in free-flow ($\Psi\left(x,s\right)$) and congested regime ($\Theta\left(x,s\right)$) also highlights their being extremely similar. For the mapping between the $\psi$ and $\theta$ approximate transfer functions to be perfect it is necessary to convert $x$ into $L-x$ in some gain or delay elements. These changes correspond to the fact that above, in free-flow regime, both boundary conditions for $\hat{v}$ and $\hat{q}$ corresponded to $x=0$ whereas here, in congested regime, $\hat{v}$ is set at $x=L$ and $\hat{q}$ at $x=0$.
+
 \subsubsection{Bode plots for congested regime}
-We use the same fundamental diagram as in the free-flow case. However the linearization point, $\rho^* = 0.08$ veh/m, corresponds to the congested region of the Greeshields diagram. We show the distributed Bode plots for the Riemann invariants in Figure \ref{fig:Magn_spatial_diag_congested} and for the physical variables in Figure . In that case, $\left|\alpha\right| =$ 0.05 Hz.
+We use the same fundamental diagram as in the free-flow case. However the linearization point, $\rho^* = 0.08$ veh/m, corresponds to the congested region of the Greeshields diagram. We show the distributed Bode plots for the Riemann invariants in Figure \ref{fig:Magn_spatial_diag_congested} and for the physical variables in Figure . In that case, $\left|\alpha\right| =$ 0.05 Hz, which does correspond to a reasonable characteristic frequency for traffic modeling applications.
 
 %\begin{figure}[H]
 %\centering
@@ -1204,7 +1208,8 @@ The numerical experiments above have validated the accuracy of the linearized mo
 \begin{itemize}
 \item The TFN delineates two regimes, congested, for $F > 1$ and free-flowing for $F < 1$. This classification, and the resulting stability result legitimize the use of linearization around a nominal point in the stable region.
 \item  The assessment of instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, instability only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain.
-\item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency for the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in gain and delay components. In the spectral domain, $\lambda_{1}$ and $\lambda_{2}$ do appear as information propagation speeds while  $\tau\lambda_{1}$ acts as a characteristic damping distance.
+\item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency for the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in gain and delay components. In the spectral domain, $\lambda_{2}$ appears as the information propagation speeds of all distributed delay elements while  $\tau\lambda_{1}$ acts as the characteristic damping distance of all distributed gain elements.
+\item Low frequency analysis also highlighted that transfer functions between physical variables in free-flow and congested regimes are structurally similar (for $\left|s\right|\ll\left|\alpha\right|$). The only dissimilarities that arise in the approximate expressions are the result of the differences between the boundary conditions that have been chosen in free-flow and congested regimes respectively.
 \end{itemize}
 
 \section{Numerical validation}
