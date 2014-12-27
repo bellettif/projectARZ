@@ -13,26 +13,27 @@
 \BOOKMARK [1][-]{section.3}{Spectral analysis of the linearized ARZ model}{}% 13
 \BOOKMARK [2][-]{subsection.3.1}{State-transition matrix}{section.3}% 14
 \BOOKMARK [2][-]{subsection.3.2}{Free-flow case \(F<1\)}{section.3}% 15
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Low frequency approximation in free-flow regime}{subsection.3.2}% 16
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Low frequency approximation for physical variables in free-flow regime}{subsection.3.2}% 16
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Bode plots for free-flow regime}{subsection.3.2}% 17
 \BOOKMARK [3][-]{subsubsection.3.2.3}{Step responses}{subsection.3.2}% 18
 \BOOKMARK [2][-]{subsection.3.3}{Congested regime \(F>1\)}{section.3}% 19
 \BOOKMARK [3][-]{subsubsection.3.3.1}{Transfer functions for physical variables in congested regime}{subsection.3.3}% 20
-\BOOKMARK [3][-]{subsubsection.3.3.2}{Bode plots for congested regime}{subsection.3.3}% 21
-\BOOKMARK [2][-]{subsection.3.4}{Findings and conclusion from the theoretical study}{section.3}% 22
-\BOOKMARK [1][-]{section.4}{Numerical validation}{}% 23
-\BOOKMARK [2][-]{subsection.4.1}{Data source: NGSIM trajectories}{section.4}% 24
-\BOOKMARK [2][-]{subsection.4.2}{Reconstructing \(v,q\) maps from NGSIM trajectories}{section.4}% 25
-\BOOKMARK [3][-]{subsubsection.4.2.1}{Choosing the number of bins}{subsection.4.2}% 26
-\BOOKMARK [2][-]{subsection.4.3}{Estimated values for \(v,q\)}{section.4}% 27
-\BOOKMARK [2][-]{subsection.4.4}{Verification of the spectral form}{section.4}% 28
-\BOOKMARK [2][-]{subsection.4.5}{Findings and conclusion from the numerical experiments}{section.4}% 29
-\BOOKMARK [1][-]{section.5}{Conclusion}{}% 30
-\BOOKMARK [1][-]{appendix.A}{Generic computations for time domain to Laplace domain transforms and vice versa}{}% 31
-\BOOKMARK [2][-]{subsection.A.1}{Step function input}{appendix.A}% 32
-\BOOKMARK [2][-]{subsection.A.2}{Phased cosine input}{appendix.A}% 33
-\BOOKMARK [2][-]{subsection.A.3}{Fourier sum input}{appendix.A}% 34
-\BOOKMARK [2][-]{subsection.A.4}{Fourier decomposition and time domain responses for 2>0}{appendix.A}% 35
-\BOOKMARK [3][-]{subsubsection.A.4.1}{Fundamental responses in time domain:}{subsection.A.4}% 36
-\BOOKMARK [2][-]{subsection.A.5}{Fourier decomposition and time domain responses for 2<0}{appendix.A}% 37
-\BOOKMARK [3][-]{subsubsection.A.5.1}{Fundamental responses in time domain}{subsection.A.5}% 38
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Low frequency approximation for physical variables in congested regime}{subsection.3.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Bode plots for congested regime}{subsection.3.3}% 22
+\BOOKMARK [2][-]{subsection.3.4}{Findings and conclusion from the theoretical study}{section.3}% 23
+\BOOKMARK [1][-]{section.4}{Numerical validation}{}% 24
+\BOOKMARK [2][-]{subsection.4.1}{Data source: NGSIM trajectories}{section.4}% 25
+\BOOKMARK [2][-]{subsection.4.2}{Reconstructing \(v,q\) maps from NGSIM trajectories}{section.4}% 26
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Choosing the number of bins}{subsection.4.2}% 27
+\BOOKMARK [2][-]{subsection.4.3}{Estimated values for \(v,q\)}{section.4}% 28
+\BOOKMARK [2][-]{subsection.4.4}{Verification of the spectral form}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.5}{Findings and conclusion from the numerical experiments}{section.4}% 30
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 31
+\BOOKMARK [1][-]{appendix.A}{Generic computations for time domain to Laplace domain transforms and vice versa}{}% 32
+\BOOKMARK [2][-]{subsection.A.1}{Step function input}{appendix.A}% 33
+\BOOKMARK [2][-]{subsection.A.2}{Phased cosine input}{appendix.A}% 34
+\BOOKMARK [2][-]{subsection.A.3}{Fourier sum input}{appendix.A}% 35
+\BOOKMARK [2][-]{subsection.A.4}{Fourier decomposition and time domain responses for 2>0}{appendix.A}% 36
+\BOOKMARK [3][-]{subsubsection.A.4.1}{Fundamental responses in time domain:}{subsection.A.4}% 37
+\BOOKMARK [2][-]{subsection.A.5}{Fourier decomposition and time domain responses for 2<0}{appendix.A}% 38
+\BOOKMARK [3][-]{subsubsection.A.5.1}{Fundamental responses in time domain}{subsection.A.5}% 39

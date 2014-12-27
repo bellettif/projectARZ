@@ -19,12 +19,14 @@ qprime = @(rho) 4*qmax/rhomax - 8*qmax*rho/rhomax^2;
 %qmax = 2040/3600; % max flow, [veh/s]
 %rhoc = 0.0186; % critical density, [veh/m]
 
-q = @(rho) (rho<=rhoc)*(qmax*rho/rhoc) + (rho>rhoc)*(qmax*(rho-rhomax)/(rhoc - rhomax));
-qprime = @(rho) (rho<=rhoc)*(qmax/rhoc) + (rho>rhoc)*qmax/(rhoc - rhomax);
+%q = @(rho) (rho<=rhoc)*(qmax*rho/rhoc) + (rho>rhoc)*(qmax*(rho-rhomax)/(rhoc - rhomax));
+%qprime = @(rho) (rho<=rhoc)*(qmax/rhoc) + (rho>rhoc)*qmax/(rhoc - rhomax);
 
 q0 = q(rho0);
 lambda1 = q0/rho0 ; % lambda1 = v* = q(rho*)/rho*
 lambda2 = qprime(rho0); % lambda2 = v* + rho* V'(rho*) = q'(rho*)
+
+alpha = - lambda2 / (tau * (lambda1 - lambda2))
 
 w = logspace(-3,-1,800); % frequency points
 s = 1i*w;

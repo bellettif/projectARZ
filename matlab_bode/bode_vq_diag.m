@@ -26,6 +26,8 @@ q0 = q(rho0);
 lambda1 = q0/rho0 ; % lambda1 = v* = q(rho*)/rho*
 lambda2 = qprime(rho0); % lambda2 = v* + rho* V'(rho*) = q'(rho*)
 
+alpha = - lambda2 / (tau * (lambda1 - lambda2))
+
 w = logspace(-3,-1,800); % frequency points
 s = 1i*w;
 X = 0:.1:L;
@@ -150,7 +152,6 @@ gamma22 = gamma11;
 
 for i = 1:length(X);
     x = X(i);
-    (x - L*(lambda1 - lambda2)/lambda1)
     gamma11(i,:) = exp((-x/lambda1)*(s+1/tau));
     gamma21(i,:) = lambda1*(exp((-x/lambda1)*(s+1/tau)) - ...
         exp(-L/(tau*lambda1) - (x - L*(lambda1 - lambda2)/lambda1)*s/lambda2))./...
