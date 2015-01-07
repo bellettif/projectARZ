@@ -27,7 +27,7 @@ lambda1 = q0/rho0 ; % lambda1 = v* = q(rho*)/rho*
 lambda2 = qprime(rho0); % lambda2 = v* + rho* V'(rho*) = q'(rho*)
 alpha = - lambda2 / (tau * (lambda1 - lambda2));
 
-w = logspace(-3,-1,800); % frequency points
+w = logspace(-3,1,800); % frequency points
 s = 1i*w;
 x = L;
 
@@ -175,7 +175,7 @@ q0 = q(rho0);
 lambda1 = q0/rho0 ; % lambda1 = v* = q(rho*)/rho*
 lambda2 = qprime(rho0); % lambda2 = v* + rho* V'(rho*) = q'(rho*)
 
-w = logspace(-3,-1,800); % frequency points
+w = logspace(-3,1,800); % frequency points
 s = 1i*w;
 X = 0:.1:L;
 
