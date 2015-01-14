@@ -448,15 +448,26 @@ Let $\xi = (\xi_1, \xi_2)^T = (\chi_1, -q^*\chi_2)^T$. Then we have
 \begin{equation} \label{vqlindiag}
 \begin{pmatrix}
 \xi_1 \\ \xi_2
-\end{pmatrix}_t + \begin{pmatrix}
-\lambda_1 & 0 \\
-0 & \lambda_2
-\end{pmatrix} \begin{pmatrix}
+\end{pmatrix}_t + 
+\underset{\tilde{A}}{
+	\underbrace{
+	\begin{pmatrix}
+		\lambda_1 & 0 \\
+		0 & \lambda_2
+	\end{pmatrix} 
+	}
+}
+\begin{pmatrix}
 \xi_1 \\ \xi_2
-\end{pmatrix}_x = \begin{pmatrix}
--\frac{1}{\tau} & 0 \\
--\frac{1}{\tau} & 0
-\end{pmatrix} \begin{pmatrix}
+\end{pmatrix}_x = 
+\underset{\tilde{B}}{
+	\underbrace{
+	\begin{pmatrix}
+		-\frac{1}{\tau} & 0 \\
+		-\frac{1}{\tau} & 0
+	\end{pmatrix}}
+}
+\begin{pmatrix}
 \xi_1 \\ \xi_2
 \end{pmatrix},
 \end{equation}
@@ -513,7 +524,7 @@ Taking the Laplace transform of the diagonalized form \eqref{vqlindiag} we obtai
 \begin{equation}
 \dfrac{\partial \hat{\zeta} (x,s)}{\partial x} = \mathscr{A}(s)\hat{\zeta}(x,s) + \mathscr{B}\zeta(x,t=0^-),
 \end{equation}
-where $\mathscr{A}(s) = A^{-1}(B - sI)$ and $\mathscr{B} = -A^{-1}$. 
+where $\mathscr{A}(s) = \tilde{A}^{-1}(\tilde{B} - sI)$ and $\mathscr{B} = -\tilde{A}^{-1}$. 
 The general solution to this ordinary differential equation is 
 \begin{equation}
 \hat{\zeta}(x,s) = \Phi(x,s)\hat{\zeta}(0,s) +  \Phi(x,s) \int^x_0 \Phi(\nu,s)^{-1} \mathscr{B} \zeta(\nu,0^-)\text{d} \nu,
