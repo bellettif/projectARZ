@@ -575,7 +575,7 @@ $
 {s + \alpha}
 e^{-\frac{x}{\lambda_2}s}
 	\left(
-		1 - e^{-\frac{x}{\lambda_1 \tau}\left(s + \alpha\right)}
+		1 - e^{-\frac{x}{\lambda_1 \tau \alpha}\left(s + \alpha\right)}
 	\right)
 \simeq \frac{\lambda_{1}}{\lambda_{2}} e^{-\frac{x}{\lambda_2}s}
 	\left(
@@ -720,7 +720,6 @@ Interpreting the low frequency expressions is fairly straightforward:
 \item The approximate expression for $\psi_{22}$ highlights the presence of a distributed delay where the information propagates at speed $\lambda_{2}$.
 \end{itemize}
 
-
 \subsubsection{Bode plots for free-flow regime}
 
 We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{\text{max}}$ = 1300 veh/h, $\rho_{\text{max}}$ = 0.1 veh/m, and $L$ = 100 m. The Greenshields fundamental diagram, $Q( \rho) = 4 \frac{q_{\text{max}}}{\rho_{\text{max}}^2}\rho (\rho_{\text{max}} - \rho)$, is used to approximate the fundamental diagram. For inhomogenous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$ veh/m. Here the characteristic frequency of the system, $\left|\alpha\right|$, equals 0.53 Hz which is indeed sensible for traffic flow modeling.
@@ -731,9 +730,9 @@ For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are repres
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_diag_phi_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_phi_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_diag_phi_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_phi_21}
 \tabularnewline
 Spatial magnitude Bode plot for $\phi_{11}(x,s)$.
 &
@@ -752,17 +751,17 @@ Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_12}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_12}
 \tabularnewline
 Spatial magnitude Bode plot for $\psi_{11}(x,s)$.
 &
 Spatial magnitude Bode plot for $\psi_{12}(x,s)$.
 \tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_21}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_vq_psi_22}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_22}
 \tabularnewline
 Spatial magnitude Bode plot for $\psi_{21}(x,s)$.
 &
@@ -785,6 +784,24 @@ Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 %\label{fig:Magn_phase_physx}
 %}
 %\end{figure}
+
+\subsubsection{Near zero values for the transfer functions in high frequency}
+In this paragraph, a general commentary will be made on transfer functions featuring $1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha \right)}$ as a factor, that is to say $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$. As one can observe on the corresponding Bode plots, the value of the log-gain in high frequency tends to oscillate very sharply. Indeed, with $s = jw$,
+$
+\left| 
+	1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha\right)}
+\right| = 
+e^{-\frac{x}{\lambda_{1} \tau}}
+\sqrt{
+	\left(
+		e^{\frac{x}{\lambda_{1}\tau}} 
+		-
+		\cos\left(\frac{w}{\lambda_{1} \tau \alpha} x\right)
+	\right)^{2}
+	+
+	\sin^{2}\left( \frac{w}{\lambda_{1} \tau \alpha} x \right)
+}
+$. Therefore, if the spatial pseudo-period $\tilde{L}=\frac{2\pi}{w} \lambda_{1} \tau \left|\alpha\right|$ is low enough, near zero values appear when $x$ is a multiple of $\tilde{L}$. This explains the irregular shape of the distributed Bode plots of $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$ for frequencies $w \gg 2 \pi \frac{\lambda_{1} \tau \left|\alpha\right|}{L} = 6.53$ Hz. This does not impact the stability of the system. Bode plots only look irregular about such points because of the logarithmic scale the gain of the transfer functions is displayed on.
 
 \subsubsection{Step responses}
 We analyze the behavior of the system given step inputs $v(0,t)=v_{\text{step}}H(t)$ and $q(0,t)=q_{\text{step}}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses:
@@ -1160,6 +1177,7 @@ With such expressions, interpreting the approximate transfer functions in low fr
 \item The transfer function $\theta_{11}$ (resp. $\theta_{12}$) appears as the combination of a distributed delay with propagation speed $\lambda_{2}$ and a distributed gain (resp. attenuation) with characteristic distance $\lambda_{1}\tau$.
 \item We can draw the same conclusions for $\theta_{21}$ although a derivation term is combined to the transfer function. Again a derivator relates the output flux to the input speed.
 \item Once simplified, $\theta_{22}$ corresponds to a distributed delay with propagation speed $\lambda_{2}$.
+\item Hypothetical poles are not active with low frequencies. This means that the system is stable for $\left|s\right| \ll \alpha$ which typically corresponds to traffic flow modeling applications.
 \end{itemize}
 
 Comparing the approximate expressions of the transfer functions relating physical variables in free-flow ($\Psi\left(x,s\right)$) and congested regime ($\Theta\left(x,s\right)$) also highlights their being extremely similar. For the mapping between the $\psi$ and $\theta$ approximate transfer functions to be perfect it is necessary to convert $x$ into $L-x$ in some gain or delay elements. These changes correspond to the fact that above, in free-flow regime, both boundary conditions for $\hat{v}$ and $\hat{q}$ corresponded to $x=0$ whereas here, in congested regime, $\hat{v}$ is set at $x=L$ and $\hat{q}$ at $x=0$.
@@ -1179,9 +1197,9 @@ We use the same fundamental diagram as in the free-flow case. However the linear
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_diag_gamma_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_gamma_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_diag_gamma_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_gamma_21}
 \tabularnewline
 Spatial magnitude Bode plot for $\gamma_{11}(x,s)$.
 &
@@ -1214,6 +1232,12 @@ Spatial magnitude Bode plot for $\theta_{22}(x,s)$.
 \caption{Spatial magnitude Bode plots for physical variables in congested regime ($\left|\alpha\right| = $ 0.05 Hz)\label{fig:Magn_spatial_physx_congested}}
 \end{figure}
 
+\subsubsection{Near zero values for transfer functions in high frequency}
+Similarly to the free-flow case, for high frequencies ($w \gg \frac{\lambda_{1} \alpha}{L}$) then near zero values appearing with spatial periodicity $\frac{2 \pi}{w} \lambda_{1} \tau \alpha$ almost cancel out $\gamma_{21}$, $\theta_{12}$, and $\theta_{21}$. This does not impact the stability of the system and such points only appear as irregularities in the Bode plots because their gain is computed on a logarithmic scale.
+
+\subsubsection{Poles and BIBO stability of the system}
+In order to numerically assess the presence of poles, the maxima of the empirical gain values above are computed for each transfer function. For $\theta_{11}$, $\theta_{12}$, $\theta_{21}$, $\theta_{22}$ they are respectively $20.04$, $43.57$, $-18.43$, $3.857\times10^{-15}$ with a grid of $10^3 \times 10^3$ points. This gives reliable evidence that the system is overall bounded input bounded output stable.
+
 \subsection{Findings and conclusion from the theoretical study}
 The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
 \begin{itemize}
@@ -1222,6 +1246,7 @@ The numerical experiments above have validated the accuracy of the linearized mo
 \item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency for the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in gain and delay components. In the spectral domain, $\lambda_{2}$ appears as the information propagation speeds of all distributed delay elements while  $\tau\lambda_{1}$ acts as the characteristic damping distance of all distributed gain elements.
 \item Low frequency analysis also highlighted that transfer functions between physical variables in free-flow and congested regimes are structurally similar (for $\left|s\right|\ll\left|\alpha\right|$). The only dissimilarities that arise in the approximate expressions are the result of the differences between the boundary conditions that have been chosen in free-flow and congested regimes respectively.
 \end{itemize}
+
 
 \section{Numerical validation}
 
@@ -1368,7 +1393,7 @@ into a fully justified statistical procedure. Note that the goal of the present 
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{\string"/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}
-\protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$ m/s, $\widehat{\lambda}_{2}=-4.37$ m/s,$\widehat{\rho}^{*}=0.049$ veh/m, $\widehat{v}^{*}=8.96$ m/s, $\widehat{q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}
+\protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$ m/s, $\widehat{\lambda}_{2}=-4.37$ m/s, $\widehat{\rho}^{*}=0.049$ veh/m, $\widehat{v}^{*}=8.96$ m/s, $\widehat{q}^{*}=0.44$ veh/s, with $r^{2}=0.48$}
 \label{fig:Calibration-of-eigen-values}
 \end{figure}
 

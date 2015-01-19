@@ -6,6 +6,8 @@ clear; clc; close all;
 L = 100; % section length, [m]
 tau = 15; % relaxation time, [s]
 rho0 = 0.01; % rho*, linearization point 
+minLogFreq = -4;
+maxLogFreq = 2;
 
 % Greenshields Hamiltonian 
 rhomax = 0.1; % jam density, [veh/m]
@@ -27,10 +29,11 @@ lambda1 = q0/rho0 ; % lambda1 = v* = q(rho*)/rho*
 lambda2 = qprime(rho0); % lambda2 = v* + rho* V'(rho*) = q'(rho*)
 
 alpha = - lambda2 / (tau * (lambda1 - lambda2))
+cutoff = 2 * pi * lambda1 * tau * alpha / L
 
-w = logspace(-3,-1,800); % frequency points
+w = logspace(minLogFreq,maxLogFreq,1000); % frequency points
 s = 1i*w;
-X = 0:.1:L;
+X = linspace(0, L, 1000);
 X(end) = []; % x=L causes artifact
 
 phi11 = NaN(length(X),length(s));
@@ -62,7 +65,7 @@ set(gca,'Ydir','reverse')
 title('Bode plot for $\phi_{11}(x,s)$')
 view([1 -2 1])
 set(findall(gcf,'-property','FontSize'),'FontSize',14)
-print(fig1,'-dpdf','diagdistr11freeflow')
+print(fig1,'-dpdf','distr_phi_11')
 
 fig2 = figure(2);
 set(fig2,'defaulttextinterpreter','latex');
@@ -75,52 +78,17 @@ set(gca,'Ydir','reverse')
 title('Bode plot for $\phi_{21}(x,s)$')
 view([1 -1.8 2])
 set(findall(gcf,'-property','FontSize'),'FontSize',14)
-print(fig2,'-dpdf','diagdistr21freeflow')
-
-
-%% IO Bode, lambda2 > 0
-idx = length(X);
-
-fig4 = figure(4);
-set(fig4,'defaulttextinterpreter','latex');
-subplot(2,2,1)
-semilogx(w,dB11(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Gain [dB]')
-grid on
-xlim([w(1) w(end)])
-title('$\phi_{11}(L,s)$')
-subplot(2,2,3)
-semilogx(w,phase11(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Phase [deg]')
-grid on
-xlim([w(1) w(end)])
-
-subplot(2,2,2)
-semilogx(w,dB21(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Gain [dB]')
-grid on
-xlim([w(1) w(end)])
-title('$\phi_{21}(L,s)$')
-subplot(2,2,4)
-semilogx(w,phase22(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Phase [deg]')
-grid on
-xlim([w(1) w(end)])
-
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
-print(fig4,'-dpdf','diagIOfreeflow')
+print(fig2,'-dpdf','distr_phi_21')
 
 %% distributed, lambda2 < 0
-clear; clc; close all;
+clear; close all;
 
 % define parameters
 L = 100; % section length, [m]
 tau = 15; % relaxation time, [s]
-rho0 = 0.08; % rho*, linearization point 
+rho0 = 0.08; % rho*, linearization point
+minLogFreq = -4;
+maxLogFreq = 2;
 
 % Greenshields Hamiltonian 
 rhomax = 0.1; % jam density, [veh/m]
@@ -141,7 +109,10 @@ q0 = q(rho0);
 lambda1 = q0/rho0 ; % lambda1 = v* = q(rho*)/rho*
 lambda2 = qprime(rho0); % lambda2 = v* + rho* V'(rho*) = q'(rho*)
 
-w = logspace(-3,-1,800); % frequency points
+alpha = - lambda2 / (tau * (lambda1 - lambda2))
+cutoff = 2 * pi * lambda1 * tau * alpha / L
+
+w = logspace(minLogFreq,maxLogFreq,800); % frequency points
 s = 1i*w;
 X = 0:.1:L;
 X(end) = []; % x=L causes artifact
@@ -175,7 +146,7 @@ set(gca,'Ydir','reverse')
 title('Bode plot for $\gamma_{11}(x,s)$')
 view([1 -2 1])
 set(findall(gcf,'-property','FontSize'),'FontSize',14)
-print(fig1,'-dpdf','diagdistr11congested')
+print(fig1,'-dpdf','distr_gamma_11')
 
 fig2 = figure(2);
 set(fig2,'defaulttextinterpreter','latex');
@@ -187,42 +158,4 @@ set(gca,'Ydir','reverse')
 title('Bode plot for $\gamma_{21}(x,s)$')
 view([1 -1.8 2])
 set(findall(gcf,'-property','FontSize'),'FontSize',14)
-print(fig2,'-dpdf','diagdistr21congested')
-
-%% IO Bode, lambda2 < 0
-idx = length(X);
-
-fig4 = figure(4);
-set(fig4,'defaulttextinterpreter','latex');
-subplot(2,2,1)
-semilogx(w,dB11(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Gain [dB]')
-grid on
-xlim([w(1) w(end)])
-title('$\gamma_{11}(L,s)$')
-subplot(2,2,3)
-semilogx(w,phase11(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Phase [deg]')
-grid on
-xlim([w(1) w(end)])
-
-subplot(2,2,2)
-semilogx(w,dB21(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Gain [dB]')
-grid on
-xlim([w(1) w(end)])
-title('$\gamma_{21}(L,s)$')
-subplot(2,2,4)
-semilogx(w,phase22(idx,:))
-xlabel('Frequency [Hz]')
-ylabel('Phase [deg]')
-grid on
-xlim([w(1) w(end)])
-
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
-print(fig4,'-dpdf','diagIOcongested')
-
-
+print(fig2,'-dpdf','distr_gamma_21')
