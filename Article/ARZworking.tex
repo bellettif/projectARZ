@@ -630,7 +630,7 @@ with
 	s + \alpha
 }, \\
 \psi_{21}(x,s) &=
-- s \rho^{*} \tau \alpha
+s \rho^{*} \tau \alpha
 \frac{
 	e^{-\frac{sx}{\lambda_{2}}}
 	-
@@ -648,7 +648,7 @@ with
 \end{align}
 \end{subequations}
 
-It could appear at first sight that $-\alpha$, which is a positive real, is a singularity of the transfer functions and the system is not bounded-input/bounded-output stable. However, we have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. It follows that $-\alpha$ is not a pole of any transfer function. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated above (in which $t$ varies and $x$ remains constant).
+It could appear at first sight that $-\alpha$ (here a positive real) is a singularity of the transfer functions and the system is not bounded-input/bounded-output stable. However, we have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. It follows that $-\alpha$ is not a pole of any transfer function. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated above (in which $t$ varies and $x$ remains constant).
 
 \subsubsection{Low frequency approximation for physical variables in free-flow regime}
 Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This corresponds to traffic flow varying slowly and smoothly. We find the following approximate expressions for the transfer functions:
@@ -1235,7 +1235,7 @@ Spatial magnitude Bode plot for $\theta_{22}(x,s)$.
 \end{figure}
 
 \subsubsection{Poles and BIBO stability of the system}
-In order to numerically assess the presence of poles, the maxima of the empirical gain values above are computed for each transfer function. For $\theta_{11}$, $\theta_{12}$, $\theta_{21}$, $\theta_{22}$ they are respectively $20.04$, $43.57$, $-18.43$, $3.857\times10^{-15}$ (in dB) with a grid of $10^3 \times 10^3$ points (the frequency varies from $10^{-4}$ Hz to $10^{2}$ Hz and $x$ varies from $0$ to $100$ meters). This gives reliable evidence that the system is overall bounded-input/bounded-output stable.
+In order to practically assess the presence of poles, numerical search has been conducted thanks to standard equation solvers. $-\alpha$ is an obvious pole and another pole was found at $s=-0.0018$. They are both negative reals and therefore do not make the system unstable. Although the solvers could have detected poles with a non zero imaginary part, none has been found. Holistic search for other poles should be conducted but is out of the scope of this article.
 
 \subsection{Findings and conclusion from the theoretical study}
 The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
