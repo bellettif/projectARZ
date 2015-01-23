@@ -3,37 +3,36 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: ARZworking.aux
 The style file: elsarticle-num.bst
 Database file #1: mybibfilecopy.bib
-Warning--empty author in Papageorgiou198929
 You've used 41 entries,
             2937 wiz_defined-function locations,
-            935 strings with 11400 characters,
-and the built_in function-call counts, 11674 in all, are:
-= -- 1131
-> -- 299
+            936 strings with 11467 characters,
+and the built_in function-call counts, 11732 in all, are:
+= -- 1136
+> -- 308
 < -- 5
-+ -- 127
-- -- 86
-* -- 758
-:= -- 1532
++ -- 130
+- -- 89
+* -- 761
+:= -- 1547
 add.period$ -- 41
 call.type$ -- 41
 change.case$ -- 35
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 362
-empty$ -- 1391
-format.name$ -- 109
-if$ -- 3072
+cite$ -- 41
+duplicate$ -- 363
+empty$ -- 1392
+format.name$ -- 113
+if$ -- 3083
 int.to.chr$ -- 0
 int.to.str$ -- 41
 missing$ -- 46
 newline$ -- 131
-num.names$ -- 40
+num.names$ -- 41
 pop$ -- 268
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 782
+skip$ -- 784
 stack$ -- 0
 substring$ -- 779
 swap$ -- 70
@@ -41,8 +40,7 @@ text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 104
+warning$ -- 0
+while$ -- 105
 width$ -- 43
-write$ -- 332
-(There was 1 warning)
+write$ -- 333
