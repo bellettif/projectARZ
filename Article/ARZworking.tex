@@ -364,24 +364,24 @@ We diagonalize the linearized equations to obtain a more useful form of the mode
 We begin with the density-flow system. Standard algebraic manipulations of the equations in \eqref{rhovlin} lead to
 \begin{equation}
 \begin{pmatrix}
-\zeta_1 \\ \zeta_2
+\xi_1 \\ \xi_2
 \end{pmatrix}_t
 + \begin{pmatrix}
 \lambda_1 & 0 \\
 0 & \lambda_2 
 \end{pmatrix}
 \begin{pmatrix}
-\zeta_1 \\ \zeta_2
+\xi_1 \\ \xi_2
 \end{pmatrix}_x
 = \begin{pmatrix}
 -\frac{1}{\tau} & 0 \\
 -\frac{1}{\tau} & 0
 \end{pmatrix}
 \begin{pmatrix}
-\zeta_1 \\ \zeta_2
+\xi_1 \\ \xi_2
 \end{pmatrix},
 \end{equation}
-where $\zeta_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\zeta_2 = \tilde{v}$ are the Riemann invariants of the $(\rho, v)$ system, and $\lambda_1 = v^*$ and $\lambda_2 = v^* + \rho^* V'( \rho^*)$ are the eigenvalues. Note that $V'( \rho^*) \leq 0$ so $\lambda_2 \leq \lambda_1 = v^*$. Therefore this is consistent with the physical dynamics of the system as no waves travel faster than the equilibrium vehicle speed. 
+where $\xi_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\xi_2 = \tilde{v}$ are the Riemann invariants of the $(\rho, v)$ system, and $\lambda_1 = v^*$ and $\lambda_2 = v^* + \rho^* V'( \rho^*)$ are the eigenvalues. Note that $V'( \rho^*) \leq 0$ so $\lambda_2 \leq \lambda_1 = v^*$. Therefore this is consistent with the physical dynamics of the system as no waves travel faster than the equilibrium vehicle speed. 
 
 We proceed in the same manner as above to diagonalize the $(\rho,q)$ system \eqref{rhoqlin}. The diagonal form is
 \begin{equation} \label{rhoqlindiag}
@@ -479,11 +479,16 @@ and
 \dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q} \\ 
 \dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v} 
 \end{pmatrix} = 
+\underset{Q}{
+\underbrace{
+	\begin{pmatrix}
+		\dfrac{\rho^*\lambda_2}{\lambda_1-\lambda_2} & 1\\
+		\dfrac{\rho^*\lambda_1}{\lambda_1-\lambda_2} & 0
+	\end{pmatrix}
+	}
+}
 \begin{pmatrix}
-\dfrac{\rho^*\lambda_2}{\lambda_1-\lambda_2} & 1\\
-\dfrac{\rho^*\lambda_1}{\lambda_1-\lambda_2} & 0
-\end{pmatrix} \begin{pmatrix}
-\tilde{v} \\ \tilde{q} 
+	\tilde{v} \\ \tilde{q} 
 \end{pmatrix}
 \end{equation}
 
@@ -513,7 +518,7 @@ For traffic, the interpretation of the different regimes is somewhat different. 
 $F>1$, $\lambda_{2}<0$, $\lambda_{1}>0$ & $F<1$, $\lambda_{1}>\lambda_{2}>0$\tabularnewline
 \end{tabular}
 \par\end{centering}
-\protect\caption{Illustration of characteristics in congested (supercritical) and free-flow regime (subcritical).\label{Characteristics}}
+\protect\caption{Illustration of characteristic lines in congested (supercritical) and free-flow regime (subcritical) $\xi_1$ and $\xi_2$ propagate along.\label{Characteristics}}
 \end{figure}
 
 
@@ -625,7 +630,7 @@ with
 	s + \alpha
 }, \\
 \psi_{21}(x,s) &=
-s \rho^{*} \tau \alpha
+- s \rho^{*} \tau \alpha
 \frac{
 	e^{-\frac{sx}{\lambda_{2}}}
 	-
@@ -643,7 +648,7 @@ s \rho^{*} \tau \alpha
 \end{align}
 \end{subequations}
 
-It could appear at first sight that $-\alpha$, $>0$, is a singularity of the transfer functions and the system is not bounded-input/bounded-output stable. However, we have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. It follows that $-\alpha$ is not a pole of any transfer function. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated above (in which $t$ varies and $x$ remains constant).
+It could appear at first sight that $-\alpha$, which is a positive real, is a singularity of the transfer functions and the system is not bounded-input/bounded-output stable. However, we have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right)=\frac{1}{\tau\left(\lambda_{1} - \lambda_{2}\right)}=\frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. It follows that $-\alpha$ is not a pole of any transfer function. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated above (in which $t$ varies and $x$ remains constant).
 
 \subsubsection{Low frequency approximation for physical variables in free-flow regime}
 Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This corresponds to traffic flow varying slowly and smoothly. We find the following approximate expressions for the transfer functions:
@@ -935,8 +940,7 @@ $
 where
 $d\left(s\right) = 1 - \frac{\lambda_{2}}{\lambda_{1}}\gamma_{21}\left(0,s\right)$
 and
-$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$. The $\left(v,q\right)$ system has only two degrees of freedom. Therefore we consider that the only inputs to the system are $q\left(0,\cdot\right)$ and $v\left(L,\cdot\right)$. $v\left(0,\cdot\right)$ is then completely determined and can be interpreted as an output of the system.
-The corresponding transfer equation is
+$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$. The $\left(v,q\right)$ system has only two degrees of freedom. Therefore we consider that the only inputs to the system are $q\left(0,\cdot\right)$ and $v\left(L,\cdot\right)$. $v\left(0,\cdot\right)$ is then completely determined and can be interpreted as an output of the system. The corresponding transfer equation is
 \begin{equation}
 \begin{pmatrix}
 	\hat{v}\left(x,s\right)

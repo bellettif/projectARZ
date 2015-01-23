@@ -88,6 +88,9 @@ phase21 = (180/pi)*unwrap(angle(theta21));
 dB22 = 20*log10(abs(theta22));
 phase22 = (180/pi)*unwrap(angle(theta22));
 
+dbDen = 20*log10(abs(den));
+plot(w, dbDen)
+
 max(max(dB11))
 max(max(dB12))
 max(max(dB21))
