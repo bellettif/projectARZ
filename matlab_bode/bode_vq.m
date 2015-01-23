@@ -25,7 +25,7 @@ lambda1 = q0/rho0 ; % lambda1 = v* = q(rho*)/rho*
 lambda2 = qprime(rho0); % lambda2 = v* + rho* V'(rho*) = q'(rho*)
 
 w = logspace(minLogFreq,maxLogFreq,1000); % frequency points
-s = 1i*w;
+s = 2*pi*1i*w;
 X = linspace(0,L,1000);
 
 psi11 = NaN(length(X),length(s));

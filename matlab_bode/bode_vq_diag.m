@@ -32,7 +32,7 @@ alpha = - lambda2 / (tau * (lambda1 - lambda2))
 cutoff = 2 * pi * lambda1 * tau * alpha / L
 
 w = logspace(minLogFreq,maxLogFreq,1000); % frequency points
-s = 1i*w;
+s = 2*pi*1i*w;
 X = linspace(0, L, 1000);
 X(end) = []; % x=L causes artifact
 
