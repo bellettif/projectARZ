@@ -162,10 +162,10 @@ More recently a generalized model proposed in \cite{Fan} corrects the fact that,
 \subsection{Models appropriate for control}
 As mentioned in \cite{Fan}, for congested regimes, the LWR model tends to offer a slightly better fit than the ARZ model with respect to empirical measurements but is outperformed for low densities. For predictions, we could use different models and switch to the one most adapted to the traffic conditions we observe. However, our aim is to design a robust model that paves the way to designing generic control strategies readily usable in all traffic conditions. Therefore we use instead the ARZ model linearized around arbitrary nominal conditions. 
 
-Laplace transform and spectral analysis are powerful tools for control problems, providing a simple yet holistic representation of a system. In this regard, it is important to have a model that predicts oscillatory phenomena. Specific classes of second-order models, including the ARZ model, realistically account for traffic oscillations in dense traffic \cite{Greenberg_congestionredux}. Behavioral models such as in \cite{Newell}, and more recently \cite{Chen2012}, depict in a detailed fashion the effects of car-following
+Laplace transform and spectral analysis are powerful tools for control problems, providing a simple yet holistic representation of a system. In this regard, it is important to have a model that predicts oscillatory phenomena. Specific classes of second-order models, including the ARZ model, realistically account for traffic oscillations in dense traffic \cite{Greenberg_congestionredux}. Behavioral models such as in \cite{Newell}, and more recently \cite{Chen2012, Ge20129}, depict in a detailed fashion the effects of car-following
 and lane-changing on freeway dynamics, effects often cited as the cause of oscillations \cite{Mauch02freewaytraffic, lanechangin2005,lanechanging2007}. However, second-order macroscopic models are most suited for our method. 
 
-Fourier and Laplace transforms are not the only spectral operators useful for studying traffic. Approaches such as \cite{Zheng2011} attempt to model spectral features of traffic using wavelets to account for turbulent phenomena on various time scales. The method presented here differs in that it is driven mostly by macroscopic physics rather than data analysis.
+Fourier and Laplace transforms are not the only spectral operators useful for studying traffic. Approaches such as \cite{Zheng2011} attempt to model spectral features of traffic using wavelets to account for turbulent phenomena on various time scales. The method presented here differs in that it is driven mostly by macroscopic physics rather than data analysis. Physics driven spectral analysis has for example been successful in \cite{fourierGalerkin} for data assimilation. A finite difference scheme was used in that case, we will use a different resolution method the equations of our model.
 
 \subsection{Similarities with Saint-Venant equations}
 Our control analysis of the ARZ equations is strongly
@@ -1110,7 +1110,7 @@ e^{\frac{L-x}{\tau\lambda_{1}}},\\
 \frac{1}{\rho^{*}\tau}
 e^{-\frac{x}{\lambda_{1}} \left( s + \frac{1}{\tau} \right)}
 \frac{
-	e^{\frac{-\left(L-x\right)}{\tau\lambda_{1}\alpha}\left(s+\alpha\right)}
+	e^{-\frac{\left(L-x\right)}{\tau\lambda_{1}\alpha}\left(s+\alpha\right)}
 	-1
 }{
 	s
@@ -1238,7 +1238,7 @@ The numerical experiments above have validated the accuracy of the linearized mo
 \begin{itemize}
 \item The TFN delineates two regimes: congested for $F > 1$ and free-flowing for $F < 1$. This classification, and the resulting stability result legitimize the use of linearization about a nominal point in the stable region.
 \item  The assessment of instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, instability only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain.
-\item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency of the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in simple gain and delay components. In the spectral domain, $\lambda_{1}$ and $\lambda_{2}$ appear as information propagation speeds in distributed delay elements while  $\tau\lambda_{1}$ acts as the characteristic distance of distributed gain elements.
+\item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency of the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in simple gain and delay components. In the spectral domain, $\lambda_{1}$ and $\lambda_{2}$ appear as information propagation speeds in distributed delay elements while  $\tau\lambda_{1}$ acts as the characteristic distance of distributed gain components.
 %\item Low frequency analysis ($\left|s\right|\ll\left|\alpha\right|$) also highlighted that transfer functions between physical variables are structurally similar in free-flow and congested regimes. The only dissimilarities that arise in the approximate expressions are due to the fact that boundary conditions are not set at the same locations depending on whether the regime is congested or free-flowing.
 \end{itemize}
 

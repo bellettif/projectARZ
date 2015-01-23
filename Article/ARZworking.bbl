@@ -149,6 +149,11 @@ J.~M. Greenberg, Congestion redux, SIAM J. Appl. Math 64 (2004) 1175--1185.
 D.~Chen, J.~Laval, Z.~Zheng, S.~Ahn, A behavioral car-following model that
   captures traffic oscillations, Transp. Res. Part B 46~(6) (2012) 744--761.
 
+\bibitem{Ge20129}
+H.~xia Ge, X.~pei Meng, J.~Ma, S.~ming Lo, An improved car-following model
+  considering influence of other factors on traffic jam, Physics Letters A
+  377~(1–2) (2012) 9 -- 12.
+
 \bibitem{Mauch02freewaytraffic}
 M.~Mauch, M.~J. Cassidy, Freeway traffic oscillations: Observations and
   predictions, in: 15th Int. Symp. on Transportation and Traffic Theory,
@@ -168,6 +173,11 @@ S.~Ahn, M.~J. Cassidy, Freeway traffic oscillations and vehicle lane-change
 Z.~Zheng, S.~Ahn, D.~Chen, J.~Laval, Freeway traffic oscillations: Microscopic
   analysis of formations and propagations using wavelet transform, Trans. Res.
   Part B 45~(9) (2011) 1378--1388.
+
+\bibitem{fourierGalerkin}
+T.~Tchrakian, S.~Zhuk, A macroscopic traffic data-assimilation framework based
+  on the fourier-galerkin method and minimax estimation, Intelligent
+  Transportation Systems, IEEE Transactions on PP~(99) (2014) 1--13.
 
 \bibitem{litrico2009modeling}
 X.~Litrico, V.~Fromion, Modeling and control of hydrosystems, Springer, 2009.
