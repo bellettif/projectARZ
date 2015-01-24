@@ -479,7 +479,7 @@ and
 \dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q} \\ 
 \dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v} 
 \end{pmatrix} = 
-\underset{Q}{
+\underset{R}{
 \underbrace{
 	\begin{pmatrix}
 		\dfrac{\rho^*\lambda_2}{\lambda_1-\lambda_2} & 1\\
@@ -527,16 +527,16 @@ We now consider the $(v,q)$ system for the frequency domain analysis for practic
 \subsection{State-transition matrix}
 Taking the Laplace transform of the diagonalized form \eqref{vqlindiag} we obtain 
 \begin{equation}
-\dfrac{\partial \hat{\zeta} (x,s)}{\partial x} = \mathscr{A}(s)\hat{\zeta}(x,s) + \mathscr{B}\zeta(x,t=0^-),
+\dfrac{\partial \hat{\xi} (x,s)}{\partial x} = \mathscr{A}(s)\hat{xi}(x,s) + \mathscr{B}\xi(x,t=0^-),
 \end{equation}
 where $\mathscr{A}(s) = \tilde{A}^{-1}(\tilde{B} - sI)$ and $\mathscr{B} = -\tilde{A}^{-1}$. 
 The general solution to this ordinary differential equation is 
 \begin{equation}
-\hat{\zeta}(x,s) = \Phi(x,s)\hat{\zeta}(0,s) +  \Phi(x,s) \int^x_0 \Phi(\nu,s)^{-1} \mathscr{B} \zeta(\nu,0^-)\text{d} \nu,
+\hat{\xi}(x,s) = \Phi(x,s)\hat{\xi}(0,s) +  \Phi(x,s) \int^x_0 \Phi(\nu,s)^{-1} \mathscr{B} \xi(\nu,0^-)\text{d} \nu,
 \end{equation}
 where $\Phi(x,s) = e^{\mathscr{A}(s)x}$ is the state-transition matrix. Assuming zero initial conditions we have 
 \begin{equation} \label{TFRiemann}
-\hat{\zeta}(x,s) = \Phi(x,s)\hat{\zeta}(0,s).
+\hat{\xi}(x,s) = \Phi(x,s)\hat{\xi}(0,s).
 \end{equation}
 
 To compute the exponential we diagonalize the matrix as 
@@ -592,7 +592,7 @@ the transfer function appears as the combination of a distributed delay where $\
 \subsection{Free-flow case ($F<1$)}
 Consider the system in the free-flow regime. 
 
-With $\zeta_1 (0,t)$ and $\zeta_2 (0,t)$ as the inputs and $\zeta_1(L,t)$ and $\zeta_2(L,t)$ as the outputs, the distributed transfer matrix is exactly the state-transition matrix $\Phi(x,s)$.\\
+With $\xi_1 (0,t)$ and $\xi_2 (0,t)$ as the inputs and $\xi_1(L,t)$ and $\xi_2(L,t)$ as the outputs, the distributed transfer matrix is exactly the state-transition matrix $\Phi(x,s)$.\\
 
 Using \eqref{eq:Riemannzeta}, we can write
 
@@ -950,7 +950,7 @@ $n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma
 =
 \underset{\Theta\left(x,s\right)}{
 \underbrace{
-Q^{-1}\Gamma\left(x,s\right)
+R^{-1}\Gamma\left(x,s\right)
 \begin{pmatrix}
 	\frac{n\left(s\right)}{d\left(s\right)}
 		&
