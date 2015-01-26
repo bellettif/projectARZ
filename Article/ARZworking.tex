@@ -527,7 +527,7 @@ We now consider the $(v,q)$ system for the frequency domain analysis for practic
 \subsection{State-transition matrix}
 Taking the Laplace transform of the diagonalized form \eqref{vqlindiag} we obtain 
 \begin{equation}
-\dfrac{\partial \hat{\xi} (x,s)}{\partial x} = \mathscr{A}(s)\hat{xi}(x,s) + \mathscr{B}\xi(x,t=0^-),
+\dfrac{\partial \hat{\xi} (x,s)}{\partial x} = \mathscr{A}(s)\hat{\xi}(x,s) + \mathscr{B}\xi(x,t=0^-),
 \end{equation}
 where $\mathscr{A}(s) = \tilde{A}^{-1}(\tilde{B} - sI)$ and $\mathscr{B} = -\tilde{A}^{-1}$. 
 The general solution to this ordinary differential equation is 
@@ -576,13 +576,14 @@ with
 Let $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$. It is clear that $\phi_{11}\left(x,s\right)$ is composed of the product of a distributed delay corresponding to information propagating at speed $\lambda_{1}$ and an exponential attenuation where $\tau\lambda_{1}$ plays the role of a characteristic spatial length. Similarly $\phi_{22}$ is a delay corresponding to information propagating at speed $\lambda_{2}$. The interpretation of $\phi_{21}$ is more difficult. In low frequencies ($\left|s\right|\ll\left|\alpha\right|$), this transfer function takes a much more transparent form. Indeed, in the expression
 $
 \phi_{21}(x,s) = 
-\frac{\lambda_{1}}{\lambda_{2}}\frac{\alpha}
+-\frac{\lambda_{1}}{\lambda_{2}}\frac{\alpha}
 {s + \alpha}
 e^{-\frac{x}{\lambda_2}s}
 	\left(
 		1 - e^{-\frac{x}{\lambda_1 \tau \alpha}\left(s + \alpha\right)}
 	\right)
-\simeq \frac{\lambda_{1}}{\lambda_{2}} e^{-\frac{x}{\lambda_2}s}
+\simeq 
+- \frac{\lambda_{1}}{\lambda_{2}} e^{-\frac{x}{\lambda_2}s}
 	\left(
 		1 - e^{-\frac{x}{\lambda_1 \tau}}
 	\right)
@@ -1185,7 +1186,7 @@ With such expressions, interpreting the approximate transfer functions in low fr
 \subsubsection{Bode plots for congested regime}
 We use the same fundamental diagram as in the free-flow case. However the linearization point, $\rho^* = 0.08$ veh/m, corresponds to the congested region of the Greeshields diagram. We show the distributed Bode plots for the Riemann invariants in Figure \ref{fig:Magn_spatial_diag_congested} and for the physical variables in Figure . In that case, $\alpha =$ 0.05 Hz, which does correspond to a reasonable characteristic frequency for traffic modeling applications.
 
-Similarly to the free-flow case, for high frequencies ($w \gg 2 \pi \frac{\lambda_{1} \tau \alpha}{L}$) near zero values appearing with spatial periodicity $\frac{2 \pi}{w} \lambda_{1} \tau \alpha$ almost cancel out $\gamma_{21}$, $\theta_{12}$, and $\theta_{21}$. Such points only appear as irregularities in the Bode plots because the gain is computed on a logarithmic scale.
+Similarly to the free-flow case, for high frequencies ($w \gg 2 \pi \frac{\lambda_{1} \tau \alpha}{L} = 0.13$ Hz) near zero values appearing with spatial periodicity $\frac{2 \pi}{w} \lambda_{1} \tau \alpha$ almost cancel out $\gamma_{21}$, $\theta_{12}$, and $\theta_{21}$. Such points only appear as irregularities in the Bode plots because the gain is computed on a logarithmic scale.
 
 %\begin{figure}[H]
 %\centering
@@ -1235,7 +1236,7 @@ Spatial magnitude Bode plot for $\theta_{22}(x,s)$.
 \end{figure}
 
 \subsubsection{Poles and BIBO stability of the system}
-In order to practically assess the presence of poles, numerical search has been conducted thanks to standard equation solvers. $-\alpha$ is an obvious pole and another pole was found at $s=-0.0018$. They are both negative reals and therefore do not make the system unstable. Although the solvers could have detected poles with a non zero imaginary part, none has been found. Holistic search for other poles should be conducted but is out of the scope of this article.
+In order to practically assess the presence of poles, numerical search has been conducted thanks to standard equation solvers. We know that $-\alpha$ is an obvious pole and another solution was found at $s=-0.0018$. They are both negative reals and therefore do not make the system unstable. Although the solvers could have detected poles with a non zero imaginary part, none has been found. Holistic search for other poles should be conducted but is out of the scope of this article.
 
 \subsection{Findings and conclusion from the theoretical study}
 The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.

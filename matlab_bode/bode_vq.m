@@ -28,6 +28,10 @@ w = logspace(minLogFreq,maxLogFreq,1000); % frequency points
 s = 2*pi*1i*w;
 X = linspace(0,L,1000);
 
+alpha = - lambda2 / (tau * (lambda1 - lambda2))
+
+threshold = 2*pi*tau*alpha*lambda1 / L
+
 psi11 = NaN(length(X),length(s));
 psi12 = psi11;
 psi21 = psi11;

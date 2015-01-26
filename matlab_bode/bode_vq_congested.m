@@ -39,6 +39,8 @@ theta22 = NaN(length(X),length(s));
 alpha = - lambda2 / (tau * (lambda1 - lambda2))
 den = s + alpha * exp(-L/(tau * lambda1 * alpha) * (s + alpha));
 
+threshold = 2*lambda1*pi*tau*alpha / L
+
 for i = 1:length(X);
     x = X(i);
 
