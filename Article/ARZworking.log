@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 JAN 2015 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  1 FEB 2015 23:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,14 +422,14 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 183.
  [3] [4] [5]
-[6] <figures/Congested-regime.png, id=347, 505.89pt x 361.35pt>
+[6] <figures/Congested-regime.png, id=351, 505.89pt x 361.35pt>
 File: figures/Congested-regime.png Graphic file (type png)
 
 <use figures/Congested-regime.png>
 Package pdftex.def Info: figures/Congested-regime.png used on input line 517.
 (pdftex.def)             Requested size: 170.71652pt x 121.9421pt.
 
-<figures/Free-flow-regime.png, id=348, 505.89pt x 361.35pt>
+<figures/Free-flow-regime.png, id=352, 505.89pt x 361.35pt>
 File: figures/Free-flow-regime.png Graphic file (type png)
 
 <use figures/Free-flow-regime.png>
@@ -501,7 +501,7 @@ ame{equation.3.4}) has been already used, duplicate ignored
                    \relax 
 l.719 \end{align}
                  
-<figures/Bode_free_flow/distr_phi_11.pdf, id=385, 614.295pt x 794.97pt>
+<figures/Bode_free_flow/distr_phi_11.pdf, id=389, 614.295pt x 794.97pt>
 File: figures/Bode_free_flow/distr_phi_11.pdf Graphic file (type pdf)
 
 <use figures/Bode_free_flow/distr_phi_11.pdf>
@@ -509,7 +509,7 @@ Package pdftex.def Info: figures/Bode_free_flow/distr_phi_11.pdf used on input
 line 739.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_free_flow/distr_phi_21.pdf, id=386, 614.295pt x 794.97pt>
+<figures/Bode_free_flow/distr_phi_21.pdf, id=390, 614.295pt x 794.97pt>
 File: figures/Bode_free_flow/distr_phi_21.pdf Graphic file (type pdf)
 
 <use figures/Bode_free_flow/distr_phi_21.pdf>
@@ -521,7 +521,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 738--748
  [][] 
  []
 
-<figures/Bode_free_flow/distr_psi_11.pdf, id=387, 614.295pt x 794.97pt>
+<figures/Bode_free_flow/distr_psi_11.pdf, id=391, 614.295pt x 794.97pt>
 File: figures/Bode_free_flow/distr_psi_11.pdf Graphic file (type pdf)
 
 <use figures/Bode_free_flow/distr_psi_11.pdf>
@@ -529,7 +529,7 @@ Package pdftex.def Info: figures/Bode_free_flow/distr_psi_11.pdf used on input
 line 760.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_free_flow/distr_psi_12.pdf, id=388, 614.295pt x 794.97pt>
+<figures/Bode_free_flow/distr_psi_12.pdf, id=392, 614.295pt x 794.97pt>
 File: figures/Bode_free_flow/distr_psi_12.pdf Graphic file (type pdf)
 
 <use figures/Bode_free_flow/distr_psi_12.pdf>
@@ -537,7 +537,7 @@ Package pdftex.def Info: figures/Bode_free_flow/distr_psi_12.pdf used on input
 line 762.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_free_flow/distr_psi_21.pdf, id=389, 614.295pt x 794.97pt>
+<figures/Bode_free_flow/distr_psi_21.pdf, id=393, 614.295pt x 794.97pt>
 File: figures/Bode_free_flow/distr_psi_21.pdf Graphic file (type pdf)
 
 <use figures/Bode_free_flow/distr_psi_21.pdf>
@@ -545,7 +545,7 @@ Package pdftex.def Info: figures/Bode_free_flow/distr_psi_21.pdf used on input
 line 768.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_free_flow/distr_psi_22.pdf, id=390, 614.295pt x 794.97pt>
+<figures/Bode_free_flow/distr_psi_22.pdf, id=394, 614.295pt x 794.97pt>
 File: figures/Bode_free_flow/distr_psi_22.pdf Graphic file (type pdf)
 
 <use figures/Bode_free_flow/distr_psi_22.pdf>
@@ -573,7 +573,7 @@ l.810
        <./figures/Bode_free_flow/distr_psi_11.pdf> <./figures/Bode_free_flow/di
 str_psi_12.pdf> <./figures/Bode_free_flow/distr_psi_21.pdf> <./figures/Bode_fre
 e_flow/distr_psi_22.pdf>]
-<figures/Exp-growth.png, id=501, 505.89pt x 361.35pt>
+<figures/Exp-growth.png, id=505, 505.89pt x 361.35pt>
 File: figures/Exp-growth.png Graphic file (type png)
 
 <use figures/Exp-growth.png>
@@ -656,7 +656,7 @@ name{equation.3.4}) has been already used, duplicate ignored
                    \relax 
 l.1173 \end{align}
                    [12]
-<figures/Bode_congested/distr_gamma_11.pdf, id=523, 614.295pt x 794.97pt>
+<figures/Bode_congested/distr_gamma_11.pdf, id=527, 614.295pt x 794.97pt>
 File: figures/Bode_congested/distr_gamma_11.pdf Graphic file (type pdf)
 
 <use figures/Bode_congested/distr_gamma_11.pdf>
@@ -664,7 +664,7 @@ Package pdftex.def Info: figures/Bode_congested/distr_gamma_11.pdf used on inpu
 t line 1203.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_congested/distr_gamma_21.pdf, id=524, 614.295pt x 794.97pt>
+<figures/Bode_congested/distr_gamma_21.pdf, id=528, 614.295pt x 794.97pt>
 File: figures/Bode_congested/distr_gamma_21.pdf Graphic file (type pdf)
 
 <use figures/Bode_congested/distr_gamma_21.pdf>
@@ -676,7 +676,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 1202--1212
  [][] 
  []
 
-<figures/Bode_congested/distr_theta_11.pdf, id=525, 614.295pt x 794.97pt>
+<figures/Bode_congested/distr_theta_11.pdf, id=529, 614.295pt x 794.97pt>
 File: figures/Bode_congested/distr_theta_11.pdf Graphic file (type pdf)
 
 <use figures/Bode_congested/distr_theta_11.pdf>
@@ -684,7 +684,7 @@ Package pdftex.def Info: figures/Bode_congested/distr_theta_11.pdf used on inpu
 t line 1218.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_congested/distr_theta_12.pdf, id=526, 614.295pt x 794.97pt>
+<figures/Bode_congested/distr_theta_12.pdf, id=530, 614.295pt x 794.97pt>
 File: figures/Bode_congested/distr_theta_12.pdf Graphic file (type pdf)
 
 <use figures/Bode_congested/distr_theta_12.pdf>
@@ -692,7 +692,7 @@ Package pdftex.def Info: figures/Bode_congested/distr_theta_12.pdf used on inpu
 t line 1220.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_congested/distr_theta_21.pdf, id=527, 614.295pt x 794.97pt>
+<figures/Bode_congested/distr_theta_21.pdf, id=531, 614.295pt x 794.97pt>
 File: figures/Bode_congested/distr_theta_21.pdf Graphic file (type pdf)
 
 <use figures/Bode_congested/distr_theta_21.pdf>
@@ -700,7 +700,7 @@ Package pdftex.def Info: figures/Bode_congested/distr_theta_21.pdf used on inpu
 t line 1226.
 (pdftex.def)             Requested size: 227.62204pt x 168.05519pt.
 
-<figures/Bode_congested/distr_theta_22.pdf, id=528, 614.295pt x 794.97pt>
+<figures/Bode_congested/distr_theta_22.pdf, id=532, 614.295pt x 794.97pt>
 File: figures/Bode_congested/distr_theta_22.pdf Graphic file (type pdf)
 
 <use figures/Bode_congested/distr_theta_22.pdf>
@@ -728,7 +728,7 @@ l.1248 \end{itemize}
 ode_congested/distr_gamma_21.pdf> <./figures/Bode_congested/distr_theta_11.pdf>
  <./figures/Bode_congested/distr_theta_12.pdf> <./figures/Bode_congested/distr_
 theta_21.pdf> <./figures/Bode_congested/distr_theta_22.pdf>]
-<figures/Numerics/US-101_all_traj_low_res_mod.png, id=638, 1156.32pt x 578.16pt
+<figures/Numerics/US-101_all_traj_low_res_mod.png, id=642, 1156.32pt x 578.16pt
 >
 File: figures/Numerics/US-101_all_traj_low_res_mod.png Graphic file (type png)
  <use figures/Numerics/US-101_all_traj_low_res_mod.png>
@@ -757,7 +757,7 @@ Overfull \hbox (6.00043pt too wide) in paragraph at lines 1277--1279
                                                   \fi \fi 
 l.1291 \end{equation}
                       <./figures/Numerics/US-101_all_traj_low_res_mod.png>]
-<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=650, 578.16pt x 4
+<figures/"/Numerics/Discretisation grid/traces_80_80".png, id=656, 578.16pt x 4
 33.62pt>
 File: figures/"/Numerics/Discretisation grid/traces_80_80".png Graphic file (ty
 pe png)
@@ -766,7 +766,7 @@ Package pdftex.def Info: figures/"/Numerics/Discretisation grid/traces_80_80".p
 ng used on input line 1320.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
 
-<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=651, 578.16pt x 433.
+<figures/"/Numerics/Discretisation grid/ids_80_80".png, id=657, 578.16pt x 433.
 62pt>
 File: figures/"/Numerics/Discretisation grid/ids_80_80".png Graphic file (type 
 png)
@@ -782,7 +782,7 @@ used on input line 1320.
 l.1330 
         <./figures//Numerics/Discretisation grid/traces_80_80.png> <./figures//
 Numerics/Discretisation grid/ids_80_80.png>]
-<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=665, 578.16pt x 433.6
+<figures/"/Numerics/Sanity check/80_80_q_q_count".png, id=671, 578.16pt x 433.6
 2pt>
 File: figures/"/Numerics/Sanity check/80_80_q_q_count".png Graphic file (type p
 ng)
@@ -807,7 +807,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 1341.
 
-<figures/"/Numerics/Maps data/80_80_v_map".png, id=668, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_v_map".png, id=674, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_v_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_v_map".png>
@@ -815,7 +815,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_v_map".png used on
 input line 1365.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_rho_map".png, id=669, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_rho_map".png, id=675, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_rho_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_rho_map".png>
@@ -823,7 +823,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_rho_map".png used o
 n input line 1365.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_map".png, id=670, 578.16pt x 433.62pt>
+<figures/"/Numerics/Maps data/80_80_q_map".png, id=676, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_q_map".png Graphic file (type png)
 
 <use figures/"/Numerics/Maps data/80_80_q_map".png>
@@ -831,7 +831,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_q_map".png used on
 input line 1366.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=671, 578.16pt x 433.62
+<figures/"/Numerics/Maps data/80_80_q_count_map".png, id=677, 578.16pt x 433.62
 pt>
 File: figures/"/Numerics/Maps data/80_80_q_count_map".png Graphic file (type pn
 g)
@@ -852,7 +852,7 @@ Overfull \hbox (9.48906pt too wide) in paragraph at lines 1364--1370
 l.1372 
         <./figures//Numerics/Sanity check/80_80_q_q_count.png>]
 <figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png, id=68
-2, 578.16pt x 433.62pt>
+8, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count".png G
 raphic file (type png)
 
@@ -861,7 +861,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
 _rho_q_count".png used on input line 1376.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=683,
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png, id=689,
  578.16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count".png Gra
 phic file (type png)
@@ -871,7 +871,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps data/80_80_fundamental_diagram
 _v_q_count".png used on input line 1376.
 (pdftex.def)             Requested size: 142.26378pt x 106.69768pt.
 
-<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_rho".png, id=684, 578
+<figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_rho".png, id=690, 578
 .16pt x 433.62pt>
 File: figures/"/Numerics/Maps data/80_80_fundamental_diagram_v_rho".png Graphic
  file (type png)
@@ -900,7 +900,7 @@ a/80_80_fundamental_diagram_rho_q_count.png> <./figures//Numerics/Maps data/80_
 80_fundamental_diagram_v_q_count.png> <./figures//Numerics/Maps data/80_80_fund
 amental_diagram_v_rho.png>]
 <figures/"/Numerics/Calibration of eigen values/Fundamental diagram fitting n =
- 80".png, id=699, 578.16pt x 433.62pt>
+ 80".png, id=705, 578.16pt x 433.62pt>
 File: figures/"/Numerics/Calibration of eigen values/Fundamental diagram fittin
 g n = 80".png Graphic file (type png)
 
@@ -910,7 +910,7 @@ Package pdftex.def Info: figures/"/Numerics/Calibration of eigen values/Fundame
 ntal diagram fitting n = 80".png used on input line 1395.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=703, 1011.78pt
+<figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png, id=709, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau".png Graphic file 
 (type png)
@@ -919,7 +919,7 @@ Package pdftex.def Info: figures/"/Numerics/Maps simulated/vq_map_n=80_best_tau
 ".png used on input line 1421.
 (pdftex.def)             Requested size: 426.79134pt x 304.85522pt.
 
-<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=704, 1011.78pt
+<figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png, id=710, 1011.78pt
  x 722.7pt>
 File: figures/"/Numerics/Maps simulated/xi_map_n=80_best_tau".png Graphic file 
 (type png)
@@ -947,7 +947,7 @@ Overfull \vbox (4.48051pt too high) has occurred while \output is active []
 l.1427 
         <./figures//Numerics/Maps simulated/vq_map_n=80_best_tau.png> <./figure
 s//Numerics/Maps simulated/xi_map_n=80_best_tau.png>]
-<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=719, 578.16pt x 43
+<figures/"/Numerics/Calibration of Tau/q_v_error_80".png, id=725, 578.16pt x 43
 3.62pt>
 File: figures/"/Numerics/Calibration of Tau/q_v_error_80".png Graphic file (typ
 e png)
@@ -956,7 +956,7 @@ Package pdftex.def Info: figures/"/Numerics/Calibration of Tau/q_v_error_80".pn
 g used on input line 1431.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=720, 578.16p
+<figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png, id=726, 578.16p
 t x 433.62pt>
 File: figures/"/Numerics/Calibration of Tau/xi_1_xi_2_error_80".png Graphic fil
 e (type png)
@@ -1020,9 +1020,10 @@ Overfull \hbox (49.12878pt too wide) in paragraph at lines 1634--1635
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
+ [25]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no — in font cmr10!
- [25])
+)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1687.
  [26]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1687.
@@ -1035,13 +1036,13 @@ Package rerunfilecheck Info: File `ARZworking.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1687.
  ) 
 Here is how much of TeX's memory you used:
- 7323 strings out of 493117
- 110924 string characters out of 6135433
- 215895 words of memory out of 5000000
- 10467 multiletter control sequences out of 15000+600000
+ 7335 strings out of 493117
+ 111139 string characters out of 6135433
+ 215943 words of memory out of 5000000
+ 10476 multiletter control sequences out of 15000+600000
  9702 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,21n,32p,1039b,576s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,21n,32p,1039b,574s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.p
@@ -1068,10 +1069,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dis
 t/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/public/rsfs/rsfs7.pfb>
-Output written on ARZworking.pdf (26 pages, 5651133 bytes).
+Output written on ARZworking.pdf (26 pages, 5652381 bytes).
 PDF statistics:
- 877 PDF objects out of 1000 (max. 8388607)
- 685 compressed objects within 7 object streams
- 183 named destinations out of 1000 (max. 500000)
+ 883 PDF objects out of 1000 (max. 8388607)
+ 691 compressed objects within 7 object streams
+ 186 named destinations out of 1000 (max. 500000)
  476 words of extra memory for PDF output out of 10000 (max. 10000000)
 

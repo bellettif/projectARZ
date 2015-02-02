@@ -63,7 +63,7 @@
 \begin{document}
 
 \begin{frontmatter}
-\title{Prediction of traffic oscillation instability with spectral analysis of the Aw--Rascle--Zhang model}
+\title{Prediction of traffic convective instability with spectral analysis of the Aw--Rascle--Zhang model}
 
 %% Group authors per affiliation:
 \author[add]{Francois Belletti, Mandy Huo, Xavier Litrico, Alexandre M. Bayen}
@@ -153,7 +153,7 @@ equilibrium was needed so the speed of cars would be determined by
 the fundamental diagram and not the initial data. Rascle later proved in \cite{R_improved} that the relaxed model converges towards the LWR model as $\tau \rightarrow 0$. The first ARZ model requires a fundamental diagram extended to negative and maximum speeds, and zero and maximum densities so as to guarantee
 solutions to the Riemann problem and stability with low densities \cite{Lebacque2007}. In \cite{HybridLagrangian2007}, 
 discretization enabled extension of the AR model to a network setup with junctions and traffic lights, detailed solutions for Riemann problems at junctions are presented in \cite{garavello2006traffic}. With an extended fundamental diagram, any Riemann problem for the ARZ model can be solved, allowing for a Godunov descretization scheme and numerical comparison
-in which the ARZ model fits real data better than the LWR model \cite{GodunovARZ}.
+in which the ARZ model fits real data better than the LWR model \cite{GodunovARZ}. Other discretized resolution approaches may be used such as the Riemann solver free relaxation scheme of \cite{Delis2014318}.
 
 %The ARZ model now has a legacy that started with the extended ARZ model \cite{lebacque2007generic}. An extension was presented in \cite{berthelin2008model} as a pressure-less limit of the AR model where drivers will not significantly slow down if the congestion is not heavy. 
 
@@ -210,7 +210,7 @@ We consider the ARZ model with relaxation term. The model is shown here:
 \rho_t + (\rho v)_x &= 0, \label{ARZ1} \\
 (v - V(\rho))_t + v(v - V(\rho))_x &=\dfrac{V(\rho) - v}{\tau} \label{ARZ2},
 \end{align}
-where $\rho$ is the density, $v$ is the velocity, $\tau$ is the relaxation time, and $V(\rho) = Q(\rho)/\rho$ is the equilibrium velocity profile, where $Q(\rho)$ is the density-flow relation given by the fundamental diagram. We assume that $V$ is $C^{1}$ derivable over its domain. Without the relaxation term cars never reach the maximum allowable speed \cite{R_improved}. Note that at the equilibrium velocity this term is zero. 
+where $\rho$ is the density, $v$ is the velocity, $\tau$ is the relaxation time, and $V(\rho) = Q(\rho)/\rho$ is the equilibrium velocity profile, where $Q(\rho)$ is the density-flow relation given by the fundamental diagram. We assume that $V$ is $C^{1}$ derivable over its domain. Without the relaxation term cars never reach the maximum allowable speed \cite{R_improved} and the steady-state relation between density and speed is broken in the presence of road junctions \cite{jin2015}. Note that at the equilibrium velocity this term is zero. 
 
 In vector form the ARZ model is
 \begin{equation} \label{ARZrhov}
@@ -809,10 +809,10 @@ e^{-\frac{x}{\lambda_{1} \tau}}
 $. Therefore, if the spatial pseudo-period $\tilde{L}=\frac{2\pi}{w} \lambda_{1} \tau \left|\alpha\right|$ is low enough, near zero values appear when $x$ is a multiple of $\tilde{L}$. This explains the irregular shape of the distributed Bode plots of $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$ for frequencies $w \gg 2 \pi \frac{\lambda_{1} \tau \left|\alpha\right|}{L} = 6.53$ Hz. This does not impact the stability of the system. Bode plots only look irregular about such points because of the logarithmic scale.
 
 \subsubsection{Step responses}
-We analyze the behavior of the system given step inputs $v(0,t)=v_{\text{step}}H(t)$ and $q(0,t)=q_{\text{step}}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses:
+We analyze the behavior of the system given step inputs $\tilde{v}(0,t)=v_{\text{step}}H(t)$ and $\tilde{q}(0,t)=q_{\text{step}}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses:
 
 \begin{align} 
-v(x,t) &= v_{\text{step}}
+\tilde{v}(x,t) &= v_{\text{step}}
 \left[
 	e^{-\frac{x}{\lambda_{1}\tau}} H\left(t-\frac{x}{\lambda_{1}}\right)
 	+
@@ -831,7 +831,7 @@ v(x,t) &= v_{\text{step}}
 		H\left(t - \frac{x}{\lambda_{2}} \right) - H\left(t - \frac{x}{\lambda_{1}} 	\right)
 	\right)
 \right] \\
-	q(x,t) &= v_{\text{step}} \rho^*\tau \alpha e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+	\tilde{q}(x,t) &= v_{\text{step}} \rho^*\tau \alpha e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
 		\left(
 		H\left(t - \frac{x}{\lambda_{1}} \right) - H\left(t - \frac{x}{\lambda_{2}} 	\right)
 	\right)
@@ -846,7 +846,7 @@ H\left(t - \frac{x}{\lambda_{2}} \right) + e^{-\alpha \left(t - \frac{x}{\lambda
 \right]
 \end{align}
 
-With this set of time domain expressions, we can see that a cone of exponentially growing speed and flow generally appears between the characteristic lines corresponding to $\lambda_{1}$ and $\lambda_{2}$. This is caused by $\alpha$ being negative in the free flow regime and means that, in this region of the domain $\left[0,T\right] \times \left[0,L\right]$, the $\left(v,q\right)$ state of the linearized system can diverge exponentially fast from the linearization point.
+With this set of time domain expressions, we can see that a cone of exponentially growing speed and flow linearization errors generally appears between the characteristic lines corresponding to $\lambda_{1}$ and $\lambda_{2}$. This is caused by $\alpha$ being negative in the free flow regime and means that, in this region of the domain $\left[0,T\right] \times \left[0,L\right]$, the $\left(v,q\right)$ state of the linearized system can diverge exponentially fast from the linearization point.
 
 \begin{figure}
 \begin{centering}
@@ -1242,7 +1242,7 @@ In order to practically assess the presence of poles, numerical search for roots
 The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
 \begin{itemize}
 \item The TFN delineates two regimes: congested for $F > 1$ and free-flowing for $F < 1$. This classification, and the resulting stability result legitimize the use of linearization about a nominal point in the stable region.
-\item  The assessment of instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, instability only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain.
+\item  The assessment of convective instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, exponential growth of the linearization error only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain where convective instability travels along the characteristics.
 \item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency of the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in simple gain and delay components. In the spectral domain, $\lambda_{1}$ and $\lambda_{2}$ appear as information propagation speeds in distributed delay elements while  $\tau\lambda_{1}$ acts as the characteristic distance of distributed gain components.
 %\item Low frequency analysis ($\left|s\right|\ll\left|\alpha\right|$) also highlighted that transfer functions between physical variables are structurally similar in free-flow and congested regimes. The only dissimilarities that arise in the approximate expressions are due to the fact that boundary conditions are not set at the same locations depending on whether the regime is congested or free-flowing.
 \end{itemize}
@@ -1275,7 +1275,7 @@ car in m/s.}
 \subsection{Reconstructing $(v,q)$ maps from NGSIM trajectories}
 
 The NGSIM data set does not directly provide the values $v(t,x)$
-and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$. To obtain macroscopic quantities out of the microscopic measurements, we follow the approach devised in \cite{edie1963discussion} and divide the space-time grid into cells $\left(\left[i\Delta t,\, \left(i+1\right)\Delta t\right]\times\left[j\Delta x, \, (j+1)\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$, where $n_t$ and $n_x$ are the number of cells in time and space, respectively. We denote each cell as $\bin_{i,j}$. This operation consists of gathering corresponding data points into cells, then estimating the quantities of interest in each cell. 
+and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$. To obtain macroscopic quantities out of the microscopic measurements, we follow the approach devised in \cite{edie1963discussion} and divide the space-time grid into cells $\left(\left[i\Delta t,\, \left(i+1\right)\Delta t\right]\times\left[j\Delta x, \, (j+1)\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$, where $n_t$ and $n_x$ are the number of cells in time and space, respectively. We denote each cell as $\bin_{i,j}$. This operation consists of gathering corresponding data points into cells, then estimating the quantities of interest in each cell, it was for example used in \cite{Piccoli201532}.
 
 Within each cell, a specific number of traces, or footprints of a vehicle along its trajectory, are available, and $\rho$, $v$, and $q$ are assumed to be constant. We present several formulae to map a set of traces to speed, flow, and density over the space-time grid. 
 

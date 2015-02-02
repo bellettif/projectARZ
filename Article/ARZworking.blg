@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: ARZworking.aux
 The style file: elsarticle-num.bst
 Database file #1: mybibfilecopy.bib
-You've used 44 entries,
+You've used 47 entries,
             2937 wiz_defined-function locations,
-            956 strings with 12063 characters,
-and the built_in function-call counts, 12464 in all, are:
-= -- 1203
-> -- 335
+            973 strings with 12565 characters,
+and the built_in function-call counts, 13255 in all, are:
+= -- 1274
+> -- 365
 < -- 5
-+ -- 141
-- -- 97
-* -- 810
-:= -- 1651
-add.period$ -- 44
-call.type$ -- 44
-change.case$ -- 38
++ -- 153
+- -- 106
+* -- 866
+:= -- 1764
+add.period$ -- 47
+call.type$ -- 47
+change.case$ -- 41
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 385
-empty$ -- 1472
-format.name$ -- 124
-if$ -- 3275
+cite$ -- 47
+duplicate$ -- 406
+empty$ -- 1558
+format.name$ -- 135
+if$ -- 3479
 int.to.chr$ -- 0
-int.to.str$ -- 44
-missing$ -- 49
-newline$ -- 140
-num.names$ -- 44
-pop$ -- 285
+int.to.str$ -- 47
+missing$ -- 52
+newline$ -- 149
+num.names$ -- 47
+pop$ -- 301
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 835
+skip$ -- 886
 stack$ -- 0
-substring$ -- 809
-swap$ -- 72
+substring$ -- 857
+swap$ -- 74
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 110
-width$ -- 46
-write$ -- 356
+while$ -- 115
+width$ -- 49
+write$ -- 379

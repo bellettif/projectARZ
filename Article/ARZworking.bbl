@@ -137,6 +137,12 @@ S.~Mammar, J.-P. Lebacque, H.~H. Salem, Riemann problem resolution and godunov
   scheme for the aw-rascle-zhang model, Transportation Science 43~(4) (2009)
   531--545.
 
+\bibitem{Delis2014318}
+A.~Delis, I.~Nikolos, M.~Papageorgiou, High-resolution numerical relaxation
+  approximations to second-order macroscopic traffic flow models,
+  Transportation Research Part C: Emerging Technologies 44~(0) (2014) 318 --
+  349.
+
 \bibitem{Fan}
 S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted
   generalized aw--rascle--zhang model, Networks and Heterogeneous Media 9~(2)
@@ -191,6 +197,10 @@ X.~Litrico, V.~Fromion, H-infinity control of an irrigation canal pool with a
 P.-O. Lamare, N.~Bekiaris-Liberis, Control of 2 × 2 linear hyperbolic systems:
   Backstepping-based trajectory generation and pi-based tracking, In review.
 
+\bibitem{jin2015}
+W.-L. Jin, On the equivalence between continuum and car-following models of
+  traffic flow, In review.
+
 \bibitem{Sturm}
 T.~W. Sturm, Open channel hydraulics, McGraw-Hill, 2001.
 
@@ -202,5 +212,10 @@ A.~Hofleitner, C.~Claudel, A.~Bayen, Reconstruction of boundary conditions from
 \bibitem{edie1963discussion}
 L.~Edie, P.~of~New York~Authority, Discussion of Traffic Stream Measurements
   and Definitions, Port of New York Authority, 1963.
+
+\bibitem{Piccoli201532}
+B.~Piccoli, K.~Han, T.~L. Friesz, T.~Yao, J.~Tang, Second-order models and
+  traffic data from mobile sensors, Transportation Research Part C: Emerging
+  Technologies 52~(0) (2015) 32 -- 56.
 
 \end{thebibliography}
