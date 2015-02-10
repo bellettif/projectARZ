@@ -48,9 +48,8 @@ M.~R. Flynn, A.~R. Kasimov, J.~c.~Nave, R.~R. Rosales, B.~Seibold,
   56--113.
 
 \bibitem{treiber2013traffic}
-M.~Treiber, A.~Kesting, Traffic flow dynamics, Traffic Flow Dynamics: Data,
-  Models and Simulation, ISBN 978-3-642-32459-8. Springer-Verlag Berlin
-  Heidelberg, 2013 1.
+M.~Treiber, A.~Kesting, Traffic Flow Dynamics: Data, Models and Simulation,
+  Springer, 2013.
 
 \bibitem{garavello2006trafficbook}
 M.~Garavello, B.~Piccoli, Traffic Flow on Networks: Conservation Laws Models,
@@ -72,6 +71,10 @@ C.~F. Daganzo, The cell transmission model, part \uppercase{II}: network
 \bibitem{Dag_requiem}
 C.~F. Daganzo, Requiem for second-order fluid approximations of traffic flow,
   Transp. Res. Part B 29~(4) (1995) 277--286.
+
+\bibitem{helbing2001traffic}
+D.~Helbing, Traffic and related self-driven many-particle systems, Reviews of
+  modern physics 73~(4) (2001) 1067.
 
 \bibitem{Jamitons2008}
 Y.~Sugiyama, M.~Fukui, M.~Kikuchi, K.~Hasebe, A.~Nakayama, K.~Nishinari,
@@ -148,8 +151,27 @@ S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted
   generalized aw--rascle--zhang model, Networks and Heterogeneous Media 9~(2)
   (2014) 239--268.
 
+\bibitem{colombo2003hyperbolic}
+R.~M. Colombo, Hyperbolic phase transitions in traffic flow, SIAM Journal on
+  Applied Mathematics 63~(2) (2003) 708--721.
+
+\bibitem{treiber2010three}
+M.~Treiber, A.~Kesting, D.~Helbing, Three-phase traffic theory and two-phase
+  models with a fundamental diagram in the light of empirical stylized facts,
+  Transportation Research Part B: Methodological 44~(8) (2010) 983--1000.
+
+\bibitem{blandin2011general}
+S.~Blandin, D.~Work, P.~Goatin, B.~Piccoli, A.~Bayen, A general phase
+  transition model for vehicular traffic, SIAM journal on Applied Mathematics
+  71~(1) (2011) 107--127.
+
 \bibitem{Greenberg_congestionredux}
 J.~M. Greenberg, Congestion redux, SIAM J. Appl. Math 64 (2004) 1175--1185.
+
+\bibitem{treiber2000congested}
+M.~Treiber, A.~Hennecke, D.~Helbing, Congested traffic states in empirical
+  observations and microscopic simulations, Physical Review E 62~(2) (2000)
+  1805.
 
 \bibitem{Chen2012}
 D.~Chen, J.~Laval, Z.~Zheng, S.~Ahn, A behavioral car-following model that
