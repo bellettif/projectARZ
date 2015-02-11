@@ -10,37 +10,37 @@ I was expecting a `,' or a `}'---line 126 of file mybibfilecopy.bib
 I'm skipping whatever remains of this entry
 You've used 53 entries,
             2937 wiz_defined-function locations,
-            1012 strings with 13467 characters,
-and the built_in function-call counts, 15365 in all, are:
-= -- 1499
+            1014 strings with 13574 characters,
+and the built_in function-call counts, 15376 in all, are:
+= -- 1503
 > -- 413
 < -- 6
 + -- 173
 - -- 120
-* -- 1029
-:= -- 2036
+* -- 1034
+:= -- 2040
 add.period$ -- 53
 call.type$ -- 53
 change.case$ -- 47
 chr.to.int$ -- 0
 cite$ -- 53
-duplicate$ -- 467
-empty$ -- 1792
+duplicate$ -- 466
+empty$ -- 1788
 format.name$ -- 152
-if$ -- 4005
+if$ -- 4006
 int.to.chr$ -- 0
 int.to.str$ -- 53
-missing$ -- 58
+missing$ -- 59
 newline$ -- 167
 num.names$ -- 53
-pop$ -- 333
+pop$ -- 329
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1003
+skip$ -- 1006
 stack$ -- 0
 substring$ -- 1079
-swap$ -- 90
+swap$ -- 91
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
@@ -48,5 +48,5 @@ type$ -- 0
 warning$ -- 0
 while$ -- 141
 width$ -- 55
-write$ -- 428
+write$ -- 429
 (There was 1 error message)
