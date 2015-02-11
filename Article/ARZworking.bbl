@@ -120,10 +120,11 @@ M.~Rascle, An improved macroscopic model of traffic flow: derivation and links
   with the \uppercase{L}ighthill-\uppercase{W}hitham model, Mathematical and
   computer modelling 35 (2002) 581--590.
 
-\bibitem{Lebacque2007}
-J.-P. Lebacque, S.~Mammar, H.~Haj-Salem, The aw--rascle and zhang's model:
-  Vacuum problems, existence and regularity of the solutions of the riemann
-  problem, Transp. Res. Part B 41~(7) (2007) 710--721.
+\bibitem{lebacque2007}
+J.-P. Lebacque, S.~Mammar, H.~Haj-Salem, The \uppercase{A}w--\uppercase{R}ascle
+  and \uppercase{Z}hang's model: Vacuum problems, existence and regularity of
+  the solutions of the riemann problem, Transp. Res. Part B 41~(7) (2007)
+  710--721.
 
 \bibitem{HybridLagrangian2007}
 S.~Moutari, M.~Rascle, A hybrid lagrangian model based on the
@@ -137,8 +138,8 @@ M.~Garavello, B.~Piccoli, Traffic flow on a road network using the
 
 \bibitem{GodunovARZ}
 S.~Mammar, J.-P. Lebacque, H.~H. Salem, Riemann problem resolution and godunov
-  scheme for the aw-rascle-zhang model, Transportation Science 43~(4) (2009)
-  531--545.
+  scheme for the \uppercase{A}w-\uppercase{R}ascle-\uppercase{Z}hang model,
+  Transportation Science 43~(4) (2009) 531--545.
 
 \bibitem{Delis2014318}
 A.~Delis, I.~Nikolos, M.~Papageorgiou, High-resolution numerical relaxation
@@ -148,8 +149,8 @@ A.~Delis, I.~Nikolos, M.~Papageorgiou, High-resolution numerical relaxation
 
 \bibitem{Fan}
 S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted
-  generalized aw--rascle--zhang model, Networks and Heterogeneous Media 9~(2)
-  (2014) 239--268.
+  generalized \uppercase{A}w--\uppercase{R}ascle--\uppercase{Z}hang model,
+  Networks and Heterogeneous Media 9~(2) (2014) 239--268.
 
 \bibitem{colombo2003hyperbolic}
 R.~M. Colombo, Hyperbolic phase transitions in traffic flow, SIAM Journal on
@@ -230,6 +231,10 @@ T.~W. Sturm, Open channel hydraulics, McGraw-Hill, 2001.
 A.~Hofleitner, C.~Claudel, A.~Bayen, Reconstruction of boundary conditions from
   internal conditions using viability theory, in: American Control Conference,
   IEEE, 2012, pp. 640--645.
+
+\bibitem{PhysRevLett.79.4030}
+B.~S. Kerner, H.~Rehborn, Experimental properties of phase transitions in
+  traffic flow, Phys. Rev. Lett. 79 (1997) 4030--4033.
 
 \bibitem{edie1963discussion}
 L.~Edie, P.~of~New York~Authority, Discussion of Traffic Stream Measurements
