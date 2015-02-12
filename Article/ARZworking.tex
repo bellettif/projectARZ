@@ -66,8 +66,53 @@
 \title{Prediction of traffic convective instability with spectral analysis of the Aw--Rascle--Zhang model}
 
 %% Group authors per affiliation:
-\author[add]{Francois Belletti, Mandy Huo, Xavier Litrico, Alexandre M. Bayen}
-\address[add]{address}
+\author[EECSAddress]{Francois Belletti}
+\ead{francois.belletti@berkeley.edu}
+
+\author[PhyAddress,MathAddress]{Mandy Huo}
+\ead{mhuo@berkeley.edu}
+
+\author[LitricoAddress]{Xavier Litrico}
+\ead{xavier.litrico@lyonnaise-des-eaux.fr}
+
+\author[EECSAddress,CEAddress,ITSAddress]{Alexandre M. Bayen}
+\ead{bayen@berkeley.edu}
+
+\address[EECSAddress]{
+Department of Electrical Engineering and Computer Sciences,
+University of California, Berkeley,
+United States
+}
+
+\address[PhyAddress]{
+Department of Physics,
+University of California, Berkeley,
+United States
+}
+
+\address[MathAddress]{
+Department of Mathematics,
+University of California, Berkeley,
+United States
+}
+
+\address[CEAddress]{
+Department of Civil and Environmental Engineering,
+University of California, Berkeley,
+United States
+}
+
+\address[ITSAddress]{
+Institute of Transportation Studies
+University of California, Berkeley,
+United States
+}
+
+\address[LitricoAddress]{
+LyRE, R\&D center of Lyonnaise des Eaux
+91, rue Paulin, 33029 Bordeaux cedex, France
+}
+
 %\author{Elsevier\fnref{myfootnote}}
 %\address{Radarweg 29, Amsterdam}
 %\fntext[myfootnote]{Since 1880.}
@@ -736,9 +781,9 @@ For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are repres
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_phi_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_phi_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_21}
 \tabularnewline
 Spatial magnitude Bode plot for $\phi_{11}(x,s)$.
 &
@@ -757,17 +802,17 @@ Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_12}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_12}
 \tabularnewline
 Spatial magnitude Bode plot for $\psi_{11}(x,s)$.
 &
 Spatial magnitude Bode plot for $\psi_{12}(x,s)$.
 \tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_21}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_free_flow/distr_psi_22}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_22}
 \tabularnewline
 Spatial magnitude Bode plot for $\psi_{21}(x,s)$.
 &
@@ -1200,9 +1245,9 @@ Similarly to the free-flow case, for high frequencies ($w \gg 2 \pi \frac{\lambd
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_gamma_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_gamma_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_21}
 \tabularnewline
 Spatial magnitude Bode plot for $\gamma_{11}(x,s)$.
 &
@@ -1215,17 +1260,17 @@ Spatial magnitude Bode plot for $\gamma_{21}(x,s)$.
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_theta_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_theta_12}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_12}
 \tabularnewline
 Spatial magnitude Bode plot for $\theta_{11}(x,s)$.
 &
 Spatial magnitude Bode plot for $\theta_{12}(x,s)$.
 \tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_theta_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_21}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{Bode_congested/distr_theta_22}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_22}
 \tabularnewline
 Spatial magnitude Bode plot for $\theta_{21}(x,s)$.
 &
@@ -1264,7 +1309,7 @@ Only a subset of the spatial domain is used due to the presence of ramps, which 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=12cm]{Numerics/US-101_all_traj_low_res_mod}
+\includegraphics[width=12cm]{US-101_all_traj_low_res_mod}
 \protect\caption{NGSIM trajectories. Color represents the measured speed of each
 car in m/s.}
 \label{fig:NGSIM-trajectories}
@@ -1317,7 +1362,7 @@ number of points in each bin provides more stable estimates. It is worth mention
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=6cm]{\string"/Numerics/Discretisation grid/traces_80_80\string".png} & \includegraphics[width=6cm]{\string"/Numerics/Discretisation grid/ids_80_80\string".png}\tabularnewline
+\includegraphics[width=6cm]{\string"traces_80_80\string".png} & \includegraphics[width=6cm]{\string"ids_80_80\string".png}\tabularnewline
 Histogram of number of traces per cell. & Histogram of number of distinct vehicles per cell. \tabularnewline
 \end{tabular}
 \caption{Experimental justification for a $80\times 80$ cell based discretization
@@ -1330,7 +1375,7 @@ different techniques: the first relies on the average measured speed and the num
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=6cm]{\string"/Numerics/Sanity check/80_80_q_q_count\string".png}
+\includegraphics[width=6cm]{\string"80_80_q_q_count\string".png}
 \protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
 is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 \label{fig:Sanity-check}}
@@ -1362,8 +1407,8 @@ to be confirmed by the fact that the fundamental diagrams below correspond only 
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_rho_map\string".png}\tabularnewline
-\includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Maps data/80_80_q_count_map\string".png}\tabularnewline
+\includegraphics[width=8cm]{\string"80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"80_80_rho_map\string".png}\tabularnewline
+\includegraphics[width=8cm]{\string"80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"80_80_q_count_map\string".png}\tabularnewline
 \end{tabular}
 \protect\caption{Estimated values for $\left(v,q,\rho\right)$. Top left: $\widehat{v}_{i,j}$.
 Top right: $\widehat{\rho}_{i,j}$. Bottom left: $\widehat{q}_{i,j}$.
@@ -1373,7 +1418,7 @@ Bottom right: $\widehat{q}_{i,j}^{\text{count}}$ .\label{fig:Estimated-values}}
 \begin{figure}[H]
 \centering
 \begin{tabular}{ccc}
-\includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_rho_q_count\string".png} & \includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_v_q_count\string".png} & \includegraphics[width=5cm]{\string"/Numerics/Maps data/80_80_fundamental_diagram_v_rho\string".png}\tabularnewline
+\includegraphics[width=5cm]{\string"80_80_fundamental_diagram_rho_q_count\string".png} & \includegraphics[width=5cm]{\string"80_80_fundamental_diagram_v_q_count\string".png} & \includegraphics[width=5cm]{\string"80_80_fundamental_diagram_v_rho\string".png}\tabularnewline
 \end{tabular}
 \protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{\text{count}}\right)$.
 Middle: $\left(\widehat{v},\widehat{q}^{\text{count}}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
@@ -1392,7 +1437,7 @@ into a fully justified statistical procedure. Note that the goal of the present 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=8cm]{\string"/Numerics/Calibration of eigen values/Fundamental diagram fitting n = 80\string".png}
+\includegraphics[width=8cm]{\string"Fundamental diagram fitting n = 80\string".png}
 \protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$ m/s, $\widehat{\lambda}_{2}=-4.37$ m/s, $\widehat{\rho}^{*}=0.049$ veh/m, $\widehat{v}^{*}=8.96$ m/s, $\widehat{q}^{*}=0.44$ veh/s, with $r^{2}=0.48$. The characteristic frequency of the system is $\widehat{\alpha} = 8.37\times10^{-3}$ Hz. Its order of magnitude does correspond to practical traffic flow modeling.}
 \label{fig:Calibration-of-eigen-values}
 \end{figure}
@@ -1418,8 +1463,9 @@ is $\tau^{*}=39.18$ s.
 \begin{figure}[H]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=15cm]{\string"/Numerics/Maps simulated/vq_map_n=80_best_tau\string".png}\tabularnewline
-\includegraphics[width=15cm]{\string"/Numerics/Maps simulated/xi_map_n=80_best_tau\string".png}
+\includegraphics[width=15cm]{\string"vq_map_n=80_best_tau\string".png}\tabularnewline
+\includegraphics[width=15cm]
+{\string"xi_map_n=80_best_tau\string".png}
 \end{tabular}
 \protect\caption{Data versus predicted. Top Figure: $\left(v,q\right)$ domain, top row is $v$, bottom row is $q$. Bottom: $\left(\xi_{1},\xi_{2}\right)$
 domain, top row is $\xi_{1}$, bottom row is $\xi_{2}$. First column: data. Middle column: predictions. Third column: error (difference between prediction and data).\label{fig:Data-versus-predicted.}}
@@ -1428,7 +1474,9 @@ domain, top row is $\xi_{1}$, bottom row is $\xi_{2}$. First column: data. Middl
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{\string"/Numerics/Calibration of Tau/q_v_error_80\string".png} & \includegraphics[width=8cm]{\string"/Numerics/Calibration of Tau/xi_1_xi_2_error_80\string".png}\tabularnewline
+\includegraphics[width=8cm]
+{\string"q_v_error_80\string".png} 
+& \includegraphics[width=8cm]{\string"xi_1_xi_2_error_80\string".png}\tabularnewline
 MAE over $q$ and $v$ & MAE over $\xi_{1}$ and $\xi_{2}$ and sum of both MAE.\tabularnewline
 \end{tabular}
 \protect\caption{Calibration of $\tau$, one minimizes the sum of MAE over $\xi_{1}$
