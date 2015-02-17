@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 FEB 2015 12:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  16 FEB 2015 17:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -841,26 +841,26 @@ l.1437
         <./80_80_v_map.png> <./80_80_rho_map.png> <./80_80_q_map.png> <./80_80_
 q_count_map.png> <./80_80_fundamental_diagram_rho_q_count.png> <./80_80_fundame
 ntal_diagram_v_q_count.png> <./80_80_fundamental_diagram_v_rho.png>]
-<"Fundamental diagram fitting n = 80".png, id=723, 578.16pt x 433.62pt>
-File: "Fundamental diagram fitting n = 80".png Graphic file (type png)
+<"Fundamental_diagram_fitting_n_80".png, id=723, 578.16pt x 433.62pt>
+File: "Fundamental_diagram_fitting_n_80".png Graphic file (type png)
 
-<use "Fundamental diagram fitting n = 80".png>
-Package pdftex.def Info: "Fundamental diagram fitting n = 80".png used on input
- line 1440.
+<use "Fundamental_diagram_fitting_n_80".png>
+Package pdftex.def Info: "Fundamental_diagram_fitting_n_80".png used on input l
+ine 1440.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"vq_map_n=80_best_tau".png, id=727, 1011.78pt x 722.7pt>
-File: "vq_map_n=80_best_tau".png Graphic file (type png)
+<"vq_map_n_80_best_tau".png, id=727, 1011.78pt x 722.7pt>
+File: "vq_map_n_80_best_tau".png Graphic file (type png)
 
-<use "vq_map_n=80_best_tau".png>
-Package pdftex.def Info: "vq_map_n=80_best_tau".png used on input line 1466.
+<use "vq_map_n_80_best_tau".png>
+Package pdftex.def Info: "vq_map_n_80_best_tau".png used on input line 1466.
 (pdftex.def)             Requested size: 426.79134pt x 304.85522pt.
 
-<"xi_map_n=80_best_tau".png, id=728, 1011.78pt x 722.7pt>
-File: "xi_map_n=80_best_tau".png Graphic file (type png)
+<"xi_map_n_80_best_tau".png, id=728, 1011.78pt x 722.7pt>
+File: "xi_map_n_80_best_tau".png Graphic file (type png)
 
-<use "xi_map_n=80_best_tau".png>
-Package pdftex.def Info: "xi_map_n=80_best_tau".png used on input line 1468.
+<use "xi_map_n_80_best_tau".png>
+Package pdftex.def Info: "xi_map_n_80_best_tau".png used on input line 1468.
 (pdftex.def)             Requested size: 426.79134pt x 304.85522pt.
  [19pdfTeX warning (ext4): destination with the same identifier (name{figure.12
 }) has been already used, duplicate ignored
@@ -868,7 +868,7 @@ Package pdftex.def Info: "xi_map_n=80_best_tau".png used on input line 1468.
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1473 
-        <./Fundamental diagram fitting n = 80.png>]
+        <./Fundamental_diagram_fitting_n_80.png>]
 Overfull \vbox (4.48051pt too high) has occurred while \output is active []
 
 
@@ -878,7 +878,7 @@ Overfull \vbox (4.48051pt too high) has occurred while \output is active []
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1473 
-        <./vq_map_n=80_best_tau.png> <./xi_map_n=80_best_tau.png>]
+        <./vq_map_n_80_best_tau.png> <./xi_map_n_80_best_tau.png>]
 <"q_v_error_80".png, id=743, 578.16pt x 433.62pt>
 File: "q_v_error_80".png Graphic file (type png)
  <use "q_v_error_80".png>
@@ -962,7 +962,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1735.
  ) 
 Here is how much of TeX's memory you used:
  7353 strings out of 493117
- 108154 string characters out of 6135433
+ 108142 string characters out of 6135433
  217288 words of memory out of 5000000
  10500 multiletter control sequences out of 15000+600000
  9870 words of font info for 38 fonts, out of 8000000 for 9000
