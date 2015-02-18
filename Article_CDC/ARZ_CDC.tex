@@ -498,16 +498,13 @@ Using \eqref{eq:Riemannzeta}, we can write
 
 \begin{equation} \label{vqfreeflow}
 \begin{pmatrix}
-\widetilde{v}(x,s) \\ \widetilde{q}(x,s)
-\end{pmatrix} = \underbrace{ \begin{pmatrix}
-\dfrac{\rho^*\lambda_2}{\lambda_1-\lambda_2} & 1\\
-\dfrac{\rho^*\lambda_1}{\lambda_1-\lambda_2} & 0
-\end{pmatrix}^{-1} \Phi(x,s) 
+	\widetilde{v}(x,s) \\ 
+	\widetilde{q}(x,s)
+\end{pmatrix} = 
+\Psi(x,s)
 \begin{pmatrix}
-\dfrac{\rho^*\lambda_2}{\lambda_1-\lambda_2} & 1\\
-\dfrac{\rho^*\lambda_1}{\lambda_1-\lambda_2} & 0
-\end{pmatrix} }_\text{$\Psi (x,s)$} \begin{pmatrix}
-\widetilde{v}(0,s) \\ \widetilde{q}(0,s)
+	\widetilde{v}(0,s) \\ 
+	\widetilde{q}(0,s)
 \end{pmatrix}
 \end{equation}
 with
@@ -554,31 +551,12 @@ It could appear at first sight that $-\alpha$ (here a positive real) is a singul
 Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This corresponds to traffic flow varying slowly and smoothly. We find the following approximate expressions for the transfer functions:
 \begin{subequations}
 \begin{align}
-\psi_{11}(x,s) &=
-	e^{-\frac{sx}{\lambda_{2}}}
-	\frac{
-	s + \alpha e^{-\frac{x}{\tau\lambda_{1}\alpha}
-		\left(s + \alpha\right)	
-		}
-	}{
-	s + \alpha
-	}
+\psi_{11}(x,s)
 &\simeq
 e^{-\frac{sx}{\lambda_{2}}}
 e^{-\frac{x}{\tau\lambda_{1}}}
 , \\
-\psi_{12}(x,s) &=
-\frac{
-	1
-}{
-	\rho^{*}\tau
-}
-e^{-\frac{sx}{\lambda_{2}}}
-\frac{
-	1 - e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
-}{
-	s + \alpha
-}
+\psi_{12}(x,s)
 &\simeq
 \frac{
 	1
@@ -590,14 +568,7 @@ e^{-\frac{sx}{\lambda_{2}}}
 	1 - e^{-\frac{x}{\tau\lambda_{1}}}
 \right)
 , \\
-\psi_{21}(x,s) &=
-- s \rho^{*} \tau \alpha
-e^{-\frac{sx}{\lambda_{2}}}
-\frac{
-	1 - e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
-}{
-	s + \alpha
-}
+\psi_{21}(x,s)
 & \simeq
 - s \rho^{*} \tau
 e^{-\frac{sx}{\lambda_{2}}}
@@ -605,13 +576,7 @@ e^{-\frac{sx}{\lambda_{2}}}
 	1 - e^{-\frac{x}{\tau\lambda_{1}}}
 \right)
 , \\
-\psi_{22}(x,s) &=
-e^{-\frac{sx}{\lambda_{2}}}
-\frac{
-	\alpha + s e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s + \alpha\right)}
-}{
-	s + \alpha
-}
+\psi_{22}(x,s)
 &\simeq
 e^{-\frac{sx}{\lambda_{2}}}
 .
@@ -630,23 +595,22 @@ Interpreting the low frequency expressions is fairly straightforward:
 We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{\text{max}}$ = 1300 veh/h, $\rho_{\text{max}}$ = 0.1 veh/m, and $L$ = 100 m. The Greenshields fundamental diagram, $Q( \rho) = 4 \frac{q_{\text{max}}}{\rho_{\text{max}}^2}\rho (\rho_{\text{max}} - \rho)$, is used to approximate the fundamental diagram. For inhomogeneous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$ veh/m. Here the characteristic frequency of the system, $\left|\alpha\right|$, equals 0.53 Hz which is indeed sensible for traffic flow modeling.
 
 The Bode plots for the physical variables are displayed in Figure \ref{fig:Magn_spatial_physx}.
-For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented in Figure \ref{fig:Magn_spatial_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
 
-\begin{figure}
-\centering
-\begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_11}
-&
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_21}
-\tabularnewline
-Spatial magnitude Bode plot for $\phi_{11}(x,s)$.
-&
-Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
-\tabularnewline
-\end{tabular}
-\caption{Spatial magnitude Bode plots for Riemann invariants in free-flow regime ($\left|\alpha\right| = $ 0.53 Hz)\label{fig:Magn_spatial_diag}}
-\end{figure}
-
+%For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented in Figure \ref{fig:Magn_spatial_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
+%\begin{figure}
+%\centering
+%\begin{tabular}{cc}
+%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_11}
+%&
+%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_21}
+%\tabularnewline
+%Spatial magnitude Bode plot for $\phi_{11}(x,s)$.
+%&
+%Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
+%\tabularnewline
+%\end{tabular}
+%\caption{Spatial magnitude Bode plots for Riemann invariants in free-flow regime ($\left|\alpha\right| = $ 0.53 Hz)\label{fig:Magn_spatial_diag}}
+%\end{figure}
 %\begin{figure}[H]
 %\centering
 %\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 110mm]{Bode_free_flow/IO_diag}
@@ -655,23 +619,22 @@ Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
 
 \begin{figure}
 \centering
-\begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_11}
-&
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_12}
+\begin{tabular}{c}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_psi_11}
 \tabularnewline
 Spatial magnitude Bode plot for $\psi_{11}(x,s)$.
-&
+\tabularnewline
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_psi_12}
+\tabularnewline
 Spatial magnitude Bode plot for $\psi_{12}(x,s)$.
 \tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_21}
-&
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_psi_22}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_psi_21}
 \tabularnewline
 Spatial magnitude Bode plot for $\psi_{21}(x,s)$.
-&
-Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 \tabularnewline
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_psi_22}
+\tabularnewline
+Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 \end{tabular}
 \caption{Spatial magnitude Bode plots for physical variables in free-flow regime ($\left|\alpha\right| = $ 0.53 Hz)\label{fig:Magn_spatial_physx}}
 \end{figure}
@@ -708,48 +671,48 @@ e^{-\frac{x}{\lambda_{1} \tau}}
 $. Therefore, if the spatial pseudo-period $\tilde{L}=\frac{2\pi}{w} \lambda_{1} \tau \left|\alpha\right|$ is low enough, near zero values appear when $x$ is a multiple of $\tilde{L}$. This explains the irregular shape of the distributed Bode plots of $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$ for frequencies $w \gg 2 \pi \frac{\lambda_{1} \tau \left|\alpha\right|}{L} = 6.53$ Hz. This does not impact the stability of the system. Bode plots only look irregular about such points because of the logarithmic scale.
 
 \subsubsection{Step responses}
-We analyze the behavior of the system given step inputs $\tilde{v}(0,t)=v_{\text{step}}H(t)$ and $\tilde{q}(0,t)=q_{\text{step}}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses:
+We analyze the behavior of the system given step inputs $\tilde{v}(0,t)=\bar{v}H(t)$ and $\tilde{q}(0,t)=\bar{q}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses, let $H_1(t,x) = H\left(t-\frac{x}{\lambda_{1}}\right)$ and
+$H_2(t,x) = H\left(t - \frac{x}{\lambda_{2}} \right)$:
 
 \begin{align} 
-\tilde{v}(x,t) &= v_{\text{step}}
-\left[
-	e^{-\frac{x}{\lambda_{1}\tau}} H\left(t-\frac{x}{\lambda_{1}}\right)
-	+
-	e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
-	\left(
-		H\left(t - \frac{x}{\lambda_{2}} \right) - H\left(t - \frac{x}{\lambda_{1}} \right)
-	\right)
-\right]
+\tilde{v}(x,t) &= 
+\bar{v}
+e^{-\frac{x}{\lambda_{1}\tau}}H_1(t,x)
+\notag\\
+&\quad
++\bar{v}
+e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+	(H_2 - H_1)(t,x)
 \notag \\
 &\quad
-- \dfrac{q_{\text{step}}}{\rho^* \tau}
-\left[
-	e^{-\frac{x}{\lambda_{1}\tau}} H\left(t-\frac{x}{\lambda_{1}}\right) - H\left(t - \frac{x}{\lambda_{2}} \right) +
-	e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
-	\left(
-		H\left(t - \frac{x}{\lambda_{2}} \right) - H\left(t - \frac{x}{\lambda_{1}} 	\right)
-	\right)
-\right] \\
-	\tilde{q}(x,t) &= v_{\text{step}} \rho^*\tau \alpha e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
-		\left(
-		H\left(t - \frac{x}{\lambda_{1}} \right) - H\left(t - \frac{x}{\lambda_{2}} 	\right)
-	\right)
+- \dfrac{\bar{q}}{\rho^* \tau}
+\left(
+	e^{-\frac{x}{\lambda_{1}\tau}}H_1\left(t,x\right) 
+	- H_2(t,x)
+\right) 
+\notag\\
+&\quad
+- \dfrac{\bar{q}}{\rho^* \tau} e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+	(H_2 - H_1)(t,x)\\
+\tilde{q}(x,t) &= \bar{v} \rho^*\tau \alpha e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+	(H_1 - H_2)(t,x)
 \notag \\
 &\quad+ 
-q_{\text{step}}
-\left[
-H\left(t - \frac{x}{\lambda_{2}} \right) + e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
-		\left(
-		H\left(t - \frac{x}{\lambda_{1}} \right) - H\left(t - \frac{x}{\lambda_{2}} 	\right)
-	\right)
-\right]
+\bar{q}
+H_2(t,x)
+\notag\\
+&\quad
++
+\bar{q}
+e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
+	(H_1 - H_2)(t,x)	
 \end{align}
 
 With this set of time domain expressions, we can see that a cone of exponentially growing speed and flow linearization errors generally appears between the characteristic lines corresponding to $\lambda_{1}$ and $\lambda_{2}$. This is caused by $\alpha$ being negative in the free flow regime and means that, in this region of the domain $\left[0,T\right] \times \left[0,L\right]$, the $\left(v,q\right)$ state of the linearized system can diverge exponentially fast from the linearization point. This is consistent with the observations in \cite{PhysRevLett.79.4030} where small local perturbations occurring in free-flow regime can cause traffic to transition durably to the congested regime.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[width=8cm]{Exp-growth}
+\includegraphics[width=6cm]{Exp-growth}
 \par\end{centering}
 \protect\caption{Illustration of the exponential growth cone appearing in the free-flowing regime for the time domain expressions of $v$ and $q$.\label{Exp-growth}}
 \end{figure}
@@ -760,28 +723,24 @@ We now consider the system in the congested regime.
 Using \eqref{TFRiemann} we can write 
 \begin{equation} \label{vqcongested}
 \begin{pmatrix}
-\hat{\xi_{1}}(x,s)\\
-\hat{\xi_{2}}(x,s)
-\end{pmatrix} = \underbrace{
-\Phi(x,s) \begin{pmatrix}
-1 & 0\\
--\frac{\phi_{21}\left(L,s\right)}{\phi_{22}\left(L,s\right)} & \frac{1}{\phi_{22}\left(L,s\right)}
-\end{pmatrix}}_\text{$\Gamma (x,s)$}
+	\hat{\xi_{1}}(x,s)\\
+	\hat{\xi_{2}}(x,s)
+\end{pmatrix} = 
+\Gamma(x,s)
 \begin{pmatrix}
-\hat{\xi_{1}}\left(0,s\right)\\
-\hat{\xi_{2}}\left(L,s\right)
+	\hat{\xi_{1}}\left(0,s\right)\\
+	\hat{\xi_{2}}\left(L,s\right)
 \end{pmatrix}.
 \end{equation}
 with 
 \begin{subequations}
 \begin{align}
 \gamma_{11}\left(x,s\right)&=
-e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)} ,\\
+e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)} , \\
 \gamma_{12}\left(x,s\right)&=0, \\
 \gamma_{21}\left(x,s\right)&=
-\frac{\lambda_{1}}{\lambda_{2}}
-\frac{\alpha}{s + \alpha}
-e^{-\frac{x}{\lambda_{1}} \left( s + \frac{1}{\tau} \right)}
+\frac{\lambda_{1} \alpha e^{-\frac{x}{\lambda_{1}} \left( s + \frac{1}{\tau} \right)}}
+{\lambda_{2}\left(s + \alpha\right)}
 \left(
 	1 -
 	e^{-\frac{\left(L - x\right)
@@ -900,7 +859,6 @@ where
 }
 ,\\
 \theta_{12}\left(x,s\right) &=
-\frac{1}{\rho^{*}\tau}
 \frac{
 	e^{-\frac{L}{\tau\lambda_{1}}}
 	e^{-\frac{s}{\lambda_{2}}
@@ -916,16 +874,19 @@ where
 	e^{-\frac{sx}{\lambda_{1}}}
 }
 {
-	s
-	+
-	\alpha
-	e^{-\frac{L}{\tau\lambda_{1}}}
-	e^{
-	-\frac{sL}{\lambda_{1}}
+	\rho^{*}\tau
 	\left(
-		1 - \frac{\lambda_{1}}{\lambda_{2}}
+		s
+		+
+		\alpha
+		e^{-\frac{L}{\tau\lambda_{1}}}
+		e^{
+			-\frac{sL}{\lambda_{1}}
+			\left(
+				1 - \frac{\lambda_{1}}{\lambda_{2}}
+			\right)
+			}
 	\right)
-	}
 },\\
 \theta_{21}\left(x,s\right) &=
 \rho^{*}\tau\alpha s
@@ -986,88 +947,23 @@ where
 We derive approximate expressions in the frequency domain for the transfer functions above when $\left|s\right|\ll\left|\alpha\right|$:
 \begin{subequations}
 \begin{align}
-\theta_{11}\left(x,s\right) &=
-\frac{
-	e^{\frac{s\left(L-x\right)}{\lambda_{2}}}
-	\left(
-		s
-		+
-		\alpha
-		e^{
-			-\frac{x}{\tau\lambda_{1}\alpha}
-			\left(s+\alpha\right)
-		}
-	\right)
-}{
-	s
-	+
-	\alpha
-	e^{
-		-\frac{L}{\tau\lambda_{1}\alpha}
-		\left(s+\alpha\right)
-	}
-}
-&\simeq
+\theta_{11}\left(x,s\right) &\simeq
 e^{\frac{s\left(L-x\right)}{\lambda_{2}}}
 e^{\frac{L-x}{\tau\lambda_{1}}},\\
-\theta_{12}\left(x,s\right) &=
-\frac{1}{\rho^{*}\tau}
-e^{-\frac{x}{\lambda_{1}} \left( s + \frac{1}{\tau} \right)}
-\frac{
-	e^{-\frac{\left(L-x\right)}{\tau\lambda_{1}\alpha}\left(s+\alpha\right)}
-	-1
-}{
-	s
-	+
-	\alpha
-	e^{
-		-\frac{L}{\tau\lambda_{1}\alpha}
-		\left(s+\alpha\right)
-	}
-}
-&\simeq
+\theta_{12}\left(x,s\right) &\simeq
 \frac{1}{\rho^{*}\tau\alpha}
 e^{-\frac{sx}{\lambda_{1}}}
 \left(
 	1 - e^{\frac{L-x}{\tau\lambda_{1}}}
 \right),\\
-\theta_{21}\left(x,s\right) &=
-s \rho^{*}\tau\alpha
-e^{\frac{s\left(L-x\right)}{\lambda_{2}}}
-\frac{
-	1 - 
-	e^{-\frac{x}{\tau\lambda_{1}\alpha}\left(s+\alpha\right)}
-}{
-	s
-	+
-	\alpha
-	e^{
-		-\frac{L}{\tau\lambda_{1}\alpha}
-		\left(s+\alpha\right)
-	}
-}
-&\simeq
+\theta_{21}\left(x,s\right) &\simeq
 s \rho^{*}\tau
 e^{\frac{s\left(L-x\right)}{\lambda_{2}}}
 e^{\frac{L}{\tau\lambda_{1}}}
 \left(
 	1 - e^{-\frac{x}{\tau\lambda_{1}}}
 \right),\\
-\theta_{22}\left(x,s\right) &=
-e^{-\frac{x}{\lambda_{1}} \left( s + \frac{1}{\tau} \right)}
-\frac{
-	\alpha e^{-\frac{\left(L-x\right)}{\tau\lambda_{1}\alpha}\left(s+\alpha\right)}
-	+ s
-}{
-	s
-	+
-	\alpha
-	e^{
-		-\frac{L}{\tau\lambda_{1}\alpha}
-		\left(s+\alpha\right)
-	}
-}
-&\simeq
+\theta_{22}\left(x,s\right) &\simeq
 e^{-\frac{sx}{\lambda_{1}}}.
 \end{align}
 \end{subequations}
@@ -1096,38 +992,38 @@ Similarly to the free-flow case, for high frequencies ($w \gg 2 \pi \frac{\lambd
 %}
 %\end{figure}
 
-\begin{figure}
-\centering
-\begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_11}
-&
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_21}
-\tabularnewline
-Spatial magnitude Bode plot for $\gamma_{11}(x,s)$.
-&
-Spatial magnitude Bode plot for $\gamma_{21}(x,s)$.
-\tabularnewline
-\end{tabular}
-\caption{Spatial magnitude Bode plots for Riemann invariants in congested regime ($\left|\alpha\right| = $ 0.05 Hz)\label{fig:Magn_spatial_diag_congested}}
-\end{figure}
+%\begin{figure}
+%\centering
+%\begin{tabular}{cc}
+%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_11}
+%&
+%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_21}
+%\tabularnewline
+%Spatial magnitude Bode plot for $\gamma_{11}(x,s)$.
+%&
+%Spatial magnitude Bode plot for $\gamma_{21}(x,s)$.
+%\tabularnewline
+%\end{tabular}
+%\caption{Spatial magnitude Bode plots for Riemann invariants in congested regime ($\left|\alpha\right| = $ 0.05 Hz)\label{fig:Magn_spatial_diag_congested}}
+%\end{figure}
 
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_11}
-&
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_12}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_theta_11}
 \tabularnewline
 Spatial magnitude Bode plot for $\theta_{11}(x,s)$.
-&
+\tabularnewline
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_theta_12}
+\tabularnewline
 Spatial magnitude Bode plot for $\theta_{12}(x,s)$.
 \tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_21}
-&
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_theta_22}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_theta_21}
 \tabularnewline
 Spatial magnitude Bode plot for $\theta_{21}(x,s)$.
-&
+\tabularnewline
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 5cm]{distr_theta_22}
+\tabularnewline
 Spatial magnitude Bode plot for $\theta_{22}(x,s)$.
 \tabularnewline
 \end{tabular}
@@ -1163,7 +1059,7 @@ Only a subset of the spatial domain is used due to the presence of ramps, which 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=12cm]{US-101_all_traj_low_res_mod}
+\includegraphics[width=8cm]{US-101_all_traj_low_res_mod}
 \protect\caption{NGSIM trajectories. Color represents the measured speed of each
 car in m/s.}
 \label{fig:NGSIM-trajectories}
@@ -1210,18 +1106,20 @@ where id$(\cdot)$ gives the identification number of a vehicle.
 \subsubsection{Choosing the number of bins}
 
 As the estimation formulae above rely on averaging, having a comfortable
-number of points in each bin provides more stable estimates. It is worth mentioning that usual central limit theorem based reasoning for convergence of such estimates is flawed as several samples may correspond to the same vehicle or interacting vehicles, violating the independence assumption of the theorem. Proving the convergence of the estimates above lies beyond the scope of this article. As a rule of thumb we choose a discretization that guarantees that most bins will host more than $100$ traces. This is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile of the number of traces in a given bin is $170$. Such a grid also yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin. The histograms of number of traces and vehicle per cell are given in Figure \ref{fig:Grid control}.
+number of points in each bin provides more stable estimates. It is worth mentioning that usual central limit theorem based reasoning for convergence of such estimates is flawed as several samples may correspond to the same vehicle or interacting vehicles, violating the independence assumption of the theorem. Proving the convergence of the estimates above lies beyond the scope of this article. As a rule of thumb we choose a discretization that guarantees that most bins will host more than $100$ traces. This is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile of the number of traces in a given bin is $170$. Such a grid also yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin. 
 
-\begin{figure}[H]
-\centering
-\begin{tabular}{cc}
-\includegraphics[width=6cm]{\string"traces_80_80\string".png} & \includegraphics[width=6cm]{\string"ids_80_80\string".png}\tabularnewline
-Histogram of number of traces per cell. & Histogram of number of distinct vehicles per cell. \tabularnewline
-\end{tabular}
-\caption{Experimental justification for a $80\times 80$ cell based discretization
-grid for the NGSIM data.}
-\label{fig:Grid control}
-\end{figure}
+%The histograms of number of traces and vehicle per cell are given in Figure \ref{fig:Grid control}.
+
+%\begin{figure}[H]
+%\centering
+%\begin{tabular}{cc}
+%\includegraphics[width=6cm]{\string"traces_80_80\string".png} & \includegraphics[width=6cm]{\string"ids_80_80\string".png}\tabularnewline
+%Histogram of number of traces per cell. & Histogram of number of distinct vehicles per cell. \tabularnewline
+%\end{tabular}
+%\caption{Experimental justification for a $80\times 80$ cell based discretization
+%grid for the NGSIM data.}
+%\label{fig:Grid control}
+%\end{figure}
 
 While our goal here is not to present theoretical proofs of the convergence of the binned estimators for $\left(v,\rho,q\right)$, it is nonetheless possible to check that the procedure is coherent. Two estimators are provided for $q$ that use radically
 different techniques: the first relies on the average measured speed and the number of traces in a bin, while the other relies on counting vehicles transiting from a cell to another. Figure \ref{fig:Sanity-check} show that the scatter plot of $\widehat{q}_{i,j}^{\cnt}$ plotted against $\widehat{q}_{i,j}$ coincides nicely with the line $y=x$, validating the overall binning and estimation procedure above.
@@ -1257,16 +1155,16 @@ to be confirmed by the fact that the fundamental diagrams below correspond only 
 %generally small. (The equilibrium, i.e. the linearization point, is estimated
 %below).}
 
-\begin{figure}[H]
-\centering
-\begin{tabular}{cc}
-\includegraphics[width=8cm]{\string"80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"80_80_rho_map\string".png}\tabularnewline
-\includegraphics[width=8cm]{\string"80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"80_80_q_count_map\string".png}\tabularnewline
-\end{tabular}
-\protect\caption{Estimated values for $\left(v,q,\rho\right)$. Top left: $\widehat{v}_{i,j}$.
-Top right: $\widehat{\rho}_{i,j}$. Bottom left: $\widehat{q}_{i,j}$.
-Bottom right: $\widehat{q}_{i,j}^{\text{count}}$ .\label{fig:Estimated-values}}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\begin{tabular}{cc}
+%\includegraphics[width=8cm]{\string"80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"80_80_rho_map\string".png}\tabularnewline
+%\includegraphics[width=8cm]{\string"80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"80_80_q_count_map\string".png}\tabularnewline
+%\end{tabular}
+%\protect\caption{Estimated values for $\left(v,q,\rho\right)$. Top left: $\widehat{v}_{i,j}$.
+%Top right: $\widehat{\rho}_{i,j}$. Bottom left: $\widehat{q}_{i,j}$.
+%Bottom right: $\widehat{q}_{i,j}^{\text{count}}$ .\label{fig:Estimated-values}}
+%\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -1290,7 +1188,7 @@ into a fully justified statistical procedure. Note that the goal of the present 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=8cm]{\string"Fundamental_diagram_fitting_n_80\string".png}
+\includegraphics[width=6cm]{\string"Fundamental_diagram_fitting_n_80\string".png}
 \protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$ m/s, $\widehat{\lambda}_{2}=-4.37$ m/s, $\widehat{\rho}^{*}=0.049$ veh/m, $\widehat{v}^{*}=8.96$ m/s, $\widehat{q}^{*}=0.44$ veh/s, with $r^{2}=0.48$. The characteristic frequency of the system is $\widehat{\alpha} = 8.37\times10^{-3}$ Hz. Its order of magnitude does correspond to practical traffic flow modeling.}
 \label{fig:Calibration-of-eigen-values}
 \end{figure}
@@ -1370,209 +1268,8 @@ The behavior predicted in congested regime for traffic does not present shocks a
 %
 %To conclude, we find that a freeway section evolves as a classical linear system therefore exploding, oscillating or converging towards $0$ at an exponential rate. Linearization has enabled the translation of the ARZ model from cumbersome non-linear PDE derivations towards a simple set of equations readily usable for control. Designing the corresponding schemes to alleviate congestion will be the subject of our further work.
 
-
-\newpage
-\appendix
-\section{Generic computations for time domain to Laplace domain transforms
-and vice versa\label{sub:Generic-computations}}
-
-The aim is to derive the time domain responses of generic input signals
-such as $t\rightarrow H\left(t\right)$ and $t\rightarrow \cos\left(wt+\phi\right)H\left(t\right)$
-when multiplied in the Laplace domain by $\frac{1}{s+\alpha}$. This
-then enables the computation of any response that decomposes in a
-Fourier transform.
-
-
-\subsection{Step function input}
-
-The time domain input function is $H\left(t\right)$. One computes
-the inverse Laplace transform of $s\rightarrow\frac{1}{s\left(s+\alpha\right)}$
-which is 
-\[
-t\rightarrow\frac{1}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)
-\]
-
-
-
-\subsection{Phased cosine input}
-
-The time domain input function is $\cos\left(wt+\phi\right)H\left(t\right)$.
-One computes the inverse Laplace transform of $s\rightarrow\frac{1}{s+\alpha}\left\{ \frac{s}{s^{2}+\omega^{2}}\cos\left(\phi\right)-\frac{w}{s^{2}+w^{2}}\sin\left(\phi\right)\right\} $
-which can be directly achieved in the time domain. Indeed, the result
-is given by the convolution product $t\rightarrow\left(e^{-\alpha\cdot}H\left(\cdot\right)\star \cos\left(\omega\cdot+\phi\right)H\left(\cdot\right)\right)\left(t\right)$,
-that is to say 
-\[
-t\rightarrow\frac{-e^{-\alpha\cdot t}\left(\alpha\cdot \cos\left(\phi\right)+w\cdot \sin\left(\phi\right)\right)+\alpha\cdot \cos\left(wt+\phi\right)+w\cdot \sin\left(wt+\phi\right)}{\alpha^{2}+w^{2}}H\left(t\right)=\kappa_{\alpha,w,\phi}^{\text{cos}}\left(t\right)
-\]
-
-
-
-\subsection{Fourier sum input}
-
-Let the input be $t\rightarrow\mu H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot \cos\left(k\cdot wt+\phi_{k}\right)H\left(t\right)$.
-The time domain response is therefore 
-\[
-t\rightarrow\frac{\mu}{\alpha}\left(1-e^{-\alpha t}\right)H\left(t\right)+\sum_{k=1}^{n}\beta_{k}\cdot\kappa_{\alpha,w,\phi}^{\text{cos}}\left(t\right)
-\]
-
-
-
-\subsection{Fourier decomposition and time domain responses for $\lambda_{2}>0$}
-
-Let $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}<0$.
-
-\[
-\left(\begin{array}{c}
-\widehat{\xi_{1}}\left(x,s\right)\\
-\widehat{\xi_{2}}\left(x,s\right)
-\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
-\widehat{\xi_{1}}\left(0,s\right)\\
-\widehat{\xi_{2}}\left(0,s\right)
-\end{array}\right)
-\]
-\\
-with 
-\[
-\Phi\left(x,s\right)=\left[\begin{array}{cc}
-e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}} & 0\\
--\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}}-e^{-\frac{sx}{\lambda_{2}}}\right)\frac{1}{s+\alpha} & e^{-\frac{sx}{\lambda_{2}}}
-\end{array}\right]
-\]
-\\
-implies the following fundamental responses for the system.
-
-
-\subsubsection{Fundamental responses in time domain:}
-\begin{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-H\left(t\right)\\
-0
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
-\item $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{2}}\right)}\right)H\left(t-\frac{x}{\lambda_{2}}\right)\right)$
-\end{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-0\\
-H\left(t\right)
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=0$
-\item $\xi_{2}\left(x,t\right)=H\left(t-\frac{x}{\lambda_{2}}\right)$
-\end{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-\cos\left(\omega t+\phi\right)\\
-0
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}\cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
-\item $\xi_{2}\left(x,t\right)=-\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x}{\lambda_{1}}\right)-\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x}{\lambda_{2}}\right)\right)$
-\end{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(0,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-0\\
-\cos\left(\omega t+\phi\right)
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=0$
-\item $\xi_{2}\left(x,t\right)=\cos\left(\omega\left(t-\frac{x}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{2}}\right)$
-\end{itemize}
-\end{itemize}
-
-\subsection{Fourier decomposition and time domain responses for $\lambda_{2}<0$}
-
-This time, $\alpha=-\frac{\lambda_{2}}{\tau\left(\lambda_{1}-\lambda_{2}\right)}>0$.
-
-\[
-\left(\begin{array}{c}
-\widehat{\xi_{1}}\left(x,s\right)\\
-\widehat{\xi_{2}}\left(x,s\right)
-\end{array}\right)=\Phi\left(x,s\right)\left(\begin{array}{c}
-\widehat{\xi_{1}}\left(0,s\right)\\
-\widehat{\xi_{2}}\left(L,s\right)
-\end{array}\right)
-\]
-\\
-with
-
-\[
-\varGamma\left(x,s\right)=\left(\begin{array}{cc}
-e^{-\frac{sx}{\lambda_{1}}}e^{-\frac{x}{\lambda_{1}\tau}} & 0\\
-\alpha\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}e^{-\frac{sx}{\lambda_{1}}}-e^{-\frac{L}{\lambda_{1}\tau}}e^{-\frac{s}{\lambda_{2}}\left(x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}\right)}\right)\frac{1}{s+\alpha} & e^{-\frac{s\left(x-L\right)}{\lambda_{2}}}
-\end{array}\right)
-\]
-\\
-implies the following fundamental responses for the system.
-
-
-\subsubsection{Fundamental responses in time domain}
-\begin{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(L,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-H\left(t\right)\\
-0
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}H\left(t-\frac{x}{\lambda_{1}}\right)$
-\item $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x}{\lambda_{1}}\right)}\right)H\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\left(1-e^{-\alpha\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)}\right)H\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
-\end{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(L,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-0\\
-H\left(t\right)
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=0$
-\item $\xi_{2}\left(x,t\right)=H\left(t-\frac{x-L}{\lambda_{2}}\right)$
-\end{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(L,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-\cos\left(\omega t+\phi\right)\\
-0
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=e^{-\frac{x}{\lambda_{1}\tau}}\cos\left(\omega\left(t-\frac{x}{\lambda_{1}}\right)+\phi\right)H\left(t-\frac{x}{\lambda_{1}}\right)$
-\item $\xi_{2}\left(x,t\right)=\frac{\lambda_{1}\alpha}{\lambda_{2}}\left(e^{-\frac{x}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x}{\lambda_{1}}\right)-e^{-\frac{L}{\lambda_{1}\tau}}\kappa_{\alpha,\omega,\phi}^{\text{cos}}\left(t-\frac{x-L\frac{\lambda_{1}-\lambda_{2}}{\lambda_{1}}}{\lambda_{2}}\right)\right)$
-\end{itemize}
-\item $\left(\begin{array}{c}
-\xi_{1}\left(0,t\right)\\
-\xi_{2}\left(L,t\right)
-\end{array}\right)=\left(\begin{array}{c}
-0\\
-\cos\left(\omega t+\phi\right)
-\end{array}\right)$:
-
-\begin{itemize}
-\item $\xi_{1}\left(x,t\right)=0$
-\item $\xi_{2}\left(x,t\right)=\cos\left(\omega\left(t-\frac{x-L}{\lambda_{2}}\right)+\phi\right)H\left(t-\frac{x-L}{\lambda_{2}}\right)$\end{itemize}
-\end{itemize}
-
-\section*{Acknowledgments}
-The authors wish to thank Dr. Nikolaos Bekiaris-Liberis and Pierre-Olivier Lamare (PhD student at laboratoire Jean Kuntzmann) for their support in the first steps of adapting the spectral method from the Saint-Venant equation framework to the ARZ model. Professor L. Craig Evans' help has been extremely precious in understanding core theoretical properties of the linearized ARZ equations. The authors are also grateful to Dr. Guillaume Costeseque for his insightful comments on the draft.
+%\section*{Acknowledgments}
+%The authors wish to thank Dr. Nikolaos Bekiaris-Liberis and Pierre-Olivier Lamare (PhD student at laboratoire Jean Kuntzmann) for their support in the first steps of adapting the spectral method from the Saint-Venant equation framework to the ARZ model. Professor L. Craig Evans' help has been extremely precious in understanding core theoretical properties of the linearized ARZ equations. The authors are also grateful to Dr. Guillaume Costeseque for his insightful comments on the draft.
 
 %\section*{Appendices}
 %\begin{itemize}
@@ -1580,8 +1277,6 @@ The authors wish to thank Dr. Nikolaos Bekiaris-Liberis and Pierre-Olivier Lamar
 %\item Frequency domain for $(\rho, q)$, $(\rho, v)$
 %\item Pre-processing of data
 %\end{itemize}
-
-\section*{References}
 
 \bibliography{biblio}
 
