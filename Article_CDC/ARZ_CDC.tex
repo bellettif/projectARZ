@@ -85,11 +85,6 @@ Our approach in this paper is therefore to linearize the ARZ model about an equi
 
 \section{The ARZ model} \label{ARZSection}
 
-%\begin{itemize}
-%\item physical description of ARZ model + usual form
-%\item $(v, q)$ form, well-posedness 
-%\end{itemize}
-
 We consider the ARZ model with relaxation term. The model is shown here: 
 \begin{align} 
 \rho_t + (\rho v)_x &= 0, \label{ARZ1} \\
@@ -278,11 +273,6 @@ Similarly, for the density-flow system \eqref{ARZrhoq} we linearize around the e
 
 \subsection{Characteristic form}
 We diagonalize the linearized equations to obtain a more useful form of the model, which will then be treated in the spectral domain. 
-%We can rewrite \eqref{rhovlin} in diagonal form. The eigenvalues of $A$ are 
-%\begin{align}
-%\lambda_1 &= v^*, \\
-%\lambda_2 &= v^* + \rho^* V'( \rho^*).
-%\end{align}
 We begin with the density-flow system. Standard algebraic manipulations of the equations in \eqref{rhovlin} lead to
 \begin{equation}
 \begin{pmatrix}
@@ -596,27 +586,6 @@ We generate Bode plots using the following parameters taken from \cite{Hofleitne
 
 The Bode plots for the physical variables are displayed in Figure \ref{fig:Magn_spatial_physx}.
 
-%For the Riemann invariants only $\phi_{21}(x,s)$ and $\phi_{22}(x,s)$ are represented in Figure \ref{fig:Magn_spatial_diag} ($\phi_{11}(x,s)$ and $\phi_{12}(x,s)$ are only delay functions).
-%\begin{figure}
-%\centering
-%\begin{tabular}{cc}
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_11}
-%&
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_phi_21}
-%\tabularnewline
-%Spatial magnitude Bode plot for $\phi_{11}(x,s)$.
-%&
-%Spatial magnitude Bode plot for $\phi_{21}(x,s)$.
-%\tabularnewline
-%\end{tabular}
-%\caption{Spatial magnitude Bode plots for Riemann invariants in free-flow regime ($\left|\alpha\right| = $ 0.53 Hz)\label{fig:Magn_spatial_diag}}
-%\end{figure}
-%\begin{figure}[H]
-%\centering
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 110mm]{Bode_free_flow/IO_diag}
-%\caption{Magnitude and phase Bode plots for $\phi_{11}(L,s)$ and $\phi_{21}(L,s)$.\label{fig:Magn_phase_diag}}
-%\end{figure}
-
 \begin{figure}
 \centering
 \begin{tabular}{c}
@@ -638,20 +607,6 @@ Spatial magnitude Bode plot for $\psi_{22}(x,s)$.
 \end{tabular}
 \caption{Spatial magnitude Bode plots for physical variables in free-flow regime ($\left|\alpha\right| = $ 0.53 Hz)\label{fig:Magn_spatial_physx}}
 \end{figure}
-
-%\begin{figure}[H]
-%\centering
-%\begin{tabular}{cc}
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{Bode_free_flow/IO_v}
-%& 
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{Bode_free_flow/IO_q}
-%\tabularnewline
-%\end{tabular}
-%\caption{
-%Magnitude and phase bode plots for $\psi_{11}(L,s)$ and $\psi_{12}(L,s)$ (left) and for $\psi_{21}(L,s)$ and $\psi_{22}(L,s)$ (right). (Physical variables).
-%\label{fig:Magn_phase_physx}
-%}
-%\end{figure}
 
 For transfer functions featuring $1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha \right)}$ as a factor (that is to say $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$) one can observe in the corresponding Bode plots that the value of the log-gain in high frequency tends to vary very sharply. Indeed, with $s = jw$,
 $
@@ -983,30 +938,6 @@ We use the same fundamental diagram as in the free-flow case. However the linear
 
 Similarly to the free-flow case, for high frequencies ($w \gg 2 \pi \frac{\lambda_{1} \tau \alpha}{L} = 0.13$ Hz) near zero values appearing with spatial periodicity $\frac{2 \pi}{w} \lambda_{1} \tau \alpha$ almost cancel out $\gamma_{21}$, $\theta_{12}$, and $\theta_{21}$. Such points only appear as irregularities in the Bode plots because the gain is computed on a logarithmic scale.
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width=8cm]{Bode_congested/IO_diag}
-%\caption{
-%Magnitude and phase bode plots for $\gamma_{11}(L,s)$ and $\gamma_{21}(L,s)$ (left). (Riemann invariants).
-%\label{fig:Magn_phase_physx_congested}
-%}
-%\end{figure}
-
-%\begin{figure}
-%\centering
-%\begin{tabular}{cc}
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_11}
-%&
-%\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 8cm]{distr_gamma_21}
-%\tabularnewline
-%Spatial magnitude Bode plot for $\gamma_{11}(x,s)$.
-%&
-%Spatial magnitude Bode plot for $\gamma_{21}(x,s)$.
-%\tabularnewline
-%\end{tabular}
-%\caption{Spatial magnitude Bode plots for Riemann invariants in congested regime ($\left|\alpha\right| = $ 0.05 Hz)\label{fig:Magn_spatial_diag_congested}}
-%\end{figure}
-
 \begin{figure}
 \centering
 \begin{tabular}{cc}
@@ -1039,7 +970,6 @@ The numerical experiments above have validated the accuracy of the linearized mo
 \item The TFN delineates two regimes: congested for $F > 1$ and free-flowing for $F < 1$. This classification, and the resulting stability result legitimize the use of linearization about a nominal point in the stable region.
 \item  The assessment of convective instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, exponential growth of the linearization error only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain where convective instability travels along the characteristics.
 \item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency of the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in simple gain and delay components. In the spectral domain, $\lambda_{1}$ and $\lambda_{2}$ appear as information propagation speeds in distributed delay elements while  $\tau\lambda_{1}$ acts as the characteristic distance of distributed gain components.
-%\item Low frequency analysis ($\left|s\right|\ll\left|\alpha\right|$) also highlighted that transfer functions between physical variables are structurally similar in free-flow and congested regimes. The only dissimilarities that arise in the approximate expressions are due to the fact that boundary conditions are not set at the same locations depending on whether the regime is congested or free-flowing.
 \end{itemize}
 
 
@@ -1106,20 +1036,7 @@ where id$(\cdot)$ gives the identification number of a vehicle.
 \subsubsection{Choosing the number of bins}
 
 As the estimation formulae above rely on averaging, having a comfortable
-number of points in each bin provides more stable estimates. It is worth mentioning that usual central limit theorem based reasoning for convergence of such estimates is flawed as several samples may correspond to the same vehicle or interacting vehicles, violating the independence assumption of the theorem. Proving the convergence of the estimates above lies beyond the scope of this article. As a rule of thumb we choose a discretization that guarantees that most bins will host more than $100$ traces. This is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile of the number of traces in a given bin is $170$. Such a grid also yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin. 
-
-%The histograms of number of traces and vehicle per cell are given in Figure \ref{fig:Grid control}.
-
-%\begin{figure}[H]
-%\centering
-%\begin{tabular}{cc}
-%\includegraphics[width=6cm]{\string"traces_80_80\string".png} & \includegraphics[width=6cm]{\string"ids_80_80\string".png}\tabularnewline
-%Histogram of number of traces per cell. & Histogram of number of distinct vehicles per cell. \tabularnewline
-%\end{tabular}
-%\caption{Experimental justification for a $80\times 80$ cell based discretization
-%grid for the NGSIM data.}
-%\label{fig:Grid control}
-%\end{figure}
+number of points in each bin provides more stable estimates. As a rule of thumb we choose a discretization that guarantees that most bins will host more than $100$ traces. This is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile of the number of traces in a given bin is $170$. Such a grid also yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin.
 
 While our goal here is not to present theoretical proofs of the convergence of the binned estimators for $\left(v,\rho,q\right)$, it is nonetheless possible to check that the procedure is coherent. Two estimators are provided for $q$ that use radically
 different techniques: the first relies on the average measured speed and the number of traces in a bin, while the other relies on counting vehicles transiting from a cell to another. Figure \ref{fig:Sanity-check} show that the scatter plot of $\widehat{q}_{i,j}^{\cnt}$ plotted against $\widehat{q}_{i,j}$ coincides nicely with the line $y=x$, validating the overall binning and estimation procedure above.
@@ -1143,33 +1060,16 @@ To calibrate the relaxation time $\tau$, we analyze the errors of predicted valu
 
 \textbf{Fundamental diagrams.} From the estimated values we can easily compute the fundamental diagrams given in Figure \ref{fig:Empirical-fundamental-diagrams}. We use the fundamental diagrams to calibrate the model parameters. Though the dataset used is dense, it covers only a small region of time and space. Thus, its small size is a potential flaw in our model parameter calibration as it is certain that
 our measurements are highly correlated. This seems
-to be confirmed by the fact that the fundamental diagrams below correspond only to the congested regime. \
-%textit{OPTIONAL: Most of the points are concentrated
-%about the same region. This is not enough to guarantee that the estimated
-%quantities are reliable. However, NGSIM is to this day one of the
-%most comprehensive data sets of vehicle behavior on a freeway. It
-%is therefore one of the best ways one has to validate that a traffic
-%model is realistic. The fact that most points lie in the same region
-%is also a sign that the linearization hypothesis is reasonable
-%in that context. Observed deviations from the equilibrium are indeed
-%generally small. (The equilibrium, i.e. the linearization point, is estimated
-%below).}
-
-%\begin{figure}[H]
-%\centering
-%\begin{tabular}{cc}
-%\includegraphics[width=8cm]{\string"80_80_v_map\string".png} & \includegraphics[width=8cm]{\string"80_80_rho_map\string".png}\tabularnewline
-%\includegraphics[width=8cm]{\string"80_80_q_map\string".png} & \includegraphics[width=8cm]{\string"80_80_q_count_map\string".png}\tabularnewline
-%\end{tabular}
-%\protect\caption{Estimated values for $\left(v,q,\rho\right)$. Top left: $\widehat{v}_{i,j}$.
-%Top right: $\widehat{\rho}_{i,j}$. Bottom left: $\widehat{q}_{i,j}$.
-%Bottom right: $\widehat{q}_{i,j}^{\text{count}}$ .\label{fig:Estimated-values}}
-%\end{figure}
+to be confirmed by the fact that the fundamental diagrams below correspond only to the congested regime.
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{ccc}
-\includegraphics[width=5cm]{\string"80_80_fundamental_diagram_rho_q_count\string".png} & \includegraphics[width=5cm]{\string"80_80_fundamental_diagram_v_q_count\string".png} & \includegraphics[width=5cm]{\string"80_80_fundamental_diagram_v_rho\string".png}\tabularnewline
+\includegraphics[width=5cm]{\string"80_80_fundamental_diagram_rho_q_count\string".png}
+\tabularnewline
+\includegraphics[width=5cm]{\string"80_80_fundamental_diagram_v_q_count\string".png}
+\tabularnewline
+\includegraphics[width=5cm]{\string"80_80_fundamental_diagram_v_rho\string".png}
 \end{tabular}
 \protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{\text{count}}\right)$.
 Middle: $\left(\widehat{v},\widehat{q}^{\text{count}}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
@@ -1213,25 +1113,22 @@ is $\tau^{*}=39.18$ s.
 
 \begin{figure}[H]
 \centering
-\begin{tabular}{c}
-\includegraphics[width=15cm]{\string"vq_map_n_80_best_tau\string".png}\tabularnewline
-\includegraphics[width=15cm]
-{\string"xi_map_n_80_best_tau\string".png}
+\begin{tabular}{cc}
+\includegraphics[height=8cm]{\string"xi_1_map_n_80_best_tau\string".png}
+&
+\includegraphics[height=8cm]{\string"xi_2_map_n_80_best_tau\string".png}
 \end{tabular}
-\protect\caption{Data versus predicted. Top Figure: $\left(v,q\right)$ domain, top row is $v$, bottom row is $q$. Bottom: $\left(\xi_{1},\xi_{2}\right)$
-domain, top row is $\xi_{1}$, bottom row is $\xi_{2}$. First column: data. Middle column: predictions. Third column: error (difference between prediction and data).\label{fig:Data-versus-predicted.}}
+\protect\caption{Data versus predicted for $\xi_1$ and $\xi_2$}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]
-{\string"q_v_error_80\string".png} 
-& \includegraphics[width=8cm]{\string"xi_1_xi_2_error_80\string".png}\tabularnewline
-MAE over $q$ and $v$ & MAE over $\xi_{1}$ and $\xi_{2}$ and sum of both MAE.\tabularnewline
+\includegraphics[height=8cm]{\string"v_map_n_80_best_tau\string".png}
+&
+\includegraphics[height=8cm]{\string"q_map_n_80_best_tau\string".png}
 \end{tabular}
-\protect\caption{Calibration of $\tau$, one minimizes the sum of MAE over $\xi_{1}$
-and $\xi_{2}$.}
+\protect\caption{Data versus predicted for $v$ and $q$}
 \end{figure}
 
 
@@ -1247,36 +1144,11 @@ The numerical experiments above have validated the accuracy of the linearized mo
 
 As the full nonlinear ARZ equations have no known closed form solutions in the general case, they are difficult to analyze. The linearized equations enable the use of spectral methods presented here, allowing for elegantly simple yet powerful analysis tools relying on explicit solutions. These equations are diagonalized, and solved explicitly using a spectral representation (distributed transfer function). Using this approximation, we are able to analyze them around a nominal flow and characterize the oscillatory behavior of the solution. The linearized model is able to capture important features of the flow which first order models cannot. 
 
-With the linearized ARZ model, we were also able to define the Traffic Froude Number $F$. This quantity is computed using the eigenvalues of the system and characterizes the flow regime of the road section under consideration.
-
-%We found the eigenvalues of the linearized system to be constant, prompting the definition of the Traffic Froude Number, $F$, which indicates the flow regime of the road section under consideration. Note that the Froude number inequalities delineating the supercritical and subcritical regimes in hydronamics are reversed for our definition of the TFN. 
+With the linearized ARZ model, we were also able to define the Traffic Froude Number $F$. This quantity is computed using the eigenvalues of the system and characterizes the flow regime of the road section under consideration. 
 
 Considering the transfer function of the linearized system of equations delineates the conditions for stability of the approximation about the equilibrium. The time domain responses we derive show that the system is unstable when one of the eigenvalues is negative. In the free-flow regime, $F < 1$, values of flow and speed increase exponentially in a conic region of space and time and the system leaves the linear regime, while in the congested regime, $F>1$, oscillations decrease. In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines. Thus, the TFN is also an indicator of linear stability.
 
 The behavior predicted in congested regime for traffic does not present shocks and Fourier spectral analysis cannot account for more nonlinear and non-smooth behavior as well as wavelet transforms. However, our spectral domain study paves the way to applying standard linear system control theory to traffic, with a linearized second model that is empirically reliable in terms of reproducing actual data. Future work will therefore focus on controller design based on the spectral framework presented here.
-
-%The present analysis also complements the wavelet-based approach used in \cite{Zheng2011}. Fourier transform based analysis is a powerful tool in our numerical experiments that does not require any CFL-like condition for stability. The linearity of the system clearly predicts smoother behavior than what is found with wavelet decomposition, and as we have shown, the resulting macroscopic predictions are fairly accurate.
-
-
-%Second order models, because of their inherent complexity, were hard to analyze so far. No closed form solution was available and the frequency domain responses could not be written explicitly. Although it only offers an approximate representation of the system, our linearizing about an equilibrium has enabled a powerful yet simple analytical foundation for analysis. In particular, we have shown how to characterize important properties of the system such as Riemann Invariants and the \textit{Traffic Froude Number} that separates two classes of behaviors solutions to the ARZ equation can follow.
-%
-%For the free flowing regime ($F>1$), we have shown that around the linearization point, traffic systematically features oscillations of exponentially increasing amplitude that drive the system away from its equilibrium. This conclusion is different from those of \cite{Flynn09self-sustainednonlinear, Jamitons-multi-valued-fund}. Indeed, no assumption is made about the structure of the fundamental diagram except for the fact that the equilibrium speed decreases with traffic density. The oscillations we find occur for densities below a threshold whereas Jamitons are predicted to appear when the traffic density lies above a critical point whose value depends on the shape of the fundamental diagram. In such a regime, oscillations systematically propagate downstream whereas Jamiton waves can propagate upstream.
-%
-%In congested regime ($F<1$), traffic oscillations are damped with an exponential rate equal to $\tau$. This guarantees the linearized solution remains about the equilibrium around which the approximate system is accurate. Although decaying slowly, the solution does not feature the rapid dissipation that makes first order models somewhat inaccurate. In our numerical experiments, the linearized second order ARZ model provably accounts for phenomena that CTM based models could not represent. Indeed, the latter predict fast dissipative convergence of traffic density towards a homogeneous quantity along the freeway section under scrutiny which does not correspond to the NGSIM measurements.
-%
-%The present analysis also complements the wavelet-based approach used in \cite{Zheng2011}. Fourier transform based analysis is arguably a powerful tool in our numerical experiments that does not need any CFL-like condition to guarantee accuracy of predictions. Transfer functions provide simple analytical expression that are easy to interpret in both free flowing and congested regimes. The linearity of the system clearly predicts smoother behavior than what is found with wavelet decomposition. The resulting macroscopic predictions are practically accurate as we have shown.
-%
-%To conclude, we find that a freeway section evolves as a classical linear system therefore exploding, oscillating or converging towards $0$ at an exponential rate. Linearization has enabled the translation of the ARZ model from cumbersome non-linear PDE derivations towards a simple set of equations readily usable for control. Designing the corresponding schemes to alleviate congestion will be the subject of our further work.
-
-%\section*{Acknowledgments}
-%The authors wish to thank Dr. Nikolaos Bekiaris-Liberis and Pierre-Olivier Lamare (PhD student at laboratoire Jean Kuntzmann) for their support in the first steps of adapting the spectral method from the Saint-Venant equation framework to the ARZ model. Professor L. Craig Evans' help has been extremely precious in understanding core theoretical properties of the linearized ARZ equations. The authors are also grateful to Dr. Guillaume Costeseque for his insightful comments on the draft.
-
-%\section*{Appendices}
-%\begin{itemize}
-%\item Time domain solutions $(v, q)$
-%\item Frequency domain for $(\rho, q)$, $(\rho, v)$
-%\item Pre-processing of data
-%\end{itemize}
 
 \bibliography{biblio}
 
