@@ -73,35 +73,38 @@ This article starts from the classical Aw-Rascle-Zhang (ARZ) model for freeway t
 
 \section{Introduction}
 
-In traffic control and data mining communities, non-linearity most of the time presents challenges when it comes to devising control strategies or applying estimation theory. Empirical studies of goodness of fit would usually have researchers elect non-linear first order models such as LWR [CITE] or non-linear second order models such as [CITE]. [REPHRASE].
+Researchers aiming at devising control strategies for road traffic face a trade-off between empirical evidence confirming the accuracy of non-linear models \cite{zielke2008empirical, Jamitons2008} and the easiness of use of linear systems when it comes to designing controllers.
 
-In that regard, second order models such as PW [CITE] where first presented as a compelling opportunity to account for many features empirically observed in traffic such as .... . Although Daganzo highlighted many flaws of the first generation of that family of models, a second generation offered a step towards more realism in macroscopic traffic modeling. Talk about good properties of ARZ, a word about phase transition models. [REPHRASE]
+Non-linear second order models such as Payne-Whitham \cite{payne1971models, whitham1974linear} were first presented as a compelling alternative to first order models \cite{LW, Richards} that accounted for many features empirically observed in traffic such as drivers trying to maximize their speed. Although Daganzo highlighted many flaws of the first generation of that family of models \cite{Dag_requiem}, a second generation including the Aw-Rascle equations \cite{AR} and phase transition models\cite{colombo2003hyperbolic} offered a step towards more realism in macroscopic traffic modeling.
 
-Unfortunately, mathematical properties such as the inf-morphism principle [CITE CLAUDEL, BLANDIN, HOFTLEINER] have not found straightforward analogs in bi-variate second order models. The non-linearity of these models is therefore a strong challenge when it comes to devising control and data assimilation strategies with such models. [REPHRASE]
+The Aw-Rascle-Zhang model -- one of the most accurate in that group -- accounts for persisting oscillations, information propagation anisotropy and drivers' impulse to shorten their travel times. Linearizing the ARZ model, based on the analogous work of Litrico \cite{litrico2009modeling} for Saint-Venant equations, offers a compelling opportunity to work in a realistic modeling framework where the phenomena mentioned above are accounted for and, at the same time, use linear control theory and spectral Laplace analysis.
 
-ARZ features phenomena of persisting linear oscillations that an accurate model for traffic is expected to account for. Similarly, traffic instability has been observed in practice and gave rise to many theoretical studies (Jamitons). Linearizing the ARZ model, based on the work of Litrico, offers a compelling opportunity to work in a realistic modeling framework where the phenomena mentioned above are present and, at the same time, use linear control theory and spectral Laplace analysis. [REPHRASE]
-
-Our approach in this paper is therefore to linearize the ARZ model about an equilibrium so as to make the best of a trade-off between model accuracy and ease of use. The first section is dedicated to the linearization and spectral analysis of the ARZ model. We prove there is convective instability in free-flow regime that drives the model away from its equilibrium and devise an equivalent of the hydrodynamics' Fraud number for traffic macroscopic models. Laplace transforms and low frequency analysis also present many properties whose interpretation is tractable and simple. The second section focuses on the accuracy of the model. It confronts its predictions with ground truth data extracted from the NGSIM data with [GIVE CHARACTERISTICS OF DATA SET]. It also shows how to leverage spectral analysis so as to compute traffic prediction without the need for finite difference or Riemann based numerical schemes. [REPHRASE]
+Our approach in this paper is therefore to linearize the ARZ model about an equilibrium so as to make the best of a trade-off between model accuracy and easiness of use. The first section is dedicated to the linearization and spectral analysis of the ARZ model. We prove there is convective instability in free-flow regime that drives the model away from its equilibrium and devise an equivalent of the hydrodynamics' Froud number for traffic macroscopic models. Laplace transforms and low frequency analysis also enable a tractable interpretation of the underlying dynamics of the system. The second section focuses on the accuracy of the resulting linear equations. It confronts their predictions with ground truth data extracted from the NGSIM data set for the US-101 freeway.
 
 \section{The ARZ model} \label{ARZSection}
 
-We consider the ARZ model with relaxation term. The model is shown here: 
+We consider the ARZ model with relaxation term. The model is shown here:
+{\footnotesize
 \begin{align} 
+\footnotesize
 \rho_t + (\rho v)_x &= 0, \label{ARZ1} \\
 (v - V(\rho))_t + v(v - V(\rho))_x &=\dfrac{V(\rho) - v}{\tau} \label{ARZ2},
 \end{align}
-where $\rho$ is the density, $v$ is the velocity, $\tau$ is the relaxation time, and $V(\rho) = Q(\rho)/\rho$ is the equilibrium velocity profile, where $Q(\rho)$ is the density-flow relation given by the fundamental diagram. We assume that $V$ is $C^{1}$ derivable over its domain. Without the relaxation term cars never reach the maximum allowable speed \cite{R_improved} and the steady-state relation between density and speed is broken in the presence of road junctions \cite{jin2015}. Note that at the equilibrium velocity this term is zero. 
+}
+where $\rho$ is the density, $v$ is the velocity, $\tau$ is the relaxation time, and {\footnotesize$V(\rho) = Q(\rho)/\rho$} is the equilibrium velocity profile. Finally $Q(\rho)$ is the density-flow relation given by the fundamental diagram. We assume that $V$ is $C^{1}$ derivable over its domain.
 
 In vector form the ARZ model is
-\begin{subequations} \label{ARZrhov}
-\begin{align}
+{\footnotesize
+\begin{equation} \label{ARZrhov}
 \begin{pmatrix}
 	\rho \\
 	v
 \end{pmatrix}_t
 + 
-C_1 \left(\rho, v \right)
-&
+\begin{pmatrix}
+	v & \rho \\
+	0 & v + \rho V' (\rho)
+\end{pmatrix}
 \begin{pmatrix}
 	\rho \\ 
 	v
@@ -109,25 +112,21 @@ C_1 \left(\rho, v \right)
 \begin{pmatrix}
 	0 \\ 
 	\dfrac{V(\rho) - v}{\tau}
-\end{pmatrix},\\
-C_1 \left( \rho, v \right) 
-&=
-\begin{pmatrix}
-	v & \rho \\
-	0 & v + \rho V' (\rho)
-\end{pmatrix}.
-\end{align}
-\end{subequations}
+\end{pmatrix}
+\end{equation}
+}
 
-With the appropriate variable change, we can rewrite the model in the density-flow and velocity-flow forms, the latter of which is most useful to us for practical control purposes. Using the flow relation $q = \rho v$ and \eqref{ARZrhov}, the speed-flow form is
+With the appropriate change of variable, we can rewrite the model in the density-flow and velocity-flow forms, the latter of which is most useful to us for practical control purposes. Using the flow relation $q = \rho v$ and \eqref{ARZrhov}, the speed-flow form is
 
+{\footnotesize
 \begin{subequations}
 \begin{align}
+\footnotesize
 \begin{pmatrix}
 	v \\ 
 	q
 \end{pmatrix}_t
-+ C_2\left(v, q\right)&
++ C\left(v, q\right)&
 \begin{pmatrix}
 	v \\ 
 	q
@@ -138,7 +137,7 @@ With the appropriate variable change, we can rewrite the model in the density-fl
 	V\left( \frac{q}{v}\right) - v \\
 	Q\left( \frac{q}{v}\right) - q
 \end{pmatrix}. \label{ARZvq} \\
-C_2 \left(v, q \right)
+C\left(v, q \right)
 &=
 \begin{pmatrix}
 	v + \frac{q}{v} V'\left( \frac{q}{v} \right) & 0 \\
@@ -146,41 +145,27 @@ C_2 \left(v, q \right)
 \end{pmatrix}
 \end{align}
 \end{subequations}
-
-%It is noteworthy that (\ref{ARZrhoq}) is equivalent to the conservative form
-%\begin{equation}
-%\begin{pmatrix}
-%	\rho \\ 
-%	q - Q \left( \rho \right)
-%\end{pmatrix}_t
-%+
-%\begin{pmatrix}
-%	q \\ 
-%	\frac{q}{\rho} \left( q - Q \left( \rho \right) \right)
-%\end{pmatrix}_x =
-%\begin{pmatrix}
-%	0 \\
-%	\frac{Q\left( \rho \right) - q}{\tau}
-%\end{pmatrix}
-%\end{equation}
-%most helpful in \cite{Piccoli201532} and \cite{Delis2014318} for data assimilation and macroscopic traffic simulation respectively.
+}
 
 The $\left(v, q \right)$ form has seldom been used in transportation engineering however it is promising for data fusion purposes that involve both loop detector measurements (providing values for $q$) and GPS traces (giving estimates for $v$).
 
 
 \subsection{Linearization}
-We are interested in small deviations, $(\tilde{\rho}(x,t), \tilde{v}(x,t))$, from a given nominal profile. Consider the nominal solution $(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$ satisfying $v_t = \rho_t = 0$. Then \eqref{ARZrhov} becomes
+We are interested in small deviations, {\footnotesize$(\tilde{\rho}(x,t), \tilde{v}(x,t))$}, from a given nominal profile. Consider the nominal solution {\footnotesize$(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$} satisfying {\footnotesize$v_t = \rho_t = 0$}. Then \eqref{ARZrhov} becomes
+{\footnotesize
 \begin{align}
 v^* \rho^*_x + v^*_x\rho^* = 0, \\
 ( v^* + \rho^* V'( \rho^*) )v^*_x = \dfrac{V(\rho^*) - v^*}{\tau} = 0.
 \end{align}
-Then we must have $v^*_x=\rho^*_x=0$, so the solution is uniform along the road. 
+}
+Then we must have {\footnotesize$v^*_x=\rho^*_x=0$}, so the solution is uniform along the road. 
 
-we linearize around the equilibrium $(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$ with deviations $(\tilde{\rho}(x,t), \tilde{q}(x,t))$
+we linearize around the equilibrium {\footnotesize$(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$} with deviations {\footnotesize$(\tilde{\rho}(x,t), \tilde{q}(x,t))$}.
 
-This last form -- most adapted to traffic prediction and control in practical settings where flows and vehicle velocities are measured -- will be studied in what follows.
+This last form presented below \eqref{linARZvq} is most adapted to traffic prediction and control in practical settings where flows and vehicle velocities are measured. The following will focus on deriving an explicit solution to these equations.
 
-\begin{subequations}
+{\footnotesize
+\begin{subequations} \label{linARZvq}
 \begin{align}
 &\begin{pmatrix}
 	\tilde{\rho} \\
@@ -212,12 +197,13 @@ This last form -- most adapted to traffic prediction and control in practical se
 \end{pmatrix}
 \end{align}
 \end{subequations}
-
+}
 
 
 \subsection{Characteristic form}
 
 Diagonalization of the velocity-flow yields
+{\footnotesize
 \begin{equation} \label{vqlindiag}
 \begin{pmatrix}
 \xi_1 \\ \xi_2
@@ -244,24 +230,27 @@ Diagonalization of the velocity-flow yields
 \xi_1 \\ \xi_2
 \end{pmatrix},
 \end{equation}
-where the eigen values, $\lambda_1 = v^{*}$ and $\lambda_2 = v^{*} + \frac{q^{*}}{v^{*}} V'(\frac{q^{*}}{v^{*}})$, $\xi_1 = \dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q}$ and $\xi_2 = \dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v}$.
+}
+where the eigen values, {\footnotesize$\lambda_1 = v^{*}$ and $\lambda_2 = v^{*} + \frac{q^{*}}{v^{*}} V'(\frac{q^{*}}{v^{*}})$, $\xi_1 = \dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q}$} and {\footnotesize$\xi_2 = \dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v}$}.\\
 
 \subsection{The Traffic Froude Number}
-In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{Sturm, litrico2009modeling}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful counterpart to this number.
-Since $V(\rho)$ is non-increasing function, we have $V'(\rho^*) \leq 0$. Assuming $V'(\rho^*) \neq 0$ there are two flow regimes: one in which $\lambda_1 \lambda_2 < 0$ and one characteristic line travels downstream whereas the other characteristic line travels upstream, and one in which $\lambda_1 \lambda_2 > 0$ and both characteristic lines travel downstream.
-
-We define the \textit{Traffic Froude Number} (TFN) as
+In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{Sturm, litrico2009modeling}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful counterpart to this number. 
+Since {\footnotesize $V(\rho)$} is non-increasing function, we have {\footnotesize $V'(\rho^*) \leq 0$}. Assuming {\footnotesize$V'(\rho^*) \neq 0$} there are two flow regimes: one in which {\footnotesize$\lambda_1 \lambda_2 < 0$} and one characteristic line travels downstream whereas the other characteristic line travels upstream, and one in which {\footnotesize$\lambda_1 \lambda_2 > 0$} and both characteristic lines travel downstream. We define the \textit{Traffic Froude Number} (TFN) as
+{\footnotesize
 \begin{equation}
 F = \left\lvert\dfrac{\rho^*V'( \rho^*)}{v^*}\right\rvert.
-\end{equation} 
+\end{equation}
+}
 Then we have
+{\footnotesize
 \begin{equation*}
 \begin{cases}
 F > 1 &\Rightarrow |\rho^*V'(\rho^*)| > v^* \quad \Rightarrow \lambda_2  <0 \\
 F < 1 &\Rightarrow |\rho^*V'(\rho^*)| < v^* \quad \Rightarrow \lambda_2 > 0
 \end{cases}.
 \end{equation*}
-Note also that $\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$. Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the subcritical and supercritical regimes, respectively \cite{litrico2009modeling}. The direction of characteristic lines is illustrated in Figure \ref{Characteristics}.
+}
+Note also that {\footnotesize$\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$}. Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the subcritical and supercritical regimes, respectively \cite{litrico2009modeling}. The direction of characteristic lines is illustrated in Figure \ref{Characteristics}.
 
 For traffic, the interpretation of the different regimes is somewhat different. Free flow regime corresponds to these situations where drivers are not slowed down by heavy traffic and go as fast as the desired speed. The congested regime arises when traffic is denser and, because too many cars are present on the same freeway section, drivers slow down and eventually form traffic jam.
 
@@ -281,19 +270,18 @@ We now consider the $(v,q)$ system for the frequency domain analysis for practic
 
 \subsection{State-transition matrix}
 Taking the Laplace transform of the diagonalized form \eqref{vqlindiag} we obtain 
-\begin{equation}
-\dfrac{\partial \hat{\xi} (x,s)}{\partial x} = \mathscr{A}(s)\hat{\xi}(x,s) + \mathscr{B}\xi(x,t=0^-),
-\end{equation}
-where $\mathscr{A}(s) = A^{-1}(\tilde{B} - sI)$ and $\mathscr{B} = -A^{-1}$. 
-
-Assuming zero initial conditions we have 
-\begin{equation} \label{TFRiemann}
-\hat{\xi}(x,s) = \Phi(x,s)\hat{\xi}(0,s).
-\end{equation}
-where $\Phi(x,s) = e^{\mathscr{A}(s)x}$ is the state-transition matrix.
+{\footnotesize
+$\dfrac{\partial \hat{\xi} (x,s)}{\partial x} = \mathscr{A}(s)\hat{\xi}(x,s) + \mathscr{B}\xi(x,t=0^-)$
+}
+where {\footnotesize$\mathscr{A}(s) = A^{-1}(\tilde{B} - sI)$} and {\footnotesize $\mathscr{B} = -A^{-1}$}. Assuming zero initial conditions we have 
+{\footnotesize \label{TFRiemann}
+$\hat{\xi}(x,s) = \Phi(x,s)\hat{\xi}(0,s)$
+}
+where {\footnotesize$\Phi(x,s) = e^{\mathscr{A}(s)x}$} is the state-transition matrix.
 
 To compute the exponential we diagonalize the matrix $\mathscr{A}(s)$
 which then yields the components of $\Phi(x,s)$:
+{\footnotesize
 \begin{subequations} \label{TFv0q0tovxqx}
 \begin{align}
 \phi_{11}(x,s) &= e^{-\frac{x}{\tau \lambda_1}}e^{-\frac{x}{\lambda_1}s}, \\ 
@@ -302,33 +290,12 @@ which then yields the components of $\Phi(x,s)$:
 \phi_{22}(x,s) &= e^{-\frac{x}{\lambda_2}s}.
 \end{align}
 \end{subequations}
-
-
-Spectral analysis yields formulae for $\phi_{11}$, $\phi_{12}$ and $\phi_{22}$ that are easily to interpret in terms of distributed delays and gains. The interpretation of $\phi_{21}$ is more difficult. Let $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$. In low frequencies ($\left|s\right|\ll\left|\alpha\right|$), this transfer function takes the more transparent form
-$
-\phi_{21}(x,s) = 
--\frac{\lambda_{1}}{\lambda_{2}}\frac{\alpha}
-{s + \alpha}
-e^{-\frac{x}{\lambda_2}s}
-	\left(
-		1 - e^{-\frac{x}{\lambda_1 \tau \alpha}\left(s + \alpha\right)}
-	\right)
-\simeq 
-- \frac{\lambda_{1}}{\lambda_{2}} e^{-\frac{x}{\lambda_2}s}
-	\left(
-		1 - e^{-\frac{x}{\lambda_1 \tau}}
-	\right)
-$
-and appears as the combination of distributed delays and gains. It is not surprising that $\lambda_1$ and $\lambda_2$ play the role of information propagation speeds in delay-related components whereas $\lambda_1 \tau$ behaves as a characteristic damping distance.
+}
 
 \subsection{Free-flow case ($F<1$)}
-Consider the system in the free-flow regime. 
-
-With $\xi_1 (0,t)$ and $\xi_2 (0,t)$ as the inputs and $\xi_1(L,t)$ and $\xi_2(L,t)$ as the outputs, the distributed transfer matrix is exactly the state-transition matrix $\Phi(x,s)$.\\
-
-Using \eqref{eq:Riemannzeta}, we can write
-
-\begin{equation} \label{vqfreeflow}
+Consider the system in the free-flow regime. With $\xi_1 (0,t)$ and $\xi_2 (0,t)$ as the inputs and $\xi_1(L,t)$ and $\xi_2(L,t)$ as the outputs, the distributed transfer matrix is exactly the state-transition matrix $\Phi(x,s)$. Inverting the linear transform that gives $\xi_1$ and $\xi_2$ as functions of $v$ and $q$, we can write
+{\footnotesize
+$\label{vqfreeflow}
 \begin{pmatrix}
 	\widetilde{v}(x,s) \\ 
 	\widetilde{q}(x,s)
@@ -338,8 +305,10 @@ Using \eqref{eq:Riemannzeta}, we can write
 	\widetilde{v}(0,s) \\ 
 	\widetilde{q}(0,s)
 \end{pmatrix}
-\end{equation}
-with
+$
+}
+where, letting {\footnotesize$\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$},
+{\footnotesize
 \begin{subequations}
 \begin{align}
 \psi_{11}(x,s) &= 
@@ -376,11 +345,13 @@ with
 }.
 \end{align}
 \end{subequations}
+}
 
-It could appear at first sight that $-\alpha$ (here a positive real) is a singularity of the transfer functions and the system is not bounded-input/bounded-output stable. However, we have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right) = \frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated above.
+We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right) = \frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated above.\\
 
 \subsubsection{Low frequency approximation for physical variables in free-flow regime}
 Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This corresponds to traffic flow varying slowly and smoothly. We find the following approximate expressions for the transfer functions:
+{\footnotesize
 \begin{subequations}
 \begin{align}
 \psi_{11}(x,s)
@@ -414,29 +385,30 @@ e^{-\frac{sx}{\lambda_{2}}}
 .
 \end{align}
 \end{subequations}
+}
 
-Interpreting the low frequency expressions is fairly straightforward in terms of distributed delays featuring $\lambda_1$ or $\lambda_2$ as information propagation speeds and distributed gains where $\lambda_1 \tau$ is the characteristic damping distance. It is also remarkable that $\widetilde{q}(x,s)$ appears as the result of a derivator applied to $\widetilde{v}(0,s)$.
+Interpreting the low frequency expressions is fairly straightforward in terms of distributed delays featuring $\lambda_1$ or $\lambda_2$ as information propagation speeds and distributed gains where $\lambda_1 \tau$ is the characteristic damping distance. It is also remarkable that $\widetilde{q}(x,s)$ appears as the result of a derivator applied to $\widetilde{v}(0,s)$.\\
 
 \subsubsection{Bode plots for free-flow regime}
 
-We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{\text{max}}$ = 1300 veh/h, $\rho_{\text{max}}$ = 0.1 veh/m, and $L$ = 100 m. The Greenshields fundamental diagram, $Q( \rho) = 4 \frac{q_{\text{max}}}{\rho_{\text{max}}^2}\rho (\rho_{\text{max}} - \rho)$, is used to approximate the fundamental diagram. For inhomogeneous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$ veh/m. Here the characteristic frequency of the system, $\left|\alpha\right|$, equals 0.53 Hz which is indeed sensible for traffic flow modeling.
+We generate Bode plots using the following parameters taken from \cite{Hofleitner}: $q_{\text{max}}$ = 1300 veh/h, $\rho_{\text{max}}$ = 0.1 veh/m, and $L$ = 100 m. The Greenshields fundamental diagram, {\footnotesize $Q( \rho) = 4 \frac{q_{\text{max}}}{\rho_{\text{max}}^2}\rho (\rho_{\text{max}} - \rho)$}, is used to approximate the fundamental diagram. For inhomogeneous second-order models, the relaxation time, $\tau$, falls in the range of about 14-60 seconds \cite{Fan}. A relaxation time of $\tau$ = 15 s is used for the following simulations. We simulate for $\rho^* = 0.01$ veh/m. Here the characteristic frequency of the system, $\left|\alpha\right|$, equals 0.53 Hz which is indeed sensible for traffic flow modeling.
 
 The Bode plots for the physical variables are displayed in Figure \ref{fig:Magn_spatial_physx}.
 
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_psi_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_psi_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_psi_12}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_psi_12}
 \tabularnewline
 $\psi_{11}(x,s)$.
 &
 $\psi_{12}(x,s)$.
 \tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_psi_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_psi_21}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_psi_22}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_psi_22}
 \tabularnewline
 $\psi_{21}(x,s)$.
 &
@@ -445,7 +417,8 @@ $\psi_{22}(x,s)$.
 \caption{Spatial magnitude Bode plots for physical variables in free-flow regime ($\left|\alpha\right| = $ 0.53 Hz)\label{fig:Magn_spatial_physx}}
 \end{figure}
 
-For transfer functions featuring $1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha \right)}$ as a factor (that is to say $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$) one can observe in the corresponding Bode plots that the value of the log-gain in high frequency tends to vary very sharply. Indeed, with $s = jw$,
+For transfer functions featuring {\footnotesize$1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha \right)}$} as a factor (that is to say $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$) one can observe in the corresponding Bode plots that the value of the log-gain in high frequency tends to vary very sharply. Indeed, with $s = jw$,
+{\footnotesize
 $
 \left| 
 	1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha\right)}
@@ -460,13 +433,15 @@ e^{-\frac{x}{\lambda_{1} \tau}}
 	+
 	\sin^{2}\left( \frac{w}{\lambda_{1} \tau \alpha} x \right)
 }
-$. Therefore, if the spatial pseudo-period $\tilde{L}=\frac{2\pi}{w} \lambda_{1} \tau \left|\alpha\right|$ is low enough, near zero values appear when $x$ is a multiple of $\tilde{L}$. This explains the irregular shape of the distributed Bode plots of $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$ for frequencies $w \gg 2 \pi \frac{\lambda_{1} \tau \left|\alpha\right|}{L} = 6.53$ Hz. This does not impact the stability of the system. Bode plots only look irregular about such points because of the logarithmic scale.
+$
+}. Therefore, if the spatial pseudo-period {\footnotesize$\tilde{L}=\frac{2\pi}{w} \lambda_{1} \tau \left|\alpha\right|$} is low enough, near zero values appear when $x$ is a multiple of $\tilde{L}$. This explains the irregular shape of the distributed Bode plots of $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$ for frequencies {\footnotesize$w \gg 2 \pi \frac{\lambda_{1} \tau \left|\alpha\right|}{L} = 6.53$} Hz. This does not impact the stability of the system. Bode plots only look irregular about such points because of the logarithmic scale.\\
 
 \subsubsection{Step responses}
-We analyze the behavior of the system given step inputs $\tilde{v}(0,t)=\bar{v}H(t)$ and $\tilde{q}(0,t)=\bar{q}H(t)$, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses, let $H_1(t,x) = H\left(t-\frac{x}{\lambda_{1}}\right)$ and
-$H_2(t,x) = H\left(t - \frac{x}{\lambda_{2}} \right)$:
+We analyze the behavior of the system given step inputs {\footnotesize$\tilde{v}(0,t)=\bar{v}H(t)$} and {\footnotesize$\tilde{q}(0,t)=\bar{q}H(t)$}, where $H(\cdot)$ is the Heaviside function. The step responses can be explicitly computed from the spectral responses, let {\footnotesize$H_1(t,x) = H\left(t-\frac{x}{\lambda_{1}}\right)$} and
+{\footnotesize$H_2(t,x) = H\left(t - \frac{x}{\lambda_{2}} \right)$}:
 
-\begin{align} 
+{\footnotesize
+\begin{align}
 \tilde{v}(x,t) &= 
 \bar{v}
 e^{-\frac{x}{\lambda_{1}\tau}}H_1(t,x)
@@ -499,21 +474,21 @@ H_2(t,x)
 e^{-\alpha \left(t - \frac{x}{\lambda_{2}} \right)}
 	(H_1 - H_2)(t,x)	
 \end{align}
+}
 
 With this set of time domain expressions, we can see that a cone of exponentially growing speed and flow linearization errors generally appears between the characteristic lines corresponding to $\lambda_{1}$ and $\lambda_{2}$. This is caused by $\alpha$ being negative in the free flow regime and means that, in this region of the domain $\left[0,T\right] \times \left[0,L\right]$, the $\left(v,q\right)$ state of the linearized system can diverge exponentially fast from the linearization point. This is consistent with the observations in \cite{PhysRevLett.79.4030} where small local perturbations occurring in free-flow regime can cause traffic to transition durably to the congested regime.
 
 \begin{figure}
 \begin{centering}
-\includegraphics[width=6cm]{Exp-growth}
+\includegraphics[width=4cm]{Exp-growth}
 \par\end{centering}
-\protect\caption{Illustration of the exponential growth cone appearing in the free-flowing regime for the time domain expressions of $v$ and $q$.\label{Exp-growth}}
+\protect\caption{Exponential growth cone appearing in the free-flow regime for $v$ and $q$.\label{Exp-growth}}
 \end{figure}
 
 \subsection{Congested regime ($F>1$)}
-We now consider the system in the congested regime.
-
-Using \eqref{TFRiemann} we can write 
-\begin{equation} \label{vqcongested}
+Considering the system in congested regime, using \eqref{TFRiemann} we can write
+{\footnotesize
+$\label{vqcongested}
 \begin{pmatrix}
 	\hat{\xi_{1}}(x,s)\\
 	\hat{\xi_{2}}(x,s)
@@ -522,9 +497,11 @@ Using \eqref{TFRiemann} we can write
 \begin{pmatrix}
 	\hat{\xi_{1}}\left(0,s\right)\\
 	\hat{\xi_{2}}\left(L,s\right)
-\end{pmatrix}.
-\end{equation}
+\end{pmatrix}
+$
+}
 with 
+{\footnotesize
 \begin{subequations}
 \begin{align}
 \gamma_{11}\left(x,s\right)&=
@@ -546,21 +523,11 @@ e^{-\frac{x}{\lambda_{1}}\left(s+\frac{1}{\tau}\right)} , \\
 \gamma_{22}\left(x,s\right)&=e^{\frac{s\left(L-x\right)}{\lambda_{2}}}.
 \end{align}
 \end{subequations}
-
-For low frequencies ($\left|s\right|\ll\left|\alpha\right|$), 
-$\gamma_{21}\left(x,s\right)
-\simeq
-\frac{\lambda_{1}}{\lambda_{2}}
-e^{-\frac{x}{\lambda_{1}} \left( s + \frac{1}{\tau} \right)}
-\left(
-	1 -
-	e^{-\frac{L-x}{\lambda_{1}\tau}}
-\right)
-$
-is the combination of a gain, a distributed delay with propagation speed $\lambda_{1}$, and two distributed gains with characteristic distance $\lambda_{1}\tau$ that cancel out for $x = L$.
+}
 
 \subsubsection{Transfer functions for physical variables in congested regime}
-In congested regime, the boundary conditions used to control the system are $\hat{\xi}_{1}\left(0,\cdot\right)$ and $\hat{\xi}_{2}\left(0,\cdot\right)$. By linearity of the Laplace transform 
+In congested regime, the boundary conditions used to control the system are $\hat{\xi}_{1}\left(0,\cdot\right)$ and $\hat{\xi}_{2}\left(0,\cdot\right)$. By linearity of the Laplace transform
+{\footnotesize
 $\hat{\xi_{1}}\left(0,s\right) = 
 \frac{
 	\rho^{*}\lambda_{2}
@@ -570,26 +537,30 @@ $\hat{\xi_{1}}\left(0,s\right) =
 \hat{v}\left(0,s\right)
 +
 \hat{q}\left(0,s\right)
-$.
+$.}
 Therefore, as
+{\footnotesize
 $\hat{\xi_{2}}\left(0,s\right) =
 \gamma_{21}\left(0,s\right)
 \hat{\xi_{1}}\left(0,s\right)
 +
 \gamma_{22}\left(0,s\right)
-\hat{\xi_{2}}\left(L,s\right)$
+\hat{\xi_{2}}\left(L,s\right)$}
 , we get
+{\footnotesize
 $\hat{\xi_{1}}\left(0,s\right) =
 \frac{1}{d\left(s\right)}
 \hat{q}\left(0,s\right)
 +
 \frac{n\left(s\right)}{d\left(s\right)}
 \hat{v}\left(L,s\right)
-$
+$}
 where
-$d\left(s\right) = 1 - \frac{\lambda_{2}}{\lambda_{1}}\gamma_{21}\left(0,s\right)$
+{\footnotesize
+$d\left(s\right) = 1 - \frac{\lambda_{2}}{\lambda_{1}}\gamma_{21}\left(0,s\right)$}
 and
-$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$. The $\left(v,q\right)$ system has only two degrees of freedom. Therefore we consider that the only inputs to the system are $q\left(0,\cdot\right)$ and $v\left(L,\cdot\right)$. $v\left(0,\cdot\right)$ is then completely determined and can be interpreted as an output of the system. The corresponding transfer equation is
+{\footnotesize$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$}. The {\footnotesize$\left(v,q\right)$} system has only two degrees of freedom. Therefore we consider that the only inputs to the system are {\footnotesize$q\left(0,\cdot\right)$} and {\footnotesize$v\left(L,\cdot\right)$}. {\footnotesize$v\left(0,\cdot\right)$} is then completely determined and can be interpreted as an output of the system. The corresponding transfer equation is
+{\footnotesize
 \begin{equation}
 \begin{pmatrix}
 	\hat{v}\left(x,s\right)
@@ -617,7 +588,9 @@ R^{-1}\Gamma\left(x,s\right)
 	\hat{q}\left(0,s\right)
 \end{pmatrix}
 \end{equation}
+}
 where
+{\footnotesize
 \begin{subequations}
 \begin{align}
 \theta_{11}\left(x,s\right) &=
@@ -732,9 +705,11 @@ where
 .
 \end{align}
 \end{subequations}
+}
 
 \subsubsection{Low frequency approximation for physical variables in congested regime}
 We derive approximate expressions in the frequency domain for the transfer functions above when $\left|s\right|\ll\left|\alpha\right|$:
+{\footnotesize
 \begin{subequations}
 \begin{align}
 \theta_{11}\left(x,s\right) &\simeq
@@ -757,28 +732,29 @@ e^{\frac{L}{\tau\lambda_{1}}}
 e^{-\frac{sx}{\lambda_{1}}}.
 \end{align}
 \end{subequations}
+}
 
-With such expressions, interpreting the approximate transfer functions in low frequencies becomes fairly easy in terms of information propagating from the boundary conditions into the resolution domain with two different speeds: $\lambda_1$ and $\lambda_2$. Once again, one can notice distributed gain components with characteristic distance $\lambda_1 \tau$. A derivator component in $\theta_{21}$ relates $\hat{\xi}_2(x,s)$ to $\hat{\xi}_1(0,s)$.
+With such expressions, interpreting the approximate transfer functions in low frequencies becomes fairly easy in terms of information propagating from the boundary conditions into the resolution domain with two different speeds: $\lambda_1$ and $\lambda_2$. Once again, one can notice distributed gain components with characteristic distance $\lambda_1 \tau$. A derivator component in $\theta_{21}$ relates $\hat{\xi}_2(x,s)$ to $\hat{\xi}_1(0,s)$.\\
 
 \subsubsection{Bode plots for congested regime}
 We use the same fundamental diagram as in the free-flow case. However the linearization point, $\rho^* = 0.08$ veh/m, corresponds to the congested region of the Greeshields diagram. We show the distributed Bode plots for the physical variables in Figure \ref{fig:Magn_spatial_physx_congested}. In that case, $\alpha =$ 0.05 Hz, which does correspond to a reasonable characteristic frequency for traffic modeling applications.
 
-Similarly to the free-flow case, for high frequencies ($w \gg 2 \pi \frac{\lambda_{1} \tau \alpha}{L} = 0.13$ Hz) near zero values appearing with spatial periodicity $\frac{2 \pi}{w} \lambda_{1} \tau \alpha$ almost cancel out $\gamma_{21}$, $\theta_{12}$, and $\theta_{21}$. Such points only appear as irregularities in the Bode plots because the gain is computed on a logarithmic scale.
+Similarly to the free-flow case, for high frequencies ($w \gg 2 \pi \frac{\lambda_{1} \tau \alpha}{L} = 0.13$ Hz) near zero values appearing with spatial periodicity $\frac{2 \pi}{w} \lambda_{1} \tau \alpha$ almost cancel out $\gamma_{21}$, $\theta_{12}$, and $\theta_{21}$. Such points only appear as irregularities in the Bode plots because the gain is computed on a logarithmic scale.\\
 
 \begin{figure}
 \centering
 \begin{tabular}{cc}
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_theta_11}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_theta_11}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_theta_12}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_theta_12}
 \tabularnewline
 $\theta_{11}(x,s)$.
 &
 $\theta_{12}(x,s)$.
 \tabularnewline
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_theta_21}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_theta_21}
 &
-\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.8cm]{distr_theta_22}
+\includegraphics[trim = 0mm 60mm 0mm 60mm, width = 3.9cm]{distr_theta_22}
 \tabularnewline
 $\theta_{21}(x,s)$.
 &
@@ -791,29 +767,17 @@ $\theta_{22}(x,s)$.
 \subsubsection{Poles and BIBO stability of the system}
 In order to practically assess the presence of poles, numerical search for roots of the denominator of the transfer functions has been conducted thanks to standard equation solvers. Once more $-\alpha$ is a solution and another one was found at $s=-0.0018$. They are both negative reals and therefore cannot make the system unstable. Although the solvers could have detected poles with a non zero imaginary part, none has been found. Holistic search for other poles should be conducted but is out of the scope of this article.
 
-\subsection{Findings and conclusion from the theoretical study}
-The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
-\begin{itemize}
-\item The TFN delineates two regimes: congested for $F > 1$ and free-flowing for $F < 1$. This classification, and the resulting stability result legitimize the use of linearization about a nominal point in the stable region.
-\item  The assessment of convective instability in the free flow regime is of course applicable to this specific model (other models such as \cite{Jamitons-multi-valued-fund} might lead to other conclusions, and all need to be checked against experimental data). Here, exponential growth of the linearization error only occurs in a conic region of the  $\left[0,T\right] \times \left[0,L\right]$ domain where convective instability travels along the characteristics.
-\item The absolute value of the term $\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lambda_2)}$ is a characteristic frequency of the system. It delineates the low frequency domain in which approximate expressions help decompose the transfer functions in simple gain and delay components. In the spectral domain, $\lambda_{1}$ and $\lambda_{2}$ appear as information propagation speeds in distributed delay elements while  $\tau\lambda_{1}$ acts as the characteristic distance of distributed gain components.
-\end{itemize}
-
 
 \section{Numerical validation}
-
-In this section we demonstrate the ability of the linearized ARZ equations to model the various nonlinear dynamics around a nominal operation point. Prior to using such standard control theoretic techniques, it is necessary to assess how accurate the model is in its linearized form. This section compares the prediction of the linearized equations with actual flow
-and velocity data gathered from the well-known NGSIM data set.
+Prior to using standard control theoretic techniques, it is necessary to assess how accurate the model is in its linearized form. This section compares the prediction of the linearized equations with actual flow and velocity data gathered from the well-known NGSIM data set.
 
 
 \subsection{Data source: NGSIM trajectories}
-
-We use the NSGIM trajectory data set for a section of the US-101 highway. The set gathers trajectories of vehicles sampled with a 10 Hz frequency thanks to high precision cameras. The data is pre-processed so as to take only cars into account; 45 minutes are recorded on a 650-meter long section with five lanes. A map of the time evolution of speed along the section is given in Figure \ref{fig:NGSIM-trajectories}.
-Only a subset of the spatial domain is used due to the presence of ramps, which breaks the homogeneity of the freeway. The viable domain is 200 meters long.
+We use the NSGIM trajectory data set for a uniform 200 meter long section of the US-101 highway where no ramps perturb the homogeneity of traffic. The set gathers 45 minutes worth of trajectories of vehicles sampled with a 10 Hz frequency in the area described in Figure \ref{fig:NGSIM-trajectories}.
 
 \begin{figure}
 \centering
-\includegraphics[width=6cm]{US-101_all_traj_low_res_mod}
+\includegraphics[width=7cm]{US-101_all_traj_low_res_mod}
 \protect\caption{NGSIM trajectories. Color represents the measured speed of each
 car in m/s.}
 \label{fig:NGSIM-trajectories}
@@ -823,41 +787,13 @@ car in m/s.}
 
 \subsection{Reconstructing $(v,q)$ maps from NGSIM trajectories}
 
-The NGSIM data set does not directly provide the values $v(t,x)$ and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$. To obtain macroscopic quantities out of the microscopic measurements, we follow the approach devised in \cite{edie1963discussion} and divide the space-time grid into cells $\left(\left[i\Delta t,\, \left(i+1\right)\Delta t\right]\times\left[j\Delta x, \, (j+1)\Delta x\right]\right)_{i\in\left\{ 1\ldots n_{t}\right\} ,j\in\left\{ 1\ldots n_{x}\right\} }$, where $n_t$ and $n_x$ are the number of cells in time and space, respectively. This operation consists of gathering corresponding data points into cells, then estimating the quantities of interest in each cell, it was for example used in \cite{Piccoli201532}. 
-
-\subsubsection{Estimating macroscopic quantities}
-Within each cell, a specific number of traces, or footprints of a vehicle along its trajectory, are available, and $\rho$, $v$, and $q$ are assumed to be constant. Estimates for $v$, denoted $\hat{v}$, are obtained by averaging measured speeds in each discretization cell. The sampling frequency and number of lanes are taken into account when computing averaging estimates for the lineic density of vehicles $\hat{\rho}$. Estimates of vehicular flow can be obtained by two different methods. The first one consists of computing the product of the estimated density and the estimated speed and yield $\hat{q}$. The second one, $\hat{q}^{\text{count}}$ consists in counting the number of vehicles going from one cell to another between two discretization time stamps.
-
-\subsubsection{Choosing the number of bins}
-
-As the estimation formulae above rely on averaging, having a comfortable
-number of points in each bin provides more stable estimates. As a rule of thumb we choose a discretization that guarantees that most bins will host more than $100$ traces. This is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile of the number of traces in a given bin is $170$. Such a grid also yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin.
-
-While our goal here is not to present theoretical proofs of the convergence of the binned estimators for $\left(v,\rho,q\right)$, it is nonetheless possible to check that the procedure is coherent. Two estimators are provided for $q$ that use radically different techniques. Figure \ref{fig:Sanity-check} show that the scatter plot of $\widehat{q}_{i,j}^{\cnt}$ plotted against $\widehat{q}_{i,j}$ coincides nicely with the line $y=x$, validating the overall binning and estimation procedure above. Note that $\widehat{q}$ and $\widehat{q}^{\text{count}}$ give extremely similar results, so we may use $\widehat{q}^{\text{count}}$ from this point on.
-
-\begin{figure}
-\centering
-\includegraphics[width=5cm]{\string"80_80_q_q_count\string".png}
-\protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
-is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
-\label{fig:Sanity-check}}
-\end{figure}
-
-
-
-\subsection{Estimated values for $\left(v,q\right)$} 
-
-To check how well the linearized ARZ model fits an actual dataset, we chose a bounded domain and compare the theoretical solution given by the second-order model and the observed data. Again we focus on the variables $v$ and $q$. They are displayed on Figures \ref{fig:v_q_data_vs_sim}. Damped oscillations and smoothly decaying values along characteristic lines are the main characteristic the practical implementation of the model should feature.
-
-Using the estimation procedure above, we compute fundamental diagrams from which we estimate the eigenvalues $\lambda_{1}$ and $\lambda_{2}$.
-To calibrate the relaxation time $\tau$, we analyze the errors of predicted values of $v$ and $q$ for various $\tau$. The resulting maps of both the predicted and observed values highlight phenomena that the linearized model can and cannot account for.
+The NGSIM data set does not directly provide the values $v(t,x)$ and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$. To obtain macroscopic quantities out of the microscopic measurements, we follow the approach devised in \cite{edie1963discussion} and divide the space-time grid into rectangular cells. This operation consists of gathering corresponding data points into cells, then estimating the quantities of interest in each cell, it was for example used in \cite{Piccoli201532}. The full estimation procedure is described in the appendix attached. It is validated by confronting two vehicular flow estimates obtained by radically different techniques. They both correspond throughout the estimated speed-flow map.\\
 
 \subsubsection{Calibration of $\lambda_{1}$ and $\lambda_{2}$, linearization point}
-In Section \ref{ARZSection}, we found that $\lambda_{1}$ is exactly $v^*$ and $\lambda_{2}$ is the slope of the fundamental diagram at $v^*$. Thus to calibrate the eigenvalues we must find the linearization point. We estimate the linearization point using the Ordinary Least Squares method. Note the dataset used corresponds only to the congested regime and the fundamental diagram is almost affine. The estimator, $\widehat{\lambda}_1=\widehat{v}^*$ is chosen as the empirical mean of $\widehat{v}_{i,j}$. To estimate $\lambda_{2}$, we fit a linear model $\widehat{q}^{\text{count}}=b_{1}\widehat{\rho}+b_{0}+\varepsilon$, where $\varepsilon$
+In Section \ref{ARZSection}, we found that $\lambda_{1}$ is exactly $v^*$ and $\lambda_{2}$ is the slope of the fundamental diagram at $v^*$. Thus to calibrate the eigenvalues we must find the linearization point. Note the dataset used corresponds only to the congested regime and the fundamental diagram is almost affine. The estimator, $\widehat{\lambda}_1=\widehat{v}^*$ is chosen as the empirical mean of $\widehat{v}$. To estimate $\lambda_{2}$, we fit a linear model $\widehat{q}=b_{1}\widehat{\rho}+b_{0}+\varepsilon$ with an ordinary least squares procedure, where $\varepsilon$
 represents the noise in the model that would ideally be centered,
-homoschedastic, and uncorrelated but is not practically. Then $\widehat{\lambda}_{2}=\widehat{b}_{1}$ and we take $\widehat{q}^*$ as the empirical average of $\widehat{q}^{\cnt}$. The ratio of $\widehat{q}^*$ and $\widehat{v}^*$ gives the estimate $\widehat{\rho}^*$.
-Provided each estimator is convergent, the continuity of the functional
-$\left(x,y\right)\rightarrow\frac{x}{y}$ on its domain guarantees the convergence of $\widehat{\rho}^*$. The empirical results are presented in Figure \ref{fig:Calibration-of-eigen-values}. The determination coefficient is poor but can be improved by filtering out outliers and gathering more data. Further work should turn this rather heuristic method for estimating parameters into a fully justified statistical procedure. Note that the goal of the present article is to provide a new model and corresponding spectral analysis, which we want to illustrate with state of the art data. Thus, development of statistical methods to handle this data is out of the scope of the present investigation.
+homoschedastic, and uncorrelated but is not practically. Then $\widehat{\lambda}_{2}=\widehat{b}_{1}$ and we take $\widehat{q}^*$ as the empirical average of $\widehat{q}$. The ratio of $\widehat{q}^*$ and $\widehat{v}^*$ gives the estimate $\widehat{\rho}^*$.
+The empirical results are presented in Figure \ref{fig:Calibration-of-eigen-values}. The determination coefficient is poor but can be improved by filtering out outliers and gathering more data. Further work should turn this rather heuristic method for estimating parameters into a fully justified statistical procedure.
 
 \begin{figure}[H]
 \centering
@@ -867,51 +803,43 @@ $\left(x,y\right)\rightarrow\frac{x}{y}$ on its domain guarantees the convergenc
 \end{figure}
 
 \subsection{Verification of the spectral form}
-In this section we demonstrate the performance of the spectral form as a prediction tool using the time domain responses derived from the transfer functions (see \ref{sub:Generic-computations}) and FFT. Since we are working with a linearized system, we can decompose boundary conditions then add predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$. Fourier decomposition of boundary conditions is here extremely accurate as the median relative errors for the interpolation of the values of $\xi_{1}\left(x=0, \cdot \right)$ and $\xi_{2}\left(x=L, \cdot \right)$ are respectively $2\%$ and $3\%$.
+In this section we demonstrate the performance of the spectral form as a prediction tool using the time domain responses derived from the transfer functions above and FFT. Since we are working with a linearized system, we can decompose boundary conditions then add predicted values inside the domain $\left[0,T\right]\times\left[0,L\right]$. Fourier decomposition of boundary conditions is here extremely accurate as the median relative errors for the interpolation of the values of $\xi_{1}\left(x=0, \cdot \right)$ and $\xi_{2}\left(x=L, \cdot \right)$ are respectively $2\%$ and $3\%$.\\
 
 \subsubsection{Simulated maps}
-Since the spectral form presents information in the diagonalized basis, we need a conversion before we can compare the simulated results to the values estimated from the dataset. It takes into account both the fact that the linearized equation are based on deviations of $v$ and $q$ from the linearization point and the change of basis that is necessary to work with Riemann invariants. The inverse of this affine transformation yields in return predicted quantities for the physical variables based on the computations of $\xi_1$ and $xi_2$ in the resolution domain.
+Since the spectral form presents information in the diagonalized basis, we need a conversion before we can compare the simulated results to the values estimated from the dataset. It takes into account both the fact that the linearized equation are based on deviations of $v$ and $q$ from the linearization point and the change of basis that is necessary to work with Riemann invariants. The inverse of this affine transformation yields in return predicted quantities for the physical variables based on the computations of $\xi_1$ and $\xi_2$ in the resolution domain.
 
 Figures \ref{fig:xi_1_xi_2_data_vs_sim} and \ref{fig:v_q_data_vs_sim} shows important qualitative properties of the model. As expected, the model generally predicts with very good accuracy the decay of all quantities along their characteristic lines, a realistic feature that cannot be paralleled by first-order models. The general quality of the fit is rather good with most of the error on $v$ and $q$ in a $20\%$ range of the data's amplitude between minimum and maximum values. Furthermore the linearized second-order model manages to capture oscillations observed on the boundary and account for their decay accurately.
 
 \begin{figure}
 \centering
-\begin{tabular}{cc}
-\includegraphics[height=7.5cm]{\string"xi_1_map_n_80_best_tau\string".png}
-&
-\includegraphics[height=7.5cm]{\string"xi_2_map_n_80_best_tau\string".png}
-\end{tabular}
+%\begin{tabular}{c}
+%\includegraphics[height=7.5cm]{\string"xi_1_map_n_80_best_tau\string".png}
+%&
+%\includegraphics[height=7.5cm]{\string"xi_2_map_n_80_best_tau\string".png}
+%\end{tabular}
+\includegraphics[width=8.2cm]{\string"xi_map_n_80_best_tau\string".png}
 \protect\caption{Data versus predicted for $\xi_1$ and $\xi_2$\label{fig:xi_1_xi_2_data_vs_sim}}
 \end{figure}
 
 \begin{figure}
 \centering
-\begin{tabular}{cc}
-\includegraphics[height=7.5cm]{\string"v_map_n_80_best_tau\string".png}
-&
-\includegraphics[height=7.5cm]{\string"q_map_n_80_best_tau\string".png}
-\end{tabular}
+%\begin{tabular}{c}
+%\includegraphics[height=7.5cm]{\string"v_map_n_80_best_tau\string".png}
+%&
+%\includegraphics[height=7.5cm]{\string"q_map_n_80_best_tau\string".png}
+%\end{tabular}
+\includegraphics[width=8.2cm]{\string"vq_map_n_80_best_tau\string".png}
 \protect\caption{Data versus predicted for $v$ and $q$\label{fig:v_q_data_vs_sim}}
 \end{figure}
 
 
-\subsection{Findings and conclusion from the numerical experiments}
-The numerical experiments above have validated the accuracy of the linearized model and highlighted several of its core properties.
-\begin{itemize}
-\item The numerical experiments above show that the linearized ARZ model is capable of reproducing NGSIM data accurately for a homogeneous segment of the US-101 freeway. Oscillations are accounted for as well as their damping delay.
-\item The spectral approach provided here supports a solution to the underlying traffic flow model. In other words, the contribution of the work is to show that the model can support oscillatory behavior (through periodic solutions). This is the main difference with purely data driven approaches such as \cite{Zheng2011} for example.
-\end{itemize}
-
-
 \section{Conclusion}
 
-As the full nonlinear ARZ equations have no known closed form solutions in the general case, they are difficult to analyze. The linearized equations enable the use of spectral methods presented here, allowing for elegantly simple yet powerful analysis tools relying on explicit solutions. These equations are diagonalized, and solved explicitly using a spectral representation (distributed transfer function). Using this approximation, we are able to analyze them around a nominal flow and characterize the oscillatory behavior of the solution. The linearized model is able to capture important features of the flow which first order models cannot. 
+As the full nonlinear ARZ equations have no known closed form solutions in the general case, they are difficult to analyze. The linearized equations enable the use of spectral methods presented here, allowing for elegantly simple yet powerful analysis tools relying on explicit solutions. Using this approximation, we are able to analyze them around a nominal flow and characterize the oscillatory behavior of the solution. The linearized model is able to capture important features of the flow which first order models cannot. 
 
-With the linearized ARZ model, we were also able to define the Traffic Froude Number $F$. This quantity is computed using the eigenvalues of the system and characterizes the flow regime of the road section under consideration. 
+With the linearized ARZ model, we were also able to define the Traffic Froude Number $F$. This quantity is computed using the eigenvalues of the system and characterizes the flow regime of the road section under consideration. The time domain responses we derive show that the system is convectively unstable in free-flow regime ($F < 1$) as opposed to the congested regime case $F>1$. In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines.
 
-Considering the transfer function of the linearized system of equations delineates the conditions for stability of the approximation about the equilibrium. The time domain responses we derive show that the system is unstable when one of the eigenvalues is negative. In the free-flow regime, $F < 1$, values of flow and speed increase exponentially in a conic region of space and time and the system leaves the linear regime, while in the congested regime, $F>1$, oscillations decrease. In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines. Thus, the TFN is also an indicator of linear stability.
-
-The behavior predicted in congested regime for traffic does not present shocks and Fourier spectral analysis cannot account for more nonlinear and non-smooth behavior as well as wavelet transforms. However, our spectral domain study paves the way to applying standard linear system control theory to traffic, with a linearized second model that is empirically reliable in terms of reproducing actual data. Future work will therefore focus on controller design based on the spectral framework presented here.
+The behavior predicted in congested regime for traffic does not present shocks and Fourier spectral analysis cannot account for more nonlinear and non-smooth behavior as well as other transforms such as wavelets. However, our spectral domain study paves the way to applying standard linear system control theory to traffic, with a linearized second order model that is empirically reliable in terms of reproducing actual data. Future work will therefore focus on controller design based on the spectral framework presented here.
 
 \bibliography{biblio}
 
@@ -1018,7 +946,7 @@ C_3 \left(\rho, q \right)
 
 \subsubsection{Linearized ARZ model}
 Similarly, for the density-flow system \eqref{ARZrhoq} we linearize around the equilibrium $(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$ with deviations $(\tilde{\rho}(x,t), \tilde{q}(x,t))$.
-
+{\footnotesize
 \begin{align}
 \begin{pmatrix}
 	\tilde{\rho} \\
@@ -1048,9 +976,11 @@ Similarly, for the density-flow system \eqref{ARZrhoq} we linearize around the e
 	V'\left( \rho^{*} \right) & -1
 \end{pmatrix}
 \end{align}
+}
 
 \subsubsection{Characteristic form}
 We proceed in the same manner as above to diagonalize the $(\rho,q)$ system \eqref{ARZrhoq}. The diagonal form is
+{\footnotesize
 \begin{equation} \label{rhoqlindiag}
 \begin{pmatrix}
 	\chi_1 \\ 
@@ -1074,11 +1004,16 @@ We proceed in the same manner as above to diagonalize the $(\rho,q)$ system \eqr
 \chi_1 \\ \chi_2
 \end{pmatrix},
 \end{equation}
+}
 where $\chi_1 = -\lambda_2 \tilde{\rho} + \tilde{q}$ and $\chi_2 = -\lambda_1 \tilde{\rho} + \tilde{q}$ are the characteristic variables in the $(\rho,q)$ system and the eigenvalues $\lambda_1$ and $\lambda_2$ are the same as in the density-velocity system due to the relation $q^* = \rho^*v^*$.
 
 
 \subsection{Numerical validation}
 
+\subsubsection{Estimating macroscopic quantities}
+Within each cell, a specific number of traces, or footprints of a vehicle along its trajectory, are available, and $\rho$, $v$, and $q$ are assumed to be constant. Estimates for $v$, denoted $\hat{v}$, are obtained by averaging measured speeds in each discretization cell. The sampling frequency and number of lanes are taken into account when computing averaging estimates for the lineic density of vehicles $\hat{\rho}$. Estimates of vehicular flow can be obtained by two different methods. The first one consists of computing the product of the estimated density and the estimated speed and yield $\hat{q}$. The second one, $\hat{q}^{\text{count}}$ consists in counting the number of vehicles going from one cell to another between two discretization time stamps.
+
+\subsubsection{Estimation formulae}
 \textbf{Binning formula for $v$}: Since the speed is assumed to be constant in each cell, a straightforward estimate for the speed is the empirical average. The estimator for $v$ in $\bin_{i,j}$ is
 
 \begin{equation}
@@ -1107,41 +1042,46 @@ We can also approximate the flux through $\bin_{i,j}$ with a simple counting met
 \end{equation}
 where id$(\cdot)$ gives the identification number of a vehicle.
 
+\subsubsection{Choosing the number of bins}
+As the estimation formulae above rely on averaging, having a comfortable
+number of points in each bin provides more stable estimates. As a rule of thumb we choose a discretization that guarantees that most bins will host more than $100$ traces. This is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile of the number of traces in a given bin is $170$. Such a grid also yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin.
+While our goal here is not to present theoretical proofs of the convergence of the binned estimators for $\left(v,\rho,q\right)$, it is nonetheless possible to check that the procedure is coherent. Two estimators are provided for $q$ that use radically different techniques. Figure \ref{fig:Sanity-check} show that the scatter plot of $\widehat{q}_{i,j}^{\cnt}$ plotted against $\widehat{q}_{i,j}$ coincides nicely with the line $y=x$, validating the overall binning and estimation procedure above. Note that $\widehat{q}$ and $\widehat{q}^{\text{count}}$ give extremely similar results, so we may use $\widehat{q}^{\text{count}}$ in our experiments.
+\begin{figure}
+\centering
+\includegraphics[width=5cm]{\string"80_80_q_q_count\string".png}
+\protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
+is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
+\label{fig:Sanity-check}}
+\end{figure}
+
 
 \textbf{Fundamental diagrams.} From the estimated values we can easily compute the fundamental diagrams given in Figure \ref{fig:Empirical-fundamental-diagrams}. We use the fundamental diagrams to calibrate the model parameters. Though the dataset used is dense, it covers only a small region of time and space. Thus, its small size is a potential flaw in our model parameter calibration as it is certain that
 our measurements are highly correlated. This seems
 to be confirmed by the fact that the fundamental diagrams below correspond only to the congested regime.
 
-\begin{figure}[H]
+\begin{figure}
 \centering
-\begin{tabular}{ccc}
-\includegraphics[width=6cm]{\string"80_80_fundamental_diagram_rho_q_count\string".png}
+\begin{tabular}{c}
+\includegraphics[width=4.5cm]{\string"80_80_fundamental_diagram_rho_q_count\string".png}
 \tabularnewline
-\includegraphics[width=6cm]{\string"80_80_fundamental_diagram_v_q_count\string".png}
+\includegraphics[width=4.5cm]{\string"80_80_fundamental_diagram_v_q_count\string".png}
 \tabularnewline
-\includegraphics[width=6cm]{\string"80_80_fundamental_diagram_v_rho\string".png}
+\includegraphics[width=4.5cm]{\string"80_80_fundamental_diagram_v_rho\string".png}
 \end{tabular}
 \protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{\text{count}}\right)$.
 Middle: $\left(\widehat{v},\widehat{q}^{\text{count}}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
 \label{fig:Empirical-fundamental-diagrams}}
 \end{figure}
 
-
-\textbf{Calibration of $\tau$\label{sub:Calibration-of-tau}} For each $\tau$ we compute the \textit{mean absolute error} (MAE), or the average difference in absolute value between simulated and predicted values for each discretization cell. Since the quantities $v$ and $q$ are not physically homogeneous, it is not sensible to aggregate the errors over these quantities. However, $\xi_{1}$
-and $\xi_{2}$ are both expressed in veh/s. Summing their MAE gives a reliable uni-dimensional index of the quality of the fit with respect
-to $\tau$. This quantity is computed for different values of $\tau$
-ranging from 5 to 80 seconds. The value offering the best fit
-is $\tau^{*}=39.18$ s.
-
-\begin{figure}[H]
+\begin{figure}
 \centering
-\begin{tabular}{cc}
-\includegraphics[width=6cm]
+\begin{tabular}{c}
+\includegraphics[width=4cm]
 {\string"q_v_error_80\string".png}
 \tabularnewline
 MAE over $\xi_{1}$ and $\xi_{2}$ and sum of both MAE.
 \tabularnewline
-\includegraphics[width=6cm]{\string"xi_1_xi_2_error_80\string".png}
+\includegraphics[width=4cm]{\string"xi_1_xi_2_error_80\string".png}
 \tabularnewline
 MAE over $q$ and $v$
 \tabularnewline
@@ -1149,5 +1089,12 @@ MAE over $q$ and $v$
 \protect\caption{Calibration of $\tau$, one minimizes the sum of MAE over $\xi_{1}$
 and $\xi_{2}$.}
 \end{figure}
+
+\textbf{Calibration of $\tau$\label{sub:Calibration-of-tau}} For each $\tau$ we compute the \textit{mean absolute error} (MAE), or the average difference in absolute value between simulated and predicted values for each discretization cell. Since the quantities $v$ and $q$ are not physically homogeneous, it is not sensible to aggregate the errors over these quantities. However, $\xi_{1}$
+and $\xi_{2}$ are both expressed in veh/s. Summing their MAE gives a reliable uni-dimensional index of the quality of the fit with respect
+to $\tau$. This quantity is computed for different values of $\tau$
+ranging from 5 to 80 seconds. The value offering the best fit
+is $\tau^{*}=39.18$ s.
+
 
 \end{document}
