@@ -22,7 +22,7 @@
 \usepackage{float}
 
 \DeclareMathOperator{\card}{card}
-\DeclareMathOperator{\trc}{trace}
+\DeclareMathOperator{\trc}{tr}
 \DeclareMathOperator{\mean}{mean}
 \DeclareMathOperator{\bin}{bin}
 \DeclareMathOperator{\lns}{lanes}
@@ -75,11 +75,11 @@ This article starts from the classical Aw-Rascle-Zhang (ARZ) model for freeway t
 
 Researchers aiming at devising control strategies for road traffic face a trade-off between empirical evidence confirming the accuracy of non-linear models \cite{zielke2008empirical, Jamitons2008} and the easiness of use of linear systems when it comes to designing controllers.
 
-Non-linear second order models such as Payne-Whitham \cite{payne1971models, whitham1974linear} were first presented as a compelling alternative to first order models \cite{LW, Richards} that accounted for many features empirically observed in traffic such as drivers trying to maximize their speed. Although Daganzo highlighted many flaws of the first generation of that family of models \cite{Dag_requiem}, a second generation including the Aw-Rascle equations \cite{AR} and phase transition models\cite{colombo2003hyperbolic} offered a step towards more realism in macroscopic traffic modeling.
+Non-linear second order models such as Payne-Whitham \cite{payne1971models, whitham1974linear} were first presented as a compelling alternative to first order models \cite{LW, Richards} that accounted for many features observed empirically in traffic such as stop-and-go behavior. Although Daganzo highlighted many flaws of the first generation of that family of models \cite{Dag_requiem}, a second generation including the Aw-Rascle equations \cite{AR} and phase transition models \cite{colombo2003hyperbolic} offered a step towards more realism in macroscopic traffic modeling.
 
-The Aw-Rascle-Zhang model -- one of the most accurate in that group -- accounts for persisting oscillations, information propagation anisotropy and drivers' impulse to shorten their travel times. Linearizing the ARZ model, based on the analogous work of Litrico \cite{litrico2009modeling} for Saint-Venant equations, offers a compelling opportunity to work in a realistic modeling framework where the phenomena mentioned above are accounted for and, at the same time, use linear control theory and spectral Laplace analysis.
+The Aw-Rascle-Zhang model -- one of the most accurate in that group -- accounts for persisting oscillations, information propagation anisotropy and drivers' impulse to shorten their travel times. Linearizing the ARZ model, based on the analogous work of Litrico \cite{litrico2009modeling} for Saint-Venant equations, offers a unique opportunity to work in a realistic modeling framework where the phenomena mentioned above are accounted for and, at the same time, use linear control theory and spectral Laplace analysis.
 
-Our approach in this paper is therefore to linearize the ARZ model about an equilibrium so as to make the best of a trade-off between model accuracy and easiness of use. The first section is dedicated to the linearization and spectral analysis of the ARZ model. We prove there is convective instability in free-flow regime that drives the model away from its equilibrium and devise an equivalent of the hydrodynamics' Froud number for traffic macroscopic models. Laplace transforms and low frequency analysis also enable a tractable interpretation of the underlying dynamics of the system. The second section focuses on the accuracy of the resulting linear equations. It confronts their predictions with ground truth data extracted from the NGSIM data set for the US-101 freeway.
+Our approach in this paper is therefore to linearize the ARZ model about an equilibrium so as to make the best of a trade-off between model accuracy and easiness of use. The first section is dedicated to the linearization and spectral analysis of the ARZ model. We prove there is convective instability in free-flow regime that drives the model away from its equilibrium  state and devise an equivalent of the hydrodynamics' Froud number for traffic macroscopic models. Laplace transforms and low frequency analysis also enable a tractable interpretation of the underlying dynamics of the system. The second section focuses on the accuracy of the resulting linear equations. It confronts their predictions with ground truth data extracted from the NGSIM data set for the US-101 freeway.
 
 \section{The ARZ model} \label{ARZSection}
 
@@ -160,7 +160,7 @@ v^* \rho^*_x + v^*_x\rho^* = 0, \\
 }
 Then we must have {\footnotesize$v^*_x=\rho^*_x=0$}, so the solution is uniform along the road. 
 
-we linearize around the equilibrium {\footnotesize$(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$} with deviations {\footnotesize$(\tilde{\rho}(x,t), \tilde{q}(x,t))$}.
+we linearize about the equilibrium {\footnotesize$(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$} with deviations {\footnotesize$(\tilde{\rho}(x,t), \tilde{q}(x,t))$}.
 
 This last form presented below \eqref{linARZvq} is most adapted to traffic prediction and control in practical settings where flows and vehicle velocities are measured. The following will focus on deriving an explicit solution to these equations.
 
@@ -177,7 +177,7 @@ This last form presented below \eqref{linARZvq} is most adapted to traffic predi
 	\tilde{v}
 \end{pmatrix}_x 
 = 
-\bar{B}_1
+\bar{B}
 \begin{pmatrix}
 	\tilde{\rho} \\
 	\tilde{v}
@@ -231,7 +231,8 @@ Diagonalization of the velocity-flow yields
 \end{pmatrix},
 \end{equation}
 }
-where the eigen values, {\footnotesize$\lambda_1 = v^{*}$ and $\lambda_2 = v^{*} + \frac{q^{*}}{v^{*}} V'(\frac{q^{*}}{v^{*}})$, $\xi_1 = \dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q}$} and {\footnotesize$\xi_2 = \dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v}$}.\\
+where the eigen values, {\footnotesize$\lambda_1 = v^{*}$ and $\lambda_2 = v^{*} + \frac{q^{*}}{v^{*}} V'(\frac{q^{*}}{v^{*}})$, $\xi_1 = \dfrac{\rho^*\lambda_2}{\lambda_1 - \lambda_2}\tilde{v} + \tilde{q}$} and {\footnotesize$\xi_2 = \dfrac{q^*}{\lambda_1 - \lambda_2}\tilde{v}$}.
+Therefore this is consistent with the physical dynamics of the system as no waves travel faster than the equilibrium vehicle speed.\\
 
 \subsection{The Traffic Froude Number}
 In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{Sturm, litrico2009modeling}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful counterpart to this number. 
@@ -250,7 +251,7 @@ F < 1 &\Rightarrow |\rho^*V'(\rho^*)| < v^* \quad \Rightarrow \lambda_2 > 0
 \end{cases}.
 \end{equation*}
 }
-Note also that {\footnotesize$\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$}. Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the subcritical and supercritical regimes, respectively \cite{litrico2009modeling}. The direction of characteristic lines is illustrated in Figure \ref{Characteristics}.
+Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the subcritical and supercritical regimes, respectively \cite{litrico2009modeling}. The direction of characteristic lines is illustrated in Figure \ref{Characteristics}. Note also that {\footnotesize$\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$}.
 
 For traffic, the interpretation of the different regimes is somewhat different. Free flow regime corresponds to these situations where drivers are not slowed down by heavy traffic and go as fast as the desired speed. The congested regime arises when traffic is denser and, because too many cars are present on the same freeway section, drivers slow down and eventually form traffic jam.
 
@@ -417,7 +418,7 @@ $\psi_{22}(x,s)$.
 \caption{Spatial magnitude Bode plots for physical variables in free-flow regime ($\left|\alpha\right| = $ 0.53 Hz)\label{fig:Magn_spatial_physx}}
 \end{figure}
 
-For transfer functions featuring {\footnotesize$1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha \right)}$} as a factor (that is to say $\phi_{21}$, $\psi_{12}$, and $\psi_{21}$) one can observe in the corresponding Bode plots that the value of the log-gain in high frequency tends to vary very sharply. Indeed, with $s = jw$,
+For transfer functions featuring {\footnotesize$1 - e^{-\frac{x}{\lambda_{1} \tau \alpha} \left(s + \alpha \right)}$} as a factor (that is to say $\psi_{12}$, and $\psi_{21}$) one can observe in the corresponding Bode plots that the value of the log-gain in high frequency tends to vary very sharply. Indeed, with $s = jw$,
 {\footnotesize
 $
 \left| 
@@ -559,7 +560,7 @@ where
 {\footnotesize
 $d\left(s\right) = 1 - \frac{\lambda_{2}}{\lambda_{1}}\gamma_{21}\left(0,s\right)$}
 and
-{\footnotesize$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$}. The {\footnotesize$\left(v,q\right)$} system has only two degrees of freedom. Therefore we consider that the only inputs to the system are {\footnotesize$q\left(0,\cdot\right)$} and {\footnotesize$v\left(L,\cdot\right)$}. {\footnotesize$v\left(0,\cdot\right)$} is then completely determined and can be interpreted as an output of the system. The corresponding transfer equation is
+{\footnotesize$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$}. The $\left(v,q\right)$ system has only two degrees of freedom. Therefore we consider that the only inputs to the system are $q\left(0,\cdot\right)$ and $v\left(L,\cdot\right)$. At the boundary, $v\left(0,\cdot\right)$ is then completely determined and can be interpreted as an output of the system. The corresponding transfer equation is
 {\footnotesize
 \begin{equation}
 \begin{pmatrix}
@@ -787,7 +788,7 @@ car in m/s.}
 
 \subsection{Reconstructing $(v,q)$ maps from NGSIM trajectories}
 
-The NGSIM data set does not directly provide the values $v(t,x)$ and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$. To obtain macroscopic quantities out of the microscopic measurements, we follow the approach devised in \cite{edie1963discussion} and divide the space-time grid into rectangular cells. This operation consists of gathering corresponding data points into cells, then estimating the quantities of interest in each cell, it was for example used in \cite{Piccoli201532}. The full estimation procedure is described in the appendix attached. It is validated by confronting two vehicular flow estimates obtained by radically different techniques. They both correspond throughout the estimated speed-flow map.\\
+The NGSIM data set does not directly provide the values $v(t,x)$ and $q(t,x)$ in the resolution domain $\left[0,T\right]\times\left[0,L\right]$. To obtain macroscopic quantities out of the microscopic measurements, we follow the approach devised in \cite{edie1963discussion} and divide the space-time grid into rectangular cells. This operation groups corresponding data points into cells, then estimating the quantities of interest in each cell, it was for example used in \cite{Piccoli201532}. The full estimation procedure is described in the appendix attached. It is validated by confronting two vehicular flow estimates obtained by radically different techniques. They both correspond throughout the estimated speed-flow map.\\
 
 \subsubsection{Calibration of $\lambda_{1}$ and $\lambda_{2}$, linearization point}
 In Section \ref{ARZSection}, we found that $\lambda_{1}$ is exactly $v^*$ and $\lambda_{2}$ is the slope of the fundamental diagram at $v^*$. Thus to calibrate the eigenvalues we must find the linearization point. Note the dataset used corresponds only to the congested regime and the fundamental diagram is almost affine. The estimator, $\widehat{\lambda}_1=\widehat{v}^*$ is chosen as the empirical mean of $\widehat{v}$. To estimate $\lambda_{2}$, we fit a linear model $\widehat{q}=b_{1}\widehat{\rho}+b_{0}+\varepsilon$ with an ordinary least squares procedure, where $\varepsilon$
@@ -846,10 +847,11 @@ The behavior predicted in congested regime for traffic does not present shocks a
 \newpage
 \section*{Appendix}
 
-\subsection{System in $(v, \rho)$ from}
+\subsection{System in $(\rho, v)$ from}
 
 \subsubsection{Linearization}
 Linearizing the ARZ model \eqref{ARZrhov} around the nominal solution described above, we obtain
+{\footnotesize
 \begin{subequations} \label{rhovlin}
 \begin{align}
 \begin{pmatrix}
@@ -882,15 +884,16 @@ Linearizing the ARZ model \eqref{ARZrhov} around the nominal solution described 
 \end{pmatrix}.
 \end{align}
 \end{subequations}
+}
 
 \subsubsection{Characteristic form}
-We diagonalize the linearized equations to obtain a more useful form of the model, which will then be treated in the spectral domain. 
-We begin with the density-flow system. Standard algebraic manipulations of the equations in \eqref{rhovlin} lead to
+Diagonalization of equation \eqref{rhovlin} lead to the following expression for the $\left( \rho, v \right)$ form:
 
+{\footnotesize
 \begin{equation}
 \begin{pmatrix}
-	\xi_1 \\ 
-	\xi_2
+	\zeta_1 \\ 
+	\zeta_2
 \end{pmatrix}_t
 + 
 \begin{pmatrix}
@@ -911,13 +914,21 @@ We begin with the density-flow system. Standard algebraic manipulations of the e
 \xi_1 \\ \xi_2
 \end{pmatrix},
 \end{equation}
+}
 
-where $\xi_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\xi_2 = \tilde{v}$ are the Riemann invariants of the $(\rho, v)$ system, and $\lambda_1 = v^*$ and $\lambda_2 = v^* + \rho^* V'( \rho^*)$ are the eigenvalues. Note that $V'( \rho^*) \leq 0$ so $\lambda_2 \leq \lambda_1 = v^*$. Therefore this is consistent with the physical dynamics of the system as no waves travel faster than the equilibrium vehicle speed.
+where
+{\footnotesize
+$\zeta_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\zeta_2 = \tilde{v}$
+}
+are the Riemann invariants of the $(\rho, v)$ system.
 
 
 \subsection{System in $(\rho, q)$ from}
+The density-flow form can also be useful, we conduct similar derivations for this system starting with the linearization.
 
 \subsubsection{Non-linear ARZ model}
+A few algebraic manipulations yield
+{\footnotesize
 \begin{subequations}
 \begin{align}
 \begin{pmatrix}
@@ -925,7 +936,7 @@ where $\xi_1 = \tilde{v} - V'( \rho^* )\tilde{\rho}$ and $\xi_2 = \tilde{v}$ are
 	q
 \end{pmatrix}_t 
 &+
-C_3\left(\rho, q\right)
+C_2\left(\rho, q\right)
 \begin{pmatrix}
 	\rho \\ 
 	q
@@ -934,8 +945,8 @@ C_3\left(\rho, q\right)
 \begin{pmatrix}
 	0 \\ 
 	\frac{Q(\rho) - q}{\tau}
-\end{pmatrix}. \label{ARZvq} \\
-C_3 \left(\rho, q \right)
+\end{pmatrix}. \label{ARZrhoq} \\
+C_2 \left(\rho, q \right)
 &= 
 \begin{pmatrix}
 	0 & 1 \\
@@ -943,33 +954,35 @@ C_3 \left(\rho, q \right)
 \end{pmatrix}
 \end{align}
 \end{subequations}
+}
 
 \subsubsection{Linearized ARZ model}
 Similarly, for the density-flow system \eqref{ARZrhoq} we linearize around the equilibrium $(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$ with deviations $(\tilde{\rho}(x,t), \tilde{q}(x,t))$.
 {\footnotesize
 \begin{align}
+\label{eq:rhoqlin}
 \begin{pmatrix}
 	\tilde{\rho} \\
 	\tilde{q}
 \end{pmatrix}_t
-&+ \bar{C}_3
+&+ \bar{C}_2
 \begin{pmatrix}
 	\tilde{\rho} \\ 
 	\tilde{q}
 \end{pmatrix}_x 
 = 
-\bar{B}_3
+\bar{B}_2
 \begin{pmatrix}
 	\tilde{\rho} \\
 	\tilde{q}
 \end{pmatrix}, \\
-\bar{C}_3 &=
+\bar{C}_2 &=
 \begin{pmatrix}
 	0 & 1 \\
 	-\frac{q^{*}}{\rho{*}} \left(
 		\frac{q^{*}}{\rho{*}} + \rho^{*} V'\left( \rho^{*} \right) \right) & 2 \frac{q^{*}}{\rho^{*}} + \rho^{*} V'\left( \rho^{*} \right)
 \end{pmatrix} \\
-\bar{B}_3 &=
+\bar{B}_2 &=
 \frac{1}{\tau}
 \begin{pmatrix}
 	0 & 0 \\
@@ -979,7 +992,7 @@ Similarly, for the density-flow system \eqref{ARZrhoq} we linearize around the e
 }
 
 \subsubsection{Characteristic form}
-We proceed in the same manner as above to diagonalize the $(\rho,q)$ system \eqref{ARZrhoq}. The diagonal form is
+We proceed in the same manner as above to diagonalize the $(\rho,q)$ system \eqref{eq:rhoqlin}. The diagonal form is
 {\footnotesize
 \begin{equation} \label{rhoqlindiag}
 \begin{pmatrix}
@@ -1015,31 +1028,56 @@ Within each cell, a specific number of traces, or footprints of a vehicle along 
 
 \subsubsection{Estimation formulae}
 \textbf{Binning formula for $v$}: Since the speed is assumed to be constant in each cell, a straightforward estimate for the speed is the empirical average. The estimator for $v$ in $\bin_{i,j}$ is
-
+{\footnotesize
 \begin{equation}
 \widehat{v}_{i,j}=\mean_{\trc \in \bin_{i,j}}(v(\trc)).
 \end{equation}
+}
 
 \textbf{Binning formula for $\rho$}: By definition, the density of $\bin_{i,j}$ is  
+{\footnotesize
 \begin{equation}
-\rho_{i,j}=\frac{1}{n_{\lns}\Delta x\Delta t}\iint_{\left(t,x\right)\in [i\Delta t, \,(i+1)\Delta t] \times [j\Delta x,\,(j+1)\Delta x]}\rho(x,t) \text{d}x \text{d}t.
+\rho_{i,j}=
+\frac{
+	\iint_{\left(t,x\right)\in [i\Delta t, \,(i+1)\Delta t] \times [j\Delta x,\,(j+1)\Delta x]}\rho(x,t) \text{d}x \text{d}t
+}{
+	n_{\lns}\Delta x\Delta t
+}.
 \end{equation}
+}
 
 The position of each vehicle is recorded every 0.1 second. For each cell we count the number of traces and normalize it by the sampling rate. The contribution of a given vehicle to the density of a cell is proportional to the number of traces it has left in the cell. If the speed is assumed to be locally constant, this contribution is proportional to the time this vehicle spends in the cell and is consistent with the conservation of the total number of vehicles across all cells. Then we have the density estimator
+{\footnotesize
 \begin{equation}
-\widehat{\rho}_{i,j}=\frac{1}{n_{\lns} \Delta x \Delta t \: \text{sampling rate}}\card ( \{ \trc \mid \trc \in \bin \} ),
+\widehat{\rho}_{i,j}=
+\frac{
+\card ( \{ \trc \mid \trc \in \bin \} )
+}{
+n_{\lns} \Delta x \Delta t \: \text{sampling rate}
+},
 \end{equation}
+}
 where $\card (\cdot)$ gives the number of elements in a set, i.e., its cardinal. 
 
 \textbf{Binning formula for $q$}: By definition, $q=\rho v$, so a logical first estimate for $q$ in $\bin_{i,j}$ is 
+{\footnotesize
 \begin{equation}
 \widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}.
 \end{equation}
+}
 
 We can also approximate the flux through $\bin_{i,j}$ with a simple counting method. If a vehicle crosses spatial coordinate $\left(j+1\right)\Delta x$ between times $i\Delta t$ and $\left(i+1\right)\Delta t$, then it leaves a trace in both $\bin_{i,j}$ and $\bin_{i,j+1}$. Counting these vehicles and normalizing by the duration $\Delta t$ gives the estimator
+{\footnotesize
 \begin{equation}
-\widehat{q}_{i,j}^{\cnt}=\frac{1}{n_{\lns}\Delta t}\: \card\left(\left\{ \text{id} \left(\trc\right)\mid \trc \in \bin_{i,j}\right\} \cap\left\{ \text{id}\left( \trc \right)\mid \trc\in \bin_{i,j+1}\right\} \right),
+\widehat{q}_{i,j}^{\cnt}
+=
+\frac{
+	\card\left(\left\{ \text{id} \left(\trc\right)\mid \trc \in \bin_{i,j}\right\} \cap\left\{ \text{id}\left( \trc \right)\mid \trc\in \bin_{i,j+1}\right\} \right)
+}{
+	n_{\lns}\Delta t
+},
 \end{equation}
+}
 where id$(\cdot)$ gives the identification number of a vehicle.
 
 \subsubsection{Choosing the number of bins}
