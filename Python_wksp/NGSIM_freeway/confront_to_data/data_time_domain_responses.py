@@ -14,7 +14,7 @@ from time_domain_responses import *
 from fourier_transform import compute_input_fft
 from fourier_transform import compute_inv_fft
 
-PLOT_FOLDER = 'plots_US101'
+PLOT_FOLDER = 'CDC_101'
 CALIBRATION_FOLDER = 'calibration_US101'
 CSV_FOLDER = 'csv_US101'
 SLICE_FOLDER = 'slices_US101'
@@ -34,12 +34,12 @@ if SLICE_FOLDER not in os.listdir('../'):
 N_TAUS = 80
 TAU_VALUES = np.linspace(5, 80, N_TAUS)
 #TAU_VALUES = [30, 35, 40, 45]
-TAU_VALUES = [39.177215] #Best tau for US101
+#TAU_VALUES = [39.177215] #Best tau for US101
 #TAU_VALUES = [68.607595]
 N_TAUS = len(TAU_VALUES)
 
-PLOT_ALL = True
-CALIBRATE_TAU = False
+PLOT_ALL = False
+CALIBRATE_TAU = True
 BUILD_VIDEO = False
 TEST_FOURIER = False
 
@@ -272,7 +272,7 @@ for n_grid in [80]:
             y_ticks_values = map((lambda x : round(x, 0)), np.linspace(0, L, n_ticks))
             x_ticks = np.linspace(0, xi_1_data.shape[1], n_ticks)
             x_ticks_values = map((lambda x : round(x, 0)), np.linspace(0, T, n_ticks))
-            fontsize = 8
+            fontsize = 12
             #
             #    Check maps in xi_1, xi_2 domain
             #
@@ -286,10 +286,10 @@ for n_grid in [80]:
                             #np.max(xi_1_data - xi_1_sim))
             #
             #
-            height = 9; width = 3
+            height = 6.5; width = 10
             #
             # 
-            plt.subplot(3, 1, 1)
+            plt.subplot(2, 3, 1)
             plt.imshow(xi_1_data[::-1], 
                        vmin = min_value,
                        vmax = max_value,
@@ -307,7 +307,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
-            plt.subplot(3, 1, 2)
+            plt.subplot(2, 3, 2)
             plt.imshow(xi_1_sim[::-1],
                        vmin = min_value,
                        vmax = max_value,
@@ -325,7 +325,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
-            plt.subplot(3, 1, 3) 
+            plt.subplot(2, 3, 3) 
             plt.imshow(relative_error_xi_1[::-1],
                        vmin = -1.0,
                        vmax = 1.0,
@@ -342,11 +342,11 @@ for n_grid in [80]:
                        fontsize = fontsize)
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
-            fig = plt.gcf()
-            fig.set_size_inches((width, height))
-            plt.tight_layout()
-            plt.savefig('%s/xi_1_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
-            plt.close()
+            #fig = plt.gcf()
+            #fig.set_size_inches((width, height))
+            #plt.tight_layout()
+            #plt.savefig('%s/xi_1_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
+            #plt.close()
             #    Xi_2
             #        Values from data
             min_value = min(np.min(xi_2_data),
@@ -355,7 +355,7 @@ for n_grid in [80]:
             max_value = max(np.max(xi_2_data),
                             np.max(xi_2_sim))
                             #np.max(xi_2_data - xi_2_sim))
-            plt.subplot(3, 1, 1)
+            plt.subplot(2, 3, 4)
             plt.imshow(xi_2_data[::-1], 
                        vmin = min_value,
                        vmax = max_value,
@@ -373,7 +373,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
-            plt.subplot(3, 1, 2)
+            plt.subplot(2, 3, 5)
             plt.imshow(xi_2_sim[::-1], 
                        vmin = min_value,
                        vmax = max_value,
@@ -391,7 +391,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
-            plt.subplot(3, 1, 3)
+            plt.subplot(2, 3, 6)
             plt.imshow(relative_error_xi_2[::-1],
                        vmin = -1.0,
                        vmax = 1.0,
@@ -411,7 +411,7 @@ for n_grid in [80]:
             fig = plt.gcf()
             fig.set_size_inches((width, height))
             plt.tight_layout()
-            plt.savefig('%s/xi_2_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
+            plt.savefig('%s/xi_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             # Done
             #===================================================================
@@ -452,7 +452,7 @@ for n_grid in [80]:
                             np.max(v_sim)) + v_star
                             #np.max(v_data - v_sim))
             #
-            plt.subplot(3, 1, 1)
+            plt.subplot(2, 3, 1)
             plt.imshow(v_data[::-1] + v_star,
                        vmin = min_value,
                        vmax = max_value,
@@ -470,7 +470,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
-            plt.subplot(3, 1, 2)
+            plt.subplot(2, 3, 2)
             plt.imshow(v_sim[::-1] + v_star,
                        vmin = min_value,
                        vmax = max_value, 
@@ -488,7 +488,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
-            plt.subplot(3, 1, 3)
+            plt.subplot(2, 3, 3)
             plt.imshow(relative_error_v[::-1],
                        vmin = -1.0,
                        vmax = 1.0,
@@ -505,11 +505,11 @@ for n_grid in [80]:
                        fontsize = fontsize)
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
-            fig = plt.gcf()
-            fig.set_size_inches((width, height))
-            plt.tight_layout()
-            plt.savefig('%s/v_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU), dpi = 300)
-            plt.close()
+            #fig = plt.gcf()
+            #fig.set_size_inches((width, height))
+            #plt.tight_layout()
+            #plt.savefig('%s/v_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU), dpi = 300)
+            #plt.close()
             #    q
             #        Values from data
             min_value = min(np.min(q_data),
@@ -518,7 +518,7 @@ for n_grid in [80]:
             max_value = max(np.max(q_data),
                             np.max(q_sim)) + q_star
                             #np.max(q_data - q_sim))
-            plt.subplot(3, 1, 1)
+            plt.subplot(2, 3, 4)
             plt.imshow(q_data[::-1] + q_star, 
                        vmin = min_value,
                        vmax = max_value,
@@ -536,7 +536,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Simulated values
-            plt.subplot(3, 1, 2)
+            plt.subplot(2, 3, 5)
             plt.imshow(q_sim[::-1] + q_star, 
                        vmin = min_value,
                        vmax = max_value,
@@ -554,7 +554,7 @@ for n_grid in [80]:
             cbar = plt.colorbar()
             cbar.ax.tick_params(labelsize = fontsize)
             #        Error
-            plt.subplot(3, 1, 3)
+            plt.subplot(2, 3, 6)
             plt.imshow(relative_error_q[::-1], 
                        vmin = -1.0,
                        vmax = 1.0,
@@ -574,7 +574,7 @@ for n_grid in [80]:
             fig = plt.gcf()
             fig.set_size_inches((width, height))
             plt.tight_layout()
-            plt.savefig('%s/q_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU), dpi = 300)
+            plt.savefig('%s/vq_map_n=%d_tau=%.2f.png' % (PLOT_FOLDER, n_grid, TAU), dpi = 300)
             plt.close()
             # Done
             #===================================================================
@@ -608,6 +608,7 @@ for n_grid in [80]:
         q_mean_abs_errors[tau_index] = np.mean(np.abs(q_data - q_sim))
         v_mean_abs_errors[tau_index] = np.mean(np.abs(v_data - v_sim))
     if CALIBRATE_TAU:
+        fontsize = 16
         #
         #    Find best value
         #
@@ -619,17 +620,17 @@ for n_grid in [80]:
         #    Error for xi_1 and xi_2
         #
         plt.subplot(311)
-        plt.title('Mean Absolute Error for xi_1 and xi_2')
+        plt.title(r'Mean Absolute Error for $\xi_1$ and $\xi_2$', fontsize = fontsize)
         plt.plot(TAU_VALUES, xi_1_mean_abs_errors)
-        plt.ylabel('MAE on xi_1 (veh/s)')
+        plt.ylabel(r'$\xi_1 MAE$ (veh/s)', fontsize = fontsize)
         plt.subplot(312)
         plt.plot(TAU_VALUES, xi_2_mean_abs_errors)
-        plt.ylabel('MAE on xi_2 (veh/s)')
-        plt.xlabel('Tau')
+        plt.ylabel(r'$\xi_2 MAE$ (veh/s)', fontsize = fontsize)
+        plt.xlabel(r'\tau', fontsize = fontsize)
         plt.subplot(313)
         plt.plot(TAU_VALUES, xi_1_mean_abs_errors + xi_2_mean_abs_errors)
-        plt.ylabel('Sum of MAEs')
-        plt.xlabel('Tau')
+        plt.ylabel('Sum of MAEs', fontsize = fontsize)
+        plt.xlabel(r'$\tau$', fontsize = fontsize)
         #
         plt.savefig('%s/xi_1_xi_2_error_%d' % (CALIBRATION_FOLDER, n_grid))
         plt.close()
@@ -637,14 +638,15 @@ for n_grid in [80]:
         #    Error for v and q
         #
         plt.subplot(211)
-        plt.title('Mean Absolute Error for q and v')
+        plt.title('Mean Absolute Error for q and v', fontsize = fontsize)
         plt.plot(TAU_VALUES, q_mean_abs_errors)
-        plt.ylabel('MAE on q (veh/s)')
+        plt.ylabel('q MAE (veh/s)', fontsize = fontsize)
         plt.subplot(212)
         plt.plot(TAU_VALUES, v_mean_abs_errors)
-        plt.ylabel('MAE on v (m/s)')
-        plt.xlabel('Tau')
+        plt.ylabel('v MAE (m/s)', fontsize = fontsize)
+        plt.xlabel(r'$\tau$', fontsize = fontsize)
         #
+        plt.tight_layout()
         plt.savefig('%s/q_v_error_%d' % (CALIBRATION_FOLDER, n_grid))
         plt.close()
     

@@ -10,9 +10,9 @@ from matplotlib import pyplot as plt
 import cPickle as pickle
 import pandas as pd
 
-PLOT_DIR = 'plots_I80'
-BIN_FOLDER = 'binned_data_I80'
-OUTPUT_FOLDER = 'system_params_I80'
+PLOT_DIR = 'CDC_101'
+BIN_FOLDER = 'binned_data_US101'
+OUTPUT_FOLDER = 'system_params_US101'
 
 if OUTPUT_FOLDER not in os.listdir('../'):
     os.mkdir('../' + OUTPUT_FOLDER)
@@ -57,13 +57,14 @@ for n_grid in [80]:
     #
     #    PLOT
     #
+    fontsize = 16
     plt.plot(x_values, y_values, c = 'red')
     plt.scatter(buckets['rho'].values, buckets['q'].values, alpha = 0.2, lw = 0)
     plt.scatter(rho_star, q_star, c = 'red', s = 50)
-    plt.title('Fundamental diagram fitting n = %d' % n_grid)
-    plt.xlabel('rho (veh/m)')
-    plt.ylabel('q_count (veh/s)')
-    plt.legend(('Fitted model', 'Data scatter', '(rho_star, q_star)'), 'upper right')
+    plt.title('Fundamental diagram fitting n = %d' % n_grid, fontsize = fontsize)
+    plt.xlabel(r'$\rho$ (veh/m)', fontsize = fontsize)
+    plt.ylabel(r'$q_{count}$ (veh/s)', fontsize = fontsize)
+    plt.legend(('Fitted model', 'Data scatter', r'($\rho^*$, $q^*$)'), 'upper right', fontsize = fontsize)
     plt.savefig('%s/Fundamental diagram fitting n = %d' % (PLOT_DIR, n_grid))
     plt.close()
     #

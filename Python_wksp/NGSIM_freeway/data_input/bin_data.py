@@ -28,6 +28,8 @@ UNIT_DICT = {'v' : 'm/s',
              'q_count' : 'veh/s',
              'median_ID' : 'NA',
              'rho' : 'veh/m'}
+Q_STRING = {'q' : 'q',
+            'q_count' : '$q_{count}$'}
 
 #===============================================================================
 # 
@@ -224,6 +226,7 @@ for n_grid in [80, 100, 120, 140]:
                                                n_grid_x,
                                                buckets['n_ids'].quantile(0.1))
     if PRODUCE_PLOTS:
+        fontsize = 18
         #
         #    Plotting (t,x) map of v, q and rho
         #
@@ -237,9 +240,9 @@ for n_grid in [80, 100, 120, 140]:
             plt.ylim((np.min(buckets['x_start'].values),
                       np.max(buckets['x_start'].values)))
             plt.colorbar(sc)
-            plt.title('Average %s (%s)' % (opt, UNIT_DICT[opt]))
-            plt.xlabel('t (seconds)')
-            plt.ylabel('x (meters)')
+            plt.title('Average %s (%s)' % (opt, UNIT_DICT[opt]), fontsize = fontsize)
+            plt.xlabel('t (seconds)', fontsize = fontsize)
+            plt.ylabel('x (meters)', fontsize = fontsize)
             plt.savefig('%s/%d_%d_%s_map.png' % (PLOT_FOLDER, n_grid_t, n_grid_x, opt))
             plt.close()
         #
@@ -247,15 +250,15 @@ for n_grid in [80, 100, 120, 140]:
         #   
         plt.scatter(buckets['q'].values, buckets['q_count'].values,
                     lw = 0, alpha = 0.2)
-        plt.title('q_count against q')
-        plt.xlabel('q (veh/s)')
-        plt.ylabel('q_count (veh/s)')
+        plt.title(r'$q_{count}$ against q', fontsize = fontsize)
+        plt.xlabel('q (veh/s)', fontsize = 16)
+        plt.ylabel(r'$q_{count}$ (veh/s)', fontsize = fontsize)
         plt.xlim((0.0, 0.8))
         plt.ylim((0.0, 0.8))
         plt.plot(np.linspace(0.0, 0.8, 100), 
                  np.linspace(0.0, 0.8, 100),
                  c = 'r')
-        plt.legend(('y=x', 'Scatter'), 'lower right')
+        plt.legend(('y=x', 'Scatter'), 'lower right', fontsize = fontsize)
         plt.savefig('%s/%d_%d_q_q_count.png' % 
                     (PLOT_FOLDER, n_grid_t, n_grid_x))
         plt.close()
@@ -269,9 +272,9 @@ for n_grid in [80, 100, 120, 140]:
             plt.scatter(buckets['v'].values,
                         buckets[q_opt].values,
                         lw = 0, alpha = 0.2)
-            plt.title('Fundamental diagram v %s' % q_opt)
-            plt.xlabel('v (m/s)')
-            plt.ylabel('%s (%s)' % (q_opt, UNIT_DICT[q_opt]))
+            plt.title(r'Fundamental diagram v %s' % q_opt, fontsize = fontsize)
+            plt.xlabel('v (m/s)', fontsize = fontsize)
+            plt.ylabel('%s (%s)' % (q_opt, UNIT_DICT[q_opt]), fontsize = fontsize)
             plt.savefig('%s/%d_%d_fundamental_diagram_v_%s.png' % 
                         (PLOT_FOLDER, n_grid_t, n_grid_x, q_opt))
             plt.close()
@@ -279,9 +282,9 @@ for n_grid in [80, 100, 120, 140]:
             plt.scatter(buckets['rho'].values,
                         buckets[q_opt].values,
                         lw = 0, alpha = 0.2)
-            plt.title('Fundamental diagram rho %s' % q_opt)
-            plt.xlabel('rho (veh/m)')
-            plt.ylabel('%s (%s)' % (q_opt, UNIT_DICT[q_opt]))
+            plt.title(r'Fundamental diagram $\rho$ %s' % Q_STRING[q_opt], fontsize = fontsize)
+            plt.xlabel(r'$\rho$ (veh/m)', fontsize = fontsize)
+            plt.ylabel(r'%s (%s)' % (Q_STRING[q_opt], UNIT_DICT[q_opt]), fontsize = fontsize)
             plt.savefig('%s/%d_%d_fundamental_diagram_rho_%s.png' % 
                         (PLOT_FOLDER, n_grid_t, n_grid_x, q_opt))
             plt.close()
@@ -289,9 +292,9 @@ for n_grid in [80, 100, 120, 140]:
         plt.scatter(buckets['rho'].values,
                     buckets['v'].values,
                     lw = 0, alpha = 0.2)
-        plt.title('Fundamental diagram v rho')
-        plt.xlabel('rho (veh/m)')
-        plt.ylabel('v (m/s)')
+        plt.title(r'Fundamental diagram v $\rho$', fontsize = fontsize)
+        plt.xlabel(r'$\rho$ (veh/m)', fontsize = fontsize)
+        plt.ylabel('v (m/s)', fontsize = fontsize)
         plt.savefig('%s/%d_%d_fundamental_diagram_v_rho.png' % 
                     (PLOT_FOLDER, n_grid_t, n_grid_x))
         plt.close()

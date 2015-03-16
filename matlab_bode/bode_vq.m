@@ -57,6 +57,9 @@ dB21 = 20*log10(abs(psi21));
 phase21 = (180/pi)*unwrap(angle(psi21));
 dB22 = 20*log10(abs(psi22));
 phase22 = (180/pi)*unwrap(angle(psi22));
+
+fontsize = 30;
+
 %%
 fig1 = figure(1);
 set(fig1,'defaulttextinterpreter','latex');
@@ -68,7 +71,7 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 title('Bode plot for $\psi_{11}(x,s)$')
 view([1 -2 1])
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize', fontsize)
 print(fig1,'-dpdf','distr_psi_11')
 
 fig2 = figure(2);
@@ -81,7 +84,7 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 view([1 -1.8 3])
 title('Bode plot for $\psi_{12}(x,s)$')
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize', fontsize)
 print(fig2,'-dpdf','distr_psi_12')
 
 fig3 = figure(3);
@@ -94,7 +97,7 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 title('Bode plot for $\psi_{21}(x,s)$')
 view([1 -1.8 2])
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize', fontsize)
 print(fig3,'-dpdf','distr_psi_21')
 
 fig4 = figure(4);
@@ -107,6 +110,6 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 title('Bode plot for $\psi_{22}(x,s)$')
 view([1 -2 1.5])
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize', fontsize)
 print(fig4,'-dpdf','distr_psi_22')
 

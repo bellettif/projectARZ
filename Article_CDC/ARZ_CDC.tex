@@ -7,7 +7,7 @@
 \documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4
                                                           % paper
 
-\IEEEoverridecommandlockouts                              % This command is only
+%\IEEEoverridecommandlockouts                              % This command is only
                                                           % needed if you want to
                                                           % use the \thanks command
 \overrideIEEEmargins
@@ -91,7 +91,7 @@ We consider the ARZ model with relaxation term. The model is shown here:
 (v - V(\rho))_t + v(v - V(\rho))_x &=\dfrac{V(\rho) - v}{\tau} \label{ARZ2},
 \end{align}
 }
-where $\rho$ is the density, $v$ is the velocity, $\tau$ is the relaxation time, and {\footnotesize$V(\rho) = Q(\rho)/\rho$} is the equilibrium velocity profile. Finally $Q(\rho)$ is the density-flow relation given by the fundamental diagram. We assume that $V$ is $C^{1}$ derivable over its domain.
+where $\rho$ is the density, $v$ is the velocity, $\tau$ is the relaxation time, and $V(\rho) = Q(\rho)/\rho$ is the equilibrium velocity profile. Finally $Q(\rho)$ is the density-flow relation given by the fundamental diagram. We assume that $V$ is $C^{1}$ derivable over its domain.
 
 In vector form the ARZ model is
 {\footnotesize
@@ -151,18 +151,18 @@ The $\left(v, q \right)$ form has seldom been used in transportation engineering
 
 
 \subsection{Linearization}
-We are interested in small deviations, {\footnotesize$(\tilde{\rho}(x,t), \tilde{v}(x,t))$}, from a given nominal profile. Consider the nominal solution {\footnotesize$(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$} satisfying {\footnotesize$v_t = \rho_t = 0$}. Then \eqref{ARZrhov} becomes
+We are interested in small deviations, $(\tilde{\rho}(x,t), \tilde{v}(x,t))$, from a given nominal profile. Consider the nominal solution $(\rho^*(x),v^*(x))(V(\rho^*) = v^*)$ satisfying $v_t = \rho_t = 0$. 
+
+Then \eqref{ARZrhov} becomes
 {\footnotesize
 \begin{align}
 v^* \rho^*_x + v^*_x\rho^* = 0, \\
 ( v^* + \rho^* V'( \rho^*) )v^*_x = \dfrac{V(\rho^*) - v^*}{\tau} = 0.
 \end{align}
 }
-Then we must have {\footnotesize$v^*_x=\rho^*_x=0$}, so the solution is uniform along the road. 
+Therefore we must have $v^*_x=\rho^*_x=0$, so the solution is uniform along the road. 
 
-we linearize about the equilibrium {\footnotesize$(\rho^*, q^*)(\rho^*V(\rho^*) = q^*)$} with deviations {\footnotesize$(\tilde{\rho}(x,t), \tilde{q}(x,t))$}.
-
-This last form presented below \eqref{linARZvq} is most adapted to traffic prediction and control in practical settings where flows and vehicle velocities are measured. The following will focus on deriving an explicit solution to these equations.
+Linearization about the equilibrium $(\rho^*V(\rho^*) = q^*)$ with deviations $(\tilde{\rho}(x,t), \tilde{q}(x,t))$ gives the form presented below \eqref{linARZvq}. It is most adapted to traffic prediction and control in practical settings where flows and vehicle velocities are measured. The following will derive explicit solutions to these equations.
 
 {\footnotesize
 \begin{subequations} \label{linARZvq}
@@ -236,12 +236,10 @@ Therefore this is consistent with the physical dynamics of the system as no wave
 
 \subsection{The Traffic Froude Number}
 In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{Sturm, litrico2009modeling}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful counterpart to this number. 
-Since {\footnotesize $V(\rho)$} is non-increasing function, we have {\footnotesize $V'(\rho^*) \leq 0$}. Assuming {\footnotesize$V'(\rho^*) \neq 0$} there are two flow regimes: one in which {\footnotesize$\lambda_1 \lambda_2 < 0$} and one characteristic line travels downstream whereas the other characteristic line travels upstream, and one in which {\footnotesize$\lambda_1 \lambda_2 > 0$} and both characteristic lines travel downstream. We define the \textit{Traffic Froude Number} (TFN) as
-{\footnotesize
+The assumptions above imply $V'(\rho^*) \leq 0$. Assuming $V'(\rho^*) \neq 0$ there are two flow regimes: one in which $\lambda_1 \lambda_2 < 0$ and one characteristic line travels downstream whereas the other characteristic line travels upstream, and one in which $\lambda_1 \lambda_2 > 0$ and both characteristic lines travel downstream. We define the \textit{Traffic Froude Number} (TFN) as
 \begin{equation}
 F = \left\lvert\dfrac{\rho^*V'( \rho^*)}{v^*}\right\rvert.
 \end{equation}
-}
 Then we have
 {\footnotesize
 \begin{equation*}
@@ -251,9 +249,9 @@ F < 1 &\Rightarrow |\rho^*V'(\rho^*)| < v^* \quad \Rightarrow \lambda_2 > 0
 \end{cases}.
 \end{equation*}
 }
-Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are referred to as the subcritical and supercritical regimes, respectively \cite{litrico2009modeling}. The direction of characteristic lines is illustrated in Figure \ref{Characteristics}. Note also that {\footnotesize$\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$}.
+Hence the system is in free-flow when $F<1$ and congestion when $F>1$. In hydrodynamics these regimes are respectively named subcritical and supercritical\cite{litrico2009modeling}. The direction of characteristic lines is illustrated in Figure \ref{Characteristics}. Note also that {\footnotesize$\lambda_2 = v^* + \rho^* V'( \rho^*) = \dfrac{Q(\rho^*)}{\rho^*} + \dfrac{\rho^*Q'(\rho^*)-Q(\rho^*)}{\rho^*} = Q'(\rho^*)$}.
 
-For traffic, the interpretation of the different regimes is somewhat different. Free flow regime corresponds to these situations where drivers are not slowed down by heavy traffic and go as fast as the desired speed. The congested regime arises when traffic is denser and, because too many cars are present on the same freeway section, drivers slow down and eventually form traffic jam.
+For traffic, the interpretation of the different regimes is somewhat different. Free flow regime corresponds to light traffic in which drivers go as fast as the desired speed. The congested regime arises when traffic is denser and, because too many cars are present on the same freeway section, drivers slow down and eventually form traffic jam.
 
 \begin{figure}
 \begin{centering}
@@ -351,7 +349,9 @@ where, letting {\footnotesize$\alpha = -\dfrac{\lambda_2}{\tau(\lambda_1 - \lamb
 We have $\frac{1}{\lambda_{1}}\left(-\alpha+\frac{1}{\tau}\right) = \frac{-\alpha}{\lambda_{2}}$, thus a Taylor expansion about $-\alpha$ shows that numerators and denominators cancel each other out for $s \rightarrow -\alpha$. This proves that the output remains bounded for a given value of $x$. We will show below that a conic region of the $\left[0,T\right] \times \left[0,L\right]$ domain features exponential growth in free-flow regime. This arises when changing $t$ and $x$ simultaneously and complements the conclusion formulated above.\\
 
 \subsubsection{Low frequency approximation for physical variables in free-flow regime}
-Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This corresponds to traffic flow varying slowly and smoothly. We find the following approximate expressions for the transfer functions:
+Analyzing the expressions above becomes easier when approximating them for $\left|s\right|\ll\left|\alpha\right|$. This corresponds to traffic flow varying slowly and smoothly. 
+
+We find the following approximations:
 {\footnotesize
 \begin{subequations}
 \begin{align}
@@ -560,7 +560,9 @@ where
 {\footnotesize
 $d\left(s\right) = 1 - \frac{\lambda_{2}}{\lambda_{1}}\gamma_{21}\left(0,s\right)$}
 and
-{\footnotesize$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$}. The $\left(v,q\right)$ system has only two degrees of freedom. Therefore we consider that the only inputs to the system are $q\left(0,\cdot\right)$ and $v\left(L,\cdot\right)$. At the boundary, $v\left(0,\cdot\right)$ is then completely determined and can be interpreted as an output of the system. The corresponding transfer equation is
+{\footnotesize$n\left(s\right) = \frac{\rho^{*} \lambda_{2}}{\lambda_{1} - \lambda_{2}} \gamma_{22}\left(0,s\right)$}. The $\left(v,q\right)$ system has only two degrees of freedom. Therefore we consider that the only inputs to the system are $q\left(0,\cdot\right)$ and $v\left(L,\cdot\right)$. At the boundary, $v\left(0,\cdot\right)$ is then completely determined and can be interpreted as an output of the system. 
+
+The corresponding transfer equation is
 {\footnotesize
 \begin{equation}
 \begin{pmatrix}
@@ -778,7 +780,7 @@ We use the NSGIM trajectory data set for a uniform 200 meter long section of the
 
 \begin{figure}
 \centering
-\includegraphics[width=7cm]{US-101_all_traj_low_res_mod}
+\includegraphics[width=8cm, trim = 10mm 10mm 10mm 10mm]{US-101_all_traj_low_res_mod}
 \protect\caption{NGSIM trajectories. Color represents the measured speed of each
 car in m/s.}
 \label{fig:NGSIM-trajectories}
@@ -798,7 +800,7 @@ The empirical results are presented in Figure \ref{fig:Calibration-of-eigen-valu
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm]{\string"Fundamental_diagram_fitting_n_80\string".png}
+\includegraphics[width=6cm, trim = 10mm 10mm 10mm 10mm]{\string"Fundamental_diagram_fitting_n_80\string".png}
 \protect\caption{Calibration of $\lambda_{1}$ and $\lambda_{2}$. The circle denotes the linearization point. The affine model used to estimate $\lambda_{2}$ and the linearization point is also plotted. The estimates are: $\widehat{\lambda}_{1}=8.96$ m/s, $\widehat{\lambda}_{2}=-4.37$ m/s, $\widehat{\rho}^{*}=0.049$ veh/m, $\widehat{v}^{*}=8.96$ m/s, $\widehat{q}^{*}=0.44$ veh/s, with $r^{2}=0.48$. The characteristic frequency of the system is $\widehat{\alpha} = 8.37\times10^{-3}$ Hz. Its order of magnitude does correspond to practical traffic flow modeling.}
 \label{fig:Calibration-of-eigen-values}
 \end{figure}
@@ -818,7 +820,7 @@ Figures \ref{fig:xi_1_xi_2_data_vs_sim} and \ref{fig:v_q_data_vs_sim} shows impo
 %&
 %\includegraphics[height=7.5cm]{\string"xi_2_map_n_80_best_tau\string".png}
 %\end{tabular}
-\includegraphics[width=8.2cm]{\string"xi_map_n_80_best_tau\string".png}
+\includegraphics[width=8.2cm, trim = 10mm 20mm 0mm 0mm]{\string"xi_map_n_80_best_tau\string".png}
 \protect\caption{Data versus predicted for $\xi_1$ and $\xi_2$\label{fig:xi_1_xi_2_data_vs_sim}}
 \end{figure}
 
@@ -829,7 +831,7 @@ Figures \ref{fig:xi_1_xi_2_data_vs_sim} and \ref{fig:v_q_data_vs_sim} shows impo
 %&
 %\includegraphics[height=7.5cm]{\string"q_map_n_80_best_tau\string".png}
 %\end{tabular}
-\includegraphics[width=8.2cm]{\string"vq_map_n_80_best_tau\string".png}
+\includegraphics[width=8.2cm, trim = 10mm 20mm 0mm 0mm]{\string"vq_map_n_80_best_tau\string".png}
 \protect\caption{Data versus predicted for $v$ and $q$\label{fig:v_q_data_vs_sim}}
 \end{figure}
 
@@ -1084,9 +1086,10 @@ where id$(\cdot)$ gives the identification number of a vehicle.
 As the estimation formulae above rely on averaging, having a comfortable
 number of points in each bin provides more stable estimates. As a rule of thumb we choose a discretization that guarantees that most bins will host more than $100$ traces. This is achieved with a $80\times80$ grid where the $10^{\text{th}}$ percentile of the number of traces in a given bin is $170$. Such a grid also yields a $10^{\text{th}}$ percentile of $56$ distinct vehicles per bin.
 While our goal here is not to present theoretical proofs of the convergence of the binned estimators for $\left(v,\rho,q\right)$, it is nonetheless possible to check that the procedure is coherent. Two estimators are provided for $q$ that use radically different techniques. Figure \ref{fig:Sanity-check} show that the scatter plot of $\widehat{q}_{i,j}^{\cnt}$ plotted against $\widehat{q}_{i,j}$ coincides nicely with the line $y=x$, validating the overall binning and estimation procedure above. Note that $\widehat{q}$ and $\widehat{q}^{\text{count}}$ give extremely similar results, so we may use $\widehat{q}^{\text{count}}$ in our experiments.
+
 \begin{figure}
 \centering
-\includegraphics[width=5cm]{\string"80_80_q_q_count\string".png}
+\includegraphics[width=6.5cm, trim = 10mm 10mm 10mm 10mm]{\string"80_80_q_q_count\string".png}
 \protect\caption{Sanity check for the estimation procedure. $\widehat{q}_{i,j}^{\text{count}}$
 is plotted against $\widehat{q}_{i,j}$ across the grid of bins.
 \label{fig:Sanity-check}}
@@ -1100,11 +1103,11 @@ to be confirmed by the fact that the fundamental diagrams below correspond only 
 \begin{figure}
 \centering
 \begin{tabular}{c}
-\includegraphics[width=4.5cm]{\string"80_80_fundamental_diagram_rho_q_count\string".png}
+\includegraphics[width=5.2cm, trim = 10mm 2mm 10mm 2mm]{\string"80_80_fundamental_diagram_rho_q_count\string".png}
 \tabularnewline
-\includegraphics[width=4.5cm]{\string"80_80_fundamental_diagram_v_q_count\string".png}
+\includegraphics[width=5.2cm, trim = 10mm 2mm 10mm 2mm]{\string"80_80_fundamental_diagram_v_q_count\string".png}
 \tabularnewline
-\includegraphics[width=4.5cm]{\string"80_80_fundamental_diagram_v_rho\string".png}
+\includegraphics[width=5.2cm, trim = 10mm 2mm 10mm 2mm]{\string"80_80_fundamental_diagram_v_rho\string".png}
 \end{tabular}
 \protect\caption{Empirical fundamental diagrams. Left: $\left(\widehat{\rho},\widehat{q}^{\text{count}}\right)$.
 Middle: $\left(\widehat{v},\widehat{q}^{\text{count}}\right)$. Right: $\left(\widehat{\rho},\widehat{v}\right)$.
@@ -1114,12 +1117,12 @@ Middle: $\left(\widehat{v},\widehat{q}^{\text{count}}\right)$. Right: $\left(\wi
 \begin{figure}
 \centering
 \begin{tabular}{c}
-\includegraphics[width=4cm]
+\includegraphics[width=5.2cm, trim = 10mm 2mm 10mm 2mm]
 {\string"q_v_error_80\string".png}
 \tabularnewline
 MAE over $\xi_{1}$ and $\xi_{2}$ and sum of both MAE.
 \tabularnewline
-\includegraphics[width=4cm]{\string"xi_1_xi_2_error_80\string".png}
+\includegraphics[width=5.2cm, trim = 10mm 2mm 10mm 2mm]{\string"xi_1_xi_2_error_80\string".png}
 \tabularnewline
 MAE over $q$ and $v$
 \tabularnewline
