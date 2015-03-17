@@ -235,7 +235,7 @@ where the eigen values, {\footnotesize$\lambda_1 = v^{*}$ and $\lambda_2 = v^{*}
 Therefore this is consistent with the physical dynamics of the system as no waves travel faster than the equilibrium vehicle speed.\\
 
 \subsection{The Traffic Froude Number}
-In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{Sturm, litrico2009modeling}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful counterpart to this number. 
+In fluid mechanics, the Froude number is a dimensionless number which delineates the boundary between flow regimes \cite{litrico2009modeling, Sturm}. Using the eigenvalues of the system in the characteristic form, we are able to define a useful counterpart to this number. 
 The assumptions above imply $V'(\rho^*) \leq 0$. Assuming $V'(\rho^*) \neq 0$ there are two flow regimes: one in which $\lambda_1 \lambda_2 < 0$ and one characteristic line travels downstream whereas the other characteristic line travels upstream, and one in which $\lambda_1 \lambda_2 > 0$ and both characteristic lines travel downstream. We define the \textit{Traffic Froude Number} (TFN) as
 \begin{equation}
 F = \left\lvert\dfrac{\rho^*V'( \rho^*)}{v^*}\right\rvert.
@@ -772,7 +772,7 @@ In order to practically assess the presence of poles, numerical search for roots
 
 
 \section{Numerical validation}
-Prior to using standard control theoretic techniques, it is necessary to assess how accurate the model is in its linearized form. This section compares the prediction of the linearized equations with actual flow and velocity data gathered from the well-known NGSIM data set.
+Prior to using standard control theoretic techniques, it is necessary to assess how accurate the model is in its linearized form. This section compares the prediction of the linearized equations with actual flow and velocity data gathered from the NGSIM data set.
 
 
 \subsection{Data source: NGSIM trajectories}
@@ -838,12 +838,16 @@ Figures \ref{fig:xi_1_xi_2_data_vs_sim} and \ref{fig:v_q_data_vs_sim} shows impo
 
 \section{Conclusion}
 
-As the full nonlinear ARZ equations have no known closed form solutions in the general case, they are difficult to analyze. The linearized equations enable the use of spectral methods presented here, allowing for elegantly simple yet powerful analysis tools relying on explicit solutions. Using this approximation, we are able to analyze them around a nominal flow and characterize the oscillatory behavior of the solution. The linearized model is able to capture important features of the flow which first order models cannot. 
+As the full nonlinear ARZ equations have no known closed form solutions in the general case, they are difficult to analyze. The linearized equations enable the use of spectral methods presented here, allowing for elegantly simple yet powerful analysis tools relying on explicit solutions. This approximate model is able to capture important features of the flow which first order models cannot. 
 
-With the linearized ARZ model, we were also able to define the Traffic Froude Number $F$. This quantity is computed using the eigenvalues of the system and characterizes the flow regime of the road section under consideration. The time domain responses we derive show that the system is convectively unstable in free-flow regime ($F < 1$) as opposed to the congested regime case $F>1$. In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines.
+With the linearized ARZ model, we were also able to define the Traffic Froude Number $F$. This quantity is computed using the eigenvalues of the system and characterizes the flow regime of the road section under consideration. The time domain responses we derive show that the system is convectively unstable in free-flow regime ($F < 1$) as opposed to the congested regime case ($F>1$). In the latter case, the system remains in the linear regime and oscillations on boundary conditions are damped with an exponential rate along the characteristic lines.
 
 The behavior predicted in congested regime for traffic does not present shocks and Fourier spectral analysis cannot account for more nonlinear and non-smooth behavior as well as other transforms such as wavelets. However, our spectral domain study paves the way to applying standard linear system control theory to traffic, with a linearized second order model that is empirically reliable in terms of reproducing actual data. Future work will therefore focus on controller design based on the spectral framework presented here.
 
+\section*{Acknowledgments}
+The authors wish to thank Dr. Nikolaos Bekiaris-Liberis and Pierre-Olivier Lamare (PhD student at laboratoire Jean Kuntzmann) for their support as well as Professor L. Craig Evans' and Dr. Guillaume Costeseque.
+
+\bibliographystyle{IEEEtran}
 \bibliography{biblio}
 
 \newpage
