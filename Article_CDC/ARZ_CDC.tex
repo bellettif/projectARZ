@@ -42,7 +42,7 @@
 %\usepackage{amssymb}  % assumes amsmath package installed
 
 \title{\LARGE \bf
-Characterization of the convective instability of the Aw-Rascle-Zhang model via spectral analysis
+Characterization of the convective instability of the\\Aw-Rascle-Zhang model via spectral analysis
 }
 
 \author{ \centering Francois Belletti$^{\text{a}}$\thanks{$^{\text{a}}$Department of Electrical Engineering and Computer Science, University of California, Berkeley, United-States, {\tt\small francois.belletti@berkeley.edu}}
@@ -1037,14 +1037,11 @@ Within each cell, a specific number of traces, or footprints of a vehicle along 
 
 \subsubsection{Estimation formulae}
 \textbf{Binning formula for $v$}: Since the speed is assumed to be constant in each cell, a straightforward estimate for the speed is the empirical average. The estimator for $v$ in $\bin_{i,j}$ is
-{\footnotesize
 \begin{equation}
 \widehat{v}_{i,j}=\mean_{\trc \in \bin_{i,j}}(v(\trc)).
 \end{equation}
-}
 
 \textbf{Binning formula for $\rho$}: By definition, the density of $\bin_{i,j}$ is  
-{\footnotesize
 \begin{equation}
 \rho_{i,j}=
 \frac{
@@ -1053,10 +1050,8 @@ Within each cell, a specific number of traces, or footprints of a vehicle along 
 	n_{\lns}\Delta x\Delta t
 }.
 \end{equation}
-}
 
 The position of each vehicle is recorded every 0.1 second. For each cell we count the number of traces and normalize it by the sampling rate. The contribution of a given vehicle to the density of a cell is proportional to the number of traces it has left in the cell. If the speed is assumed to be locally constant, this contribution is proportional to the time this vehicle spends in the cell and is consistent with the conservation of the total number of vehicles across all cells. Then we have the density estimator
-{\footnotesize
 \begin{equation}
 \widehat{\rho}_{i,j}=
 \frac{
@@ -1065,18 +1060,14 @@ The position of each vehicle is recorded every 0.1 second. For each cell we coun
 n_{\lns} \Delta x \Delta t \: \text{sampling rate}
 },
 \end{equation}
-}
 where $\card (\cdot)$ gives the number of elements in a set, i.e., its cardinal. 
 
 \textbf{Binning formula for $q$}: By definition, $q=\rho v$, so a logical first estimate for $q$ in $\bin_{i,j}$ is 
-{\footnotesize
 \begin{equation}
 \widehat{q}_{i,j}=\widehat{v}_{i,j}\widehat{\rho}_{i,j}.
 \end{equation}
-}
 
 We can also approximate the flux through $\bin_{i,j}$ with a simple counting method. If a vehicle crosses spatial coordinate $\left(j+1\right)\Delta x$ between times $i\Delta t$ and $\left(i+1\right)\Delta t$, then it leaves a trace in both $\bin_{i,j}$ and $\bin_{i,j+1}$. Counting these vehicles and normalizing by the duration $\Delta t$ gives the estimator
-{\footnotesize
 \begin{equation}
 \widehat{q}_{i,j}^{\cnt}
 =
@@ -1086,7 +1077,6 @@ We can also approximate the flux through $\bin_{i,j}$ with a simple counting met
 	n_{\lns}\Delta t
 },
 \end{equation}
-}
 where id$(\cdot)$ gives the identification number of a vehicle.
 
 \subsubsection{Choosing the number of bins}

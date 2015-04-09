@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{float}
+
+\begin{document}
+
+\title{Prediction of traffic convective instability with spectral analysis of the Aw--Rascle--Zhang model}
+
+%% Group authors per affiliation:
+\author{Francois Belletti, Mandy Huo, Xavier Litrico, Alexandre M. Bayen}
+
+\maketitle
+
+\section{Highlights}
+The contributions of this article are as follows:
+
+\begin{itemize}
+\item \textit{Modeling}: We derive the characteristic form by linearization and diagonalization of the ARZ model. This form highlights important features of the model, leading to the definition of a counterpart to the Froude number in hydrodynamics, which separates free-flow and congested regimes. This is carried out in the $\left(\rho, v \right)$, $\left(\rho, q\right)$, and $\left(v, q\right)$ form, which can all be used interchangeably depending on applications. For example, in case when only $v$ and $q$ are measured (such as GPS and loops), the $\left(v, q\right)$ version of the equation is very appropriate to use.
+
+\item \textit{Spectral analysis}: From the charateristic form we derive the spectral form: a distributed transfer function. Time domain responses derived from the spectral transfer matrices show that the linearized system is unstable in the free-flow regime. These waves occur for an entire set of values of velocity, density, and flux and lead the linearized system away from its equilibrium point in the free-flow regime. 
+
+\item \textit{Numerical validation}: A numerical experiment using NGSIM data is conducted to verify that linearization does not destroy realistic properties of the ARZ model. Previous studies also using NGSIM data to assess predictions of second-order models focused on averaged errors and only displayed predictions at a couple of points along the freeway. Here, we present an entire map of the states and conduct model assessment in a holistic manner, providing a complete analysis of the strengths and weaknesses of the model to be used for control. Our estimation procedure, unlike, does not rely on any assumption about the typical vehicle length or the safety distance factor. Additionally, no discretization scheme is needed and no grid size condition needs to be fulfilled. This procedure demonstrates that the linearized model successfully accounts for traffic oscillations and also provides simple and consistent methods to calibrate the relaxation time, $\tau$.
+\end{itemize}
+
+\end{document}

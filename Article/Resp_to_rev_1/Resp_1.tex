@@ -1,0 +1,89 @@
+\documentclass[preprint]{elsarticle}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{float}
+\graphicspath{{figures/}}
+
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\trc}{trace}
+\DeclareMathOperator{\mean}{mean}
+\DeclareMathOperator{\bin}{bin}
+\DeclareMathOperator{\lns}{lanes}
+\DeclareMathOperator{\cnt}{count}
+
+\begin{document}
+
+\section{Reviewer A:}
+
+This paper performs spectral analysis on linearized ARZ model by removing the time variable with Laplace transform, deriving the distributed transfer function (state-transition matrices), and converting the results back into time domain. Simulations based on NGSIM data show that this spectral analysis well describes the convective instability. The idea of transforming ARZ model into ODE and taking advantage of well-developed linear system and control theory is novel and worth exploring. The methodology is solid and the results are interesting. However, there are a few issues that must be clarified. The suggestions below are given to improve the quality of the paper.
+
+\subsection{
+The authors shall refer to two recent papers on convective instability and highlight the difference between the different approaches taken: M. Treiber and A. Kesting, Evidence of convective instability in congested traffic flow: a systematic empirical and theoretical investigation, Transportation Research Part B, Volume 45, Issue 9, pp 1362-1377, 2011 ; J. A. Ward and R. E. Wilson, Criteria for convective versus absolute string instability in car-following models, Proceedings of the Royal Society A, Volume 467, Issue 2132, pp. 2185-2208, 2011.)
+}
+
+These two articles are indeed quite important when it comes highlighting the cause and consequences of convective instability in vehicular traffic.
+
+The first article considers a definition of convective instability which, like ours, corresponds to growing perturbations that propagate out of the solution domain but, unlike ours, requires linear instability as well. This study nonetheless strongly relates to ours in that it investigates how macroscopic models and spectral analysis can show how such phenomena arise in traffic. Our conclusions complement those of Treiber and Kesting in that we investigate convective instability that arises in free-flow and propagates downstream whereas their study focuses on similar instability that propagates upstream in congested traffic.
+
+The second article, by Ward and Wilson also exclusively focuses on convective instability that travels upstream as opposed to the direction we find in free flow regime. While our study considers macroscopic models, Ward and Wilson deal with car following models. What is similar however is how their spectral analysis of linearized models highlights to propagation speeds, the group speed which corresponds to cars, and the signal speed which relates to how fast information propagates in the traffic medium.
+
+WHAT WE HAVE CHANGED
+
+WHERE TO FIND IT
+
+\subsection{Elements in the state-transition matrices are found to contain time delay terms and distributed gains. These terms may relate to microscopic car-following models with delayed acceleration feedback terms which result in similar spectrum than hyperbolic PDE models forced with dissipative terms. J. I. Ge and G. Orosz, Dynamics of connected vehicle systems with delayed acceleration feedback, Transportation Research Part C, Volume 46, pp 46-64 2014. Such connections shall be discussed by the authors.}
+We thank the reviewer for bringing this article to our attention. Reaction time at the microscopic level does play an important role in the AW-Rascle-Zhang model and it would be very interesting to recalibrate this macroscopic model to account for intelligent cars. 
+
+However, our method is more similar to that of Ward and Wilson cited in the first remark. Indeed, only first order time derivative terms appear in our equations when in the connected cruise control scenario considered by Ge and Orosz, acceleration is core to the analysis. Fundamentally, our approach differs from this microscopic model in that it considers a coarser space and time scale. 
+
+Still, information propagation delay stemming from drivers' reaction time or communication between cars would change to the relaxation time in the Aw-Rascle-Zhang model however although this latter model only considers aggregate traffic behavior.
+
+WHAT WE HAVE CHANGED
+
+WHERE TO FIND IT
+
+
+\subsection{The authors shall elaborate on why the state-transition model for F>1 has both xi(0,s) and xi(L,s) as inputs (eq. 42), while for F<1 xi(0,s) is input and xi(L,s) is output (eq. 37).}
+
+
+4. In Section 3.3.4, the authors checked the poles of the transfer function, but did not quite provide results on BIBO stability, which would require calculating the norm of the transfer function.
+
+5. It is established that the linearized ARZ model is able to adequately describe convective instability through numerical validation. It would be nice to see more on how this method can be used in traffic control.
+
+6. After turning PDE into ODE for theoretical analysis in frequency domain, we often have to translate the results back into time domain, which can be very tricky. I was wondering whether this method would work for other PDE traffic models as well or the algebra gets much more complicated.
+
+
+
+
+
+\newpage
+
+Reviewer B: The present manuscript deals with classical Aw-Rascle-Zhang (ARZ) model for freeway traffic and proposed a spectral analysis of its linearized version. NGSIM data for congested traffic trajectories is used to validate the theoretical predictions. Though, the results presented in this article are interesting and useful but still I propose that the article should be rewritten and the following changes should be made.
+
+1. The last line of the abstract is difficult to understand for the reader of this article.
+
+2. The article length does not suits to be published in Physics Letters A. In my opinion, the introduction part can be rewritten in a shorter way and the other sections can also be squeezed without missing the relevant information.
+
+3. The authors discussed second order models in the literature survey on traffic flow models but some important literature on it is missing as A. K. Gupta, V. K. Katiyar, Physica A 371 (2006) 674-682;  A. K. Gupta, I. Dhiman, Int. J. Mod. Phys. C, 25 (2014) 1450045; A. K. Gupta, I. Dhiman, Nonlinear Dynamics, DOI: 10.1007/s11071-014-1693-6; A. K. Gupta, (2013), Int. J. Mod. Phys. C, 25(4) 1350018; A. K. Gupta and V. K. Katiyar, Journal of Physics A, 38, (2005), 4069-4083; A. K. Gupta and V. K. Katiyar, Physica A, 368 (2), (2006) 551-559.
+
+4. Since the articles deals with the traffic flow control, the relevant articles on it need to be mentioned as A. K. Gupta, S. Sharma, Chin. Phys. B, 19, (2010) 110503; A. K. Gupta, S. Sharma, Chin. Phys. B, 21, (2012) 015201.
+
+5. It is concluded that "linearized ARZ model is capable of reproducing NGSIM data accurately for a homogeneous segment of the US-101 freeway" is not correct. Some error analysis need to done to support the fact.
+
+6. There are so many parameters involved in this study which may be confusing for the reader.
+
+Due to all the above point this article cannot be published in this form. If the authors carefully revised the article based upon my comments, than the article may be acceptable for publication.
+
+
+
+
+\newpage
+
+Reviewer C: This paper develops a qualitative analysis of a traffic flow model, which is developed from Aw and Rascle model. The approach uses known techniques and definitely contributes to a deeper understanding of the AR model. However, reference to the existing literature must be improved. For instance the authors ignore a paper by Degond and Delitala which has the ability to depict the velocity diagram without artificially inserting it into the model. This is an important issue which deserves attention as interactions at the micro-scale should lead to such equilibrium configuration; see Bellouquid-Fermo-De Angelis.
+
+Finally, I do *not* think that this paper contributes to a deeper understanding of the physics of traffic so I am not keen to recommend publication.
+
+
+\end{document}
