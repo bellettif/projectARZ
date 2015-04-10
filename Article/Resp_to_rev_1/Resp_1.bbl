@@ -5,6 +5,9 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
+\bibitem{Litricobook}
+X.~Litrico, V.~Fromion, Modeling and control of hydrosystems, Springer, 2009.
+
 \bibitem{Litricosimp}
 X.~Litrico, V.~Fromion, Simplified modeling of irrigation canals for controller
   design, Journal of Irrigation and Drainage Engineering 130~(5) (2004)

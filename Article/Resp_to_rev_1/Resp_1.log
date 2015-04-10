@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.24)  10 APR 2015 13:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.24)  10 APR 2015 13:20
 entering extended mode
 **Resp_1.tex
 (C:\Users\Mandy\Documents\GitHub\projectARZ\Article\Resp_to_rev_1\Resp_1.tex
@@ -366,11 +366,7 @@ ndy/Documents/GitHub/projectARZ/Article/Resp_to_rev_1/berkeley-letterhead.jpg>]
 LaTeX Font Info:    Try loading font information for U+rsfs on input line 94.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-
-LaTeX Warning: Citation `Litricobook' on page 2 undefined on input line 134.
-
-[2]
+) [2]
 Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
@@ -392,16 +388,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 200.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 200.
 Package rerunfilecheck Info: File `Resp_1.out' has not changed.
 (rerunfilecheck)             Checksum: 209688FA73A2EE83CB1295ED65257895;93.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 200.
  ) 
 Here is how much of TeX's memory you used:
- 6060 strings out of 493921
- 88526 string characters out of 3144876
- 177993 words of memory out of 3000000
+ 6061 strings out of 493921
+ 88542 string characters out of 3144876
+ 178026 words of memory out of 3000000
  9302 multiletter control sequences out of 15000+200000
  5848 words of font info for 23 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -416,9 +408,9 @@ iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Resp_1.pdf (5 pages, 233805 bytes).
+Output written on Resp_1.pdf (5 pages, 233893 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
+ 90 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
  22 words of extra memory for PDF output out of 10000 (max. 10000000)
 
