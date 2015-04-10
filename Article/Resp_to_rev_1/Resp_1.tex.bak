@@ -131,18 +131,19 @@ WHERE TO FIND IT
 It is established that the linearized ARZ model is stable to adequately describe convective instability through numerical validation. It would be nice to see more on how this method can be used in traffic control.
 }
 
-We agree that this is worth exploring. As stated in the article, our work here follows that of Litrico on the Saint-Venant equations. The reviewer may refer to Part II of \cite{Litricobook} for a glance at the work left to be done on the ARZ model. There are various possibilities employing the classical control techniques. For instance, we could design a PI controller for controlling $q$ at $x = L$ using the transfer matrices from $q$ at $x = 0$ and $v$ at either $x = 0$ or $x = L$, depending on the flow regime. We may approximate the transfer functions with the integrator delay model, such as in \cite{Litricosimp}, for tuning the gains. 
+We agree that this is worth exploring. As stated in the article, our work here follows that of Litrico on the Saint-Venant equations. The reviewer may refer to Part II of \cite{Litricobook} for a glance at the work left to be done on the ARZ model. There are various possibilities employing the classical control techniques. For instance, we could design a PI controller for controlling $q$ at $x = L$ using the transfer matrices from $q$ at $x = 0$ and $v$ at either $x = 0$ or $x = L$, depending on the flow regime. We may employ an approximation to the transfer functions, such as the in
 
-However, as the design of a working controller is more involved and out of the scope of the present article, this will be provided in a future article. Ultimately our aim is to explore in depth such control methods and assess how well they apply to traffic with linearized equations. In particular, this corresponds to the practical setting of the Bay Bridge near San Francisco that controls flow entering the city with traffic signals on the other side of the bridge. \\
+However, as the actual design of a working controller is more involved and out of the scope of the present article, this will be provided in a future article. 
 
-% This remark captures the purpose of current work for an upcoming article.
-%
-%For any given spatial location $x$ along the freeway, we have derived an analytical transfer function for $v$ and $q$ as a functional of the boundary conditions.
-%
-%For instance, in free-flow regime, $v$ and $q$ at $x = L$ are expressed as output of $v$ and $q$ at $x - 0$ and standard control techniques can be applied to that MIMO system.
-%
-%MANDY'S DIAGRAM.\\
+ This remark captures the purpose of current work for an upcoming article.
 
+For any given spatial location $x$ along the freeway, we have derived an analytical transfer function for $v$ and $q$ as a functional of the boundary conditions.
+
+For instance, in free-flow regime, $v$ and $q$ at $x = L$ are expressed as output of $v$ and $q$ at $x - 0$ and standard control techniques can be applied to that MIMO system.
+
+MANDY'S DIAGRAM.\\
+
+Our aim is to explore in depth such control methods and assess how well they apply to traffic with linearized equations. In particular, this corresponds to the practical setting of the Bay Bridge near San Francisco that controls flow entering the city with traffic signals on the other side of the bridge. This will be discussed in details in an upcoming article.
 
 \bigskip{}
 

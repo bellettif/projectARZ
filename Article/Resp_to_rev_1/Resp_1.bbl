@@ -5,6 +5,11 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
+\bibitem{Litricosimp}
+X.~Litrico, V.~Fromion, Simplified modeling of irrigation canals for controller
+  design, Journal of Irrigation and Drainage Engineering 130~(5) (2004)
+  373--383.
+
 \bibitem{1184520}
 N.~Petit, P.~Rouchon, Flatness of heavy chain systems, in: Decision and
   Control, 2002, Proceedings of the 41st IEEE Conference on, Vol.~1, 2002, pp.

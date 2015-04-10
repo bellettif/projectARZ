@@ -52,13 +52,13 @@ pages={339-355},
   publisher={Springer},
 }
 
-@Article{Litricosimp,
+@Article{Litricobook,
 author = {Xavier Litrico and Vincent Fromion},
-title = {Simplified modeling of irrigation canals for controller design},
-journal = {Journal of Irrigation and Drainage Engineering},
-year = {2004},
-volume = {130},
-number = {5},
-pages = {373--383},
+title = {H-infinity control of an irrigation canal pool with a mixed control politics},
+journal = {IEEE Transactions on Control Systems Technology},
+year = {2006},
+volume = {14},
+number = {1},
+pages = {99--111},
 }
 
