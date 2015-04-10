@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Resp_1.aux
+The style file: elsarticle-num.bst
+Database file #1: biblio.bib
+You're missing a field name---line 20 of file biblio.bib
+ : pages={339-355},
+ :                 ,
+I'm skipping whatever remains of this entry
+You've used 2 entries,
+            2937 wiz_defined-function locations,
+            683 strings with 5383 characters,
+and the built_in function-call counts, 808 in all, are:
+= -- 76
+> -- 11
+< -- 2
++ -- 5
+- -- 3
+* -- 50
+:= -- 114
+add.period$ -- 2
+call.type$ -- 2
+change.case$ -- 2
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 27
+empty$ -- 95
+format.name$ -- 4
+if$ -- 210
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 14
+num.names$ -- 2
+pop$ -- 13
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 56
+stack$ -- 0
+substring$ -- 67
+swap$ -- 11
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 5
+width$ -- 3
+write$ -- 25
+(There was 1 error message)

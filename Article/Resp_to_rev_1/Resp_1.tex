@@ -1,10 +1,11 @@
-\documentclass[preprint]{elsarticle}
+\documentclass{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
 \usepackage{float}
-\graphicspath{{figures/}}
+\usepackage{graphics}
+\usepackage{graphicx}
 
 \DeclareMathOperator{\card}{card}
 \DeclareMathOperator{\trc}{trace}
@@ -13,17 +14,54 @@
 \DeclareMathOperator{\lns}{lanes}
 \DeclareMathOperator{\cnt}{count}
 
+\bibliographystyle{elsarticle-num}
+
 \begin{document}
+
+\begin{figure}
+\includegraphics[width=1\columnwidth]{berkeley-letterhead.jpg}
+\end{figure}
+
+\hfill{}Electrical Engineering and Computer Science \\
+Francois Belletti \hfill{}652 Sutardja Dai Hall \\
+Ph.D. Student\hfill{}\hfill{}Berkeley, California 94720-1710\\
+Tel. 510-219-1493 \\
+Email: jackdreilly@berkeley.edu\hfill{}\today
+
+\bigskip{}
+
+\bigskip{}
+\textbf{Object:} Revised version of the article \textit{Prediction of traffic convective instability with spectral analysis of the Aw--Rascle--Zhang model}
+ by Belletti, Huo, Litrico, Bayen, (ref No PLA-D-15-00317) for publication in Physics Letters A.
+
+\bigskip{}
+
+The authors are very grateful to the two referees for their
+reports sent on March 19, 2014, and their careful reading of the
+paper. The revised version takes into account all their recommendations
+and suggestions, which we feel greatly improve the article.\\
+
+We now address point by point all comments of the reviewers (presented
+here in italic).
+
+\bigskip{}
+
 
 \section{Reviewer A:}
 
+\emph{
 This paper performs spectral analysis on linearized ARZ model by removing the time variable with Laplace transform, deriving the distributed transfer function (state-transition matrices), and converting the results back into time domain. Simulations based on NGSIM data show that this spectral analysis well describes the convective instability. The idea of transforming ARZ model into ODE and taking advantage of well-developed linear system and control theory is novel and worth exploring. The methodology is solid and the results are interesting. However, there are a few issues that must be clarified. The suggestions below are given to improve the quality of the paper.
+}
 
-\subsection{
+We thank the reviewer for their positive assessment of our work, and the nice remarks on our contributions. We have followed their suggestion of related works, clarifications and more thorough analysis of the analysis of the system under study.\\
+
+\bigskip{}
+
+\emph{
 The authors shall refer to two recent papers on convective instability and highlight the difference between the different approaches taken: M. Treiber and A. Kesting, Evidence of convective instability in congested traffic flow: a systematic empirical and theoretical investigation, Transportation Research Part B, Volume 45, Issue 9, pp 1362-1377, 2011 ; J. A. Ward and R. E. Wilson, Criteria for convective versus absolute string instability in car-following models, Proceedings of the Royal Society A, Volume 467, Issue 2132, pp. 2185-2208, 2011.)
 }
 
-These two articles are indeed quite important when it comes highlighting the cause and consequences of convective instability in vehicular traffic.
+We fully agree that these two articles are quite important when it comes highlighting the cause and consequences of convective instability in vehicular traffic.
 
 The first article considers a definition of convective instability which, like ours, corresponds to growing perturbations that propagate out of the solution domain but, unlike ours, requires linear instability as well. This study nonetheless strongly relates to ours in that it investigates how macroscopic models and spectral analysis can show how such phenomena arise in traffic. Our conclusions complement those of Treiber and Kesting in that we investigate convective instability that arises in free-flow and propagates downstream whereas their study focuses on similar instability that propagates upstream in congested traffic.
 
@@ -33,7 +71,12 @@ WHAT WE HAVE CHANGED
 
 WHERE TO FIND IT
 
-\subsection{Elements in the state-transition matrices are found to contain time delay terms and distributed gains. These terms may relate to microscopic car-following models with delayed acceleration feedback terms which result in similar spectrum than hyperbolic PDE models forced with dissipative terms. J. I. Ge and G. Orosz, Dynamics of connected vehicle systems with delayed acceleration feedback, Transportation Research Part C, Volume 46, pp 46-64 2014. Such connections shall be discussed by the authors.}
+\bigskip{}
+
+\emph{
+Elements in the state-transition matrices are found to contain time delay terms and distributed gains. These terms may relate to microscopic car-following models with delayed acceleration feedback terms which result in similar spectrum than hyperbolic PDE models forced with dissipative terms. J. I. Ge and G. Orosz, Dynamics of connected vehicle systems with delayed acceleration feedback, Transportation Research Part C, Volume 46, pp 46-64 2014. Such connections shall be discussed by the authors.
+}
+
 We thank the reviewer for bringing this article to our attention. Reaction time at the microscopic level does play an important role in the AW-Rascle-Zhang model and it would be very interesting to recalibrate this macroscopic model to account for intelligent cars. 
 
 However, our method is more similar to that of Ward and Wilson cited in the first remark. Indeed, only first order time derivative terms appear in our equations when in the connected cruise control scenario considered by Ge and Orosz, acceleration is core to the analysis. Fundamentally, our approach differs from this microscopic model in that it considers a coarser space and time scale. 
@@ -44,25 +87,88 @@ WHAT WE HAVE CHANGED
 
 WHERE TO FIND IT
 
+\bigskip{}
 
-\subsection{The authors shall elaborate on why the state-transition model for F>1 has both xi(0,s) and xi(L,s) as inputs (eq. 42), while for F<1 xi(0,s) is input and xi(L,s) is output (eq. 37).}
+\emph{
+The authors shall elaborate on why the state-transition model for $F>1$ has both $\xi(0,s)$ and $\xi(L,s)$ as inputs (eq. 42), while for $F<1$ $\xi(0,s)$ is input and $\xi(L,s)$ is output (eq. 37).
+}
 
+Indeed, it seems that the way we introduce the definition of the outputs and inputs depending on the traffic regime is not clear enough in our article.
+If F < 1 (ie congested regime) the characteristic lines are both going downstream and therefore solving the linearized ARZ Partial Differential Equation is well defined if an initial condition is set and the upstream boundary condition is determined.
+If F < 1 (ie free flow regime) however, the characteristic line determining $\xi_1$ flow downstream whereas that of $\xi_2$ flows upstream. Therefore, an upstream boundary condition determines $\xi_1$ in the solution domain and a downstream boundary condition determines $\xi_2$ in the solution domain.
 
-4. In Section 3.3.4, the authors checked the poles of the transfer function, but did not quite provide results on BIBO stability, which would require calculating the norm of the transfer function.
+WHAT WE HAVE CHANGED
 
-5. It is established that the linearized ARZ model is able to adequately describe convective instability through numerical validation. It would be nice to see more on how this method can be used in traffic control.
+WHERE TO FIND IT
 
-6. After turning PDE into ODE for theoretical analysis in frequency domain, we often have to translate the results back into time domain, which can be very tricky. I was wondering whether this method would work for other PDE traffic models as well or the algebra gets much more complicated.
+\emph{
+In Section 3.3.4, the authors checked the poles of the transfer function, but did not quite provide results on BIBO stability, which would require calculating the norm of the transfer function.
+}
 
+We fully agree that computing the poles was not sufficient. In order to keep the study relatively concise we did not compute the  $H_{\infty}$ norm of the transfer function. 
 
+In free-flowing regime, it corresponds to the maximum module of eigen value of the matrix $\Psi$. The spectrum of $\Psi$ is identical to that of $\Phi$ which is lower triangular and has eigenvalues 
+$
+e^{ - \frac{x}{\tau \lambda_1}}
+e^{ - \frac{x}{\lambda_1} s}
+$
+and
+$
+e^{ - \frac{x}{\lambda_2} s}
+$
+whose module is trivially bounded by $1$.
+This proves the $H_{\infty}$ norm of $Psi$ is $1$ and therefore the system is BIBO stable.
 
+In congested regime let us consider the eigenvalues of matrix $\Theta$ which are identical to that of $\Gamma$.
+The latter is lower triangular and its eigen values also have a module bounded by $1$.
+The congested regime system is therefore also BIBO.
+
+WHAT WE HAVE CHANGED
+
+WHERE TO FIND IT
+
+\emph{
+It is established that the linearized ARZ model is stable to adequately describe convective instability through numerical validation. It would be nice to see more on how this method can be used in traffic control.
+}
+
+We agree that this is worth exploring. This remark captures the purpose of current work for an upcoming article.
+
+For any given spatial location $x$ along the freeway, we have derived an analytical transfer function for $v$ and $q$ as a functional of the boundary conditions.
+
+For instance, in free-flow regime, $v$ and $q$ at $x = L$ are expressed as output of $v$ and $q$ at $x - 0$ and standard control techniques can be applied to that MIMO system.
+
+MANDY'S DIAGRAM.\\
+
+Our aim is to explore in depth such control methods and assess how well they apply to traffic with linearized equations. In particular, this corresponds to the practical setting of the Bay Bridge near San Francisco that controls flow entering the city with traffic signals on the other side of the bridge. This will be discussed in details in an upcoming article.
+
+\bigskip{}
+
+\emph{
+After turning PDE into ODE for theoretical analysis in frequency domain, we often have to translate the results back into time domain, which can be very tricky. I was wondering whether this method would work for other PDE traffic models as well or the algebra gets much more complicated.
+}
+
+The reviewer raises an very insightful point here. In the ARZ equation settings, our derivations have yielded transfer functions that allow rather easily one to find explicit formulae for the time domain expression of responses to various families of inputs such as steps and cosines. Thanks to this we derived generic analytical time domain expressions for any Fourier decomposition of a function.
+With other expressions for the transfer function, it might not be possible to calculate such analytical expressions. However, two techniques can then be used.
+
+The first one, differential flatness (\cite{1184520}), allows one to expression the appropriate input for a desired output thanks to a decomposition as an infinite polynomial sum.
+
+The second one, numerical derivation of Laplace transforms, relies on numerical derivations of Laplace and inverse Laplace transform (\cite{inverse}). It can be computationally expensive but is embarrassingly parallel.
+
+Our article focuses on the ARZ equations for traffic therefore and exploring this very interesting remark would require writing an entire new section and introducing new equations and derivations. Reviewer B has pointed out that our article should be shorter in order to correspond to the usual length of papers published in Physics Letters A therefore we believe we are out of space.
 
 
 \newpage
 
-Reviewer B: The present manuscript deals with classical Aw-Rascle-Zhang (ARZ) model for freeway traffic and proposed a spectral analysis of its linearized version. NGSIM data for congested traffic trajectories is used to validate the theoretical predictions. Though, the results presented in this article are interesting and useful but still I propose that the article should be rewritten and the following changes should be made.
+\section{Reviewer B}
+\emph{
+The present manuscript deals with classical Aw-Rascle-Zhang (ARZ) model for freeway traffic and proposed a spectral analysis of its linearized version. NGSIM data for congested traffic trajectories is used to validate the theoretical predictions. Though, the results presented in this article are interesting and useful but still I propose that the article should be rewritten and the following changes should be made.
+}
+The reviewer is correct in pointing out that the submitted version of the article was lacking several important references in the literature of traffic models and related control. We have found the suggested references to be helpful in placing the article in a broader context. We have elaborated on the suggested literature in the edits within the article and again in the responses below. We have also made the notations more transparent as requested and conducted a thorough analysis of the errors in our numerical assessment of the model. The article is also now much in order to correspond to the standards of Physics Letters A.\\
 
-1. The last line of the abstract is difficult to understand for the reader of this article.
+\emph{
+The last line of the abstract is difficult to understand for the reader of this article.
+}
+
 
 2. The article length does not suits to be published in Physics Letters A. In my opinion, the introduction part can be rewritten in a shorter way and the other sections can also be squeezed without missing the relevant information.
 
@@ -85,5 +191,8 @@ Reviewer C: This paper develops a qualitative analysis of a traffic flow model, 
 
 Finally, I do *not* think that this paper contributes to a deeper understanding of the physics of traffic so I am not keen to recommend publication.
 
+\section*{References}
+\bibliography{biblio}
 
 \end{document}
+
