@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{AR}
+A.~Aw and M.~Rascle, ``Resurrection of second order models of traffic flow,''
+  {\em SIAM Journal of Applied Mathematics}, vol.~60, no.~3, pp.~916--938,
+  2000.
+
+\bibitem{Z}
+H.~M. Zhang, ``A non-equilibrium traffic model devoid of gas-like behavior,''
+  {\em Transportation Res. Part B}, vol.~36, pp.~275--290, 2002.
+
+\bibitem{GodunovARZ}
+S.~Mammar, J.-P. Lebacque, and H.~H. Salem, ``Riemann problem resolution and
+  \uppercase{G}odunov scheme for the
+  \uppercase{A}w-\uppercase{R}ascle-\uppercase{Z}hang model,'' {\em
+  Transportation Science}, vol.~43, no.~4, pp.~531--545, 2009.
+
+\bibitem{LeVequetext}
+R.~J. LeVeque, {\em Numerical Methods for Conservation Laws}.
+\newblock Springer Basel AG, 1992.
+
+\bibitem{WENO}
+X.-D. Liu, S.~Osher, and T.~Chan, ``Weighted essentially non-oscillatory
+  schemes,'' {\em Journal of computational physics}, vol.~115, pp.~200--212,
+  1994.
+
+\end{thebibliography}

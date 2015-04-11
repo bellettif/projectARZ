@@ -1,0 +1,9 @@
+\BOOKMARK [1][-]{section.1}{ARZ model}{}% 1
+\BOOKMARK [1][-]{section.2}{Explicit numerical schemes}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Godunov}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Lax-Friedrichs}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Lax-Wendroff}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{ENO and WENO}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Implementation of explicit schemes}{}% 7
+\BOOKMARK [1][-]{section.4}{Implicit schemes}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Crank-Nicolson}{section.4}% 9
