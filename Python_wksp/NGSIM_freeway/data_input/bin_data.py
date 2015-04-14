@@ -197,13 +197,17 @@ for n_grid in [80, 100, 120, 140]:
                        'n_traces', 'n_ids']]
     buckets = buckets.sort(['t_start', 'x_start'])
     if CONTROL_GRID:
+        fontsize = 20
         #
         #    Plot histogram of number of traces in buckets
         #
         plt.hist(buckets['n_traces'].values, bins = 100)
-        plt.title('Histogram of number of traces in buckets')
-        plt.ylabel('Population')
-        plt.xlabel('Number of traces')
+        plt.title('Histogram of number of traces in buckets',
+                  fontsize = fontsize)
+        plt.ylabel('Population',
+                   fontsize = fontsize)
+        plt.xlabel('Number of traces',
+                   fontsize = fontsize)
         plt.grid()
         plt.savefig('%s/traces_%d_%d' % (CONTROL_GRID_FOLDER, n_grid_t, n_grid_x))
         plt.close()
@@ -215,9 +219,12 @@ for n_grid in [80, 100, 120, 140]:
         #    Plot histogram of number of ids in buckets
         #
         plt.hist(buckets['n_ids'].values, bins = 100)
-        plt.title('Histogram of number of ids in buckets')
-        plt.ylabel('Population')
-        plt.xlabel('Number of distinct ids')
+        plt.title('Histogram of number of ids in buckets',
+                  fontsize = fontsize)
+        plt.ylabel('Population',
+                   fontsize = fontsize)
+        plt.xlabel('Number of distinct ids',
+                   fontsize = fontsize)
         plt.grid()
         plt.savefig('%s/ids_%d_%d' % (CONTROL_GRID_FOLDER, n_grid_t, n_grid_x))
         plt.close()
@@ -226,7 +233,7 @@ for n_grid in [80, 100, 120, 140]:
                                                n_grid_x,
                                                buckets['n_ids'].quantile(0.1))
     if PRODUCE_PLOTS:
-        fontsize = 18
+        fontsize = 20
         #
         #    Plotting (t,x) map of v, q and rho
         #

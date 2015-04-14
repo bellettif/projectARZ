@@ -31,6 +31,7 @@ Email: francois.belletti@berkeley.edu\hfill{}\today
 \bigskip{}
 
 \bigskip{}
+
 \textbf{Object:} Revised version of the article \textit{Prediction of traffic convective instability with spectral analysis of the Aw--Rascle--Zhang model}
  by Belletti, Huo, Litrico, Bayen, (ref No PLA-D-15-00317) for publication in Physics Letters A.
 
@@ -67,9 +68,7 @@ The first article considers a definition of convective instability which, like o
 
 The second article, by Ward and Wilson also exclusively focuses on convective instability that travels upstream as opposed to the direction we find in free flow regime. While our study considers macroscopic models, Ward and Wilson deal with car following models. What is similar however is how their spectral analysis of linearized models highlights to propagation speeds, the group speed which corresponds to cars, and the signal speed which relates to how fast information propagates in the traffic medium.
 
-WHAT WE HAVE CHANGED
-
-WHERE TO FIND IT
+In order to reflect that complementarity and taking into account the request for more concision from Reviewer, we have added ``This complements the empirical and theoretical findings presented in \cite{treiber2011evidence,wardWilson2011} about convective instability propagating upstream in congested regime.'' to the end of the \textit{Spectral analysis} paragraph of subsection 1.3 (now on page 2).
 
 \bigskip{}
 
@@ -83,9 +82,7 @@ However, our method is more similar to that of Ward and Wilson cited in the firs
 
 Still, information propagation delay stemming from drivers' reaction time or communication between cars would change to the relaxation time in the Aw-Rascle-Zhang model however although this latter model only considers aggregate traffic behavior.
 
-WHAT WE HAVE CHANGED
-
-WHERE TO FIND IT
+Information propagation structure in traffic will change as smart cars become widespread. In order to reflect that interesting idea and its implication for macroscopic models we have added ``New models are now developed as in \cite{jin2014dynamics} that take into account reduced reaction times and radio communication in platoons of computer assisted vehicles and interestingly describe how smart cars can change traffic behavior.'' at the end of section 1.1 (now page 2).
 
 \bigskip{}
 
@@ -93,21 +90,21 @@ WHERE TO FIND IT
 The authors shall elaborate on why the state-transition model for $F>1$ has both $\xi(0,s)$ and $\xi(L,s)$ as inputs (eq. 42), while for $F<1$ $\xi(0,s)$ is input and $\xi(L,s)$ is output (eq. 37).
 }
 
-Indeed, it seems that the way we introduce the definition of the outputs and inputs depending on the traffic regime is not clear enough in our article.
+Indeed, it seems that the way we introduce the definition of the outputs and inputs depending on the traffic regime is not clear enough in our article. We also appologize for a typo error in the first line of subsection 3.3.1. The sentence was ``In congested regime, the boundary conditions used to control the system are $\hat{\xi}_{1}\left(0,\cdot\right)$ and $\hat{\xi}_{2}\left(0,\cdot\right)$.'' but we meant ``In congested regime, the boundary conditions used to control the system are $\hat{\xi}_{1}\left(0,\cdot\right)$ and $\hat{\xi}_{2}\left(L,\cdot\right)$.''.
 If F < 1 (ie congested regime) the characteristic lines are both going downstream and therefore solving the linearized ARZ Partial Differential Equation is well defined if an initial condition is set and the upstream boundary condition is determined.
 If F < 1 (ie free flow regime) however, the characteristic line determining $\xi_1$ flow downstream whereas that of $\xi_2$ flows upstream. Therefore, an upstream boundary condition determines $\xi_1$ in the solution domain and a downstream boundary condition determines $\xi_2$ in the solution domain.
 
-WHAT WE HAVE CHANGED
+The typo error has been corrected and the proper meaning of the first line of subsection 3.3.1 has been restored (now on page 6). The reason why inputs have been changed is easier to understand with a schema. Therefore the caption of Figure 1 (previously on page 7 and now on page 4) has been complemented with the corresponding inputs to each setting.
 
-WHERE TO FIND IT
+\bigskip{}
 
 \emph{
 In Section 3.3.4, the authors checked the poles of the transfer function, but did not quite provide results on BIBO stability, which would require calculating the norm of the transfer function.
 }
 
-We fully agree that computing the poles was not sufficient. In order to keep the study relatively concise we did not compute the  $H_{\infty}$ norm of the transfer function. 
+We fully agree that computing the poles was not sufficient. In order to keep the study relatively concise we did not show the computation of the $H_{\infty}$ norm of the transfer function. 
 
-In free-flowing regime, it corresponds to the maximum module of eigen value of the matrix $\Psi$. The spectrum of $\Psi$ is identical to that of $\Phi$ which is lower triangular and has eigenvalues 
+In free-flowing regime, it corresponds to the maximum module of eigen value of the matrix $\Psi(x,s)$. The spectrum of $\Psi(x,s)$ is identical to that of $\Phi(x,s)$ which is lower triangular and has eigenvalues 
 $
 e^{ - \frac{x}{\tau \lambda_1}}
 e^{ - \frac{x}{\lambda_1} s}
@@ -117,15 +114,17 @@ $
 e^{ - \frac{x}{\lambda_2} s}
 $
 whose module is trivially bounded by $1$.
-This proves the $H_{\infty}$ norm of $Psi$ is $1$ and therefore the system is BIBO stable.
+This proves the $H_{\infty}$ norm of $\Psi$ is boudned by $1$ and therefore the system is BIBO stable.
 
-In congested regime let us consider the eigenvalues of matrix $\Theta$ which are identical to that of $\Gamma$.
+In congested regime let us consider the eigenvalues of matrix $\Theta(x,s)$ which are identical to that of $\Gamma(x,s)$.
 The latter is lower triangular and its eigen values also have a module bounded by $1$.
-The congested regime system is therefore also BIBO.
+The congested regime system is therefore also BIBO stable.
 
-WHAT WE HAVE CHANGED
+The derivations above for the free-flowing regime have been added to the article. They are now present from line 12 onwards page 5 in subsection 3.3.
 
-WHERE TO FIND IT
+The corresponding derivations for the congested regime have also been added to the article. They are now present from line 25 onwards page 7 in subsection 3.3.2.
+
+\bigskip{}
 
 \emph{
 It is established that the linearized ARZ model is stable to adequately describe convective instability through numerical validation. It would be nice to see more on how this method can be used in traffic control.
@@ -173,7 +172,6 @@ More precise terms are now used and the previous sentence (``In particular, it r
 The article length does not suit to be published in Physics Letters A. In my opinion, the introduction part can be rewritten in a shorter way and the other sections can also be squeezed without missing the relevant information.
 }
 
-
 We fully agree that the article can be presented in a more concise manner without losing too much of the study. The article has been entirely rewritten so as to much better conform with the standards of Physics Letters A. The list of corresponding changes is presented below:
 \begin{itemize}
 \item
@@ -204,6 +202,7 @@ For the sake of compacity the captions have been shorten. The term spatial magni
 
 \item
 \emph{Numerical study}
+The preamble to the numerical study (page 15 and now page 8) has been reworded so as to keep its gist whilst being more concise.
 Figure 10 page 18 was redundent with Figure 13 page 20. It has been removed to save space.
 Figure 11 page 11 was not necessary to the numerical validation as a sanity check is performed on estimated flow quantities. It has been removed.
 Items of subsection 4.5, Findings and conclusion from the numerical experiments, have been turned into a list of paragraphs in order to make the article more compact.
@@ -216,7 +215,21 @@ The appendix was only giving small details about how to derive numerical express
 
 \bigskip{}
 
-3. The authors discussed second order models in the literature survey on traffic flow models but some important literature on it is missing as A. K. Gupta, V. K. Katiyar, Physica A 371 (2006) 674-682;  A. K. Gupta, I. Dhiman, Int. J. Mod. Phys. C, 25 (2014) 1450045; A. K. Gupta, I. Dhiman, Nonlinear Dynamics, DOI: 10.1007/s11071-014-1693-6; A. K. Gupta, (2013), Int. J. Mod. Phys. C, 25(4) 1350018; A. K. Gupta and V. K. Katiyar, Journal of Physics A, 38, (2005), 4069-4083; A. K. Gupta and V. K. Katiyar, Physica A, 368 (2), (2006) 551-559.
+\emph{
+The authors discussed second order models in the literature survey on traffic flow models but some important literature on it is missing as A. K. Gupta, V. K. Katiyar, Physica A 371 (2006) 674-682;  A. K. Gupta, I. Dhiman, Int. J. Mod. Phys. C, 25 (2014) 1450045; A. K. Gupta, I. Dhiman, Nonlinear Dynamics, DOI: 10.1007/s11071-014-1693-6; A. K. Gupta, (2013), Int. J. Mod. Phys. C, 25(4) 1350018; A. K. Gupta and V. K. Katiyar, Journal of Physics A, 38, (2005), 4069-4083; A. K. Gupta and V. K. Katiyar, Physica A, 368 (2), (2006) 551-559.
+}
+We apologize to the reviewer for not having mentioned these important developements in research on traffic models. Indeed they relate to our article because of the series of points below:
+
+\begin{itemize}
+\item ``A new anisotropic continuum model for traffic flow'', A. K. Gupta, V. K. Katiyar, 2005, the Gupta-Katiyar (GK) model, alleviates many shortcoming of macroscopic second order models thanks a considerable improvement of Berg's car following model. Introducing the approximate expression of headway as a perturbation series gave birth to a realistic model that does not present the pitfall of information travelling faster than traffic does or negative speeds. Moreover, it is really interesting to see that the model becomes asymptotically anisotropic which accounts for a very important property of traffic.
+\item ``Analyses of shock waves and jams in traffic flow'', A. K. Gupta, V. K. Katiyar, 2005, further studies the properties of that model and more precisely how it accurately captures the structure of schock waves. After having derived conditions for linear stability and wave propagation structure, a numerical scheme for the model is presented. The corresponding numerical experiments which proves that although it features different coefficients for high order terms, the results of this model are still consistent with pre-existing experiments conducted on the Kerner-Konhauser model.
+\item ``Phase transition of traffic states with on-ramp'', A. K. Gupta, V. K. Katiyar, 2006, shows, thanks to thorough numerical experiments how the (GK) model accounts for several phases in traffic in responses to varied inputs on the on-ramp.
+\item ``Phase diagram of a continuum traffic flow model with a static bottleneck'', A. K. Gupta, I. Dhiman, 2014, studies the impact of bottlenecks on uniform flow thanks to the speed gradient model developped by Jiang. Bottlenecks are taken into account either explicitely or implicitely resulting in different sensitiveness to input information.
+\item ``Analyses of a continuum traffic flow model for a non-lane-based system'', A. K. Gupta and I. Dhiman, 2014, extends the single lane car-following models above to the context of multiple lanes driving at different speeds. The conclusions of this complex study are very interesting as they highlight that the corresponding macroscopic PDE model is hyperpolic. Stability conditions are also derived. These valuable theoretical conclusions are verified by thorough numerical experiements.
+\item ``A section approach to a traffic flow model on networks'', Arvind Kumar Gupta, 2013, embeds the mass conservation and Navier-Stokes equations of the (GK) model are extended to entire networks of road described as a graph where edges are names section. This framework is particularly well suited for situation where traffic intersection are often heavily congested. Numerical experiments conducted on an intersection featuring 4 sections show that that the predicitons of the model are realistic and more importantly simple to implement and able to run in real-time.
+\end{itemize}
+
+This important set of references has been incorporated to our article. 
 
 \bigskip{}
 
@@ -229,6 +242,12 @@ Since the articles deals with the traffic flow control, the relevant articles on
 \emph{
 It is concluded that "linearized ARZ model is capable of reproducing NGSIM data accurately for a homogeneous segment of the US-101 freeway" is not correct. Some error analysis need to done to support the fact.
 }
+
+We agree with the reviewer that a more thorough analysis of prediction errors is required here. We are grateful to the reviewer for pointing out that shortcoming in our study and the suggested analysis greatly improves the numerical analysis part. 
+
+Indeed, examining the empirical distributions of errors and relative errors for speed and flow reveals important facts about the accuracy of the linearization procedure. In particular, although most of the flow and speed finally predicted in each bin is closed to the data (the relative error is mostly below $20\%$), the errors distributions are skewed negatively and have a negative median (in particular those of $v$). This means the procedure has a tendency to under-estimate speed and flow as we can see negative bias in the predictions. The calibration of eigen values is core to the whole analysis and improving it could alleviate this phenomenon. However, the aim of our article is to use linearization and spectral analysis in order to decompose a complex non-linear model into simple modular components. Transfer functions have achieved that objective and although the predictive accuracy of the model is not perfect it still is able to capture most of the features of the NGSIM in a sensitive manner. Therefore, we do not perform further analysis of how to alleviate the bias in the errors as this is beyond the scope of our study and we believe we are out of space.
+
+An entirely new paragraph, \textit{Error analysis}, has beem added to section 4.4 (formerly page 19, now page 10) and two new Figures are displayed on page 21. The Figures show the empirical distributions of errors and relative errors in speed and flow predictions. They highlight the fact that altough most of the relative error is below $20\%$, it features a negative bias. 
 
 \bigskip{}
 
@@ -246,9 +265,10 @@ We thank the reviewer for pointing out that issue. The number of parameters has 
 
 \bigskip{}
 
+\emph{
 Due to all the above point this article cannot be published in this form. If the authors carefully revised the article based upon my comments, then the article may be acceptable for publication.
-
-
+}
+We thank the reviewer for bringing these many points to our attention which helped us greatly improve the article. All the revisions that were recommanded have been added to the article. It is now enriched with better literature references, clearer notations and a thorough error analysis will being much more concise.
 
 
 \newpage

@@ -5,6 +5,23 @@
 \expandafter\ifx\csname href\endcsname\relax
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
+\bibitem{treiber2011evidence}
+M.~Treiber, A.~Kesting, Evidence of convective instability in congested traffic
+  flow: A systematic empirical and theoretical investigation, Transportation
+  Research Part B: Methodological 45~(9) (2011) 1362--1377.
+
+\bibitem{wardWilson2011}
+J.~A. Ward, R.~E. Wilson, Criteria for convective versus absolute string
+  instability in~car-following models, Proceedings of the Royal Society of
+  London A: Mathematical, Physical and Engineering Sciences\href
+  {http://dx.doi.org/10.1098/rspa.2010.0437}
+  {\path{doi:10.1098/rspa.2010.0437}}.
+
+\bibitem{jin2014dynamics}
+I.~G. Jin, G.~Orosz, Dynamics of connected vehicle systems with delayed
+  acceleration feedback, Transportation Research Part C: Emerging Technologies
+  46 (2014) 46--64.
+
 \bibitem{Litricobook}
 X.~Litrico, V.~Fromion, Modeling and control of hydrosystems, Springer, 2009.
 

@@ -34,12 +34,12 @@ if SLICE_FOLDER not in os.listdir('../'):
 N_TAUS = 80
 TAU_VALUES = np.linspace(5, 80, N_TAUS)
 #TAU_VALUES = [30, 35, 40, 45]
-#TAU_VALUES = [39.177215] #Best tau for US101
+TAU_VALUES = [39.177215] #Best tau for US101
 #TAU_VALUES = [68.607595]
 N_TAUS = len(TAU_VALUES)
 
-PLOT_ALL = False
-CALIBRATE_TAU = True
+PLOT_ALL = True
+CALIBRATE_TAU = False
 BUILD_VIDEO = False
 TEST_FOURIER = False
 
@@ -587,17 +587,50 @@ for n_grid in [80]:
             #
             #    Plot histogram of error in v, q domain
             #
+            fontsize = 20
+            plt.subplot(121)
             plt.hist(np.ravel(v_data[::-1] - v_sim[::-1]), bins = 100)
-            plt.xlabel('v error (m/s)')
-            plt.title('Histogram of v error')
-            plt.ylabel('v data - v sim (m/s)')
+            #plt.xlabel('Velocity absolute error (m/s)', 
+            #           fontsize = fontsize)
+            plt.title('Histogram of v error',
+                      fontsize = fontsize)
+            plt.ylabel(r'$v_{data} - v_{sim}$ (m/s)',
+                       fontsize = fontsize)
+            plt.grid()
+            #
+            plt.subplot(122)
+            plt.hist(np.ravel(relative_error_v[::-1]), bins = 100)
+            #plt.xlabel('Velocity relative error (m/s)', 
+            #           fontsize = fontsize)
+            plt.title('Histogram of relative v error',
+                      fontsize = fontsize)
+            plt.ylabel(r'$2 \frac{v_{data} - v_{sim}}{v_{data} + v_{sim}}$ (m/s)',
+                       fontsize = fontsize)
+            plt.grid()
+            plt.tight_layout()
             plt.savefig('%s/v_error_%d_%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
             #
+            plt.subplot(121)
             plt.hist(np.ravel(q_data[::-1] - q_sim[::-1]), bins = 100)
-            plt.xlabel('q error (veh/s)')
-            plt.title('Histogram of q error')
-            plt.ylabel('q data - q sim (veh/s)')
+            #plt.xlabel('Flow absolute error (m/s)', 
+            #           fontsize = fontsize)
+            plt.title('Histogram of q error',
+                      fontsize = fontsize)
+            plt.ylabel(r'$q_{data} - q_{sim}$ (m/s)',
+                       fontsize = fontsize)
+            plt.grid()
+            #
+            plt.subplot(122)
+            plt.hist(np.ravel(relative_error_q[::-1]), bins = 100)
+            #plt.xlabel('Flow relative error (m/s)', 
+            #           fontsize = fontsize)
+            plt.title('Histogram of relative q error',
+                      fontsize = fontsize)
+            plt.ylabel(r'$2 \frac{q_{data} - q_{sim}}{q_{data} + q_{sim}}$ (m/s)',
+                       fontsize = fontsize)
+            plt.grid()
+            plt.tight_layout()
             plt.savefig('%s/q_error_%d_%.2f.png' % (PLOT_FOLDER, n_grid, TAU))
             plt.close()
         #
@@ -608,7 +641,7 @@ for n_grid in [80]:
         q_mean_abs_errors[tau_index] = np.mean(np.abs(q_data - q_sim))
         v_mean_abs_errors[tau_index] = np.mean(np.abs(v_data - v_sim))
     if CALIBRATE_TAU:
-        fontsize = 16
+        fontsize = 20
         #
         #    Find best value
         #

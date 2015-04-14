@@ -3,50 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: ARZworking.aux
 The style file: elsarticle-num.bst
 Database file #1: mybibfilecopy.bib
-I was expecting a `,' or a `}'---line 126 of file mybibfilecopy.bib
- : 
- : @Article{lebacque2007,
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-You've used 53 entries,
+You've used 55 entries,
             2937 wiz_defined-function locations,
-            1014 strings with 13574 characters,
-and the built_in function-call counts, 15376 in all, are:
-= -- 1503
-> -- 413
+            1024 strings with 14136 characters,
+and the built_in function-call counts, 15909 in all, are:
+= -- 1559
+> -- 430
 < -- 6
-+ -- 173
-- -- 120
-* -- 1034
-:= -- 2040
-add.period$ -- 53
-call.type$ -- 53
-change.case$ -- 47
++ -- 180
+- -- 125
+* -- 1070
+:= -- 2113
+add.period$ -- 55
+call.type$ -- 55
+change.case$ -- 49
 chr.to.int$ -- 0
-cite$ -- 53
-duplicate$ -- 466
-empty$ -- 1788
-format.name$ -- 152
-if$ -- 4006
+cite$ -- 55
+duplicate$ -- 481
+empty$ -- 1843
+format.name$ -- 160
+if$ -- 4143
 int.to.chr$ -- 0
-int.to.str$ -- 53
-missing$ -- 59
-newline$ -- 167
-num.names$ -- 53
-pop$ -- 329
+int.to.str$ -- 55
+missing$ -- 61
+newline$ -- 173
+num.names$ -- 55
+pop$ -- 341
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1006
+skip$ -- 1042
 stack$ -- 0
-substring$ -- 1079
-swap$ -- 91
+substring$ -- 1110
+swap$ -- 94
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 141
-width$ -- 55
-write$ -- 429
-(There was 1 error message)
+while$ -- 145
+width$ -- 57
+write$ -- 445

@@ -57,10 +57,10 @@ for n_grid in [80]:
     #
     #    PLOT
     #
-    fontsize = 16
+    fontsize = 20
     plt.plot(x_values, y_values, c = 'red')
     plt.scatter(buckets['rho'].values, buckets['q'].values, alpha = 0.2, lw = 0)
-    plt.scatter(rho_star, q_star, c = 'red', s = 50)
+    plt.scatter(rho_star, q_star, c = 'red', s = 100)
     plt.title('Fundamental diagram fitting n = %d' % n_grid, fontsize = fontsize)
     plt.xlabel(r'$\rho$ (veh/m)', fontsize = fontsize)
     plt.ylabel(r'$q_{count}$ (veh/s)', fontsize = fontsize)

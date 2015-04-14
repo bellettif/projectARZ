@@ -17,10 +17,6 @@ P.~I. Richards, Shock waves on the highway, Operations Research 4~(1) (1956)
 B.~D. Greenshields, A study of traffic capacity, in: Highway Research Board
   Proceedings, 1934, pp. 448--474.
 
-\bibitem{Greenbergflux}
-H.~Greenberg, An analysis of traffic flow, Operations Research 7~(1) (1959)
-  79--85.
-
 \bibitem{Newell1993}
 G.~F. Newell, A simplified theory of kinematic waves in highway traffic, part
   \uppercase{II}: queueing at freeway bottlenecks, Transp. Res. B 27~(7) (1993)
@@ -146,10 +142,10 @@ A.~Delis, I.~Nikolos, M.~Papageorgiou, High-resolution numerical relaxation
   approximations to second-order macroscopic traffic flow models, Transp. Res.
   C 44 (2014) 318--349.
 
-\bibitem{Fan}
-S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted
-  generalized \uppercase{A}w--\uppercase{R}ascle--\uppercase{Z}hang model,
-  Networks and Heterogeneous Media 9~(2) (2014) 239--268.
+\bibitem{jin2014dynamics}
+I.~G. Jin, G.~Orosz, Dynamics of connected vehicle systems with delayed
+  acceleration feedback, Transportation Research Part C: Emerging Technologies
+  46 (2014) 46--64.
 
 \bibitem{colombo2003hyperbolic}
 R.~M. Colombo, Hyperbolic phase transitions in traffic flow, SIAM Journal on
@@ -218,6 +214,23 @@ X.~Litrico, V.~Fromion, H-infinity control of an irrigation canal pool with a
 \bibitem{lamare2014}
 P.-O. Lamare, N.~Bekiaris-Liberis, Control of 2 × 2 linear hyperbolic systems:
   Backstepping-based trajectory generation and pi-based tracking, In review.
+
+\bibitem{treiber2011evidence}
+M.~Treiber, A.~Kesting, Evidence of convective instability in congested traffic
+  flow: A systematic empirical and theoretical investigation, Transportation
+  Research Part B: Methodological 45~(9) (2011) 1362--1377.
+
+\bibitem{wardWilson2011}
+J.~A. Ward, R.~E. Wilson, Criteria for convective versus absolute string
+  instability in car-following models, Proceedings of the Royal Society of
+  London A: Mathematical, Physical and Engineering Sciences\href
+  {http://dx.doi.org/10.1098/rspa.2010.0437}
+  {\path{doi:10.1098/rspa.2010.0437}}.
+
+\bibitem{Fan}
+S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted
+  generalized \uppercase{A}w--\uppercase{R}ascle--\uppercase{Z}hang model,
+  Networks and Heterogeneous Media 9~(2) (2014) 239--268.
 
 \bibitem{jin2015}
 W.-l. Jin, On the equivalence between continuum and car-following models of
