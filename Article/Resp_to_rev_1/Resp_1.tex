@@ -135,15 +135,6 @@ We agree that this is worth exploring. As stated in the article, our work here f
 
 However, as the design of a working controller is more involved and out of the scope of the present article, this will be provided in a future article. Ultimately our aim is to explore in depth such control methods and assess how well they apply to traffic with linearized equations. In particular, this corresponds to the practical setting of the Bay Bridge near San Francisco that controls flow entering the city with traffic signals on the other side of the bridge. \\
 
-% This remark captures the purpose of current work for an upcoming article.
-%
-%For any given spatial location $x$ along the freeway, we have derived an analytical transfer function for $v$ and $q$ as a functional of the boundary conditions.
-%
-%For instance, in free-flow regime, $v$ and $q$ at $x = L$ are expressed as output of $v$ and $q$ at $x - 0$ and standard control techniques can be applied to that MIMO system.
-%
-%MANDY'S DIAGRAM.\\
-
-
 \bigskip{}
 
 \emph{
@@ -168,22 +159,94 @@ The present manuscript deals with classical Aw-Rascle-Zhang (ARZ) model for free
 }
 The reviewer is correct in pointing out that the submitted version of the article was lacking several important references in the literature of traffic models and related control. We have found the suggested references to be helpful in placing the article in a broader context. We have elaborated on the suggested literature in the edits within the article and again in the responses below. We have also made the notations more transparent as requested and conducted a thorough analysis of the errors in our numerical assessment of the model. The article is also now much in order to correspond to the standards of Physics Letters A.\\
 
+\bigskip{}
+
 \emph{
 The last line of the abstract is difficult to understand for the reader of this article.
 }
+We agree with that remark and thank the reviewer for pointing the lack of clarity of this sentence.
+More precise terms are now used and the previous sentence (``In particular, it replicates the propagation of boundary conditions’ oscillations into the interior resolution domain of the PDE under study.'') has been changed to ``In particular, it accounts for the advection of oscillations on boundaries into the interior domain where the PDE under study is solved.''. Indeed, this reflects that, in the linearized equation, it is advection that is responsible for propagating information from the boundaries into the resolution domain and avoids the confusing term ``propagation''.
+
+\bigskip{}
+
+\emph{
+The article length does not suit to be published in Physics Letters A. In my opinion, the introduction part can be rewritten in a shorter way and the other sections can also be squeezed without missing the relevant information.
+}
 
 
-2. The article length does not suits to be published in Physics Letters A. In my opinion, the introduction part can be rewritten in a shorter way and the other sections can also be squeezed without missing the relevant information.
+We fully agree that the article can be presented in a more concise manner without losing too much of the study. The article has been entirely rewritten so as to much better conform with the standards of Physics Letters A. The list of corresponding changes is presented below:
+\begin{itemize}
+\item
+\emph{Section 1: Introduction}
+The preamble has been shortened and subsections 1.1, 1.2, 1.3 (formerly pages 1, 2, 3) have been merged in an introductory subsection on \textit{Traffic macroscopic models} (now subsection 1.1 on page 1). It presents first order and second order models in a more condensed manner.
+
+Subsections 1.4 and 1.5 (formerly page 3) have been merged and made more concise as their common objective is to highlight the aim of our linearization strategy and how it was inspired on analogous work on the Saint-Venant equations. They now correspond to subsection 1.2 (page 2) named \text{Models appropriate for control}.
+
+Subsection 1.6, \textit{Approach and contribution} (formerly page 3, now page 2), has been slightly modified. Itemization has been turned into a series of more compact paragraphs. The message conveyed by each iterm has not been modified but a thorough rewording has allowed a more concise formulation.
+
+Subsection 1.4 The last sentence was redundant with explanations written later on. It has been deleted for the sake of concision.
+
+\item
+\emph{Section 2: Spectral analysis of the linearized ARZ model}
+The items in subsection 3.2.1 formerly on page 9 have been gathered in a single paragraph on page 5 in the same subsection. 
+
+Subequations (45 a-b-c-d) formerly on page 10 have been rearrange into equation into equation (30) on page 9. Redundant elements with equations (43 a-b-c-d) have been deleted.
+
+The items in subsection 3.3.2 formerly on page 12 have been gathered in a single paragraph on page 7 in the same subsection. 
+
+\item
+\emph{Caption of Bode plots}
+For the sake of compacity the captions have been shorten. The term spatial magnitude bode plot is redundant. (These plots were present on pages 10 and 14, they are now on pages 5 and 7).
+
+\item
+\emph{Subsection 1.4, Findings and conclusion from the theoretical study}
+(Formerly pages 13 and 14, now page 8). So the article could be more compact the items have been changed into a series of paragraphs. The wording has not been altered.
+
+\item
+\emph{Numerical study}
+Figure 10 page 18 was redundent with Figure 13 page 20. It has been removed to save space.
+Figure 11 page 11 was not necessary to the numerical validation as a sanity check is performed on estimated flow quantities. It has been removed.
+Items of subsection 4.5, Findings and conclusion from the numerical experiments, have been turned into a list of paragraphs in order to make the article more compact.
+
+\item
+\emph{Appendix}
+The appendix was only giving small details about how to derive numerical expression for Fourier coefficients inside the resolution domain. This is all based on well known Inverse Laplace transform analytical expressions.
+
+\end{itemize}
+
+\bigskip{}
 
 3. The authors discussed second order models in the literature survey on traffic flow models but some important literature on it is missing as A. K. Gupta, V. K. Katiyar, Physica A 371 (2006) 674-682;  A. K. Gupta, I. Dhiman, Int. J. Mod. Phys. C, 25 (2014) 1450045; A. K. Gupta, I. Dhiman, Nonlinear Dynamics, DOI: 10.1007/s11071-014-1693-6; A. K. Gupta, (2013), Int. J. Mod. Phys. C, 25(4) 1350018; A. K. Gupta and V. K. Katiyar, Journal of Physics A, 38, (2005), 4069-4083; A. K. Gupta and V. K. Katiyar, Physica A, 368 (2), (2006) 551-559.
 
-4. Since the articles deals with the traffic flow control, the relevant articles on it need to be mentioned as A. K. Gupta, S. Sharma, Chin. Phys. B, 19, (2010) 110503; A. K. Gupta, S. Sharma, Chin. Phys. B, 21, (2012) 015201.
+\bigskip{}
 
-5. It is concluded that "linearized ARZ model is capable of reproducing NGSIM data accurately for a homogeneous segment of the US-101 freeway" is not correct. Some error analysis need to done to support the fact.
+\emph{
+Since the articles deals with the traffic flow control, the relevant articles on it need to be mentioned as A. K. Gupta, S. Sharma, Chin. Phys. B, 19, (2010) 110503; A. K. Gupta, S. Sharma, Chin. Phys. B, 21, (2012) 015201.
+}
 
-6. There are so many parameters involved in this study which may be confusing for the reader.
+\bigskip{}
 
-Due to all the above point this article cannot be published in this form. If the authors carefully revised the article based upon my comments, than the article may be acceptable for publication.
+\emph{
+It is concluded that "linearized ARZ model is capable of reproducing NGSIM data accurately for a homogeneous segment of the US-101 freeway" is not correct. Some error analysis need to done to support the fact.
+}
+
+\bigskip{}
+
+\emph{
+There are so many parameters involved in this study which may be confusing for the reader.
+}
+
+We thank the reviewer for pointing out that issue. The number of parameters has been reduced as much as possible and reminders of the meaning of the parameters have been added throughout the article.
+
+\begin{itemize}
+\item Equation formerly 15 page 5, now 10 page 3, has been rewritten so no new variables are necessary.
+\item Page 6 has been entirely rewritten so as to be more simple and more concise. It now corresponds to subsection 2.2 page 3. The diagonalization is only fully written the system of coordinates (v,q) (the most interesting to us) and the number of variables involved is much lower. Equations (17) to (25) only referred to standard linear operations (diagonalization, inversion of a matrix, change of vector basis) which are easy to derive for the reader. The message conveyed by the \textit{Characteristic form} subsection remains intact as finding the characteristic system of coordinates of a linear system only comes down to diagonalizing a real matrix. Everything is now contained in equations (14) and (15) page 3.
+\item A reminder of what $Q(\rho)$ (flow equilibrium function) means has been added to the second line of section 3.2.2 (formerly page 9 and now 5) so as to make notations easier to understand.
+\end{itemize}
+
+\bigskip{}
+
+Due to all the above point this article cannot be published in this form. If the authors carefully revised the article based upon my comments, then the article may be acceptable for publication.
 
 
 

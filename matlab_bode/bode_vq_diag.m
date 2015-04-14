@@ -47,12 +47,16 @@ for i = 1:length(X);
         (lambda2 - s*tau*(lambda1-lambda2));
     phi22(i,:) = exp(-x*s/lambda2);
 end
+
 dB11 = 20*log10(abs(phi11));
 phase11 = (180/pi)*unwrap(angle(phi11));
 dB21 = 20*log10(abs(phi21));
 phase21 = (180/pi)*unwrap(angle(phi21));
 dB22 = 20*log10(abs(phi22));
 phase22 = (180/pi)*unwrap(angle(phi22));
+
+fontsize = 30;
+
 %% Spatial Bode, lambda2 > 0
 fig1 = figure(1);
 set(fig1,'defaulttextinterpreter','latex');
@@ -64,7 +68,7 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 title('Bode plot for $\phi_{11}(x,s)$')
 view([1 -2 1])
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize',fontsize)
 print(fig1,'-dpdf','distr_phi_11')
 
 fig2 = figure(2);
@@ -77,7 +81,7 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 title('Bode plot for $\phi_{21}(x,s)$')
 view([1 -1.8 2])
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize',fontsize)
 print(fig2,'-dpdf','distr_phi_21')
 
 %% distributed, lambda2 < 0
@@ -129,12 +133,16 @@ for i = 1:length(X);
         (lambda2 - s*tau*(lambda1-lambda2));
     gamma22(i,:) = exp(-(x-L)*s/lambda2);
 end
+
 dB11 = 20*log10(abs(gamma11));
 phase11 = (180/pi)*unwrap(angle(gamma11));
 dB21 = 20*log10(abs(gamma21));
 phase21 = (180/pi)*unwrap(angle(gamma21));
 dB22 = 20*log10(abs(gamma22));
 phase22 = (180/pi)*unwrap(angle(gamma22));
+
+fontsize = 30;
+
 %% Spatial Bode, lambda2 < 0
 fig1 = figure(1);
 set(fig1,'defaulttextinterpreter','latex');
@@ -145,7 +153,7 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 title('Bode plot for $\gamma_{11}(x,s)$')
 view([1 -2 1])
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize',fontsize)
 print(fig1,'-dpdf','distr_gamma_11')
 
 fig2 = figure(2);
@@ -157,5 +165,5 @@ set(gca,'xscale','log')
 set(gca,'Ydir','reverse')
 title('Bode plot for $\gamma_{21}(x,s)$')
 view([1 -1.8 2])
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize',fontsize)
 print(fig2,'-dpdf','distr_gamma_21')
