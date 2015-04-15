@@ -142,10 +142,45 @@ A.~Delis, I.~Nikolos, M.~Papageorgiou, High-resolution numerical relaxation
   approximations to second-order macroscopic traffic flow models, Transp. Res.
   C 44 (2014) 318--349.
 
+\bibitem{Gupta2006551}
+A new anisotropic continuum model for traffic flow, Physica A: Statistical
+  Mechanics and its Applications 368~(2) (2006) 551 -- 559.
+
+\bibitem{Gupta20051}
+A.~K. Gupta, V.~K. Katiyar, Analyses of shock waves and jams in traffic flow,
+  Journal of Physics A: Mathematical and General 38~(19) (2005) 4069.
+
+\bibitem{Gupta2006674}
+Phase transition of traffic states with on-ramp, Physica A: Statistical
+  Mechanics and its Applications 371~(2) (2006) 674 -- 682.
+
+\bibitem{Gupta20052}
+A.~Gupta, I.~Dhiman, Phase diagram of a continuum traffic flow model with a
+  static bottleneck, Nonlinear Dynamics 79~(1) (2015) 663--671.
+
+\bibitem{Gupta2014}
+A.~K. Gupta, I.~Dhiman, Analyses of a continuum traffic flow model for a
+  nonlane-based system, International Journal of Modern Physics C 25~(10)
+  (2014) 1450045.
+
+\bibitem{Gupta20141}
+A.~K. Gupta, I.~Dhiman, Analyses of a continuum traffic flow model for a
+  nonlane-based system, International Journal of Modern Physics C 25~(10)
+  (2014) 1450045.
+
 \bibitem{jin2014dynamics}
 I.~G. Jin, G.~Orosz, Dynamics of connected vehicle systems with delayed
   acceleration feedback, Transportation Research Part C: Emerging Technologies
   46 (2014) 46--64.
+
+\bibitem{degond2008modelling}
+P.~Degond, M.~Delitala, Modelling and simulation of vehicular traffic jam
+  formation, Kinet. Relat. Models 1~(2) (2008) 279--293.
+
+\bibitem{bellouquid2012towards}
+A.~Bellouquid, E.~De~Angelis, L.~Fermo, Towards the modeling of vehicular
+  traffic as a complex system: A kinetic theory approach, Mathematical models
+  and methods in applied sciences 22~(supp01).
 
 \bibitem{colombo2003hyperbolic}
 R.~M. Colombo, Hyperbolic phase transitions in traffic flow, SIAM Journal on
@@ -226,6 +261,15 @@ J.~A. Ward, R.~E. Wilson, Criteria for convective versus absolute string
   London A: Mathematical, Physical and Engineering Sciences\href
   {http://dx.doi.org/10.1098/rspa.2010.0437}
   {\path{doi:10.1098/rspa.2010.0437}}.
+
+\bibitem{GuptaStab1}
+A.~K. Gupta, S.~Sharma, Nonlinear analysis of traffic jams in an anisotropic
+  continuum model, Chinese Physics B 19~(11) (2010) 110503.
+
+\bibitem{GuptaStab2}
+A.~K. Gupta, S.~Sharma, Analysis of the wave properties of a new two-lane
+  continuum model with the coupling effect, Chinese Physics B 21~(1) (2012)
+  015201.
 
 \bibitem{Fan}
 S.~Fan, M.~Herty, B.~Seibold, Comparative model accuracy of a data-fitted

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  14 APR 2015 12:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  14 APR 2015 23:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -425,51 +425,38 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 ]
 [2]
-Overfull \hbox (16.15462pt too wide) detected at line 244
+Overfull \hbox (16.15462pt too wide) detected at line 246
 [][] \OT1/cmr/m/n/8 + [] [][] = [] []
  []
 
 [3]
-Underfull \hbox (badness 1810) in paragraph at lines 433--435
+Underfull \hbox (badness 1810) in paragraph at lines 435--437
 \OT1/cmr/m/n/10 Note also that $\OML/cmm/m/it/10 ^^U[] \OT1/cmr/m/n/10 = \OML/c
 mm/m/it/10 v[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 ^^Z[]V[]\OT1/cmr/m/n/10 (\OML
 /cmm/m/it/10 ^^Z[]\OT1/cmr/m/n/10 ) = [] +
  []
 
-<Congested-regime.png, id=297, 505.89pt x 361.35pt>
+<Congested-regime.png, id=312, 505.89pt x 361.35pt>
 File: Congested-regime.png Graphic file (type png)
  <use Congested-regime.png>
-Package pdftex.def Info: Congested-regime.png used on input line 441.
+Package pdftex.def Info: Congested-regime.png used on input line 443.
 (pdftex.def)             Requested size: 128.0374pt x 91.45656pt.
 
-<Free-flow-regime.png, id=298, 505.89pt x 361.35pt>
+<Free-flow-regime.png, id=313, 505.89pt x 361.35pt>
 File: Free-flow-regime.png Graphic file (type png)
  <use Free-flow-regime.png>
-Package pdftex.def Info: Free-flow-regime.png used on input line 441.
+Package pdftex.def Info: Free-flow-regime.png used on input line 443.
 (pdftex.def)             Requested size: 128.0374pt x 91.45656pt.
 
-Overfull \hbox (28.0748pt too wide) in paragraph at lines 440--448
+Overfull \hbox (28.0748pt too wide) in paragraph at lines 442--450
  [][] 
  []
 
 
-Overfull \hbox (11.27066pt too wide) detected at line 484
+Overfull \hbox (11.27066pt too wide) detected at line 486
 \U/rsfs/m/n/10 X\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 ) = [] \OML/
 cmm/m/it/10 ; \U/rsfs/m/n/10 D\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s\OT1/cmr/m/n/1
 0 ) = [] \OML/cmm/m/it/10 :
- []
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 522.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 522.
-
-
-Overfull \hbox (26.83008pt too wide) detected at line 538
-[] \OT1/cmr/m/n/10 = [] []
  []
 
 [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
@@ -477,156 +464,163 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.575 \end{align}
-                  <./Congested-regime.png> <./Free-flow-regime.png>]pdfTeX warn
-ing (ext4): destination with the same identifier (name{equation.3.1}) has been 
-already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.626 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.626 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.626 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.626 \end{align}
-                  <distr_phi_11.pdf, id=326, 614.295pt x 794.97pt>
-File: distr_phi_11.pdf Graphic file (type pdf)
+l.523 
+       <./Congested-regime.png> <./Free-flow-regime.png>]
 
-<use distr_phi_11.pdf>
-Package pdftex.def Info: distr_phi_11.pdf used on input line 644.
-(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
- <distr_phi_21.pdf, id=327, 614.295pt x 794.97pt>
-File: distr_phi_21.pdf Graphic file (type pdf)
-
-<use distr_phi_21.pdf>
-Package pdftex.def Info: distr_phi_21.pdf used on input line 646.
-(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
-
-Overfull \hbox (11.00296pt too wide) in paragraph at lines 643--654
- [][] 
- []
-
-<distr_psi_11.pdf, id=328, 614.295pt x 794.97pt>
-File: distr_psi_11.pdf Graphic file (type pdf)
- <use distr_psi_11.pdf>
-Package pdftex.def Info: distr_psi_11.pdf used on input line 660.
-(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
-
-<distr_psi_12.pdf, id=329, 614.295pt x 794.97pt>
-File: distr_psi_12.pdf Graphic file (type pdf)
- <use distr_psi_12.pdf>
-Package pdftex.def Info: distr_psi_12.pdf used on input line 662.
-(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
-
-<distr_psi_21.pdf, id=330, 614.295pt x 794.97pt>
-File: distr_psi_21.pdf Graphic file (type pdf)
- <use distr_psi_21.pdf>
-Package pdftex.def Info: distr_psi_21.pdf used on input line 668.
-(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
-
-<distr_psi_22.pdf, id=331, 614.295pt x 794.97pt>
-File: distr_psi_22.pdf Graphic file (type pdf)
- <use distr_psi_22.pdf>
-Package pdftex.def Info: distr_psi_22.pdf used on input line 670.
-(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
-
-Overfull \hbox (11.00296pt too wide) in paragraph at lines 659--677
- [][] 
- []
-
-
-Underfull \vbox (badness 1292) has occurred while \output is active []
-
- [5pdfTeX warning (ext4): destination with the same identifier (name{equation.3
-.1}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.696 
-      pdfTeX warning (ext4): destination with the same identifier (name{equatio
-n.3.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.696 
-      pdfTeX warning (ext4): destination with the same identifier (name{equatio
-n.3.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.696 
-      pdfTeX warning (ext4): destination with the same identifier (name{equatio
-n.3.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.696 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.696 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.696 
-       <./distr_phi_11.pdf> <./distr_phi_21.pdf> <./distr_psi_11.pdf> <./distr_
-psi_12.pdf> <./distr_psi_21.pdf> <./distr_psi_22.pdf>]
-<Exp-growth.png, id=439, 505.89pt x 361.35pt>
-File: Exp-growth.png Graphic file (type png)
- <use Exp-growth.png>
-Package pdftex.def Info: Exp-growth.png used on input line 738.
-(pdftex.def)             Requested size: 128.0374pt x 91.45656pt.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 524.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 743.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 743.
+(hyperref)                removing `math shift' on input line 524.
 
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.782 \end{align}
+l.580 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.782 \end{align}
+l.580 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.782 \end{align}
+l.580 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.782 \end{align}
-                 
-Underfull \hbox (badness 4441) in paragraph at lines 787--798
+l.580 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.3.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.631 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.3.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.631 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.3.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.631 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.3.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.631 \end{align}
+                  <distr_phi_11.pdf, id=345, 614.295pt x 794.97pt>
+File: distr_phi_11.pdf Graphic file (type pdf)
+
+<use distr_phi_11.pdf>
+Package pdftex.def Info: distr_phi_11.pdf used on input line 649.
+(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
+ <distr_phi_21.pdf, id=346, 614.295pt x 794.97pt>
+File: distr_phi_21.pdf Graphic file (type pdf)
+
+<use distr_phi_21.pdf>
+Package pdftex.def Info: distr_phi_21.pdf used on input line 651.
+(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
+
+Overfull \hbox (11.00296pt too wide) in paragraph at lines 648--659
+ [][] 
+ []
+
+<distr_psi_11.pdf, id=347, 614.295pt x 794.97pt>
+File: distr_psi_11.pdf Graphic file (type pdf)
+ <use distr_psi_11.pdf>
+Package pdftex.def Info: distr_psi_11.pdf used on input line 665.
+(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
+
+<distr_psi_12.pdf, id=348, 614.295pt x 794.97pt>
+File: distr_psi_12.pdf Graphic file (type pdf)
+ <use distr_psi_12.pdf>
+Package pdftex.def Info: distr_psi_12.pdf used on input line 667.
+(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
+
+<distr_psi_21.pdf, id=349, 614.295pt x 794.97pt>
+File: distr_psi_21.pdf Graphic file (type pdf)
+ <use distr_psi_21.pdf>
+Package pdftex.def Info: distr_psi_21.pdf used on input line 673.
+(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
+
+<distr_psi_22.pdf, id=350, 614.295pt x 794.97pt>
+File: distr_psi_22.pdf Graphic file (type pdf)
+ <use distr_psi_22.pdf>
+Package pdftex.def Info: distr_psi_22.pdf used on input line 675.
+(pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
+
+Overfull \hbox (11.00296pt too wide) in paragraph at lines 664--682
+ [][] 
+ []
+
+[5] <Exp-growth.png, id=363, 505.89pt x 361.35pt>
+File: Exp-growth.png Graphic file (type png)
+ <use Exp-growth.png>
+Package pdftex.def Info: Exp-growth.png used on input line 743.
+(pdftex.def)             Requested size: 128.0374pt x 91.45656pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 748.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 748.
+
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.3.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.3.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{equation.3.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.787 \end{align}
+                  [6pdfTeX warning (ext4): destination with the same identifier
+ (name{figure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.787 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{figure.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.787 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{figure.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.787 \end{align}
+                  <./distr_phi_11.pdf> <./distr_phi_21.pdf> <./distr_psi_11.pdf
+> <./distr_psi_12.pdf> <./distr_psi_21.pdf> <./distr_psi_22.pdf> <./Exp-growth.
+png>]
+Underfull \hbox (badness 4441) in paragraph at lines 792--803
 []\OT1/cmr/m/n/10 For low fre-quen-cies ($[] \OMS/cmsy/m/n/10 ^^\ []$\OT1/cmr/m
 /n/10 ), $\OML/cmm/m/it/10 ^^M[] [] \OMS/cmsy/m/n/10 '
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 800--830
+Underfull \hbox (badness 1990) in paragraph at lines 805--835
 \OML/cmm/m/it/10 ^^M[] [] [] []$ \OT1/cmr/m/n/10 , we get $[] [] = [][] [] +
  []
 
@@ -634,94 +628,84 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3.1}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.970 \end{align}
+l.975 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.970 \end{align}
+l.975 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.970 \end{align}
+l.975 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{equation.3.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.970 \end{align}
-                 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.970 \end{align}
-                  <./Exp-growth.png>]pdfTeX warning (ext4): destination with th
-e same identifier (name{equation.3.1}) has been already used, duplicate ignored
-
-<to be read again> 
-                   \relax 
-l.995 \end{align}
+l.975 \end{align}
                  pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.2}) has been already used, duplicate ignored
+ame{equation.3.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.995 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.3}) has been already used, duplicate ignored
+l.1000 \end{align}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{equation.3.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.995 \end{align}
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{equation.3.4}) has been already used, duplicate ignored
+l.1000 \end{align}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{equation.3.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.995 \end{align}
-                  <distr_gamma_11.pdf, id=457, 614.295pt x 794.97pt>
+l.1000 \end{align}
+                  pdfTeX warning (ext4): destination with the same identifier (
+name{equation.3.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1000 \end{align}
+                   <distr_gamma_11.pdf, id=474, 614.295pt x 794.97pt>
 File: distr_gamma_11.pdf Graphic file (type pdf)
 
 <use distr_gamma_11.pdf>
-Package pdftex.def Info: distr_gamma_11.pdf used on input line 1014.
+Package pdftex.def Info: distr_gamma_11.pdf used on input line 1018.
 (pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
- <distr_gamma_21.pdf, id=458, 614.295pt x 794.97pt>
+ <distr_gamma_21.pdf, id=475, 614.295pt x 794.97pt>
 File: distr_gamma_21.pdf Graphic file (type pdf)
 
 <use distr_gamma_21.pdf>
-Package pdftex.def Info: distr_gamma_21.pdf used on input line 1016.
+Package pdftex.def Info: distr_gamma_21.pdf used on input line 1020.
 (pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
 
-Overfull \hbox (11.00296pt too wide) in paragraph at lines 1013--1023
+Overfull \hbox (11.00296pt too wide) in paragraph at lines 1017--1027
  [][] 
  []
 
-<distr_theta_11.pdf, id=459, 614.295pt x 794.97pt>
+<distr_theta_11.pdf, id=476, 614.295pt x 794.97pt>
 File: distr_theta_11.pdf Graphic file (type pdf)
  <use distr_theta_11.pdf>
-Package pdftex.def Info: distr_theta_11.pdf used on input line 1029.
+Package pdftex.def Info: distr_theta_11.pdf used on input line 1033.
 (pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
 
-<distr_theta_12.pdf, id=460, 614.295pt x 794.97pt>
+<distr_theta_12.pdf, id=477, 614.295pt x 794.97pt>
 File: distr_theta_12.pdf Graphic file (type pdf)
  <use distr_theta_12.pdf>
-Package pdftex.def Info: distr_theta_12.pdf used on input line 1031.
+Package pdftex.def Info: distr_theta_12.pdf used on input line 1035.
 (pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
 
-<distr_theta_21.pdf, id=461, 614.295pt x 794.97pt>
+<distr_theta_21.pdf, id=478, 614.295pt x 794.97pt>
 File: distr_theta_21.pdf Graphic file (type pdf)
  <use distr_theta_21.pdf>
-Package pdftex.def Info: distr_theta_21.pdf used on input line 1037.
+Package pdftex.def Info: distr_theta_21.pdf used on input line 1041.
 (pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
 
-<distr_theta_22.pdf, id=462, 614.295pt x 794.97pt>
+<distr_theta_22.pdf, id=479, 614.295pt x 794.97pt>
 File: distr_theta_22.pdf Graphic file (type pdf)
  <use distr_theta_22.pdf>
-Package pdftex.def Info: distr_theta_22.pdf used on input line 1039.
+Package pdftex.def Info: distr_theta_22.pdf used on input line 1043.
 (pdftex.def)             Requested size: 119.50148pt x 88.22827pt.
 
-Overfull \hbox (11.00296pt too wide) in paragraph at lines 1028--1046
+Overfull \hbox (11.00296pt too wide) in paragraph at lines 1032--1050
  [][] 
  []
 
@@ -730,169 +714,172 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1056 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1056 
-        <./distr_gamma_11.pdf> <./distr_gamma_21.pdf> <./distr_theta_11.pdf> <.
-/distr_theta_12.pdf> <./distr_theta_21.pdf> <./distr_theta_22.pdf>]
-<US-101_all_traj_low_res_mod.png, id=570, 1156.32pt x 578.16pt>
+l.1055 
+        <./distr_gamma_11.pdf> <./distr_gamma_21.pdf>]
+<US-101_all_traj_low_res_mod.png, id=525, 1156.32pt x 578.16pt>
 File: US-101_all_traj_low_res_mod.png Graphic file (type png)
 
 <use US-101_all_traj_low_res_mod.png>
-Package pdftex.def Info: US-101_all_traj_low_res_mod.png used on input line 107
-5.
+Package pdftex.def Info: US-101_all_traj_low_res_mod.png used on input line 108
+1.
 (pdftex.def)             Requested size: 227.62204pt x 113.80379pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1083.
+(hyperref)                removing `math shift' on input line 1089.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1083.
+(hyperref)                removing `math shift' on input line 1089.
 
 
-Underfull \hbox (badness 2856) in paragraph at lines 1085--1087
+Underfull \hbox (badness 2856) in paragraph at lines 1091--1093
 \OT1/cmr/m/n/10 val-ues $\OML/cmm/m/it/10 v\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t;
  x\OT1/cmr/m/n/10 )$ and $\OML/cmm/m/it/10 q\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t
 ; x\OT1/cmr/m/n/10 )$ in the res-o-lu-tion do-main
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1085--1087
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1093
 [][]$\OT1/cmr/m/n/10 ,
  []
 
-[8pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) 
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1128 w
-        here id$(\cdot)$ gives the identification number of a vehicle. <./US-10
-1_all_traj_low_res_mod.png>] <"traces_80_80".png, id=587, 578.16pt x 433.62pt>
+l.1095 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.7}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1095 
+        <./distr_theta_11.pdf> <./distr_theta_12.pdf> <./distr_theta_21.pdf> <.
+/distr_theta_22.pdf> <./US-101_all_traj_low_res_mod.png>]
+<"traces_80_80".png, id=603, 578.16pt x 433.62pt>
 File: "traces_80_80".png Graphic file (type png)
-
-<use "traces_80_80".png>
-Package pdftex.def Info: "traces_80_80".png used on input line 1140.
+ <use "traces_80_80".png>
+Package pdftex.def Info: "traces_80_80".png used on input line 1146.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
- <"ids_80_80".png, id=588, 578.16pt x 433.62pt>
+
+<"ids_80_80".png, id=604, 578.16pt x 433.62pt>
 File: "ids_80_80".png Graphic file (type png)
-
-<use "ids_80_80".png>
-Package pdftex.def Info: "ids_80_80".png used on input line 1145.
+ <use "ids_80_80".png>
+Package pdftex.def Info: "ids_80_80".png used on input line 1151.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
- <"80_80_q_q_count".png, id=590, 578.16pt x 433.62pt>
+
+<"80_80_q_q_count".png, id=606, 578.16pt x 433.62pt>
 File: "80_80_q_q_count".png Graphic file (type png)
 
 <use "80_80_q_q_count".png>
-Package pdftex.def Info: "80_80_q_q_count".png used on input line 1159.
+Package pdftex.def Info: "80_80_q_q_count".png used on input line 1165.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1167.
+(hyperref)                removing `math shift' on input line 1173.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\left' on input line 1167.
+(hyperref)                removing `\left' on input line 1173.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\right' on input line 1167.
+(hyperref)                removing `\right' on input line 1173.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1167.
+(hyperref)                removing `math shift' on input line 1173.
 
 [9pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1186 
-       pdfTeX warning (ext4): destination with the same identifier (name{figure
-.9}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1186 
-        <./traces_80_80.png> <./ids_80_80.png> <./80_80_q_q_count.png>]
-<"Fundamental_diagram_fitting_n_80".png, id=605, 578.16pt x 433.62pt>
+l.1177 
+        <./traces_80_80.png> <./ids_80_80.png>]
+<"Fundamental_diagram_fitting_n_80".png, id=623, 578.16pt x 433.62pt>
 File: "Fundamental_diagram_fitting_n_80".png Graphic file (type png)
 
 <use "Fundamental_diagram_fitting_n_80".png>
 Package pdftex.def Info: "Fundamental_diagram_fitting_n_80".png used on input l
-ine 1189.
+ine 1195.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
+ [10pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
+) has been already used, duplicate ignored
 
-<"q_error_80_best_tau".png, id=609, 578.16pt x 433.62pt>
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1209 
+       pdfTeX warning (ext4): destination with the same identifier (name{figure
+.10}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1209 
+        <./80_80_q_q_count.png> <./Fundamental_diagram_fitting_n_80.png>]
+<"q_error_80_best_tau".png, id=635, 578.16pt x 433.62pt>
 File: "q_error_80_best_tau".png Graphic file (type png)
 
 <use "q_error_80_best_tau".png>
-Package pdftex.def Info: "q_error_80_best_tau".png used on input line 1210.
+Package pdftex.def Info: "q_error_80_best_tau".png used on input line 1216.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"v_error_80_best_tau".png, id=610, 578.16pt x 433.62pt>
+<"v_error_80_best_tau".png, id=636, 578.16pt x 433.62pt>
 File: "v_error_80_best_tau".png Graphic file (type png)
 
 <use "v_error_80_best_tau".png>
-Package pdftex.def Info: "v_error_80_best_tau".png used on input line 1212.
+Package pdftex.def Info: "v_error_80_best_tau".png used on input line 1218.
 (pdftex.def)             Requested size: 227.62204pt x 170.71231pt.
 
-<"vq_map_n_80_best_tau".png, id=611, 722.7pt x 469.755pt>
+<"vq_map_n_80_best_tau".png, id=637, 722.7pt x 469.755pt>
 File: "vq_map_n_80_best_tau".png Graphic file (type png)
 
 <use "vq_map_n_80_best_tau".png>
-Package pdftex.def Info: "vq_map_n_80_best_tau".png used on input line 1227.
+Package pdftex.def Info: "vq_map_n_80_best_tau".png used on input line 1233.
 (pdftex.def)             Requested size: 256.0748pt x 166.44522pt.
 
-<"xi_map_n_80_best_tau".png, id=612, 722.7pt x 469.755pt>
+<"xi_map_n_80_best_tau".png, id=638, 722.7pt x 469.755pt>
 File: "xi_map_n_80_best_tau".png Graphic file (type png)
 
 <use "xi_map_n_80_best_tau".png>
-Package pdftex.def Info: "xi_map_n_80_best_tau".png used on input line 1229.
+Package pdftex.def Info: "xi_map_n_80_best_tau".png used on input line 1235.
 (pdftex.def)             Requested size: 256.0748pt x 166.44522pt.
 
-Overfull \hbox (16.0748pt too wide) in paragraph at lines 1226--1232
+Overfull \hbox (16.0748pt too wide) in paragraph at lines 1232--1238
  [][] 
  []
 
-<"q_v_error_80".png, id=613, 578.16pt x 433.62pt>
+
+Underfull \vbox (badness 2005) has occurred while \output is active []
+
+
+<"q_v_error_80".png, id=639, 578.16pt x 433.62pt>
 File: "q_v_error_80".png Graphic file (type png)
  <use "q_v_error_80".png>
-Package pdftex.def Info: "q_v_error_80".png used on input line 1239.
+Package pdftex.def Info: "q_v_error_80".png used on input line 1245.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
 
-<"xi_1_xi_2_error_80".png, id=614, 578.16pt x 433.62pt>
+<"xi_1_xi_2_error_80".png, id=640, 578.16pt x 433.62pt>
 File: "xi_1_xi_2_error_80".png Graphic file (type png)
 
 <use "xi_1_xi_2_error_80".png>
-Package pdftex.def Info: "xi_1_xi_2_error_80".png used on input line 1243.
+Package pdftex.def Info: "xi_1_xi_2_error_80".png used on input line 1249.
 (pdftex.def)             Requested size: 170.71652pt x 128.03589pt.
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.10
+ [11pdfTeX warning (ext4): destination with the same identifier (name{figure.11
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1258 
-        <./Fundamental_diagram_fitting_n_80.png>] [11pdfTeX warning (ext4): des
-tination with the same identifier (name{figure.11}) has been already used, dupl
-icate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1258 
+l.1268 
        pdfTeX warning (ext4): destination with the same identifier (name{figure
 .12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1258 
+l.1268 
         <./q_error_80_best_tau.png> <./v_error_80_best_tau.png> <./vq_map_n_80_
 best_tau.png> <./xi_map_n_80_best_tau.png>] (./ARZworking.bbl [12pdfTeX warning
  (ext4): destination with the same identifier (name{figure.13}) has been alread
@@ -900,37 +887,36 @@ y used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.66 \bibitem{Dag_requiem}
-                           <./q_v_error_80.png> <./xi_1_xi_2_error_80.png>]
+l.84 
+      <./q_v_error_80.png> <./xi_1_xi_2_error_80.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 Missing character: There is no â in font cmr8!
 Missing character: There is no € in font cmr8!
 Missing character: There is no “ in font cmr8!
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 Missing character: There is no Ã in font cmr8!
 Missing character: There is no — in font cmr8!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1499.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1505.
  [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1499.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1505.
 
 (./ARZworking.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1499.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1499.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1505.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1505.
 
 Package rerunfilecheck Info: File `ARZworking.out' has not changed.
 (rerunfilecheck)             Checksum: 3F15097ED3FD05C5151367283270820C;2375.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1499.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1505.
  ) 
 Here is how much of TeX's memory you used:
- 7269 strings out of 493117
- 106643 string characters out of 6135433
- 223356 words of memory out of 5000000
- 10459 multiletter control sequences out of 15000+600000
+ 7309 strings out of 493117
+ 107425 string characters out of 6135433
+ 221517 words of memory out of 5000000
+ 10489 multiletter control sequences out of 15000+600000
  9702 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,18n,31p,1322b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,18n,31p,1322b,524s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.p
@@ -957,10 +943,10 @@ dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2014/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2014/texmf-dist
 /fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
 ype1/public/rsfs/rsfs7.pfb>
-Output written on ARZworking.pdf (13 pages, 3701445 bytes).
+Output written on ARZworking.pdf (13 pages, 3706177 bytes).
 PDF statistics:
- 767 PDF objects out of 1000 (max. 8388607)
- 599 compressed objects within 6 object streams
- 161 named destinations out of 1000 (max. 500000)
+ 790 PDF objects out of 1000 (max. 8388607)
+ 621 compressed objects within 7 object streams
+ 171 named destinations out of 1000 (max. 500000)
  363 words of extra memory for PDF output out of 10000 (max. 10000000)
 
